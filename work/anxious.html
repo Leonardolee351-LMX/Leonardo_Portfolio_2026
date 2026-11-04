@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anxious Kit — Leonardo Li</title>
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="../index.html">Leonardo Li</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#showcase">Showcase</a>
+        <a href="../practice.html">Files</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </header>
+    <nav class="sheet-map" aria-label="本页">
+      <a href="#cover">封面</a>
+      <a href="#discover">发现</a>
+      <a href="#define">定义</a>
+      <a href="#develop">发展</a>
+      <a href="#deliver">交付</a>
+    </nav>
+
+    <article class="case-hero" id="cover">
+      <p class="eyebrow">产品 · 03 · 进行中</p>
+      <h1>Anxious Kit.</h1>
+      <p class="stand">高压里人来不及记下自己的状态。传感器看到心率一类信号异常，用轻的震动或声音提醒，人点一下或说一句短的，系统记下。长期再看趋势。目标是采样频繁，但不要变成新的干扰。</p>
+      <div class="meta-row">
+        <div><span class="eyebrow">未知问题</span><strong>界面有空位，不代表人需要一句安慰</strong></div>
+        <div><span class="eyebrow">已知方向</span><strong>状态没到阈值就不要开口</strong></div>
+        <div><span class="eyebrow">左钻</span><strong>做正确的事</strong></div>
+        <div><span class="eyebrow">右钻</span><strong>把设计做正确</strong></div>
+      </div>
+      <div class="frame">
+        <img class="wide" src="../media/anxious/P1.png" alt="Anxious Kit 的产品视觉概览。">
+      </div>
+      <p class="cap">视觉概览。图里的装置感不代表已经做出经验证的硬件，也不代表有疗效。</p>
+    </article>
+
+    <div class="case-body">
+      <div class="folds">
+        <details class="fold">
+          <summary>职责 · 这一页能讲什么</summary>
+          <div class="fold-body">
+            <p>三件产品问的是同一类边界。鸭停在孩子接得住的地方。Seamless 停在不该继续隐藏身份的地方。Kit 停在还没准备好被说话的地方。我在这一件里先写停的条件，再谈界面。提醒的频率和强度改过几轮，为的是能被注意到，又不吵。改过几轮，不等于已经有可用性测试结论。能讲的是产品判断。不能讲的是硬件指标、传感器精度、临床效果。</p>
+          </div>
+        </details>
+        <details class="fold">
+          <summary>材料边界 · 不对不上的地方补故事</summary>
+          <div class="fold-body">
+            <p>这件在面试里已经被问出很多对不上的地方。这一页不把破绽补成故事。频率和强度改过几轮，这一句可以讲。改成了多少赫兹、多少毫秒、对多少人有效，材料里对不上，这一页不写。被追问硬件怎么接、信号怎么标定，回答：这一页没有可发表的硬件结论。屏幕还没作为终稿贴上来。被问到对不上的指标，说对不上，不补一个更圆的故事。</p>
+          </div>
+        </details>
+        <details class="fold">
+          <summary>结果边界 · 没有硬件结论，没有医疗结论</summary>
+          <div class="fold-body">
+            <p>不声称传感器已经验证。不声称诊断。不声称临床效果。若必须只留一句：状态没到阈值就不要开口，开口的强度不能比情绪本身更吵。MindCalm 的计划书和渲染在另一处目录，文件在 <code>E:\脑电项目2\</code> 和 <code>E:\MINDCALM\</code>。它是延展，不并进 Attunia，也不在这里写成已经完成。Attunia 是调节练习的界面，原始脑电留在本机。Kit 是情绪采样的产品判断。两件如果合成一个医疗故事，对方会先问准不准。这一页不合成。</p>
+          </div>
+        </details>
+      </div>
+
+      <figure class="diamond-key">
+        <img src="../media/double-diamond.png" alt="双钻模型。">
+        <figcaption>左钻做正确的事，右钻把设计做正确。<a href="https://www.woshipm.com/ucd/5640174.html" target="_blank" rel="noopener">双钻解析</a></figcaption>
+      </figure>
+      <div class="phase-bar">
+        <div><span>Diamond 1 · 问题空间</span><strong>空着的区域很容易被塞进提示。提示一多，工具就变成噪音。</strong></div>
+        <div><span>Diamond 2 · 方案空间</span><strong>从「一直在旁边」收到「到了才说话」。</strong></div>
+      </div>
+      <p class="dt-note">设计思维叠在双钻上：共情与观察在发现，问题定义与 How Might We 在定义，构思与评估在发展，原型、测试、迭代在交付。阶段之间会回跳，不是单向流水线。</p>
+
+      <section class="spread" id="discover">
+        <p class="eyebrow">Discover · 调研 · 发散</p>
+        <div>
+          <h3>剖析问题：高压里人来不及记下自己的状态。</h3>
+          <p>界面有空位，不代表人需要一句安慰。空着的区域很容易被塞进提示。提示一多，工具就变成噪音，人也更难分辨自己到底紧不紧张。这一阶段禁止先画一套全天陪护，只看人什么时候真的需要被提醒。</p>
+          <div class="shots">
+            <figure>
+              <img src="../media/anxious/P2.png" alt="Anxious Kit 的一帧产品视觉。">
+              <figcaption>视觉在讲「轻」。轻如果变成疗效，就越界了。</figcaption>
+            </figure>
+            <figure>
+              <img src="../media/anxious/P3.png" alt="Anxious Kit 的另一帧。">
+              <figcaption>这一页把图当思考材料，不当已验证的产品照片。</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="spread" id="define">
+        <p class="eyebrow">Define · 整合 · 收敛</p>
+        <div>
+          <h3>洞察收成：开口的强度不能比情绪本身更吵。</h3>
+          <div class="hmw">
+            <span>HMW</span>
+            <p>我们怎样才能采样频繁，却不把工具变成新的干扰？</p>
+          </div>
+          <div class="hmw">
+            <span>HMW</span>
+            <p>我们怎样才能让提醒跟着状态走，而不是跟着界面空位走？</p>
+          </div>
+          <p>最终行动方向：先问状态到了没有。没到就保持安静。有一句能说的话，也排在这个判断后面。长期看的是趋势，不是每一秒的警报。</p>
+        </div>
+      </section>
+
+      <section class="spread" id="develop">
+        <p class="eyebrow">Develop · 构思 · 发散后再评估</p>
+        <div>
+          <h3>一开始很容易把可穿戴做成全天陪护。</h3>
+          <p>信号一有波动就响。响多了，人先烦设备，再烦自己。后来收成阈值：没到就保持安静。人点一下或说一句短的，系统才记下。</p>
+          <div class="steps">
+            <div class="step"><span>看见</span><p>空着的界面会诱使人塞一句安慰。安慰一变成默认，工具就在抢注意力。</p></div>
+            <div class="step"><span>选了</span><p>先问状态到了没有。没到就保持安静。提醒的频率和强度改过几轮，为的是能被注意到，又不吵。</p></div>
+            <div class="step"><span>放下</span><p>全天陪护、随时开口、把每一次波动都写成关怀。</p></div>
+            <div class="step"><span>代价</span><p>产品看起来不够「主动」。主动如果等于更吵，这一页不站。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="spread" id="deliver">
+        <p class="eyebrow">Deliver · 实现 · 仍在做</p>
+        <div>
+          <h3>这一页交付的是产品判断，不是结案。</h3>
+          <p>框架还在走。下一程是 MindCalm，还在做，单独放。Build, test, iterate 没有写成可用性测试结论，也没有写成硬件指标。若必须只留一句：状态没到阈值就不要开口。</p>
+          <p class="links"><a href="../practice.html#anxious">文件柜</a></p>
+        </div>
+      </section>
+      <p class="next">
+        <a href="seamless.html">上一件 · Seamless</a>
+        <a href="../practice.html">文件柜</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
