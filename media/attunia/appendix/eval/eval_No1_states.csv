@@ -1,0 +1,241 @@
+﻿id,label,scenario,userUtterance,arousal,focus,calm,sleepHours,availableMinutes,eeg_attention,eeg_meditation,eeg_signalQuality,alphaRelative,betaThetaRatio,delta,theta,lowAlpha,highAlpha,lowBeta,highBeta,arousalMean,focusMean,calmMean,expect_dominantGoal,expect_weightsOrder,expect_crisis,source,waveformProfile
+eval-0001,depleted,熬夜赶工后,咖啡都救不了我了,17,46,49,2.8,28,46,49,189,0.0561,0.3688,218161,75803,9801,14381,12293,15660,17.3,46.5,49.4,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0002,depleted,熬夜赶工后,熬了一宿，感觉魂在后面追,41,40,76,4.0,30,40,76,117,0.0989,0.3361,464351,131576,36181,50263,18544,25678,41.0,40.3,76.1,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0003,depleted,熬夜赶工后,咖啡都救不了我了,18,70,35,5.3,17,70,35,70,0.0705,0.4514,350042,66609,15090,21368,16005,14065,17.5,70.3,34.6,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0004,depleted,通宵后硬撑上班,熬了一宿，感觉魂在后面追,29,24,67,2.9,25,24,67,91,0.0759,0.2838,477022,169989,34146,31289,20948,27294,29.2,24.3,67.3,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0005,depleted,跨时区出差,熬了一宿，感觉魂在后面追,45,60,53,5.4,25,60,53,195,0.0979,0.5371,286603,45849,19836,22998,11169,13457,44.6,59.9,53.1,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0006,depleted,带娃夜醒多次,熬了一宿，感觉魂在后面追,61,53,47,4.2,17,53,47,85,0.0685,0.2986,280203,85894,18179,13188,12310,13342,60.8,52.8,46.9,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0007,depleted,凌晨三点才睡,熬了一宿，感觉魂在后面追,47,76,30,4.6,8,76,30,52,0.1054,0.3689,271206,131935,28213,27564,28918,19747,47.0,76.3,30.4,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0008,depleted,熬夜赶工后,眼睛睁着，脑子已经关机了,59,26,54,4.6,15,26,54,126,0.0804,0.3815,570233,115165,33207,33191,19143,24790,59.1,26.0,53.5,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0009,depleted,凌晨三点才睡,咖啡都救不了我了,56,75,45,2.5,29,75,45,128,0.1089,0.569,450808,114262,32513,44464,30724,34287,55.5,74.7,44.9,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0010,depleted,熬夜赶工后,困到想趴在键盘上睡着,31,19,50,5.0,7,19,50,158,0.104,0.5912,227729,74701,23704,16515,19123,25039,30.6,19.4,49.8,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0011,depleted,通宵后硬撑上班,困到想趴在键盘上睡着,29,82,45,4.4,17,82,45,65,0.113,0.3806,185986,34909,19528,18703,6878,6408,28.6,81.5,45.2,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0012,depleted,跨时区出差,熬了一宿，感觉魂在后面追,29,20,23,4.9,7,20,23,154,0.0694,0.3942,446166,170553,26281,24726,30157,37068,29.1,20.2,22.7,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0013,depleted,带娃夜醒多次,困到想趴在键盘上睡着,28,24,33,4.2,16,24,33,113,0.0827,0.4916,565175,102196,35384,38252,23506,26736,28.1,23.6,32.6,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0014,depleted,通宵后硬撑上班,困到想趴在键盘上睡着,28,36,76,2.5,10,36,76,73,0.0675,0.5693,480795,149107,22607,32516,50920,33967,27.8,36.3,76.2,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0015,depleted,凌晨三点才睡,困到想趴在键盘上睡着,65,41,40,3.4,20,41,40,192,0.1132,0.2658,267356,127674,33678,26783,15513,18429,64.7,41.1,40.1,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0016,depleted,熬夜赶工后,咖啡都救不了我了,57,75,39,2.6,11,75,39,180,0.1015,0.2244,185745,56615,19562,13941,6430,6272,56.7,74.7,38.7,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0017,depleted,凌晨三点才睡,困到想趴在键盘上睡着,20,35,27,4.0,26,35,27,116,0.0584,0.5561,360694,126684,18553,19792,36404,34046,19.7,34.8,27.3,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0018,depleted,通宵后硬撑上班,困到想趴在键盘上睡着,28,51,49,2.9,9,51,49,117,0.0721,0.5007,295827,143609,24852,16622,29818,42093,28.5,51.2,48.6,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0019,depleted,通宵后硬撑上班,熬了一宿，感觉魂在后面追,23,56,28,5.0,16,56,28,76,0.0807,0.4173,499022,196816,36327,35496,43821,38307,23.1,55.7,27.6,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0020,depleted,跨时区出差,熬了一宿，感觉魂在后面追,24,45,34,5.0,28,45,34,63,0.0691,0.4419,271668,82378,13201,15954,18119,18286,23.8,45.0,33.8,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0021,depleted,凌晨三点才睡,眼睛睁着，脑子已经关机了,21,67,55,2.1,15,67,55,59,0.0613,0.3767,408109,74336,22987,16039,15072,12932,21.0,66.8,55.1,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0022,depleted,通宵后硬撑上班,眼睛睁着，脑子已经关机了,38,83,37,3.5,6,83,37,154,0.1129,0.5184,564164,110384,42645,52141,24068,33160,37.5,82.8,36.9,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0023,depleted,凌晨三点才睡,困到想趴在键盘上睡着,54,31,49,4.9,30,31,49,77,0.0517,0.4946,486280,189155,25440,18973,52595,40965,54.1,30.9,49.2,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0024,depleted,通宵后硬撑上班,眼睛睁着，脑子已经关机了,40,16,79,2.8,19,16,79,139,0.1074,0.5485,379041,111203,34078,40700,25246,35751,39.6,16.1,79.0,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0025,depleted,通宵后硬撑上班,昨晚只睡了四个小时，现在头重脚轻,56,76,71,4.3,22,76,71,130,0.0581,0.5882,470099,122694,21489,29471,35137,37026,55.8,75.7,71.0,sleep,"sleep,calm,focus",False,synthetic,drifting
+eval-0026,wired,考试前夜,等会要汇报，心跳好快，静不下来,89,85,23,6.8,11,85,23,67,0.0825,1.0034,190312,81565,17754,14621,43713,38127,89.0,84.7,23.1,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0027,wired,考试前夜,感觉全身都在发抖,96,62,35,7.8,8,62,35,94,0.0586,1.8168,107692,33708,8023,8550,36014,25227,96.3,61.5,34.7,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0028,wired,考试前夜,焦虑到胃都在抽筋,95,57,41,7.4,5,57,41,93,0.0493,2.5715,124298,49051,8305,7215,63349,62785,95.0,56.9,40.7,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0029,wired,重要汇报前,脑子里像有台马达在转，停不下来,96,30,33,7.3,15,30,33,156,0.0804,1.4493,54709,22011,6404,6533,18182,13719,96.0,30.5,32.6,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0030,wired,面试前,等会要汇报，心跳好快，静不下来,96,45,41,7.2,12,45,41,192,0.0879,2.7209,238684,66451,26250,20556,97487,83318,95.5,44.8,40.6,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0031,wired,deadline逼近,感觉全身都在发抖,84,35,44,6.0,19,35,44,90,0.0555,2.9001,203602,88497,16149,16087,145293,111357,83.7,34.6,44.1,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0032,wired,考试前夜,感觉全身都在发抖,96,80,42,6.4,12,80,42,88,0.0691,1.4785,182772,63679,15202,17338,54475,39674,96.1,80.0,42.0,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0033,wired,收到坏消息后,明明很累，却放松不下来,84,69,22,8.0,7,69,22,197,0.0599,1.9319,163975,83139,17400,14010,94635,65978,83.6,68.7,21.6,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0034,wired,收到坏消息后,明明很累，却放松不下来,88,81,16,8.8,14,81,16,153,0.0638,2.4693,254832,95974,18206,21844,117812,119173,87.6,81.3,16.1,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0035,wired,收到坏消息后,感觉全身都在发抖,98,42,43,8.7,5,42,43,133,0.0739,1.0542,90451,35723,6392,9197,17919,19740,97.7,41.5,43.1,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0036,wired,考试前夜,等会要汇报，心跳好快，静不下来,86,68,30,8.1,18,68,30,57,0.0682,2.4981,179534,77288,16323,23131,114193,78877,85.9,67.5,30.2,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0037,wired,面试前,明明很累，却放松不下来,84,45,16,7.7,12,45,16,79,0.0731,2.1279,159687,99939,16153,21104,110894,101770,83.5,44.6,15.8,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0038,wired,deadline逼近,明明很累，却放松不下来,82,60,21,7.5,14,60,21,80,0.0611,2.43,145236,89430,12358,17039,120502,96816,81.9,59.6,20.9,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0039,wired,重要汇报前,感觉全身都在发抖,93,25,36,7.4,16,25,36,89,0.0789,1.0253,142311,61158,13805,15416,36263,26442,93.3,25.3,36.5,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0040,wired,deadline逼近,感觉全身都在发抖,88,41,47,8.9,13,41,47,165,0.0865,1.9297,193786,61802,16180,19847,69998,49264,88.0,41.4,47.4,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0041,wired,考试前夜,脑子里像有台马达在转，停不下来,83,79,38,6.7,20,79,38,98,0.0692,1.7097,97007,52251,11003,8099,45662,43669,83.0,79.1,38.4,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0042,wired,收到坏消息后,明明很累，却放松不下来,79,50,39,7.2,12,50,39,138,0.0669,1.0345,119130,45313,11831,10374,22210,24666,78.9,49.6,38.7,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0043,wired,考试前夜,焦虑到胃都在抽筋,89,88,37,6.7,19,88,37,173,0.0551,1.2413,68989,36761,6201,5024,19942,25689,88.8,88.5,36.8,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0044,wired,考试前夜,脑子里像有台马达在转，停不下来,85,86,33,8.9,11,86,33,175,0.0616,1.6045,91395,22109,5243,7516,16262,19212,84.7,86.2,32.6,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0045,wired,考试前夜,脑子里像有台马达在转，停不下来,78,20,33,7.1,19,20,33,88,0.0979,1.5049,95101,22107,9826,9891,17147,16122,78.4,20.1,33.3,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0046,wired,deadline逼近,明明很累，却放松不下来,78,58,19,9.0,8,58,19,128,0.0748,2.5815,132932,64543,14371,15045,95311,71307,78.5,57.8,19.0,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0047,wired,面试前,焦虑到胃都在抽筋,94,27,20,8.8,11,27,20,109,0.0796,1.3141,61522,18451,7171,7461,12578,11668,94.1,26.7,20.5,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0048,wired,考试前夜,感觉全身都在发抖,86,56,43,5.7,12,56,43,92,0.0649,2.8674,152106,77882,18308,13166,126246,97069,86.3,56.3,42.9,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0049,wired,收到坏消息后,焦虑到胃都在抽筋,85,55,44,5.9,14,55,44,197,0.07,1.9876,53083,27676,5462,6298,24758,30251,85.3,55.2,44.5,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0050,wired,收到坏消息后,感觉全身都在发抖,94,23,31,7.5,10,23,31,135,0.068,2.8322,139024,80702,16293,16402,95595,132966,93.8,23.4,31.2,calm,"calm,focus,sleep",False,synthetic,oscillating
+eval-0051,revved,健身后肾上腺素飙升,能量爆棚，但注意力散成烟花,87,35,59,6.7,20,35,59,50,0.1069,1.7352,107830,40954,17522,11974,34169,36893,87.4,35.0,59.2,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0052,revved,聚会散场后,像刚喝完三杯浓缩，停不下来,96,90,79,6.9,11,90,79,174,0.0936,1.6474,66279,23900,6806,9163,18017,21356,96.3,90.0,79.3,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0053,revved,聚会散场后,兴奋得坐不住，但不知道干嘛,79,24,64,8.0,14,24,64,124,0.0887,0.9585,256788,87175,19342,26331,47327,36226,79.4,24.4,63.8,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0054,revved,收到好消息后兴奋,能量爆棚，但注意力散成烟花,92,56,76,8.4,20,56,76,156,0.0776,1.4521,171127,81929,17927,13370,54160,64808,92.2,55.8,75.6,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0055,revved,健身后肾上腺素飙升,心跳很快，但挺舒服的,88,86,66,8.4,14,86,66,132,0.0848,1.9219,155453,56736,13887,15883,60253,48788,87.8,86.4,66.5,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0056,revved,咖啡因过量,像刚喝完三杯浓缩，停不下来,84,52,73,6.3,18,52,73,59,0.0878,1.9989,140733,60750,17540,13551,72393,49039,83.5,51.8,73.3,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0057,revved,咖啡因过量,心跳很快，但挺舒服的,81,86,71,8.5,19,86,71,151,0.1137,0.8261,163880,122347,23520,33160,56225,44844,81.0,86.0,70.7,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0058,revved,游戏连胜后,像刚喝完三杯浓缩，停不下来,97,31,71,8.5,22,31,71,108,0.0832,2.3087,145679,70576,15373,19022,87477,75459,96.9,30.9,71.4,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0059,revved,咖啡因过量,能量爆棚，但注意力散成烟花,99,33,77,8.9,25,33,77,155,0.0616,1.3091,85544,30329,8134,9110,19301,20402,99.2,32.8,76.7,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0060,revved,游戏连胜后,心跳很快，但挺舒服的,94,44,59,6.1,24,44,59,169,0.0948,1.646,101189,47527,11686,12071,41726,36505,94.4,44.1,58.9,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0061,revved,聚会散场后,像刚喝完三杯浓缩，停不下来,85,90,59,5.8,16,90,59,196,0.0947,1.5213,170852,63398,22052,24185,47900,48548,85.2,90.2,59.0,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0062,revved,健身后肾上腺素飙升,兴奋得坐不住，但不知道干嘛,88,59,67,5.6,17,59,67,108,0.0811,1.9659,76147,32390,7590,7610,36984,26690,88.0,58.8,67.1,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0063,revved,健身后肾上腺素飙升,浑身是劲，脑子却东想西想,96,66,63,7.7,24,66,63,125,0.0872,2.3358,117436,45446,13264,12445,58010,48143,95.9,66.2,63.1,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0064,revved,健身后肾上腺素飙升,心跳很快，但挺舒服的,87,74,60,6.2,22,74,60,79,0.0851,1.2633,171654,124588,26049,17843,72247,85144,87.4,74.3,60.1,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0065,revved,游戏连胜后,心跳很快，但挺舒服的,91,31,59,8.1,12,31,59,145,0.0756,2.1442,110403,61337,14736,12830,70291,61225,90.8,30.6,58.8,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0066,revved,健身后肾上腺素飙升,心跳很快，但挺舒服的,80,50,80,5.6,22,50,80,127,0.0655,0.9075,238778,74663,16207,17441,28995,38758,80.3,50.2,80.1,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0067,revved,收到好消息后兴奋,能量爆棚，但注意力散成烟花,92,35,56,6.3,22,35,56,75,0.081,1.9398,237050,86058,23692,19506,71934,95003,92.1,34.7,56.1,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0068,revved,收到好消息后兴奋,能量爆棚，但注意力散成烟花,91,74,67,5.6,16,74,67,120,0.0811,1.2014,202053,84121,25536,18465,53458,47604,90.6,73.7,66.6,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0069,revved,聚会散场后,兴奋得坐不住，但不知道干嘛,83,36,78,5.8,11,36,78,109,0.0535,1.367,231356,60785,14084,10801,42446,40645,82.7,36.2,78.1,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0070,revved,咖啡因过量,兴奋得坐不住，但不知道干嘛,85,28,56,8.1,21,28,56,183,0.0806,2.1226,77961,33995,9505,6630,29489,42669,85.1,28.3,56.3,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0071,revved,游戏连胜后,能量爆棚，但注意力散成烟花,86,80,50,5.7,20,80,50,199,0.098,1.6335,86458,20113,9173,8411,13573,19281,86.0,79.5,50.0,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0072,revved,健身后肾上腺素飙升,能量爆棚，但注意力散成烟花,94,62,74,9.0,21,62,74,160,0.0816,1.5313,89781,38802,9620,7095,30319,29099,93.6,62.1,74.1,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0073,revved,游戏连胜后,能量爆棚，但注意力散成烟花,91,50,76,6.7,19,50,76,71,0.0981,1.3313,91335,61235,13684,11781,40342,41181,90.8,50.5,75.8,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0074,revved,收到好消息后兴奋,心跳很快，但挺舒服的,79,77,55,8.1,16,77,55,63,0.0531,2.4263,172358,67558,13020,9634,96418,67495,79.1,76.6,55.2,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0075,revved,收到好消息后兴奋,浑身是劲，脑子却东想西想,85,60,72,5.9,21,60,72,193,0.096,1.1812,157010,75728,25884,20963,46051,43400,85.4,59.7,71.5,focus,"focus,calm,sleep",False,synthetic,rising_then_falling
+eval-0076,foggy,阴天久坐,昏昏沉沉的，想趴下,48,6,54,5.6,18,6,54,185,0.1046,0.2726,393530,82210,42673,35170,13318,9089,48.4,6.4,54.0,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0077,foggy,阴天久坐,昏昏沉沉的，想趴下,23,28,73,7.1,15,28,73,119,0.1305,0.5107,246005,43261,22580,29751,11568,10526,22.8,28.4,73.2,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0078,foggy,阴天久坐,看着屏幕，字在飘,37,31,82,7.6,23,31,82,151,0.1328,0.2455,304680,104911,34351,34721,13740,12018,37.4,30.9,81.8,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0079,foggy,饭后血糖飙升,昏昏沉沉的，想趴下,48,6,19,6.2,16,6,19,140,0.1003,0.248,364717,72628,30896,30101,8033,9977,47.7,6.3,19.3,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0080,foggy,午后犯困,昏昏沉沉的，想趴下,14,30,25,7.0,24,30,25,167,0.1203,0.4293,385535,70437,29203,43052,14061,16181,13.8,29.6,24.9,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0081,foggy,感冒初愈,注意力涣散，但不是因为焦虑,32,10,75,8.5,17,10,75,185,0.108,0.2314,537587,106253,47886,38267,10212,14380,32.1,9.5,74.6,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0082,foggy,饭后血糖飙升,看着屏幕，字在飘,42,17,64,6.7,30,17,64,168,0.0872,0.3024,236188,94472,15987,22529,16862,11705,41.9,16.6,64.1,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0083,foggy,阴天久坐,看着屏幕，字在飘,46,32,60,8.5,30,32,60,59,0.1108,0.3876,518430,156216,43137,48568,25116,35428,45.6,32.1,60.5,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0084,foggy,周末作息混乱后,注意力涣散，但不是因为焦虑,14,28,55,5.8,12,28,55,132,0.1099,0.3851,504017,193386,46688,48604,41849,32620,13.5,27.7,55.4,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0085,foggy,感冒初愈,脑子像浆糊，转不动,47,35,83,6.0,11,35,83,184,0.1204,0.5349,279006,78885,22344,32444,22852,19347,47.1,35.1,83.1,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0086,foggy,感冒初愈,反应慢半拍，像没睡醒,42,14,66,6.8,19,14,66,114,0.1342,0.4716,371895,109423,45558,52219,26398,25201,42.4,13.9,65.5,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0087,foggy,阴天久坐,昏昏沉沉的，想趴下,48,14,62,5.8,14,14,62,82,0.1365,0.4794,408937,170181,48249,56205,38779,42803,47.7,14.2,62.3,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0088,foggy,阴天久坐,昏昏沉沉的，想趴下,42,9,74,7.3,10,9,74,75,0.0926,0.2857,442516,85984,25410,34028,10204,14359,42.1,9.0,74.2,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0089,foggy,饭后血糖飙升,注意力涣散，但不是因为焦虑,41,39,24,7.8,29,39,24,110,0.1011,0.2649,541449,179887,37439,49003,23231,24419,40.8,38.7,23.8,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0090,foggy,阴天久坐,反应慢半拍，像没睡醒,39,23,76,6.3,17,23,76,157,0.1433,0.2776,440037,114975,54937,44247,17734,14183,38.7,23.3,76.3,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0091,foggy,感冒初愈,昏昏沉沉的，想趴下,20,17,36,8.6,11,17,36,87,0.1188,0.241,575961,122873,56514,45751,13462,16154,20.4,16.6,36.0,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0092,foggy,午后犯困,反应慢半拍，像没睡醒,37,9,47,8.4,21,9,47,135,0.0837,0.4008,518000,147911,32153,47113,34749,24533,36.6,8.9,46.7,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0093,foggy,饭后血糖飙升,反应慢半拍，像没睡醒,18,13,23,6.5,25,13,23,78,0.1114,0.2021,259756,113422,28596,27500,12503,10419,17.9,12.9,23.3,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0094,foggy,感冒初愈,注意力涣散，但不是因为焦虑,28,19,58,5.9,17,19,58,159,0.112,0.2443,482198,72549,39893,39405,7948,9778,27.7,19.0,58.3,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0095,foggy,午后犯困,注意力涣散，但不是因为焦虑,10,26,49,7.5,15,26,49,149,0.1401,0.2271,396048,162453,49549,47448,17636,19252,9.6,25.6,49.4,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0096,foggy,阴天久坐,看着屏幕，字在飘,32,20,22,6.7,12,20,22,94,0.1309,0.4513,517624,118570,42472,61405,27247,26263,31.5,20.2,22.1,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0097,foggy,感冒初愈,脑子像浆糊，转不动,39,35,43,8.3,12,35,43,114,0.1005,0.2175,202537,90036,18974,18742,11708,7876,39.2,34.6,43.0,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0098,foggy,阴天久坐,昏昏沉沉的，想趴下,11,16,57,6.7,11,16,57,177,0.082,0.3472,539595,186416,33706,36908,38494,26230,10.8,16.0,56.6,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0099,foggy,午后犯困,反应慢半拍，像没睡醒,32,38,54,8.3,23,38,54,159,0.1222,0.5289,330572,60791,35286,31018,14832,17321,32.5,37.6,53.7,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0100,foggy,周末作息混乱后,反应慢半拍，像没睡醒,19,32,62,7.1,21,32,62,57,0.0902,0.592,272401,77277,18525,20668,25629,20119,19.0,32.5,62.5,focus,"focus,calm,sleep",False,synthetic,flat_low
+eval-0101,scattered,刚开完长会,注意力像蝴蝶，到处飞,51,30,24,5.9,17,30,24,185,0.0906,0.5403,368588,171428,30415,33698,51189,41441,51.3,29.9,23.9,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0102,scattered,多任务并行后,东想西想，停不下来,61,28,61,7.8,17,28,61,123,0.1189,0.4994,304103,88713,34225,41484,21676,22628,61.0,28.1,60.9,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0103,scattered,被频繁打断后,刚想干这个，又跳到那个,72,35,45,5.9,12,35,45,188,0.1319,0.4671,296114,160856,43391,50141,35272,39858,72.3,35.2,44.6,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0104,scattered,刚开完长会,刷了一小时手机，更累了,58,21,40,8.0,15,21,40,191,0.0779,0.7911,246841,76960,16267,18184,31321,29561,57.8,21.4,39.5,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0105,scattered,假期后复工,想专注，但脑子自己跑,51,8,26,6.6,25,8,26,191,0.1215,0.694,366401,173461,52608,54757,64527,55855,51.0,7.6,25.9,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0106,scattered,多任务并行后,刷了一小时手机，更累了,71,17,35,7.0,11,17,35,114,0.0722,0.2988,337064,110221,30831,21586,19067,13865,71.1,16.6,34.8,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0107,scattered,假期后复工,刚想干这个，又跳到那个,57,20,36,7.7,12,20,36,57,0.1073,0.5484,292976,158754,33860,38564,50910,36148,57.2,20.5,36.2,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0108,scattered,假期后复工,东想西想，停不下来,52,8,54,7.8,23,8,54,68,0.0998,0.5763,400230,150712,48948,38313,46641,40214,52.1,7.8,53.7,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0109,scattered,被频繁打断后,刚想干这个，又跳到那个,73,8,39,7.0,25,8,39,181,0.0872,0.2862,281335,122014,20111,22763,16752,18167,72.8,7.7,38.6,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0110,scattered,刚开完长会,想专注，但脑子自己跑,68,10,60,6.3,13,10,60,133,0.0798,0.2581,242986,102016,19043,23307,15088,11240,68.1,9.7,60.3,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0111,scattered,假期后复工,想专注，但脑子自己跑,69,22,44,8.2,25,22,44,62,0.0999,0.3851,350875,152457,51399,35228,26012,32702,68.6,22.3,44.5,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0112,scattered,多任务并行后,想专注，但脑子自己跑,56,39,79,6.5,10,39,79,123,0.0707,0.3587,256427,57873,15721,22602,10635,10122,56.3,38.8,78.8,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0113,scattered,假期后复工,刷了一小时手机，更累了,52,28,84,7.1,18,28,84,180,0.0695,0.785,371983,117211,31741,22259,50700,41316,52.4,27.7,84.1,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0114,scattered,刚开完长会,想专注，但脑子自己跑,63,36,26,5.7,14,36,26,126,0.1015,0.2894,222116,92015,18075,20905,12742,13883,62.9,36.0,25.6,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0115,scattered,假期后复工,注意力像蝴蝶，到处飞,66,24,84,8.4,25,24,84,56,0.098,0.21,170536,59429,16542,19299,7234,5244,65.8,24.4,84.3,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0116,scattered,多任务并行后,刷了一小时手机，更累了,66,34,53,8.9,17,34,53,78,0.0984,0.5145,416212,120089,42483,32797,27709,34081,65.9,33.9,53.1,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0117,scattered,被频繁打断后,刚想干这个，又跳到那个,56,9,74,6.6,14,9,74,133,0.0904,0.665,481121,173284,31537,44925,49274,65956,55.6,9.0,74.3,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0118,scattered,被频繁打断后,刷了一小时手机，更累了,73,36,67,6.6,15,36,67,113,0.0874,0.4126,406126,143944,34482,29532,31001,28386,72.6,35.7,67.0,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0119,scattered,刚开完长会,刚想干这个，又跳到那个,56,27,48,8.8,19,27,48,189,0.1152,0.4934,315576,152820,39906,33406,34500,40901,55.9,26.6,48.1,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0120,scattered,刚开完长会,东想西想，停不下来,61,27,64,8.8,14,27,64,193,0.083,0.6285,265338,78292,23271,23664,21670,27534,61.1,27.0,64.5,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0121,scattered,社交媒体刷太久,东想西想，停不下来,72,22,36,5.9,17,22,36,51,0.1136,0.5186,174892,53700,20463,17189,11700,16150,72.2,22.4,35.6,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0122,scattered,被频繁打断后,刚想干这个，又跳到那个,67,17,72,7.8,25,17,72,59,0.1205,0.3723,153350,72235,21440,18978,12007,14888,66.9,16.6,72.3,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0123,scattered,被频繁打断后,想专注，但脑子自己跑,57,32,42,8.8,11,32,42,135,0.0749,0.6494,272109,50030,16309,19171,16912,15576,56.9,31.5,42.3,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0124,scattered,假期后复工,想专注，但脑子自己跑,57,32,81,8.6,14,32,81,125,0.0818,0.6853,344322,145697,32864,27579,40219,59625,57.1,31.8,81.3,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0125,scattered,被频繁打断后,刷了一小时手机，更累了,68,12,42,7.6,22,12,42,164,0.0862,0.4405,372564,152570,45013,31649,26974,40232,67.7,12.1,41.7,focus,"focus,calm,sleep",False,synthetic,erratic
+eval-0126,dimming,阴天傍晚,没什么劲，但也不焦虑,25,51,72,6.6,33,51,72,129,0.1462,0.5517,54564,31169,11588,15239,9237,7958,25.2,50.7,71.7,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0127,dimming,社交消耗后,没什么劲，但也不焦虑,25,49,56,7.3,26,49,56,163,0.2117,0.3785,95863,30049,24767,24051,4924,6450,25.4,48.6,55.7,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0128,dimming,长时间会议后,没什么劲，但也不焦虑,4,44,82,5.8,26,44,82,50,0.1653,0.6592,21009,10423,5712,4463,3742,3129,3.9,43.8,81.5,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0129,dimming,傍晚低能量期,能量很低，但心里还算平静,25,44,55,5.7,21,44,55,157,0.2194,0.9542,62456,24802,25026,26920,13106,10560,24.7,44.4,54.8,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0130,dimming,长时间会议后,整个人淡淡的，没波澜,13,66,79,8.5,39,66,79,82,0.1274,0.9749,32547,17544,4155,5651,10237,6866,13.0,65.9,78.8,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0131,dimming,长时间会议后,能量很低，但心里还算平静,25,46,51,8.1,19,46,51,58,0.1624,0.5655,42059,17519,10103,12979,5697,4210,25.0,46.2,51.1,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0132,dimming,傍晚低能量期,能量很低，但心里还算平静,26,70,51,6.3,12,70,51,64,0.1234,0.7184,23336,12608,3540,3828,4048,5010,25.6,69.9,51.2,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0133,dimming,阴天傍晚,不想动，但也没困到要睡,6,82,68,6.3,39,82,68,120,0.1747,0.8408,40284,22537,10335,6973,9555,9394,5.6,82.2,68.3,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0134,dimming,傍晚低能量期,没什么劲，但也不焦虑,3,52,75,7.9,29,52,75,53,0.1388,0.8332,63876,27809,12887,9568,10811,12359,2.7,52.0,75.4,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0135,dimming,长时间会议后,像电池黄了，想缓缓,7,41,58,8.1,34,41,58,128,0.1896,0.7927,32229,14507,8470,10080,5672,5827,7.3,41.1,58.0,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0136,dimming,傍晚低能量期,整个人淡淡的，没波澜,9,62,83,8.6,24,62,83,191,0.1962,0.5241,32719,12030,12650,9434,3457,2848,9.3,62.5,83.0,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0137,dimming,长途通勤后,整个人淡淡的，没波澜,29,71,69,6.0,20,71,69,175,0.177,0.472,85960,35955,23346,18896,8447,8524,29.4,70.8,68.8,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0138,dimming,傍晚低能量期,不想动，但也没困到要睡,17,62,54,5.8,17,62,54,108,0.1805,0.7297,89986,36313,23184,20823,14751,11746,17.3,62.3,53.9,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0139,dimming,长时间会议后,没什么劲，但也不焦虑,13,65,78,6.2,28,65,78,149,0.1972,0.5067,19364,9070,6073,6686,2559,2037,13.2,65.3,77.7,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0140,dimming,社交消耗后,整个人淡淡的，没波澜,11,64,56,5.8,40,64,56,140,0.156,0.4888,24187,14637,6972,6673,3446,3709,11.3,64.2,56.5,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0141,dimming,长途通勤后,整个人淡淡的，没波澜,10,56,68,7.2,12,56,68,167,0.1476,0.5098,49688,29533,9816,8222,7515,7541,9.7,55.7,68.0,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0142,dimming,社交消耗后,不想动，但也没困到要睡,17,58,60,8.9,40,58,60,194,0.1935,0.743,91546,30728,18212,21722,12721,10110,16.9,57.7,60.5,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0143,dimming,长时间会议后,像电池黄了，想缓缓,8,41,86,5.6,33,41,86,111,0.1638,0.5039,83072,46895,16877,18151,11812,11819,7.7,40.7,86.2,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0144,dimming,阴天傍晚,能量很低，但心里还算平静,5,51,65,7.3,26,51,65,173,0.1888,0.4547,46323,28798,14485,12434,5632,7462,4.7,50.6,65.0,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0145,dimming,傍晚低能量期,像电池黄了，想缓缓,4,54,77,8.7,12,54,77,67,0.1548,0.5401,62746,23479,10017,13861,6904,5778,4.1,53.7,76.8,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0146,dimming,长途通勤后,整个人淡淡的，没波澜,6,73,76,5.6,29,73,76,187,0.1792,0.5722,35637,19402,9177,7159,4579,6522,6.3,73.3,75.7,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0147,dimming,社交消耗后,整个人淡淡的，没波澜,6,64,71,6.2,13,64,71,126,0.1728,0.7474,63632,32393,13975,15786,13778,10432,5.8,64.1,71.1,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0148,dimming,长时间会议后,像电池黄了，想缓缓,23,79,77,8.0,24,79,77,176,0.1283,0.3215,43606,15311,7057,6848,2135,2788,22.9,78.9,77.0,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0149,dimming,阴天傍晚,不想动，但也没困到要睡,19,82,58,7.5,18,82,58,113,0.1742,0.8297,55585,18360,11683,12404,8336,6898,19.2,82.0,58.3,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0150,dimming,长途通勤后,像电池黄了，想缓缓,6,69,54,9.0,37,69,54,156,0.145,0.798,84093,40749,14601,14724,16762,15754,5.7,69.2,54.1,calm,"calm,sleep,focus",False,synthetic,gradually_declining
+eval-0151,still,晨间例行冥想后,今天状态还行，预防性维护一下,51,69,90,7.8,32,69,90,174,0.1798,1.1713,32615,13264,7337,8728,7915,7621,50.6,68.8,89.9,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0152,still,晨间例行冥想后,感觉还不错，想再稳一稳,42,72,75,8.1,28,72,75,83,0.1895,0.4014,30373,18152,11428,7761,4353,2934,41.9,71.5,75.2,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0153,still,晨间例行冥想后,感觉还不错，想再稳一稳,46,87,91,8.1,17,87,91,118,0.2102,0.4474,36232,20170,10607,8886,3911,5113,46.5,86.6,90.9,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0154,still,刚结束一段休息,没什么特别的，就挺舒服,50,46,93,8.6,31,46,93,92,0.1924,0.5366,41596,18367,10173,10085,4052,5804,50.5,46.4,93.0,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0155,still,公园散步后,感觉还不错，想再稳一稳,40,84,93,7.8,24,84,93,182,0.1816,0.9483,10003,6134,3576,3570,3376,2441,39.5,83.6,92.8,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0156,still,瑜伽课后,感觉还不错，想再稳一稳,54,89,75,8.1,44,89,75,146,0.1406,0.669,17649,16170,5792,4273,6385,4433,53.5,88.8,75.4,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0157,still,瑜伽课后,想做个轻量的练习维持状态,52,85,78,5.9,43,85,78,145,0.1892,0.3538,46089,13150,12756,9077,2696,1957,51.6,85.1,78.5,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0158,still,刚结束一段休息,现在挺平静的，想保持住,45,57,84,6.9,45,57,84,54,0.1488,0.6447,30405,23521,7168,8767,9080,6083,44.8,57.1,84.1,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0159,still,晨间例行冥想后,感觉还不错，想再稳一稳,39,59,75,7.2,15,59,75,132,0.2002,0.3179,20635,13411,7843,6130,1996,2267,38.7,58.6,75.0,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0160,still,公园散步后,感觉还不错，想再稳一稳,50,68,95,7.7,41,68,95,125,0.2107,0.8058,39169,15911,11642,10196,7217,5604,50.2,67.9,95.0,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0161,still,公园散步后,没什么特别的，就挺舒服,36,48,80,8.1,25,48,80,113,0.1568,1.0968,25057,22539,10416,7626,12096,12624,35.5,48.2,79.5,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0162,still,晨间例行冥想后,现在挺平静的，想保持住,49,43,81,6.4,16,43,81,172,0.1786,0.9593,53617,23684,11567,12747,11569,11151,48.7,43.3,80.8,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0163,still,刚结束一段休息,现在挺平静的，想保持住,40,80,94,7.9,20,80,94,69,0.2199,0.33,12513,7097,6317,7171,1353,989,40.4,80.4,93.6,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0164,still,刚结束一段休息,现在挺平静的，想保持住,40,45,79,7.6,49,45,79,191,0.1831,0.8883,26393,8869,7010,8025,4687,3191,39.7,44.9,78.6,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0165,still,公园散步后,感觉还不错，想再稳一稳,50,85,87,6.4,28,85,87,172,0.1496,0.6535,27557,9618,5330,7970,2624,3661,50.2,85.1,86.7,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0166,still,日常平静时刻,想做个轻量的练习维持状态,52,77,77,7.4,34,77,77,58,0.2366,0.9183,38233,13362,10737,12616,5877,6393,52.4,76.7,77.2,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0167,still,日常平静时刻,感觉还不错，想再稳一稳,36,75,85,8.3,53,75,85,161,0.152,0.9815,34746,36412,12648,9870,15197,20540,36.4,74.9,85.1,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0168,still,瑜伽课后,今天状态还行，预防性维护一下,37,89,83,5.9,19,89,83,138,0.1988,0.9825,54694,25999,11777,16250,11679,13865,36.9,89.3,82.7,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0169,still,晨间例行冥想后,感觉还不错，想再稳一稳,54,60,78,8.1,48,60,78,66,0.1842,1.1221,24804,15641,7706,8525,7217,10333,53.5,59.7,77.7,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0170,still,公园散步后,今天状态还行，预防性维护一下,45,50,89,8.3,24,50,89,169,0.2205,0.5748,42145,17523,11227,12395,4732,5341,45.3,50.1,89.3,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0171,still,公园散步后,想做个轻量的练习维持状态,50,42,89,7.2,28,42,89,171,0.1805,0.963,47291,33220,12632,14323,17361,14631,50.4,41.5,89.0,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0172,still,日常平静时刻,感觉还不错，想再稳一稳,46,60,86,6.6,20,60,86,72,0.1694,0.7237,40745,21515,11546,8274,9177,6393,46.5,60.2,86.1,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0173,still,公园散步后,感觉还不错，想再稳一稳,44,85,76,6.3,32,85,76,184,0.1503,0.7528,9883,4042,3352,2332,1495,1548,44.0,85.3,76.1,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0174,still,晨间例行冥想后,想做个轻量的练习维持状态,42,72,75,5.9,55,72,75,79,0.2276,0.5301,10998,8929,4342,3814,2512,2221,41.5,71.5,74.8,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0175,still,瑜伽课后,现在挺平静的，想保持住,36,52,91,8.8,31,52,91,75,0.1413,0.38,21963,17219,8241,5730,3638,2906,35.6,52.2,90.6,calm,"calm,focus,sleep",False,synthetic,stable_high
+eval-0176,neutral,通勤路上,状态一般，不糟也不好,52,82,34,7.1,23,82,34,61,0.084,0.8692,328607,96443,28158,24439,40674,43156,51.5,82.1,33.5,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0177,neutral,普通工作日,没什么特别的，随便练练,65,66,60,8.6,15,66,60,96,0.1357,0.341,150615,45424,19665,18287,8682,6809,65.0,65.6,60.4,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0178,neutral,午休间隙,状态一般，不糟也不好,72,64,68,6.8,6,64,68,197,0.1536,0.379,96387,31049,15856,18401,6366,5403,72.0,63.8,67.8,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0179,neutral,无明显情绪波动时,想试试不同的练习,71,54,61,8.6,38,54,61,63,0.0876,0.7632,149043,75113,15583,17087,32550,24776,70.7,54.3,61.0,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0180,neutral,日常碎片时间,没什么特别的，随便练练,35,81,29,7.3,35,81,29,110,0.086,0.6441,272781,73681,26187,32721,25091,22370,34.6,80.8,29.2,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0181,neutral,普通工作日,状态一般，不糟也不好,40,70,46,8.3,33,70,46,73,0.1158,0.3831,236732,60777,29417,31555,11907,11375,39.7,70.5,46.3,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0182,neutral,无明显情绪波动时,没什么特别的，随便练练,74,80,59,6.6,37,80,59,171,0.1324,0.6193,256194,136308,46132,34963,39374,45048,73.6,80.1,59.3,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0183,neutral,午休间隙,就平常一天，想放松一下,56,83,47,5.9,53,83,47,85,0.1073,0.8809,187834,61689,20064,17063,22234,32108,55.5,83.4,46.6,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0184,neutral,普通工作日,状态一般，不糟也不好,61,45,37,7.6,17,45,37,81,0.0972,0.8772,143201,78801,14686,21194,36403,32719,60.8,44.6,37.3,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0185,neutral,午休间隙,状态一般，不糟也不好,63,69,62,7.6,37,69,62,198,0.0803,0.8153,191815,78187,19568,13888,35458,28291,63.3,69.2,61.8,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0186,neutral,无明显情绪波动时,想试试不同的练习,46,86,28,5.9,47,86,28,125,0.1506,0.6529,294476,163737,57395,46492,48609,58290,46.0,85.5,27.9,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0187,neutral,无明显情绪波动时,有点时间，做个练习,63,46,26,6.9,49,46,26,138,0.1474,0.6835,234629,104040,37166,46642,31425,39682,63.0,46.3,26.4,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0188,neutral,无明显情绪波动时,想试试不同的练习,44,84,59,8.9,16,84,59,186,0.1355,0.5257,140322,64713,26210,24770,18146,15871,44.5,83.8,59.4,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0189,neutral,日常碎片时间,没什么特别的，随便练练,53,65,20,7.3,6,65,20,125,0.0842,0.3396,239119,146727,26800,23137,21392,28439,53.0,65.2,19.9,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0190,neutral,日常碎片时间,就平常一天，想放松一下,47,86,54,5.6,57,86,54,123,0.1293,0.7729,144332,61515,19282,21075,23875,23667,46.9,86.3,54.4,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0191,neutral,通勤路上,想试试不同的练习,36,64,45,7.0,55,64,45,144,0.0843,0.8206,247817,145325,26133,27351,53079,66170,36.3,63.7,44.9,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0192,neutral,午休间隙,有点时间，做个练习,70,74,65,7.6,54,74,65,117,0.1159,0.9884,248579,143238,33468,45490,57782,83796,70.5,74.5,64.9,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0193,neutral,通勤路上,状态一般，不糟也不好,42,48,56,8.5,5,48,56,175,0.1368,0.4083,137567,38887,28983,20435,8307,7572,41.9,48.4,55.6,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0194,neutral,通勤路上,想试试不同的练习,71,73,42,5.8,50,73,42,104,0.0976,0.4287,164570,73492,22411,21757,13182,18324,70.9,73.4,41.8,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0195,neutral,无明显情绪波动时,想试试不同的练习,56,58,43,6.5,53,58,43,112,0.118,0.6929,262548,61493,29044,32857,19092,23518,55.8,58.1,42.8,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0196,neutral,普通工作日,状态一般，不糟也不好,37,82,41,6.8,55,82,41,125,0.1005,0.8068,162717,98826,23174,22910,40005,39726,37.2,82.1,40.6,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0197,neutral,午休间隙,想试试不同的练习,46,61,51,5.8,11,61,51,161,0.1227,0.7388,201865,67935,33910,29227,28466,21727,46.5,60.6,51.3,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0198,neutral,通勤路上,就平常一天，想放松一下,40,88,62,6.0,34,88,62,153,0.087,0.338,243757,89218,18568,23108,13621,16533,39.8,88.1,62.4,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0199,neutral,无明显情绪波动时,就平常一天，想放松一下,62,58,22,6.9,12,58,22,127,0.1313,0.7328,246989,101090,26824,37887,43383,30699,61.9,58.3,21.6,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0200,neutral,日常碎片时间,状态一般，不糟也不好,72,45,37,8.2,33,45,37,86,0.1458,0.3216,118166,65709,25270,19907,12042,9088,72.2,45.0,37.2,calm,"calm,focus,sleep",False,synthetic,wandering
+eval-0201,depleted,边界测试,"sleep=5.4, 刚好<5.5",46,56,60,5.4,15,56,60,81,0.0973,0.5657,486077,115042,42383,29465,33234,31841,45.5,56.3,59.7,sleep,"sleep,calm,focus",False,boundary,drifting
+eval-0202,neutral,边界测试,"sleep=5.5, 刚好>=5.5",50,60,61,5.5,15,60,61,104,0.0833,0.7009,203157,53425,17452,22031,20531,16915,49.5,59.6,61.3,calm,"calm,focus,sleep",False,boundary,wandering
+eval-0203,depleted,边界测试,"sleep=5.0, 高唤醒低专注也应被sleep拦截",75,27,29,5.0,10,27,29,195,0.0789,0.4584,238939,52791,17736,13547,10619,13578,74.8,27.1,29.4,sleep,"sleep,calm,focus",False,boundary,drifting
+eval-0204,wired,边界测试,"arousal=75, calm=45<50, 应wired",76,50,46,7.0,10,50,46,75,0.0757,2.7028,290639,101080,27764,26683,125160,148038,76.2,49.5,46.2,calm,"calm,focus,sleep",False,boundary,oscillating
+eval-0205,revved,边界测试,"arousal=75, calm=50>=50, 应revved",78,51,50,7.0,10,51,50,99,0.0573,1.787,143589,58774,8352,10337,48001,57028,77.7,51.3,49.9,focus,"focus,calm,sleep",False,boundary,rising_then_falling
+eval-0206,revved,边界测试,"arousal=76, 高唤醒高平静",78,52,71,7.0,10,52,71,159,0.0722,1.5661,115243,51084,10092,9577,37833,42170,78.2,52.2,71.2,focus,"focus,calm,sleep",False,boundary,rising_then_falling
+eval-0207,wired,边界测试,"arousal极限高, calm极限低",97,20,16,7.0,5,20,16,134,0.049,1.6264,215075,92275,10736,12843,70821,79257,97.2,20.4,16.1,calm,"calm,focus,sleep",False,boundary,oscillating
+eval-0208,foggy,边界测试,"focus=39<40, arousal=40<50, 应foggy",39,39,59,7.0,15,39,59,85,0.1415,0.3851,304903,97457,32825,42608,19567,17966,39.3,38.7,58.7,focus,"focus,calm,sleep",False,boundary,flat_low
+eval-0209,neutral,边界测试,"focus=39<40, arousal=50>=50, 应scattered",50,41,59,7.0,15,41,59,198,0.1313,0.3179,369559,141354,51339,37418,25606,19324,49.9,41.3,58.7,calm,"calm,focus,sleep",False,boundary,erratic
+eval-0210,foggy,边界测试,"focus极低, 但calm高, 应foggy(非dimming)",29,10,78,7.0,20,10,78,88,0.1205,0.5077,201826,51741,25949,18884,13342,12925,28.6,9.6,78.0,focus,"focus,calm,sleep",False,boundary,flat_low
+eval-0211,dimming,边界测试,"arousal=34<35, calm=60>=50, 应dimming",30,57,61,7.0,20,57,61,178,0.1566,0.4563,79529,28248,15178,15612,6471,6418,30.5,57.1,61.0,calm,"calm,sleep,focus",False,boundary,gradually_declining
+eval-0212,neutral,边界测试,"arousal=35>=35, 不触发dimming",36,59,61,7.0,20,59,61,194,0.0808,0.4672,375034,139998,30803,25056,28000,37409,35.7,59.1,60.6,calm,"calm,focus,sleep",False,boundary,wandering
+eval-0213,neutral,边界测试,"calm=70>=70, arousal=40<55, 应still",40,59,68,7.0,20,59,68,66,0.2349,0.8934,46560,20411,13109,14678,8092,10144,40.2,59.0,68.5,calm,"calm,focus,sleep",False,boundary,stable_high
+eval-0214,neutral,边界测试,"calm=69<70, 不触发still",40,60,68,7.0,20,60,68,60,0.1011,0.4638,221998,100379,22171,24249,27169,19387,40.4,60.4,68.0,calm,"calm,focus,sleep",False,boundary,wandering
+eval-0215,still,边界测试,"arousal=54<55, calm=85>=70, 应still",53,60,84,7.0,20,60,84,94,0.2381,0.5917,31541,20775,12493,9542,5564,6728,53.4,59.7,84.2,calm,"calm,focus,sleep",False,boundary,stable_high
+eval-0216,still,边界测试,"arousal=55>=55, 不触发still",53,60,82,7.0,20,60,82,153,0.1101,0.5649,303483,72490,32192,39296,24348,16605,53.2,60.0,82.0,calm,"calm,focus,sleep",False,boundary,wandering
+eval-0217,wired,边界测试,"arousal=75且focus<40, 但arousal>=75优先",76,35,45,7.0,10,35,45,69,0.0523,2.7354,145815,69952,11232,11215,81858,109491,76.4,34.7,44.9,calm,"calm,focus,sleep",False,boundary,oscillating
+eval-0218,foggy,边界测试,"focus<40且calm>=70, 但focus<40+arousal<50优先",45,35,74,7.0,15,35,74,134,0.116,0.3123,235561,84573,29048,22511,14058,12356,44.7,35.0,74.3,focus,"focus,calm,sleep",False,boundary,flat_low
+eval-0219,dimming,边界测试,"arousal<35且calm>=70, 但arousal<35优先",26,68,76,7.0,20,68,76,196,0.192,0.637,31858,11442,10026,7667,2948,4341,25.7,68.0,76.0,calm,"calm,sleep,focus",False,boundary,gradually_declining
+eval-0220,neutral,边界测试,"所有条件都不触发, 应neutral",60,69,64,7.0,30,69,64,153,0.1274,0.3943,292061,78757,35621,46594,18151,12903,59.6,68.8,64.1,calm,"calm,focus,sleep",False,boundary,wandering
+eval-0221,depleted,边界测试,"所有指标都好但sleep<5.5, sleep一票否决",75,77,80,3.0,5,77,80,170,0.092,0.4254,368589,145805,30728,36557,25876,36155,75.3,76.8,79.6,sleep,"sleep,calm,focus",False,boundary,drifting
+eval-0222,wired,边界测试,"高focus但高arousal低calm, 应wired",90,90,29,8.0,5,90,29,117,0.0859,1.3411,195926,92143,21825,16865,53926,69650,90.3,89.9,29.4,calm,"calm,focus,sleep",False,boundary,oscillating
+eval-0223,foggy,边界测试,"低arousal低focus低calm, 应foggy",20,20,40,7.0,15,20,40,183,0.0917,0.4742,484550,78102,30890,34054,15794,21243,19.5,19.8,40.1,focus,"focus,calm,sleep",False,boundary,flat_low
+eval-0224,scattered,边界测试,"正常arousal低focus低calm, 应scattered",58,20,41,7.0,15,20,41,186,0.1288,0.5026,188616,44603,24850,25334,11723,10694,57.6,19.6,40.9,focus,"focus,calm,sleep",False,boundary,erratic
+eval-0225,depleted,通宵后赶早会,熬了一整晚，现在心跳还特别快，但真的撑不住了,81,17,30,4.0,10,17,30,160,0.1027,0.2373,531530,152165,34565,51796,21213,14891,81.0,16.8,29.5,sleep,"sleep,calm,focus",False,conflict,drifting
+eval-0226,depleted,考前通宵,复习了一晚上，现在精神高度紧张但快猝死了,85,77,80,3.5,15,77,80,200,0.0865,0.3481,314312,83058,29970,23504,16133,12783,84.9,77.2,79.7,sleep,"sleep,calm,focus",False,conflict,drifting
+eval-0227,depleted,早睡失败,昨晚只睡了四小时，现在挺平静的但特别累,16,57,80,4.5,20,57,80,71,0.1032,0.5631,430946,105776,30954,37695,32950,26616,15.7,56.6,79.8,sleep,"sleep,calm,focus",False,conflict,drifting
+eval-0228,depleted,带娃夜醒,孩子夜醒三次，我现在又困又没法专注,25,28,75,5.0,10,28,75,51,0.0698,0.5507,240494,85316,16105,12763,24225,22759,24.9,27.6,74.7,sleep,"sleep,calm,focus",False,conflict,drifting
+eval-0229,wired,冲突汇报前,马上要跟老板1on1，紧张到想吐,87,60,48,7.0,10,60,48,187,0.0625,1.4108,153917,38737,10128,10745,28259,26393,86.6,59.9,48.0,calm,"calm,focus,sleep",False,conflict,oscillating
+eval-0230,revved,健身后,刚练完腿，浑身是劲但还算平静,88,62,52,7.0,10,62,52,144,0.0796,1.4216,149943,90041,16232,17399,71266,56736,87.8,62.1,51.7,focus,"focus,calm,sleep",False,conflict,rising_then_falling
+eval-0231,wired,焦虑发作,焦虑到无法思考，脑子一团乱,80,30,40,7.0,10,30,40,80,0.0606,1.9675,204029,88600,14460,15689,74543,99780,80.0,30.2,39.7,calm,"calm,focus,sleep",False,conflict,oscillating
+eval-0232,revved,过度兴奋,太兴奋了坐不住，注意力也集中不了,82,31,60,7.0,10,31,60,63,0.1023,1.5592,94446,28379,10550,11424,20694,23554,82.1,31.2,60.2,focus,"focus,calm,sleep",False,conflict,rising_then_falling
+eval-0233,foggy,午后犯困,下午三点，脑子像浆糊,48,25,59,7.0,15,25,59,106,0.0912,0.5858,202754,49286,21607,15317,14063,14809,48.1,25.0,58.9,focus,"focus,calm,sleep",False,conflict,flat_low
+eval-0234,foggy,多任务后,刚同时处理五个群消息，脑子散成烟花,49,24,60,7.0,15,24,60,64,0.0897,0.5654,467747,137428,40889,36081,35533,42170,49.1,24.1,59.5,focus,"focus,calm,sleep",False,conflict,erratic
+eval-0235,foggy,感冒昏沉,感冒了，脑子昏沉，注意力也没了,28,29,39,7.0,15,29,39,58,0.1462,0.5281,385240,79896,47652,42024,23661,18531,28.5,29.2,39.2,focus,"focus,calm,sleep",False,conflict,flat_low
+eval-0236,dimming,傍晚低能量,傍晚了，能量在往下掉,26,57,61,7.0,20,57,61,72,0.1984,0.6574,67431,34798,16201,18128,12147,10728,26.5,57.2,60.9,calm,"calm,sleep,focus",False,conflict,gradually_declining
+eval-0237,dimming,长途通勤后,地铁坐了两小时，累但还不算平静,26,58,69,7.0,20,58,69,73,0.2197,0.8457,41369,24246,14273,14072,11225,9281,26.5,57.7,68.6,calm,"calm,sleep,focus",False,conflict,gradually_declining
+eval-0238,still,冥想后,刚冥想完，感觉挺稳的,40,60,71,7.0,20,60,71,166,0.195,0.9535,31167,15204,10972,8513,6455,8042,39.8,59.7,71.2,calm,"calm,focus,sleep",False,conflict,stable_high
+eval-0239,depleted,极限状态,三天没睡好，现在什么都干不了,26,18,30,4.0,5,18,30,181,0.1151,0.4299,300563,63120,25961,36674,12452,14686,26.0,17.8,30.0,sleep,"sleep,calm,focus",False,conflict,drifting
+eval-0240,neutral,平淡日常,今天没什么特别的，就是有点累,60,55,53,7.0,20,55,53,136,0.1477,0.9133,249879,99501,45263,31039,46584,44288,59.9,55.2,52.8,calm,"calm,focus,sleep",False,conflict,wandering

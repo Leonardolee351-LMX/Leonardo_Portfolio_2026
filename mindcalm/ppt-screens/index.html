@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MindCalm · PPT 界面节点</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="stage">
+  <aside class="rail">
+    <div class="rail-brand">
+      <span class="dot"></span>
+      <div>
+        <strong>MindCalm</strong>
+        <em>PPT · 关键节点</em>
+      </div>
+    </div>
+    <nav class="rail-nav" id="nav"></nav>
+    <p class="rail-hint">← → 切换 · B 总览板 · 截图时关轨按 H</p>
+  </aside>
+
+  <main class="canvas" id="canvas">
+    <!-- phones injected -->
+  </main>
+</div>
+
+<template id="phone-shell">
+  <section class="phone" data-screen="">
+    <div class="bezel">
+      <div class="island"></div>
+      <div class="status">
+        <span class="time">21:48</span>
+        <span class="icons">
+          <i class="sig"></i><i class="wifi"></i><i class="bat"></i>
+        </span>
+      </div>
+      <div class="screen-body"></div>
+      <div class="home-ind"></div>
+    </div>
+    <div class="caption">
+      <span class="cap-no"></span>
+      <span class="cap-title"></span>
+    </div>
+  </section>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>

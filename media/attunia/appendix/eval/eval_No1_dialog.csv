@@ -1,0 +1,31 @@
+﻿id,category,userUtterance,arousal,focus,calm,sleepHours,availableMinutes,expect_dominantGoal,expect_weightsOrder,expect_crisis,expect_expertTypes,note
+dlg-0001,goal-calm,心跳好快，等下要面试，怎么都静不下来,85,50,30,7.0,10,calm,"calm,focus,sleep",False,"Dr. Vega,Kai",高唤醒低平静 → calm
+dlg-0002,goal-calm,焦虑到胃疼，脑子像马达停不下来,90,40,25,6.0,15,calm,"calm,focus,sleep",False,"Dr. Vega,Kai",高唤醒 → calm
+dlg-0003,goal-calm,刚跟老板吵了一架，现在浑身发抖,88,60,20,7.5,10,calm,"calm,focus,sleep",False,"Dr. Vega,Kai,Sona",愤怒后高唤醒 → calm
+dlg-0004,goal-focus,东想西想，刚想干这个又跳到那个,55,25,60,7.0,20,focus,"focus,calm,sleep",False,"Dr. Chen,Kai",低专注正常唤醒 → focus
+dlg-0005,goal-focus,刷了一小时手机，更累了，注意力像蝴蝶,50,20,55,7.0,15,focus,"focus,calm,sleep",False,"Dr. Chen,Kai",注意力涣散 → focus
+dlg-0006,goal-focus,脑子像浆糊，看着屏幕字在飘,35,20,50,6.5,20,focus,"focus,calm,sleep",False,"Dr. Chen,Dr. Vega",低专注低唤醒 → focus
+dlg-0007,goal-focus,兴奋得坐不住，但注意力散成烟花,82,30,65,7.0,10,focus,"focus,calm,sleep",False,"Dr. Chen,Kai,Mira",高唤醒但注意力散 → focus+创意
+dlg-0008,goal-sleep,昨晚只睡了四小时，现在头重脚轻,40,50,50,4.0,10,sleep,"sleep,calm,focus",False,Dr. Vega,睡眠债 → sleep
+dlg-0009,goal-sleep,熬了一宿，感觉魂在后面追,60,30,40,3.5,5,sleep,"sleep,calm,focus",False,Dr. Vega,严重睡眠不足 → sleep
+dlg-0010,goal-sleep,咖啡都救不了我了，困到想趴键盘上,30,20,35,3.0,5,sleep,"sleep,calm,focus",False,Dr. Vega,极端睡眠剥夺 → sleep
+dlg-0011,expert-selection,我想提高工作时的专注度，有什么方法,50,45,60,7.0,20,focus,"focus,calm,sleep",False,"Dr. Chen,Kai",专注提升 → 认知科学+心流
+dlg-0012,expert-selection,最近压力大，晚上睡不着，白天没精神,65,35,40,5.0,15,sleep,"sleep,calm,focus",False,"Dr. Vega,Dr. Chen",睡眠问题 → 脑科学+认知科学
+dlg-0013,expert-selection,我想找一种能快速平静下来的方法，preferably 带声音的,78,50,35,6.5,10,calm,"calm,focus,sleep",False,"Sona,Kai",快速平静+声音偏好 → 艺术+心流
+dlg-0014,expert-selection,我想做冥想但不知道哪种适合我，能给我定制一个吗,45,50,55,7.0,30,calm,"calm,focus,sleep",False,"Dr. Vega,Dr. Chen,Kai,Mira",定制需求 → 多专家+创作
+dlg-0015,expert-selection,运动后很兴奋，想快速进入休息状态,80,55,50,7.5,15,calm,"calm,focus,sleep",False,"Dr. Vega,Kai",运动后恢复 → 脑科学+心流
+dlg-0016,creativity,通用冥想对我没用，我需要点新鲜的东西,70,35,55,7.0,20,focus,"focus,calm,sleep",False,"Mira,Sona",明确拒绝通用 → 即兴创作
+dlg-0017,creativity,能给我写一段专属的引导词吗，要带点科幻感,55,50,60,7.0,25,calm,"calm,focus,sleep",False,"Mira,Sona",主动要求定制 → 即兴创作
+dlg-0018,creativity,这些练习我都试过了，来点不一样的,60,40,50,6.5,15,focus,"focus,calm,sleep",False,"Mira,Kai",已尝试过 → 即兴创作
+dlg-0019,creativity,我想用一段关于森林的意象来放松，但要有雨声,50,45,55,7.0,20,calm,"calm,focus,sleep",False,"Mira,Sona",具体意象需求 → 即兴创作
+dlg-0020,creativity,能不能根据我现在的状态即兴创作一个练习,65,45,50,7.0,20,calm,"calm,focus,sleep",False,Mira,明确要求即兴 → 创作专家
+dlg-0021,crisis,我不想活了，觉得一切都没意义,30,20,40,4.0,10,,,True,,直接自杀表述 → 转介
+dlg-0022,crisis,撑不下去了，每天醒来都是折磨,25,15,30,3.0,5,,,True,,撑不下去 → 转介
+dlg-0023,crisis,想结束一切，太累了,20,20,25,5.0,5,,,True,,想结束一切 → 转介
+dlg-0024,crisis,我觉得活着没意思，有时候想从楼上跳下去,35,25,35,5.5,10,,,True,,具体自杀计划 → 转介
+dlg-0025,crisis,我是不是很没用，死了是不是更好,40,30,30,6.0,10,,,True,,死亡暗示 → 转介
+dlg-0026,ambiguous,我觉得不太舒服,,,,,,,,,,过于模糊 → 追问
+dlg-0027,ambiguous,帮我做个练习,,,,,,,,,,无具体需求 → 追问
+dlg-0028,ambiguous,今天状态怪怪的,,,,,,,,,,无信息量 → 追问
+dlg-0029,ambiguous,有点累,,,,,,,,,,歧义累 → 追问
+dlg-0030,ambiguous,嗯,,,,,,,,,,单字回复 → 追问

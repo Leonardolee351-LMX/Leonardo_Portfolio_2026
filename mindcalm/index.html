@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MindCalm · 软件呈现 / 原型延展</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #121512;
+    --panel: #1b201c;
+    --line: #2e3830;
+    --text: #ece8e0;
+    --muted: #9aa089;
+    --soft: #c9c4b6;
+    --accent: #7d9b78;
+    --warn: #c4a484;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Noto Sans SC", Manrope, system-ui, sans-serif;
+    background: radial-gradient(1200px 600px at 10% -10%, #1e2a22 0%, var(--bg) 55%);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 36px 20px 80px; }
+  .eyebrow {
+    display: inline-flex; gap: 8px; align-items: center;
+    font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+  }
+  .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  h1 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400; font-size: clamp(2rem, 5vw, 3.2rem);
+    margin: 12px 0 8px; letter-spacing: .01em;
+  }
+  .lead { max-width: 62ch; color: var(--soft); font-size: 1.05rem; }
+  .honesty {
+    margin: 22px 0 34px; padding: 14px 16px; border: 1px solid var(--line);
+    border-left: 3px solid var(--warn); background: #1a1814; border-radius: 10px;
+    color: #d8cbb6; font-size: 14px;
+  }
+  .honesty strong { color: #f0e2cb; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 40px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 16px; border-radius: 999px; border: 1px solid var(--line);
+    background: #222a24; color: var(--text); font-weight: 600; font-size: 14px;
+  }
+  .btn.primary { background: #2f4a38; border-color: #4d6f58; }
+  .btn:hover { text-decoration: none; filter: brightness(1.08); }
+  section { margin: 42px 0; }
+  h2 { font-size: 1.25rem; margin: 0 0 8px; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0 0 18px; max-width: 70ch; }
+  .grid {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  figure {
+    margin: 0; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 14px; overflow: hidden;
+  }
+  figure img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; background: #0d100e; }
+  figure.wide img { aspect-ratio: 16/10; object-fit: contain; background: #0d100e; }
+  figcaption { padding: 10px 12px 14px; font-size: 12.5px; color: var(--muted); }
+  .tag {
+    display: inline-block; margin-right: 6px; padding: 2px 8px; border-radius: 999px;
+    background: #273228; color: #cfe0cb; font-size: 11px;
+  }
+  .iframe-shell {
+    border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+    background: #0c0f0d; min-height: 720px;
+  }
+  .iframe-shell iframe { width: 100%; height: 78vh; min-height: 720px; border: 0; }
+  footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> Soft Healthcare · Proposal phase</p>
+    <h1>MindCalm · 软件呈现 / 原型延展</h1>
+    <p class="lead">从 Attunia 的「感知 + 引导」向前一步：探索可穿戴闭环与软件呈现。本页是<strong>概念提案阶段</strong>的轻量演示，不是量产样机或临床系统。</p>
+    <div class="honesty">
+      <strong>诚实边界：</strong>图中分数 / 指数为软件编译示意，不是医疗诊断值；主动刺激（穴位 / 微电流等）需要单独的安全与有效性研究。硬件渲染与 CAD 代表方向探索，不等于已制造或已验证。
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="ppt-screens/index.html">打开六屏 PPT Demo</a>
+      <a class="btn" href="../work/attunia.html#mindcalm">返回 Attunia 附录 · MindCalm</a>
+      <a class="btn" href="#hardware">硬件与穴位证据</a>
+      <a class="btn" href="#screens">原型截屏</a>
+    </div>
+
+    <section>
+      <h2>六屏软件节点（可交互）</h2>
+      <p class="sub">来源：微信收到的 <code>MindCalm-PPT六屏demo.zip</code>（E:\脑电项目2\releases）。键盘 ← → 切换；B 总览；H 隐藏侧轨。</p>
+      <div class="iframe-shell">
+        <iframe src="ppt-screens/index.html" title="MindCalm PPT 六屏 demo" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section id="screens">
+      <h2>原型延展截屏</h2>
+      <p class="sub">摘自完整原型工程 <code>MindCalm-完整原型.zip</code> / <code>prototype-iphone17</code> 的过程截屏，以及 Origin_Review 概念页。</p>
+      <div class="grid">
+        <figure>
+          <img src="../media/mindcalm-demo/screens/v3-home.png" alt="MindCalm 原型首页" />
+          <figcaption><span class="tag">原型</span>Home</figcaption>
+        </figure>
+        <figure>
+          <img src="../media/mindcalm-demo/screens/v4-after-start.png" alt="MindCalm 开始训练后" />
+          <figcaption><span class="tag">原型</span>Session start</figcaption>
+        </figure>
+        <figure>
+          <img src="../media/mindcalm-demo/screens/dock-12.png" alt="MindCalm Dock 节点" />
+          <figcaption><span class="tag">原型</span>Dock flow</figcaption>
+        </figure>
+        <figure>
+          <img src="../media/mindcalm-demo/screens/s01.png" alt="MindCalm 状态屏" />
+          <figcaption><span class="tag">原型</span>State screen</figcaption>
+        </figure>
+        <figure class="wide">
+          <img src="../media/mindcalm-demo/screens/mindcalm-p1-states.png" alt="MindCalm 六屏状态概念" />
+          <figcaption><span class="tag">概念</span>Origin_Review · 六屏状态</figcaption>
+        </figure>
+        <figure class="wide">
+          <img src="../media/mindcalm-demo/screens/mindcalm-p2a-hardware-loop.png" alt="硬件闭环设想" />
+          <figcaption><span class="tag">未来验证</span>硬件内部协同架构设想</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="hardware">
+      <h2>硬件 / 穴位 / 设计证据</h2>
+      <p class="sub">用户提供的电极穴位图、EMOTIV 风格生活方式板、穴位颅测图、手绘 EEG/EDA 迭代、CAD 头带。用于说明提案语境，不宣称已量产。</p>
+      <div class="grid">
+        <figure class="wide">
+          <img src="../media/mindcalm-demo/hardware/emotiv-lifestyle-hardware.png" alt="生活方式与硬件模块标注" />
+          <figcaption><span class="tag">提案视觉</span>轻盈 · 隐形 · 日常可戴（模块标注）</figcaption>
+        </figure>
+        <figure>
+          <img src="../media/mindcalm-demo/hardware/electrode-acupoint-wearable.jpg" alt="电极与穴位佩戴示意" />
+          <figcaption><span class="tag">电极图</span>Bai-Hui / Yin-Tang / 耳甲电极</figcaption>
+        </figure>
+        <figure>
+          <img src="../media/mindcalm-demo/hardware/acupoint-skull-map.png" alt="督脉穴位颅侧图" />
+          <figcaption><span class="tag">穴位</span>督脉寸口对照</figcaption>
+        </figure>
+        <figure>
+          <img src="../media/mindcalm-demo/hardware/cad-headband.png" alt="头带 CAD" />
+          <figcaption><span class="tag">CAD</span>可调节头带结构提案</figcaption>
+        </figure>
+        <figure class="wide">
+          <img src="../media/mindcalm-demo/hardware/handsketches-eeg-eda.png" alt="EEG/EDA 手绘迭代" />
+          <figcaption><span class="tag">手绘</span>从穹顶到头带的形态收敛</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <footer>
+      <p>相关资产路径：<code>E:\脑电项目2\releases\MindCalm-PPT六屏demo.zip</code> · <code>MindCalm-完整原型.zip</code> · Origin_Review 附录图。</p>
+      <p><a href="../work/attunia.html#mindcalm">← 回到 Attunia 案例附录</a></p>
+    </footer>
+  </div>
+</body>
+</html>
