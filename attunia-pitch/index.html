@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Attunia · VITAL Soft Healthcare Pitch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #111110;
+      --muted: #6a6860;
+      --line: rgba(17, 17, 16, 0.1);
+      --paper: #f3f1ea;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      background: var(--ink);
+      color: var(--ink);
+      font-family: "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+    .deck { height: 100%; width: 100%; position: relative; }
+    .slide {
+      position: absolute; inset: 0;
+      display: none; flex-direction: column;
+      background: var(--paper);
+      padding: clamp(24px, 4vw, 56px);
+      opacity: 0; transform: translateY(12px);
+    }
+    .slide.active { display: flex; animation: enter 420ms var(--ease) forwards; }
+    .slide.bleed { padding: 0; }
+    @keyframes enter { to { opacity: 1; transform: translateY(0); } }
+    .slide .stagger > * {
+      opacity: 0; transform: translateY(10px);
+      animation: enter 480ms var(--ease) forwards;
+    }
+    .slide.active .stagger > *:nth-child(1) { animation-delay: 40ms; }
+    .slide.active .stagger > *:nth-child(2) { animation-delay: 100ms; }
+    .slide.active .stagger > *:nth-child(3) { animation-delay: 160ms; }
+    .slide.active .stagger > *:nth-child(4) { animation-delay: 220ms; }
+    .slide.active .stagger > *:nth-child(5) { animation-delay: 280ms; }
+    .slide.active .stagger > *:nth-child(6) { animation-delay: 340ms; }
+
+    .kicker {
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); font-weight: 500;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      font-weight: 600; letter-spacing: -0.045em; line-height: 1.05; max-width: 16ch;
+    }
+    h2 {
+      font-size: clamp(1.45rem, 3vw, 2.3rem);
+      font-weight: 600; letter-spacing: -0.035em; line-height: 1.15;
+    }
+    .lead {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      line-height: 1.45; color: var(--muted); max-width: 38ch;
+    }
+    .huge {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 600; letter-spacing: -0.05em; line-height: 0.95;
+    }
+    .foot {
+      margin-top: auto; padding-top: 20px;
+      font-size: 12px; color: var(--muted);
+    }
+
+    .chrome {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px; pointer-events: none;
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      mix-blend-mode: difference; color: #bbb;
+    }
+    .dots { display: flex; gap: 6px; pointer-events: auto; }
+    .dots button {
+      width: 6px; height: 6px; border-radius: 99px; border: 0;
+      background: rgba(255,255,255,0.35); cursor: pointer; padding: 0;
+      transition: transform 200ms var(--ease), background 200ms var(--ease);
+    }
+    .dots button.on { background: #fff; transform: scaleX(1.8); }
+
+    /* Cover · lifestyle BG + phone carousel + expert roster */
+    .home {
+      position: relative; flex: 1; min-height: 0;
+      display: grid; grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(20px, 3vw, 40px);
+      align-items: center;
+      padding: clamp(28px, 5vw, 64px);
+      overflow: hidden;
+    }
+    .home-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: #0c0c0b center/cover no-repeat;
+    }
+    .home-bg::after {
+      content: ""; position: absolute; inset: 0;
+      background:
+        linear-gradient(105deg, rgba(12,12,11,0.82) 0%, rgba(12,12,11,0.45) 48%, rgba(12,12,11,0.28) 100%);
+    }
+    .home-copy, .home-stage { position: relative; z-index: 1; }
+    .home-copy { color: #f3f1ea; display: flex; flex-direction: column; gap: 0; }
+    .home-copy .kicker { color: rgba(243,241,234,0.55); }
+    .home-copy .lead { color: rgba(243,241,234,0.72); }
+    .home-copy .foot { color: rgba(243,241,234,0.45); margin-top: 24px; }
+    .home-agents {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 22px;
+    }
+    .home-agents figure {
+      width: clamp(40px, 4.2vw, 52px);
+      height: clamp(40px, 4.2vw, 52px);
+      margin: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+    .home-agents img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .home-agents figcaption {
+      position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);
+    }
+    .home-stage {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      justify-self: end; width: min(100%, 340px);
+    }
+    .home-phone {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      max-height: min(72vh, 620px);
+      border-radius: 22px;
+      overflow: hidden;
+      background: #0c0c0b;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 22px 48px rgba(0,0,0,0.45);
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+    }
+    .home-phone:focus-visible {
+      outline: 2px solid rgba(243,241,234,0.7);
+      outline-offset: 3px;
+    }
+    .home-phone .frame {
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity 320ms var(--ease);
+      pointer-events: none;
+    }
+    .home-phone .frame.on { opacity: 1; }
+    .home-phone .frame img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+    }
+    .home-phone .cap {
+      position: absolute; left: 12px; bottom: 12px; z-index: 2;
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.4); padding: 5px 10px; border-radius: 999px;
+      pointer-events: none;
+    }
+    .home-phone-hint {
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(243,241,234,0.45);
+    }
+    .home-car-dots {
+      display: flex; gap: 6px; justify-content: center;
+    }
+    .home-car-dots span {
+      width: 6px; height: 6px; border-radius: 99px;
+      background: rgba(255,255,255,0.28);
+      transition: transform 200ms var(--ease), background 200ms var(--ease);
+    }
+    .home-car-dots span.on {
+      background: #fff; transform: scaleX(1.7);
+    }
+    @media (max-width: 900px) {
+      .home { grid-template-columns: 1fr; align-items: end; }
+      .home-stage { justify-self: center; width: min(100%, 280px); }
+      .home-phone { max-height: 42vh; }
+    }
+
+    .banner {
+      position: relative; flex: 1; min-height: 0;
+      background: #0c0c0b center/cover no-repeat;
+    }
+    .banner::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(12,12,11,0.72) 0%, rgba(12,12,11,0.25) 55%, rgba(12,12,11,0.15) 100%);
+    }
+    .banner-copy {
+      position: absolute; inset: 0; z-index: 1;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: clamp(32px, 6vw, 72px);
+      color: #f3f1ea;
+    }
+    .banner-copy .kicker { color: rgba(243,241,234,0.55); }
+    .banner-copy .lead { color: rgba(243,241,234,0.7); }
+
+    /* WLB · three portrait columns */
+    .wlb {
+      flex: 1; min-height: 0; margin-top: 18px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    }
+    .wlb figure {
+      position: relative; overflow: hidden; border-radius: 4px; background: #1a1a18; min-height: 0;
+    }
+    .wlb img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 25%;
+      display: block; transition: transform 700ms var(--ease);
+    }
+    .slide.active .wlb figure:hover img { transform: scale(1.03); }
+    .wlb figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      display: flex; flex-direction: column; gap: 4px;
+      padding: 16px 14px 14px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff;
+    }
+    .wlb .t { font-size: 11px; letter-spacing: 0.16em; opacity: 0.75; }
+    .wlb .w { font-size: clamp(1.2rem, 2vw, 1.75rem); font-weight: 600; letter-spacing: -0.03em; }
+    .pain-line {
+      margin-top: 16px;
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+      max-width: 42ch;
+      color: var(--ink);
+    }
+
+    .hero {
+      flex: 1; display: grid; grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px; align-items: center; min-height: 0; margin-top: 16px;
+    }
+    .hero img {
+      width: 100%; height: min(58vh, 480px); object-fit: cover; border-radius: 4px;
+    }
+    .badge {
+      display: inline-block; border: 1px solid var(--line);
+      padding: 6px 10px; font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; margin-bottom: 14px;
+    }
+
+    .sell {
+      flex: 1; display: grid; grid-template-columns: 1fr 1fr;
+      gap: 28px; margin-top: 20px; min-height: 0; align-items: stretch;
+    }
+    .sell img {
+      width: 100%; height: 100%; max-height: 56vh; object-fit: cover; border-radius: 4px;
+    }
+    .points { display: flex; flex-direction: column; gap: 20px; justify-content: center; }
+    .points article { border-top: 1px solid var(--line); padding-top: 14px; }
+    .points .n { font-size: 11px; letter-spacing: 0.16em; color: var(--muted); margin-bottom: 6px; }
+    .points h3 {
+      font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+      font-weight: 600; letter-spacing: -0.03em; margin-bottom: 6px;
+    }
+    .points p { color: var(--muted); font-size: 15px; line-height: 1.45; max-width: 34ch; }
+
+    /* P4 progressive disclosure + architecture art */
+    .tech {
+      flex: 1; min-height: 0; margin-top: 14px;
+      display: grid; grid-template-columns: 1.35fr 0.9fr; gap: 22px;
+    }
+    .arch-panel {
+      display: flex; flex-direction: column; min-height: 0; gap: 10px;
+    }
+    .arch-panel figure {
+      flex: 1; min-height: 0; margin: 0;
+      border-radius: 6px; overflow: hidden;
+      border: 1px solid var(--line);
+      background: #141412;
+      box-shadow: 0 18px 40px -28px rgba(17,17,17,0.45);
+    }
+    .arch-panel figure img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      display: block;
+    }
+    .stack-row {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .stack-row i {
+      font-style: normal;
+      font-size: 11px; letter-spacing: 0.02em;
+      padding: 4px 9px; border-radius: 999px;
+      border: 1px solid var(--line); color: var(--muted);
+      background: rgba(17,17,17,0.03);
+    }
+    .flow {
+      font-size: clamp(0.88rem, 1.35vw, 1.02rem); line-height: 1.7; letter-spacing: -0.02em;
+    }
+    .flow span {
+      display: inline-block; background: var(--ink); color: var(--paper);
+      padding: 2px 8px; margin: 2px 0; border-radius: 2px; font-size: 0.92em;
+    }
+    .done-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px;
+    }
+    .done-grid div {
+      border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px;
+    }
+    .done-grid strong {
+      display: block; font-size: 12px; letter-spacing: -0.01em; margin-bottom: 3px;
+    }
+    .done-grid span { font-size: 11px; color: var(--muted); line-height: 1.35; }
+
+    details.more {
+      border-top: 1px solid var(--line);
+      margin-top: 8px;
+    }
+    details.more summary {
+      list-style: none; cursor: pointer;
+      padding: 12px 0; font-size: 13px; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--muted);
+      display: flex; justify-content: space-between; align-items: center;
+      transition: color 180ms var(--ease);
+    }
+    details.more summary::-webkit-details-marker { display: none; }
+    details.more summary::after {
+      content: "+"; font-size: 16px; transition: transform 200ms var(--ease);
+    }
+    details.more[open] summary { color: var(--ink); }
+    details.more[open] summary::after { content: "−"; }
+    details.more .body {
+      padding: 0 0 14px;
+      font-size: 13px; line-height: 1.5; color: var(--muted);
+      max-height: 28vh; overflow: auto;
+    }
+    details.more .body li { margin: 0 0 6px 1.1em; }
+
+    .disclose-col { display: flex; flex-direction: column; min-height: 0; overflow: auto; }
+
+    .quad {
+      flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+      gap: 10px; margin-top: 16px; min-height: 0;
+    }
+    .quad figure { position: relative; overflow: hidden; border-radius: 4px; background: #1a1a18; }
+    .quad img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .quad figcaption {
+      position: absolute; left: 12px; bottom: 12px; color: #fff; font-size: 13px; font-weight: 500;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.45);
+    }
+
+    .qgrid {
+      flex: 1; display: grid; grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px; margin-top: 16px; min-height: 0;
+    }
+    .quotes { display: flex; flex-direction: column; gap: 8px; overflow: auto; }
+    .quotes blockquote {
+      font-size: clamp(0.92rem, 1.4vw, 1.1rem); line-height: 1.4;
+      letter-spacing: -0.015em; padding: 11px 0;
+      border-bottom: 1px solid var(--line); font-weight: 500;
+    }
+    .quotes blockquote.soft { color: var(--muted); font-weight: 400; font-size: 0.95em; }
+    .metrics { display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+    .metric {
+      background: var(--ink); color: var(--paper); padding: 18px 20px; border-radius: 4px;
+    }
+    .metric .label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-bottom: 8px; }
+    .metric .nums {
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem); font-weight: 600;
+      letter-spacing: -0.04em; font-variant-numeric: tabular-nums;
+    }
+    .metric .hint { margin-top: 8px; font-size: 13px; opacity: 0.65; }
+
+    .qa { flex: 1; display: flex; flex-direction: column; gap: 18px; margin-top: 16px; min-height: 0; overflow: auto; }
+    .qa .q {
+      font-size: clamp(1.05rem, 2vw, 1.45rem);
+      font-weight: 600; letter-spacing: -0.03em; line-height: 1.25;
+    }
+    .qa .a { color: var(--muted); font-size: 14px; line-height: 1.45; margin-top: 6px; }
+    .qa .a strong { color: var(--ink); font-weight: 600; }
+    .comp {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+      margin-top: 14px;
+    }
+    .comp article {
+      border: 1px solid var(--line); border-radius: 4px; padding: 12px 14px;
+    }
+    .comp article.us { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .comp .tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55; margin-bottom: 6px; }
+    .comp h3 { font-size: 14px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .comp p { font-size: 12px; line-height: 1.4; opacity: 0.75; }
+    .comp article.us p { opacity: 0.7; }
+    .qrow { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 28px; margin-top: 18px; align-items: start; flex: 1; min-height: 0; }
+    .qrow .qbox {
+      border-top: 2px solid var(--ink); padding-top: 12px;
+    }
+    .qcol { display: flex; flex-direction: column; gap: 20px; }
+    .acol {
+      border-top: 2px solid var(--ink); padding-top: 12px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .acol .ah {
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 2px;
+    }
+    .diffs {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-top: 0;
+    }
+    .diffs div {
+      font-size: 14px; line-height: 1.4;
+      border-top: 1px solid var(--line); padding-top: 10px;
+    }
+    .diffs strong {
+      display: block; font-size: 13px; letter-spacing: -0.01em;
+      font-weight: 600; margin-bottom: 3px; color: var(--ink);
+    }
+    .diffs span { color: var(--muted); font-size: 13px; }
+
+    .cols {
+      flex: 1; display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+    .cols article { border-top: 1px solid var(--ink); padding-top: 14px; }
+    .cols h3 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .cols p { color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+    .market {
+      flex: 1; display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 36px; align-items: end;
+    }
+    .market article {
+      padding: 22px; background: var(--ink); color: var(--paper);
+      border-radius: 4px; min-height: 26vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .market .tag { font-size: 11px; letter-spacing: 0.16em; opacity: 0.5; margin-bottom: 10px; }
+    .market h3 { font-size: clamp(1.3rem, 2.3vw, 1.85rem); letter-spacing: -0.03em; margin-bottom: 8px; }
+    .market p { font-size: 14px; opacity: 0.7; line-height: 1.4; }
+
+    .end {
+      flex: 1; display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+      gap: clamp(24px, 4vw, 48px);
+      align-items: center;
+      position: relative; z-index: 1;
+      min-height: 0;
+    }
+    .end .bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        linear-gradient(105deg, rgba(243,241,234,0.94), rgba(243,241,234,0.78)),
+        url("./brand/attunia-purpose.png") center/cover;
+    }
+    .end-top {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      min-width: 0;
+    }
+    .contacts {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(12px, 1.8vw, 20px);
+      height: min(72vh, 640px);
+      min-height: 0;
+      align-self: stretch;
+    }
+    .contacts figure {
+      margin: 0; min-height: 0; height: 100%;
+      background: #fff; border-radius: 14px; padding: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 40px rgba(17,17,16,0.08);
+      display: flex; flex-direction: column;
+    }
+    .contacts img {
+      width: 100%; flex: 1; min-height: 0;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .contacts figcaption {
+      flex-shrink: 0;
+      padding: 12px 14px 14px;
+      font-size: 12px; letter-spacing: 0.04em; color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .contacts figcaption strong {
+      display: block; color: var(--ink); font-size: 13px;
+      font-weight: 600; margin-bottom: 2px; letter-spacing: -0.01em;
+    }
+    .end-link {
+      position: relative; z-index: 1;
+      margin-top: 28px; font-size: 14px;
+    }
+    .end-link a {
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px solid rgba(17,17,16,0.35);
+      transition: border-color 180ms var(--ease);
+    }
+    .end-link a:hover { border-bottom-color: var(--ink); }
+    .hello {
+      position: relative; z-index: 1;
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      font-weight: 600; letter-spacing: -0.03em;
+      margin-top: 4px;
+    }
+
+    .slide.dark { background: var(--ink); color: var(--paper); }
+    .slide.dark .kicker, .slide.dark .lead, .slide.dark .foot { color: rgba(243,241,234,0.55); }
+
+    @media (max-width: 900px) {
+      .hero, .sell, .tech, .qgrid, .cols, .market, .comp, .qrow { grid-template-columns: 1fr; }
+      .end { grid-template-columns: 1fr; align-items: start; }
+      .contacts { height: min(48vh, 420px); }
+      .done-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+
+    <!-- Cover · lifestyle BG + expert avatars + phone carousel (P2 → …) -->
+    <section class="slide bleed active" data-i="0">
+      <div class="home">
+        <div class="home-bg" style="background-image:url('./pitch-home-afterwork-eeg.png')"></div>
+        <div class="home-copy stagger">
+          <div class="home-agents" aria-label="专家 Agent">
+            <figure title="Tuno · 编排中枢"><img src="./brand/friends/tuno.png" alt="Tuno" /><figcaption>Tuno</figcaption></figure>
+            <figure title="Mira · 心理咨询"><img src="./brand/friends/mira.png" alt="Mira" /><figcaption>Mira</figcaption></figure>
+            <figure title="Dr. Chen · 认知科学"><img src="./brand/friends/chen.png" alt="Dr. Chen" /><figcaption>Chen</figcaption></figure>
+            <figure title="Kai · 心流体验"><img src="./brand/friends/kai.png" alt="Kai" /><figcaption>Kai</figcaption></figure>
+            <figure title="Dr. Vega · 脑科学"><img src="./brand/friends/vega.png" alt="Dr. Vega" /><figcaption>Vega</figcaption></figure>
+            <figure title="Sona · 艺术与创作"><img src="./brand/friends/sona.png" alt="Sona" /><figcaption>Sona</figcaption></figure>
+          </div>
+          <p class="kicker">VITAL · Soft Healthcare</p>
+          <p class="huge">Attunia</p>
+          <p class="lead" style="margin-top:14px;max-width:32ch;">帮助用户克服工作脑雾与 WLB 切换中的大脑状态真空期——心理调适 Agent。</p>
+          <p class="foot">Tune out work. Tune in life.</p>
+        </div>
+        <div class="home-stage stagger" aria-label="产品轮播">
+          <button type="button" class="home-phone" id="homeCarousel" aria-label="点击切换产品画面">
+            <div class="frame on" data-cap="P2 · 开屏">
+              <img src="./brand/attunia-purpose.png" alt="Attunia Brain Attunement 开屏" />
+            </div>
+            <div class="frame" data-cap="P3 · Soft Healthcare">
+              <img src="./pitch-p3-sell-soft-healthcare.png" alt="Agent 卖点" />
+            </div>
+            <div class="frame" data-cap="Home · 此刻脑状态">
+              <img src="./screens/07-home-rec.png" alt="首页推荐" />
+            </div>
+            <div class="frame" data-cap="Explore · 场景路径">
+              <img src="./screens/11-scene-path.png" alt="会后留白场景" />
+            </div>
+            <div class="frame" data-cap="Tuno · 对话">
+              <img src="./screens/13-chat-tuno.png" alt="Tuno 对话" />
+            </div>
+            <div class="frame" data-cap="Friends · 会诊">
+              <img src="./screens/14-consult.png" alt="多专家会诊" />
+            </div>
+            <span class="cap" id="homeCap">P2 · 开屏</span>
+          </button>
+          <div class="home-car-dots" id="homeDots" aria-hidden="true"></div>
+          <p class="home-phone-hint">点击画面切换 · P2 →</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- P1 · WLB three columns -->
+    <section class="slide" data-i="1">
+      <div class="stagger">
+        <p class="kicker">01 · Pain</p>
+        <h1>白领 WLB 的三处真空</h1>
+        <p class="lead">启不来 → 扛过头 → 切不掉</p>
+      </div>
+      <div class="wlb">
+        <figure>
+          <img src="./pitch-p1-0900-notready.png" alt="09:00 启不来" />
+          <figcaption><span class="t">09:00</span><span class="w">启不来</span></figcaption>
+        </figure>
+        <figure>
+          <img src="./pitch-p1-1430-brainfog.png" alt="14:30 脑雾" />
+          <figcaption><span class="t">14:30</span><span class="w">脑雾 · 扛过头</span></figcaption>
+        </figure>
+        <figure>
+          <img src="./pitch-p1-1900-clockout.png" alt="19:00 切不掉" />
+          <figcaption><span class="t">19:00</span><span class="w">切不掉</span></figcaption>
+        </figure>
+      </div>
+      <p class="pain-line stagger">人离开了工位，状态还没有——脑雾与下工空档里，我们仍拿不回对自己节律的掌控权。</p>
+    </section>
+
+    <!-- P2 -->
+    <section class="slide" data-i="2">
+      <p class="kicker">02 · Product</p>
+      <div class="hero">
+        <div class="stagger">
+          <span class="badge">VITAL · Soft Healthcare</span>
+          <p class="huge">Attunia</p>
+          <h2 style="margin-top:16px;max-width:28ch;">帮助用户克服（工作脑雾 &amp; WLB 切换）大脑状态真空期的心理调适 Agent</h2>
+          <p class="lead" style="margin-top:12px;max-width:42ch;">Tuno Agent 以脑电波等健康设备为入口，Agent 为决策机制，并基于记忆与真实情境，为用户提供真正适配身心的调律和大脑康复服务。</p>
+          <p class="foot">调节与福祉支持 · 不诊疗 · 原始脑电不进外部 LLM</p>
+        </div>
+        <img src="./pitch-p2-attunia-hero.png" alt="Attunia" />
+      </div>
+    </section>
+
+    <!-- P3 -->
+    <section class="slide" data-i="3">
+      <div class="stagger">
+        <p class="kicker">03 · Sell</p>
+        <h1>脑电是传感器。Agent 才是产品。</h1>
+      </div>
+      <div class="sell">
+        <img src="./pitch-p3-sell-soft-healthcare.png" alt="卖点" />
+        <div class="points stagger">
+          <article>
+            <div class="n">01</div>
+            <h3>Agent 定制训练</h3>
+            <p>Tuno / Friends 按真实状态实时编排短训</p>
+          </article>
+          <article>
+            <div class="n">02</div>
+            <h3>主动识别脑雾瞬间</h3>
+            <p>尚未自知的走神与超载被接住</p>
+          </article>
+          <article>
+            <div class="n">03</div>
+            <h3>记忆反哺正反馈</h3>
+            <p>记住变化，反哺下一次推荐</p>
+          </article>
+        </div>
+      </div>
+      <p class="foot">免责 + 危机转介 · 会诊只拼目录</p>
+    </section>
+
+    <!-- P4 · architecture art + README tech / done -->
+    <section class="slide" data-i="4">
+      <div class="stagger">
+        <p class="kicker">04 · Technical path</p>
+        <h1>核心功能系统架构</h1>
+        <p class="lead">脑电 / 情境入 → Tuno 编排 → 短训交付 → 本机记忆回写。细节同 README 渐进披露。</p>
+      </div>
+      <div class="tech">
+        <div class="arch-panel stagger">
+          <figure>
+            <img src="./pitch-p4-system-architecture.png" alt="Attunia 核心系统架构：NeuroBand → Tuno → Session → 记忆反哺" />
+          </figure>
+          <div class="stack-row" aria-label="技术栈">
+            <i>React + Vite</i>
+            <i>tRPC + Hono</i>
+            <i>contracts/</i>
+            <i>config/llm-apis</i>
+            <i>eval_No.1 / No.2</i>
+            <i>start.bat</i>
+            <i>本机记忆 · 无原始脑电外传</i>
+          </div>
+        </div>
+        <div class="disclose-col">
+          <p class="kicker" style="margin-bottom:6px;">Done · from README</p>
+          <div class="done-grid">
+            <div><strong>前端</strong><span>开屏→设备→六景→Session→对话/会诊</span></div>
+            <div><strong>Agent</strong><span>Tuno + Friends 目录拼环节</span></div>
+            <div><strong>评测</strong><span>对话/危机 + 10 分钟 work 窗</span></div>
+            <div><strong>合规</strong><span>P3 弹层 · 危机转介 · 脑电不进 LLM</span></div>
+            <div><strong>用户体验</strong><span>WLB 介入场景 · 记忆反哺</span></div>
+            <div><strong>后端 API</strong><span>编排 / TTS / detectWorkNeed</span></div>
+          </div>
+          <p class="flow" style="margin-top:12px;">
+            <span>BrainLink</span> →
+            <span>三通道</span> →
+            <span>Tuno</span> →
+            <span>Session</span> →
+            <span>记忆</span>
+          </p>
+          <details class="more">
+            <summary>前端交付</summary>
+            <div class="body">
+              <ul>
+                <li>三通道真机可视化；未接回落演示信号</li>
+                <li>六景推荐、声景、深色播放器训练页</li>
+                <li>Attunia 开屏 / 设备页；免责 ⓘ 渐进披露</li>
+                <li>Profile 记忆回顾；会诊 UI 去便当盒</li>
+              </ul>
+            </div>
+          </details>
+          <details class="more">
+            <summary>后端 / TTS / API</summary>
+            <div class="body">
+              <ul>
+                <li>专家基于疗法目录延展；Multi-Agent 不即兴生图作曲</li>
+                <li>LLM / MiniMax TTS 配置化；会诊按专家换音色</li>
+                <li><code>detectWorkNeed</code> 工作态检测 API</li>
+                <li><code>config/llm-apis</code> + local 覆盖</li>
+              </ul>
+            </div>
+          </details>
+          <details class="more">
+            <summary>评测与状态机</summary>
+            <div class="body">
+              <ul>
+                <li>eval_No.1：对话 / 状态 / 危机</li>
+                <li>eval_No.2：10 分钟窗（超载→卸压 / 走神→回笼）</li>
+                <li>可演示规则切片，非大规模训练后的稳定状态机</li>
+              </ul>
+            </div>
+          </details>
+          <details class="more">
+            <summary>技术栈 · 仓库怎么跑</summary>
+            <div class="body">
+              <ul>
+                <li><code>src/</code> React 前端 · <code>api/</code> Hono + tRPC · <code>contracts/</code> 共享类型</li>
+                <li><code>config/</code> LLM / TTS 登记；Windows <code>start.bat</code> → localhost:3000</li>
+                <li>记忆：<code>data/user-memory/</code>（无原始脑电）</li>
+                <li>协议：<code>AGENTS.md</code> · 会诊边界 multi-agent-boundary</li>
+                <li>GitHub：Attunia_Brainlink-meditation</li>
+              </ul>
+            </div>
+          </details>
+          <details class="more">
+            <summary>下一步（README Todo）</summary>
+            <div class="body">
+              <ul>
+                <li>耳机形态脑电，减轻长佩戴疲劳</li>
+                <li>边界内的创作力 Agent / 交互动效</li>
+                <li>视效与声音同频的游戏感</li>
+                <li>扩评测集，部署更稳的脑电状态机</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- P5 · real screenshots from readme -->
+    <section class="slide dark" data-i="5">
+      <div class="stagger">
+        <p class="kicker">05 · Demo</p>
+        <h1 style="color:#f3f1ea;">真机路径</h1>
+        <p class="lead">戴上 → 读懂当下 → 练完 → 找 Tuno</p>
+      </div>
+      <div class="quad">
+        <figure>
+          <img src="./screens/15-splash.jpg" alt="开屏" />
+          <figcaption>01 开屏</figcaption>
+        </figure>
+        <figure>
+          <img src="./screens/06-session.png" alt="训练" />
+          <figcaption>02 Session</figcaption>
+        </figure>
+        <figure>
+          <img src="./screens/13-chat-tuno.png" alt="对话" />
+          <figcaption>03 Tuno</figcaption>
+        </figure>
+        <figure>
+          <img src="./screens/14-consult.png" alt="会诊" />
+          <figcaption>04 Friends</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- P6 -->
+    <section class="slide" data-i="6">
+      <div class="stagger">
+        <p class="kicker">06 · Evidence</p>
+        <h1>用完之后，他们说什么</h1>
+      </div>
+      <div class="qgrid">
+        <div class="quotes stagger">
+          <blockquote>「听完音乐后，确实看见自己变得专注了。」</blockquote>
+          <blockquote>「才真正意识到自己的脑雾 / 走神状态时刻会出现。」</blockquote>
+          <blockquote>「Agent 真的在基于自己的实况去给建议反馈。」</blockquote>
+          <blockquote>「产品的体验和沉浸感很完整。」</blockquote>
+          <blockquote class="soft">下一版：「希望更加 Customize」「想看到更细的大脑数据分析」</blockquote>
+        </div>
+        <div class="metrics stagger">
+          <div class="metric">
+            <div class="label">注意力难集中 · 试戴</div>
+            <div class="nums">专注 23 → 80</div>
+            <div class="hint">几乎进不去 → 能撑住一段</div>
+          </div>
+          <div class="metric">
+            <div class="label">下班快速调节</div>
+            <div class="nums">唤醒 79 → 45</div>
+            <div class="hint">平静 18 → 56</div>
+          </div>
+        </div>
+      </div>
+      <p class="foot">Soft Healthcare 演示口径 · 非医疗疗效宣称 · 个案与小样本</p>
+    </section>
+
+    <!-- P7 -->
+    <section class="slide" data-i="7">
+      <div class="stagger">
+        <p class="kicker">07 · Why us</p>
+        <h1>说得对。但忽略了大前提。</h1>
+        <p class="lead">他们多为睡眠 / 专注力机构向冥想 App。我们是工作与上下班场景的调适 Agent。</p>
+      </div>
+      <div class="comp stagger">
+        <article>
+          <div class="tag">Content apps</div>
+          <h3>Calm / Headspace…</h3>
+          <p>睡前与通用放松 · 被动选课播放</p>
+        </article>
+        <article>
+          <div class="tag">EEG + content</div>
+          <h3>Muse 等</h3>
+          <p>冥想练习中看状态 · 仍偏「练冥想」</p>
+        </article>
+        <article class="us">
+          <div class="tag">Attunia</div>
+          <h3>WLB 调适 Agent</h3>
+          <p>工位 + 上下班切换 · Tuno 主动编排实况短训</p>
+        </article>
+      </div>
+      <div class="qrow stagger">
+        <div class="qcol">
+          <div class="qbox">
+            <p class="kicker">Q1</p>
+            <p class="q">为什么一定要用脑电？</p>
+          </div>
+          <div class="qbox">
+            <p class="kicker">Q2</p>
+            <p class="q">为什么非得选你？</p>
+          </div>
+        </div>
+        <div class="acol">
+          <p class="ah">Answer · 说得对，但是——</p>
+          <div class="diffs">
+            <div><strong>1 · Agent 框架</strong><span>Tuno 编排；Friends 只拼目录——不是静态课表</span></div>
+            <div><strong>2 · 主动实况切换</strong><span>接住启不来 / 脑雾 / 切不掉</span></div>
+            <div><strong>3 · 脑电 + 长期记忆</strong><span>真采集当下通道，记忆越来越贴合个人</span></div>
+            <div><strong>4 · 良性反馈</strong><span>被读懂 · 沉浸完整 · 通道可见 → 足够信心</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="foot">收束：面向工作场景与上下班场景的大脑状态调适 Agent · Soft Healthcare：调节不诊疗</p>
+    </section>
+
+    <!-- P8 -->
+    <section class="slide" data-i="8">
+      <div class="stagger">
+        <p class="kicker">08 · Next</p>
+        <h1>下一步</h1>
+      </div>
+      <div class="cols stagger">
+        <article>
+          <h3>品牌与信任</h3>
+          <p>Soft Healthcare 口径统一；免责与危机做满；Demo 先痛点再产品。</p>
+        </article>
+        <article>
+          <h3>硬件</h3>
+          <p>头环体验打磨；探索耳机形态；HRV 作身体侧互补。</p>
+        </article>
+        <article>
+          <h3>Agent</h3>
+          <p>犯错边界；提醒严控误报；视效声景与状态机加厚。</p>
+        </article>
+      </div>
+      <p class="foot">Ask：赛道认可 · 白领真机试点 · Soft Healthcare 可复制样本</p>
+    </section>
+
+    <!-- P9 -->
+    <section class="slide" data-i="9">
+      <div class="stagger">
+        <p class="kicker">09 · Backup</p>
+        <h1>TAM · SAM · SOM</h1>
+        <p class="lead">粗口径。先占切换时刻。</p>
+      </div>
+      <div class="market stagger">
+        <article>
+          <div class="tag">TAM</div>
+          <h3>全球 Soft Healthcare</h3>
+          <p>数字身心调节与企业福祉</p>
+        </article>
+        <article>
+          <div class="tag">SAM</div>
+          <h3>亚太白领 WLB</h3>
+          <p>可穿戴 + App 日常调节</p>
+        </article>
+        <article>
+          <div class="tag">SOM</div>
+          <h3>赛期可达</h3>
+          <p>试点 · 会后与下工场景</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- P10 -->
+    <section class="slide" data-i="10">
+      <div class="end">
+        <div class="bg"></div>
+        <div class="end-top stagger">
+          <p class="kicker">10 · Contact</p>
+          <p class="huge">Attunia</p>
+          <p class="hello">喜欢您来。</p>
+          <p class="lead" style="margin-top:8px;">Tune out work. Tune in life.<br />VITAL · Soft Healthcare</p>
+          <p class="end-link">
+            作品集 ·
+            <a href="https://leonardo-techdesign.netlify.app/" target="_blank" rel="noopener">leonardo-techdesign.netlify.app</a>
+          </p>
+        </div>
+        <div class="contacts stagger" aria-label="个人联系方式">
+          <figure>
+            <img src="./contact-wechat.jpg" alt="微信二维码 Leonardo Li" />
+            <figcaption>
+              <strong>微信 · Leonardo Li</strong>
+              扫码添加朋友
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="./contact-xiaohongshu.jpg" alt="小红书二维码 Leonardo Li" />
+            <figcaption>
+              <strong>小红书 · 310709340</strong>
+              扫码找到我
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="chrome">
+    <span id="label">01 / 11</span>
+    <div class="dots" id="dots"></div>
+    <span>← → · Space · F</span>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    const dots = document.getElementById("dots");
+    const label = document.getElementById("label");
+    let i = 0;
+
+    slides.forEach((_, idx) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", "Slide " + (idx + 1));
+      b.addEventListener("click", () => go(idx));
+      dots.appendChild(b);
+    });
+
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+      [...dots.children].forEach((d, idx) => d.classList.toggle("on", idx === i));
+      label.textContent = String(i + 1).padStart(2, "0") + " / " + String(slides.length).padStart(2, "0");
+    }
+
+    window.addEventListener("keydown", (e) => {
+      const tag = e.target && e.target.tagName;
+      if (tag === "SUMMARY" || tag === "DETAILS") return;
+      if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+        e.preventDefault(); go(i + 1);
+      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        e.preventDefault(); go(i - 1);
+      } else if (e.key === "Home") go(0);
+      else if (e.key === "End") go(slides.length - 1);
+      else if (e.key.toLowerCase() === "f") {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      }
+    });
+
+    // Don't advance slide when interacting with disclosure
+    document.querySelectorAll("details.more").forEach((el) => {
+      el.addEventListener("click", (e) => e.stopPropagation());
+      el.addEventListener("pointerup", (e) => e.stopPropagation());
+    });
+
+    // Homepage phone carousel (P2 → …)
+    const homePhone = document.getElementById("homeCarousel");
+    const homeFrames = homePhone ? [...homePhone.querySelectorAll(".frame")] : [];
+    const homeDotsEl = document.getElementById("homeDots");
+    const homeCap = document.getElementById("homeCap");
+    let homeIdx = 0;
+    if (homeDotsEl) {
+      homeFrames.forEach((_, idx) => {
+        const s = document.createElement("span");
+        if (idx === 0) s.classList.add("on");
+        homeDotsEl.appendChild(s);
+      });
+    }
+    function showHome(n) {
+      if (!homeFrames.length) return;
+      homeIdx = (n + homeFrames.length) % homeFrames.length;
+      homeFrames.forEach((f, idx) => f.classList.toggle("on", idx === homeIdx));
+      if (homeDotsEl) {
+        [...homeDotsEl.children].forEach((d, idx) => d.classList.toggle("on", idx === homeIdx));
+      }
+      if (homeCap) homeCap.textContent = homeFrames[homeIdx].getAttribute("data-cap") || "";
+    }
+    if (homePhone) {
+      homePhone.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showHome(homeIdx + 1);
+      });
+      homePhone.addEventListener("pointerup", (e) => e.stopPropagation());
+      homePhone.addEventListener("pointerdown", (e) => e.stopPropagation());
+    }
+
+    let tx = 0;
+    window.addEventListener("pointerdown", (e) => { tx = e.clientX; });
+    window.addEventListener("pointerup", (e) => {
+      if (e.target.closest && (e.target.closest("details") || e.target.closest("#homeCarousel"))) return;
+      const d = e.clientX - tx;
+      if (Math.abs(d) < 60) return;
+      go(d < 0 ? i + 1 : i - 1);
+    });
+
+    go(0);
+  </script>
+</body>
+</html>
