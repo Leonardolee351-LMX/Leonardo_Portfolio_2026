@@ -768,6 +768,141 @@
       width: min(80vw, 240px);
     }
 
+
+    /* Appendix Feishu-style shell */
+    body.case-soft .appendix-feishu {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #2a2d32;
+    }
+    body.case-soft .appendix-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #2f3338;
+      background: #1a1d21;
+      color: #ece8e0;
+      border-radius: 14px;
+      padding: 14px 16px;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+    }
+    body.case-soft .appendix-toggle:hover { background: #22262b; }
+    body.case-soft .appendix-toggle:focus-visible {
+      outline: 2px solid #7a9cff;
+      outline-offset: 2px;
+    }
+    body.case-soft .appendix-toggle .chev {
+      width: 22px; height: 22px;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: #8d8f8c;
+      transition: transform .18s ease, color .18s ease;
+      flex: 0 0 auto;
+    }
+    body.case-soft .appendix-feishu.is-open > .appendix-toggle .chev {
+      transform: rotate(90deg);
+      color: #c9c4b8;
+    }
+    body.case-soft .appendix-toggle .chev svg { width: 12px; height: 12px; display: block; }
+    body.case-soft .appendix-toggle .section-title {
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+    body.case-soft .appendix-toggle .hint {
+      margin-left: auto;
+      font-size: 12px;
+      color: #8d8f8c;
+      letter-spacing: 0.08em;
+    }
+    body.case-soft .appendix-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .22s ease;
+    }
+    body.case-soft .appendix-feishu.is-open > .appendix-body { grid-template-rows: 1fr; }
+    body.case-soft .appendix-body-inner {
+      overflow: hidden;
+      min-height: 0;
+      padding: 6px 2px 4px;
+    }
+    body.case-soft .appendix-body-inner > :first-child { margin-top: 14px; }
+    body.case-soft .lineage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0 18px;
+    }
+    body.case-soft .lineage-card {
+      background: #1a1d21;
+      border: 1px solid #2f3338;
+      border-radius: 14px;
+      padding: 14px 14px 12px;
+    }
+    body.case-soft .lineage-card .num {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #8d8f8c;
+      margin: 0 0 8px;
+      font-weight: 650;
+    }
+    body.case-soft .lineage-card h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: #ece8e0;
+      font-weight: 600;
+    }
+    body.case-soft .lineage-card p {
+      margin: 0;
+      font-size: 13px;
+      color: #b7b9b8;
+      line-height: 1.5;
+      max-width: none;
+    }
+    body.case-soft .lineage-card.is-core {
+      border-color: #3d4550;
+      box-shadow: 0 0 0 1px rgba(201,196,184,.08) inset;
+    }
+    body.case-soft .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 12px 0 8px;
+    }
+    body.case-soft .evidence-grid figure {
+      margin: 0;
+      background: transparent;
+    }
+    body.case-soft .evidence-grid img,
+    body.case-soft .fold-body img.evidence {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      border: 0;
+      display: block;
+      cursor: zoom-in;
+    }
+    body.case-soft .evidence-grid figcaption,
+    body.case-soft .fold-body .cap {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #8d8f8c;
+      line-height: 1.45;
+    }
+    @media (max-width: 900px) {
+      body.case-soft .lineage-grid,
+      body.case-soft .evidence-grid { grid-template-columns: 1fr; }
+      body.case-soft .appendix-toggle .hint { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body.case-soft .appendix-body,
+      body.case-soft .appendix-toggle .chev { transition: none; }
+    }
+
   </style>
 </head>
 <body class="case-soft">
@@ -790,7 +925,7 @@
       <a href="#pitch-story">Pitch</a>
       <a href="#experience">体验/测试</a>
       <a href="#links">链接</a>
-      <a href="#archive">附录</a>
+      <a href="#archive">附录·谱系</a>
     </nav>
 
     <!-- COVER: title left · honesty/bridge right · interactive Pitch deck below -->
@@ -1143,69 +1278,165 @@
       </section>
 
       <!-- Appendix -->
-      <section class="cs-view" id="archive">
-        <p class="cs-num">附录 · 默认收起</p>
-        <h3>起源、Forward 概念与问卷 caveat——不抢主叙事。</h3>
-        <p>公开阅读以 Pitch 定位 + 可走完的原型为主。下面保留诚实边界。</p>
-        <p>
-          <span class="ev ev-known">已知</span>
-          <span class="ev ev-public">公开叙事</span>
-          <span class="ev ev-retro">复盘判断</span>
-          <span class="ev ev-gap">待补</span>
-          <span class="ev ev-next">未来验证</span>
-        </p>
+      <section class="cs-view appendix-feishu" id="archive">
+        <button type="button" class="appendix-toggle" aria-expanded="false" aria-controls="archive-body" id="archive-toggle">
+          <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="section-title">附录 · 谱系与证据</span>
+          <span class="hint">默认收起 · 不抢主叙事</span>
+        </button>
+        <div class="appendix-body" id="archive-body">
+          <div class="appendix-body-inner">
+            <p class="cs-num">附录</p>
+            <h3>AnxiousKit → Attunia → MindCalm：同一关切，不同完成度。</h3>
+            <p>共享主题是：在日常压力下如何自我觉察、及时调节——为通勤与居家切换留出可进入、也可随时离开的空间。这不是同一产品的 V1 / V2 / V3。</p>
+            <p class="en-anchor">Continuous exploration as capability, tech, and partnerships evolved — Soft Healthcare: 调节，不诊疗。</p>
 
-        <div class="folds">
-          <details class="fold">
-            <summary>01 Origin · AnxiousKit：为什么这件事要紧</summary>
-            <div class="fold-body">
-              <p><span class="ev ev-public">公开叙事</span> 我不是先看见一条赛道才做它。我在意的是：人已经该休息了，却进不去休息。所以入口要低，离开要随时可以。</p>
-              <img src="../media/anxious/P1.png" alt="AnxiousKit 概念展板。">
-              <p><span class="ev ev-gap">待补</span> 年份、课程、当时有没有访谈。具体的个人疾病经历不放在公开页。</p>
-              <p class="links"><a href="anxious.html">打开 Anxious Kit 案例页</a></p>
+            <div class="lineage-grid" aria-label="谱系三阶段">
+              <article class="lineage-card">
+                <p class="num">01 · Origin</p>
+                <h4>AnxiousKit</h4>
+                <p>创造可恢复的空间。早期 IA / 策划案与尚不成熟的软硬件想象。</p>
+              </article>
+              <article class="lineage-card is-core">
+                <p class="num">02 · This page</p>
+                <h4>Attunia</h4>
+                <p>Soft Healthcare + EEG + Personal/Multi-Agents + 可演示交互原型（香港黑客松谱系）。</p>
+              </article>
+              <article class="lineage-card">
+                <p class="num">03 · Forward</p>
+                <h4>MindCalm</h4>
+                <p>研究协作提案（HKU / 脑科学方向）· 主动干预硬件概念。不是因为 Attunia 用户测试失败。</p>
+              </article>
             </div>
-          </details>
-          <details class="fold">
-            <summary>02 Evolution · 同一问题，三种完成度</summary>
-            <div class="fold-body">
-              <p>AnxiousKit 把问题放进概念。Attunia 把它做成可以演示的流程。MindCalm 是之后的 Future Exploration。黑客松日期和团队分工 <span class="ev ev-gap">待补</span>。三者完成度不同，不能排成已验证的 V1 / V2 / V3。</p>
+
+            <p>
+              <span class="ev ev-known">已知</span>
+              <span class="ev ev-public">公开叙事</span>
+              <span class="ev ev-retro">复盘判断</span>
+              <span class="ev ev-gap">待补</span>
+              <span class="ev ev-next">未来验证</span>
+            </p>
+
+            <div class="folds">
+              <details class="fold">
+                <summary>01 Origin · AnxiousKit — 为什么需要恢复空间</summary>
+                <div class="fold-body">
+                  <p><span class="ev ev-public">公开叙事</span> 我不是先看见一条赛道才做它。我在意的是：人已经该休息了，却进不去休息。所以入口要低，离开要随时可以。</p>
+                  <p><span class="ev ev-retro">复盘判断</span> AnxiousKit 把问题放进概念与信息架构；当时的软硬件仍偏策划，完成度有限。</p>
+                  <img class="evidence" src="../media/attunia/appendix/anxiouskit-p1.png" alt="AnxiousKit 概念展板。" data-lb>
+                  <p class="cap"><span class="ev ev-gap">待补</span> 年份、课程、当时访谈范围。具体个人疾病经历不放在公开页。</p>
+                  <p class="links"><a href="anxious.html">打开 Anxious Kit 案例页</a></p>
+                </div>
+              </details>
+
+              <details class="fold">
+                <summary>02 Attunia — Soft Healthcare · EEG · Agents · 原型</summary>
+                <div class="fold-body">
+                  <p><span class="ev ev-public">公开叙事</span> 借香港黑客松与 Soft Healthcare 实践，把愿景收束为可走完的短时调适流程：连接 / 校准 → 场景 → Session → 复盘 → Tuno。Personal Agent 与 Multi-Agent 用来分工与守边界，不是堆模型数量。</p>
+                  <p class="en-anchor">EEG senses; the agent is the product. Human keeps the last word.</p>
+                  <p><span class="ev ev-known">已知</span> 本页主体是交互 + 部分工程原型。调节与福祉支持 · 不诊疗 · 原始脑电不进外部 LLM。</p>
+                  <div class="evidence-grid">
+                    <figure>
+                      <img src="../media/attunia/appendix/eeg-session-live.png" alt="训练页实时脑电三通道。" data-lb class="phone">
+                      <figcaption>Session 实机界面：唤醒 / 专注 / 平静可读可控。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/agent-consult.png" alt="多专家会诊界面。" data-lb class="phone">
+                      <figcaption>会诊路径：Tuno 派工，专家只拼疗法目录。</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </details>
+
+              <details class="fold" id="mindcalm">
+                <summary>03 Forward · MindCalm — 研究协作提案，不是失败升级</summary>
+                <div class="fold-body">
+                  <p><span class="ev ev-public">公开叙事</span> MindCalm 由后续脑科学 / 产品化合作机会触发（含 HKU 方向协作语境），探索把感知与主动干预放进可穿戴提案。它不是 Attunia 用户测试“失败后”的自然 V2。</p>
+                  <p><span class="ev ev-known">已知</span> 目前是产品概念与投资提案阶段：发带渲染、软件结构设想、硬件闭环图。未进入制造或正式部署；主动刺激需要单独的安全与有效性研究。</p>
+                  <p class="en-anchor">Future exploration: from sensing &amp; guidance toward proposed intervention hardware.</p>
+                  <div class="evidence-grid">
+                    <figure>
+                      <img src="../media/attunia/appendix/mindcalm-p1-states.png" alt="MindCalm 六屏状态康复概念界面。" data-lb>
+                      <figcaption><span class="ev ev-known">已知</span> 概念界面（作者手搓主路径）。图中分数不是临床测量值。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/mindcalm-p2-human-loop.png" alt="MindCalm Human-in-the-loop 闭环。" data-lb>
+                      <figcaption><span class="ev ev-public">公开叙事</span> AI 辅助示意闭环；安全与效能未被此图验证。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/mindcalm-p2a-hardware-loop.png" alt="MindCalm 硬件内部协同架构图。" data-lb>
+                      <figcaption><span class="ev ev-next">未来验证</span> 架构设想（nRF / STM32 / EEG·EDA·HRV）。不等于已实现硬件。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/mindcalm/pitch-p01.jpg" alt="MindCalm 发带概念渲染。" data-lb>
+                      <figcaption>Pitch 渲染，不是样机。</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </details>
+
+              <details class="fold">
+                <summary>04 证据加页 · 评测集</summary>
+                <div class="fold-body">
+                  <p><span class="ev ev-known">已知</span> 仓库内有可跑的评测材料：`eval_No.1`（状态 / 对话 / 对抗 / 时序）与 `eval_No.2`（增加 10 分钟工作窗 `detectWorkNeed`）。`CURRENT.json` 指向现行集；测的是生产路径（`assessState` / SingleAgent / 危机拦截等），不是另写一套演示规则。</p>
+                  <p class="en-anchor">Eval proves engineering paths &amp; guardrails — not a generalizable emotion-diagnosis model.</p>
+                  <img class="evidence" src="../media/attunia/appendix/eval-sets-card.png" alt="评测集构成一览：states / dialog / adversarial / timeseries。" data-lb>
+                  <p class="cap">240 状态样本 · 30 对话 · 20 对抗 · 42 时序；规则基线与标注一致。真实 EEG 仅作统计特征来源。黑客松日期与团队分工 <span class="ev ev-gap">待补</span>。</p>
+                </div>
+              </details>
+
+              <details class="fold">
+                <summary>05 证据加页 · AGENT 框架呈现</summary>
+                <div class="fold-body">
+                  <p><span class="ev ev-retro">复盘判断</span> 价值不在“有多少 Agent”，而在职责分离、目录边界与用户最终决定权。Tuno 判定顺序 → 专家只从已有疗法目录拼模块 → 用户可确认 / 拒绝 / 暂停。</p>
+                  <p><span class="ev ev-known">已知</span> 现行禁止：即兴新练习、生图、作曲、专家多轮互改；原始脑电与可识别健康信息不进外部生成 API。</p>
+                  <div class="evidence-grid">
+                    <figure>
+                      <img src="../media/attunia/appendix/agent-framework-card.png" alt="Agent 框架边界卡片。" data-lb>
+                      <figcaption>Multi-Agent 边界摘要（来自 agent-lab 文档）。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/agent-tuno-chat.png" alt="Tuno 对话界面。" data-lb class="phone">
+                      <figcaption>单 Agent 对话路径：建议可理解、可跳过。</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </details>
+
+              <details class="fold">
+                <summary>06 证据加页 · 脑电采集后台数据显示</summary>
+                <div class="fold-body">
+                  <p><span class="ev ev-known">已知</span> 原型把 BrainLink 等设备线索呈现为可读的三通道（唤醒 / 专注 / 平静），并区分真机与演示信号。工作室侧栏可调模拟脑电；真机时滑条锁定。反馈分层：信号是否可用 → 有限提示 → 用户自评 → 建议 → 选择。</p>
+                  <p class="en-anchor">Signal ≠ Emotion ≠ User Need ≠ Permission to Act ≠ Proven Benefit.</p>
+                  <div class="evidence-grid">
+                    <figure>
+                      <img src="../media/attunia/appendix/eeg-session-live.png" alt="Session 页脑电读数与训练画面。" data-lb class="phone">
+                      <figcaption>训练中的实时读数（可开关）；字幕与脑电可独立关闭。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/eeg-home-afterwork.png" alt="下班场景脑电语境下的首页提案视觉。" data-lb>
+                      <figcaption>Pitch / 场景语境图：状态线索服务短时练习，不包装成情绪真相。</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </details>
+
+              <details class="fold">
+                <summary>07 Market caveat · 15 人问卷（MindCalm 阶段）</summary>
+                <div class="fold-body">
+                  <p><span class="ev ev-known">已知</span> 15 份有效答卷，12 人 26–35 岁。11 人用刷手机缓解。9 人说近三个月常感到压力。问卷写明头戴和微电流之后，12 人只接受私密场景。9 人把「觉得没用」当成最大的阻力。</p>
+                  <p><span class="ev ev-gap">待补</span> Pitch 另引过 60 多份问卷。两份是否同一批人尚未核对，故不合并，也不倒回去当成 Attunia 开题时的研究。</p>
+                  <img class="evidence" src="../media/attunia/survey/default-p01.jpg" alt="15 人默认报告。" data-lb>
+                </div>
+              </details>
             </div>
-          </details>
-          <details class="fold" id="mindcalm">
-            <summary>03 Forward · MindCalm（概念-only，非样机）</summary>
-            <div class="fold-body">
-              <p>Forward 版本说明：从「你可以选择一段练习」走到微电流或温热，是另一段合作里的产品概念与投资提案，不是 Attunia 被用户数据证明后的自然升级。发带是 Pitch 渲染，没有进入制造；主动刺激要单独的安全与有效性研究。</p>
-              <div class="cs-grid">
-                <figure>
-                  <img src="../media/attunia/mindcalm/pitch-p01.jpg" alt="MindCalm 发带概念。">
-                  <figcaption><span class="ev ev-known">已知</span> 概念渲染，不是样机。</figcaption>
-                </figure>
-                <figure>
-                  <img src="../media/attunia/mindcalm/pitch-p18.jpg" alt="六屏概念界面。">
-                  <figcaption><span class="ev ev-public">公开叙事</span> 概念界面。数字不是测量值。</figcaption>
-                </figure>
-              </div>
-            </div>
-          </details>
-          <details class="fold">
-            <summary>04 Market · 15 人问卷 caveat（MindCalm 阶段）</summary>
-            <div class="fold-body">
-              <p><span class="ev ev-known">已知</span> 15 份有效答卷，12 人 26–35 岁。11 人用刷手机缓解。9 人说近三个月常感到压力。问卷写明头戴和微电流之后，12 人只接受私密场景。9 人把「觉得没用」当成最大的阻力。</p>
-              <p><span class="ev ev-gap">待补</span> Pitch 另引过 60 多份问卷。两份是否同一批人尚未核对，故不合并，也不倒回去当成 Attunia 开题时的研究。</p>
-              <img src="../media/attunia/survey/default-p01.jpg" alt="15 人默认报告。">
-            </div>
-          </details>
-          <details class="fold">
-            <summary>05 信号诚实 · 不把 EEG 包装成情绪真相</summary>
-            <div class="fold-body">
-              <p>体验拆成五层，不准跳层：Signal → Estimate → Self-report → Suggestion → Choice。约束句：Signal ≠ Emotion ≠ User Need ≠ Permission to Act ≠ Proven Benefit。</p>
-            </div>
-          </details>
+
+            <p class="cs-close">I design interfaces that respect uncertainty — so that technology can offer help without taking away human agency.</p>
+          </div>
         </div>
-        <p class="cs-close">I design interfaces that respect uncertainty — so that technology can offer help without taking away human agency.</p>
       </section>
 
-      <p class="next">
+<p class="next">
         <a href="anxious.html">上一件 · Anxious Kit</a>
         <a href="laborlink.html">下一件 · LaborLink</a>
       </p>
@@ -1291,6 +1522,36 @@
           show(t.getAttribute("data-panel"));
         });
       });
+    })();
+  </script>
+
+
+  <script>
+    (function () {
+      var sec = document.getElementById("archive");
+      if (!sec) return;
+      var btn = document.getElementById("archive-toggle");
+      if (!btn) return;
+      function setOpen(open) {
+        sec.classList.toggle("is-open", open);
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+      btn.addEventListener("click", function () {
+        setOpen(!sec.classList.contains("is-open"));
+      });
+      // Deep-link: #mindcalm or #archive should open the shell
+      function maybeOpenFromHash() {
+        var h = (location.hash || "").toLowerCase();
+        if (h === "#archive" || h === "#mindcalm") {
+          setOpen(true);
+          if (h === "#mindcalm") {
+            var d = document.getElementById("mindcalm");
+            if (d && d.tagName === "DETAILS") d.open = true;
+          }
+        }
+      }
+      maybeOpenFromHash();
+      window.addEventListener("hashchange", maybeOpenFromHash);
     })();
   </script>
 
