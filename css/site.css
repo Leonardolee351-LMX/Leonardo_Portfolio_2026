@@ -1445,3 +1445,22 @@ body.case-live .cs-note { color: #b9a89a; border-color: #5a3a48; }
   .compare, .live-grid, .live-grid.two { grid-template-columns: 1fr; }
   .compare img, .live-grid img, .live-grid.two img { height: 320px; }
 }
+
+
+/* Leonardo brand mark from AIUX Portfolio icon */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-mark {
+  height: 18px;
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
+}
+.brand-mark.square {
+  height: 22px;
+  width: 22px;
+  object-fit: contain;
+}

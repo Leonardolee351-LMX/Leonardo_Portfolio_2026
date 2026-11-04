@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attunia — Leonardo Li</title>
+  <link rel="icon" type="image/png" href="../media/brand/leonardo-icon.png">
+  <link rel="stylesheet" href="../css/site.css?v=cs5">
+</head>
+<body class="case-soft">
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="../index.html"><img class="brand-mark" src="../media/brand/leonardo-icon.png" alt="Leonardo"> Leonardo Li</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#showcase">Showcase</a>
+        <a href="../practice.html">Files</a>
+        <a href="../ledger.html#attunia">核对</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </header>
+
+    <nav class="cs-index" aria-label="本页索引">
+      <a href="#cover">Cover</a>
+      <a href="#ninety">90s</a>
+      <a href="#j1">判断 1 信号</a>
+      <a href="#j2">判断 2 Agent</a>
+      <a href="#j3">判断 3 刺激</a>
+      <a href="#archive">附录 15 模块</a>
+    </nav>
+
+    <details class="fold" open>
+      <summary>核对文件 · 这一页只放了压缩后的证据。系列里其余材料在这里。</summary>
+      <div class="fold-body">
+        <p><a href="../ledger.html#attunia">打开 Attunia / AnxiousKit / MindCalm 资产清单</a>。正文用了封面、六场景、Session、Tuno、合规、校准、会诊，以及 Pitch 里的发带和六屏。</p>
+        <p>还没有：60–90 秒录屏、AnxiousKit 的年份和课程、黑客松日期和分工、15 人问卷和 60+ 是否同一批、整份 Pitch 原件。本机完整原型不在这个网站里。</p>
+      </div>
+    </details>
+
+    <article class="cs-hero" id="cover">
+      <p class="kicker">Attunia · 交互与部分工程原型</p>
+      <h1>Attunia.</h1>
+      <h2>Designing <em>human-controlled</em> guidance from imperfect signals.</h2>
+      <p class="lede">人已经离开工位，注意力还停在上一件事里。我想做的不是一套读懂情绪的设备，而是一次可以自己开始、也可以随时停掉的几分钟。</p>
+      <p>这条线有三个阶段，完成度不一样，我不会把它们说成同一个产品的升级。AnxiousKit 是我最早把这个问题放进空间和物件里的概念。Attunia 是现在能走完的交互原型，也是这件案例的主体。MindCalm 是后来的科研合作提案，发带还停在概念渲染，没有进入制造。</p>
+      <p class="cs-label">AnxiousKit = 问题起源。Attunia = 主案例。MindCalm = 未来提案。不是已经验证的 V1 / V2 / V3。</p>
+      <figure class="cs-photo night">
+        <img src="../media/attunia/pitch-cover.jpg" alt="Attunia：调律而非诊疗，End session 始终可见。">
+        <figcaption><span class="ev ev-public">可用于公开叙事</span> 封面按一件可以拿在手里的产品来拍。屏幕上的读数是界面，不是临床结果。</figcaption>
+      </figure>
+    </article>
+
+    <div class="case-body">
+      <section class="cs-view" id="ninety">
+        <p class="cs-num">第一分钟 · 先听懂它是什么</p>
+        <h3>产品只问一件事：你现在要不要停几分钟。</h3>
+        <p>Attunia 是面向工作与生活切换的 Soft Healthcare 交互原型。它把 BrainLink Lite 能给出的有限状态线索，和一段短练习、以及 Tuno 从固定目录里挑出的建议放在一起。它不是诊断，不是全天陪着你的治疗，也不是一个什么都能聊的机器人。</p>
+        <p>六种节点是我用来组织练习的生活时刻：开工前奏、会后留白、午憩、超载减负、摸鱼回笼、下工仪式。它们是任务分类。脑电没有、也不该被说成能认出六种疾病。</p>
+        <p>一个人第一次用，我会让他按这个顺序走完，中间任何一步都能离开：先看说明，连接头环或改用演示信号，做一次校准，自己选一个场景，进入短时 Session，暂停、退出或结束，看一小段复盘，如果还想继续，再问 Tuno。不戴设备也可以用演示信号把这条路走完。目录里现在有 17 个练习，Tuno 只能从这里面挑，不能现编一套疗法。</p>
+        <div class="cs-phones three">
+          <figure>
+            <img src="../media/attunia/05-explore.png" alt="Explore 六场景。">
+            <figcaption><span class="ev ev-known">已知</span> 入口是人自己点进去。场景在目录里，不由读数自动打开。</figcaption>
+          </figure>
+          <figure>
+            <img src="../media/attunia/06-session.png" alt="开工前奏 Session。">
+            <figcaption><span class="ev ev-known">已知</span> 练习有时长，也有停止。底部的加速只属于演示。</figcaption>
+          </figure>
+          <figure>
+            <img src="../media/attunia/13-tuno.png" alt="Tuno 有限建议。">
+            <figcaption><span class="ev ev-known">已知</span> 用户的原话在前。建议来自已有目录。</figcaption>
+          </figure>
+        </div>
+        <p class="cs-note">这一分钟只要记住三句：谁在下班后的空档里用、这条路能不能自己走完、它不是医疗器械。60–90 秒的完整录屏还没补上。往下三节是我做这件产品时真正卡住、并且已经写进界面的判断。</p>
+      </section>
+
+      <section class="cs-view" id="j1">
+        <p class="cs-num">判断 01 · 信号</p>
+        <h3>没有把 EEG 读数包装成情绪真相。</h3>
+        <p>硬件一不可靠，后面的每一句「我了解你」都会变成伤害。所以我把体验拆成五层，不准跳层：先是有没有可用信号，然后才是一个有限的估计，然后是用户自己怎么说，然后才是一条建议，最后是人决定做不做。Signal、Estimate、Self-report、Suggestion、Choice，不能写成同一个数字。</p>
+        <p>因此界面上必须分得开三件事：真的连着头环、正在用演示信号、接触不好或还在校准。准备阶段我只要求人完成一个小动作，不在这里堆生理名词。我也不写「焦虑值 72，所以系统知道你难受」。更接近我想要的句子是：现在的线索有限；如果你觉得紧，可以选一段短练习；你也可以跳过。</p>
+        <p>现有评测是规则和窗口，不是一个可以换人、换天还能站住的模型。Session 页上仍能看见唤醒、专注、平静这些词。那是原型当时的表达，我把它留在这里，并标成复盘：它还不是被验证过的情绪识别。</p>
+        <div class="cs-phones three">
+          <figure>
+            <img src="../media/attunia/01-compliance.png" alt="非医疗说明。">
+            <figcaption><span class="ev ev-known">已知</span> 第一次打开就说明用途。原始脑电按仓库约定不送去外部模型。</figcaption>
+          </figure>
+          <figure>
+            <img src="../media/attunia/02-know-you.png" alt="校准。">
+            <figcaption><span class="ev ev-known">已知</span> 没有头环时，演示信号仍能把路径走完。</figcaption>
+          </figure>
+          <figure>
+            <img src="../media/attunia/06-session.png" alt="Session 数字。">
+            <figcaption><span class="ev ev-retro">复盘判断</span> 页上的唤醒 / 专注 / 平静是原型文案，不是已验证的识别结果。</figcaption>
+          </figure>
+        </div>
+        <p class="cs-note">我用来约束自己的一句是：Signal ≠ Emotion ≠ User Need ≠ Permission to Act ≠ Proven Benefit。</p>
+      </section>
+
+      <section class="cs-view" id="j2">
+        <p class="cs-num">判断 02 · Agent</p>
+        <h3>Agent 提供有边界的引导，不替用户诊断或发明疗法。</h3>
+        <p>人在这个时刻需要知道的，不是后台有几个模型在讨论，而是：要不要开始、大概多久、中途能不能停、结束之后发生什么。所以 Tuno 是用户面对的那一个角色。它看当前任务和有限的历史，从已经写好的练习里挑候选，把目的、步骤、可以替换的选项和退出放在前面，然后等你确认。</p>
+        <p>多 Agent 我做过。它有理由存在的时候，是内容分工：不同角色只从自己负责的目录里取，不新编一套可执行的做法。拒绝、跳过、换一个，都是正常结局，不是系统失败。仓库里 eval_No.1 覆盖危机词，eval_No.2 是一个十分钟的工作态窗口。这些证明边界被写进过规则。它们不证明多个 Agent 比一个 Agent 更好，这个比较我没有做过。</p>
+        <div class="cs-grid">
+          <figure>
+            <img src="../media/attunia/14-consult.png" alt="Tuno & Friends，只拼目录。">
+            <figcaption><span class="ev ev-known">已知</span> Friends 按分工出现，拼的仍是现成目录。</figcaption>
+          </figure>
+          <figure>
+            <img src="../media/attunia/13-tuno.png" alt="有限建议。">
+            <figcaption><span class="ev ev-public">可用于公开叙事</span> 人看见的是建议和下一步，不是模型内部的推理。</figcaption>
+          </figure>
+        </div>
+        <p class="links">
+          <a href="https://github.com/Leonardolee351-LMX/Attunia_Brainlink-meditation" target="_blank" rel="noopener">仓库</a>
+          <a href="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/" target="_blank" rel="noopener">静态页。它不等于接上了设备和后端。</a>
+        </p>
+      </section>
+
+      <section class="cs-view" id="j3">
+        <p class="cs-num">判断 03 · 刺激</p>
+        <h3>从建议走向刺激，设计责任会根本变化。</h3>
+        <p>Attunia 停在「你可以选择一段练习」。MindCalm 想往前走一步：用可穿戴把感知和建议推进到微电流或温热。这一步不是 Attunia 被用户数据证明之后的自然升级。它是另一段合作里的产品概念和投资提案，研发还没有开始。</p>
+        <p>我把两件事分开讲。左边的发带是 Pitch 里的概念渲染，用来讨论形态，不是样机，也没有被制造出来。右边的六屏是概念界面，核心画面是手工做的，上面的数字不是一次真实测量。主动刺激要单独的安全和有效性研究。在那之前，我不会用 Attunia 的原型，去为一种还没发生的刺激做担保。</p>
+        <div class="cs-grid">
+          <figure>
+            <img src="../media/attunia/mindcalm/pitch-p01.jpg" alt="MindCalm 发带概念。">
+            <figcaption><span class="ev ev-known">已知</span> Pitch 第 1 页。概念渲染，不是样机。</figcaption>
+          </figure>
+          <figure>
+            <img src="../media/attunia/mindcalm/pitch-p18.jpg" alt="六屏概念界面。">
+            <figcaption><span class="ev ev-public">可用于公开叙事</span> Pitch 第 18 页。概念界面。数字不是测量值。</figcaption>
+          </figure>
+        </div>
+        <p class="cs-close">I design interfaces that respect uncertainty — so that technology can offer help without taking away human agency.</p>
+      </section>
+
+      <section class="cs-view" id="archive">
+        <p class="cs-num">附录 · 同一套材料，留给要追问的人</p>
+        <h3>15 个模块还在。公开阅读到上面三个判断为止。</h3>
+        <p>深度没有删。竞品、15 人问卷、数据边界、原型没能证明的部分，都在下面。它们默认收着，因为第一次阅读不该先进入档案。每一段都标了证据从哪来：现在就能指给文件的、我改写过但没有夸大的、回头才形成的解释、还缺的事实、以及还没做的验证。</p>
+        <p><span class="ev ev-known">已知</span><span class="ev ev-public">公开叙事</span><span class="ev ev-retro">复盘判断 · 不等于当时做过</span><span class="ev ev-gap">待本人补充 · 不编造</span><span class="ev ev-next">未来验证 · 不是已完成</span></p>
+
+        <div class="folds">
+          <details class="fold">
+            <summary>01 Origin · 问题为什么对我重要</summary>
+            <div class="fold-body">
+              <p><span class="ev ev-public">公开叙事</span> 我不是先看见一条赛道才做它。我在意的是：人已经该休息了，却进不去休息。所以入口要低，离开要随时可以。</p>
+              <img src="../media/anxious/P1.png" alt="AnxiousKit 概念展板。">
+              <p><span class="ev ev-gap">待补</span> 年份、课程、当时有没有访谈。具体的个人疾病经历不放在公开页。</p>
+            </div>
+          </details>
+          <details class="fold">
+            <summary>02 Evolution · 延续的是问题，不是一条已被验证的产品线</summary>
+            <div class="fold-body">
+              <p>AnxiousKit 把问题放进概念。Attunia 把它做成可以演示的流程。MindCalm 是之后的 Future Exploration。黑客松日期和团队分工 <span class="ev ev-gap">待补</span>。三者的完成度不同，不能排成 V1、V2、V3。</p>
+            </div>
+          </details>
+          <details class="fold">
+            <summary>03 Market · 15 人问卷属于 MindCalm 阶段</summary>
+            <div class="fold-body">
+              <p><span class="ev ev-known">已知</span> 15 份有效答卷，12 人 26–35 岁。11 人用刷手机缓解。9 人说近三个月常感到压力。问卷写明头戴和微电流之后，12 人只接受私密场景。9 人把「觉得没用」当成最大的阻力。</p>
+              <p><span class="ev ev-gap">待补</span> Pitch 另引过 60 多份问卷。两份是否同一批人，我还没核对，所以不合并，也不倒回去当成 Attunia 开题时的研究。</p>
+              <img src="../media/attunia/survey/default-p01.jpg" alt="15 人默认报告。">
+            </div>
+          </details>
+          <details class="fold">
+            <summary>04 Landscape · 2026 年补做的取舍，不是当年的开题文献</summary>
+            <div class="fold-body">
+              <p><span class="ev ev-retro">复盘判断</span> Retrospective competitive analysis, 2026。我按任务把它们分成四层：内容冥想、Muse 这类生物反馈、Apollo 这类场景化可穿戴、Flow 这类医疗刺激。目的是看 Attunia 该停在哪一层，不是为了证明市场是空的。</p>
+            </div>
+          </details>
+          <details class="fold">
+            <summary>05–08 产品定义与三段交互</summary>
+            <div class="fold-body">
+              <p>定义和前两段交互已经写在上面的 90 秒和判断 1 里。这里只重复我不承诺的部分：自动诊断、持续监控、把原始脑电交给外部模型、无限生成疗法、临床疗效。</p>
+            </div>
+          </details>
+          <details class="fold">
+            <summary>09–11 Agent、数据边界、交付分层</summary>
+            <div class="fold-body">
+              <p>判断 2 是给人看的那一层。系统上我把原始脑电、状态摘要、用户自己的选择、训练记录分成不同的数据。体验、系统、评测是三种证据，不能互相代替。公开静态页不能等同于头环已经连上。</p>
+            </div>
+          </details>
+          <details class="fold">
+            <summary>12–15 原型边界、MindCalm、下一步</summary>
+            <div class="fold-body">
+              <p>判断 3 是这条线的尽头。原型能说明人怎么走完一次，不能说明长期有用、识别准确、练习有效。P0 的样本量是提案。主动刺激必须先有独立的安全与有效性研究。</p>
+              <img src="../media/attunia/mindcalm/pitch-p16.jpg" alt="闭环概念图。">
+              <p><span class="ev ev-next">未来验证</span> 这张闭环是设想。整机没有验证。合作背景也不等于这款发带已经有效。</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <p class="next">
+        <a href="laborlink.html">上一件 · LaborLink</a>
+        <a href="teem.html">下一件 · TEEM</a>
+      </p>
+    </div>
+  </div>
+  <script src="../js/case-index.js"></script>
+</body>
+</html>
