@@ -132,6 +132,148 @@
       color: #6a6d6a;
     }
 
+    /* Cover meta: title left / honesty+bridge right */
+    body.case-soft .cover-meta {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.85fr);
+      gap: 20px 28px;
+      align-items: start;
+      margin: 0 0 18px;
+    }
+    body.case-soft .cover-meta-left .huge {
+      margin-bottom: 12px;
+    }
+    body.case-soft .cover-meta-left .pitch-lead {
+      margin-bottom: 8px;
+    }
+    body.case-soft .cover-meta-left .pitch-en {
+      margin-bottom: 0;
+    }
+    body.case-soft .cover-meta-right {
+      background: #16191d;
+      border: 1px solid #2f3338;
+      border-radius: 14px;
+      padding: 16px 18px 14px;
+      box-shadow: 0 12px 36px rgba(0,0,0,.28);
+    }
+    body.case-soft .cover-meta-right .cs-label {
+      margin: 0 0 12px;
+      line-height: 1.45;
+      color: #c9cbc8;
+    }
+    body.case-soft .cover-meta-right .version-bridge {
+      margin: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    body.case-soft .cover-meta-right .version-bridge .bridge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      align-items: center;
+    }
+
+    /* Cover hero = interactive Pitch deck (not static banner) */
+    body.case-soft .cover-pitch-demo {
+      margin: 4px 0 0;
+    }
+    body.case-soft .cover-pitch-demo .embed-frame {
+      margin-top: 0;
+      border-radius: 16px;
+      border: 1px solid #2a2d32;
+      box-shadow: 0 22px 60px rgba(0,0,0,.5);
+      min-height: 62vh;
+    }
+    body.case-soft .cover-pitch-demo .embed-frame iframe {
+      width: 100%;
+      height: max(62vh, 560px);
+      min-height: 560px;
+      border: 0;
+      display: block;
+      background: #0a0a0b;
+    }
+    body.case-soft .cover-pitch-demo .demo-cap {
+      margin: 10px 0 0;
+      color: #8d8f8c;
+      font-size: 13px;
+      max-width: 68ch;
+    }
+
+    /* Intro: pain copy + WLB vacuum pitch art */
+    body.case-soft .pain-stage {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.95fr) minmax(280px, 1.15fr);
+      gap: 22px 26px;
+      align-items: start;
+      margin: 8px 0 18px;
+    }
+    body.case-soft .pain-stage .pain-intro {
+      margin: 0;
+      max-width: none;
+    }
+    body.case-soft .pain-stage .pitch-tri {
+      margin: 0;
+    }
+    body.case-soft .pain-stage .pain-note {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: #8d8f8c;
+      font-size: 13px;
+    }
+
+    /* P2 dual tabs: 用户体验心流 | 实际测试+用户反馈 */
+    body.case-soft .exp-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 16px;
+    }
+    body.case-soft .exp-tab {
+      appearance: none;
+      border: 1px solid #2f3338;
+      background: #16191d;
+      color: #b7b9b8;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: background .15s ease, border-color .15s ease, color .15s ease;
+    }
+    body.case-soft .exp-tab:hover {
+      color: #ece8e0;
+      border-color: #3d434a;
+    }
+    body.case-soft .exp-tab.is-on {
+      color: #101214;
+      background: #d3fb71;
+      border-color: #d3fb71;
+    }
+    body.case-soft .exp-panel[hidden] {
+      display: none !important;
+    }
+    body.case-soft .exp-panel {
+      animation: expIn 220ms ease;
+    }
+    @keyframes expIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 900px) {
+      body.case-soft .cover-meta,
+      body.case-soft .pain-stage {
+        grid-template-columns: 1fr;
+      }
+      body.case-soft .cover-pitch-demo .embed-frame iframe {
+        height: min(70vh, 640px);
+        min-height: 420px;
+      }
+    }
+
+
     body.case-soft .banner-bleed {
       margin: 8px 0 0;
     }
@@ -619,30 +761,41 @@
       <a href="#cover">Cover</a>
       <a href="#intro">介绍</a>
       <a href="#pitch-story">Pitch</a>
-      <a href="#showcase">USER SHOWCASE</a>
+      <a href="#experience">体验/测试</a>
       <a href="#whyus">质疑</a>
       <a href="#links">链接</a>
       <a href="#archive">附录</a>
     </nav>
 
-    <!-- COVER = Pitch slide 1 -->
+    <!-- COVER: title left · honesty/bridge right · interactive Pitch deck below -->
     <article class="cs-hero cover-pitch" id="cover">
-      <p class="kicker">VITAL · Soft Healthcare</p>
-      <p class="huge">Attunia</p>
-      <p class="pitch-lead">帮助用户克服工作脑雾与 WLB 切换中的大脑状态真空期——心理调适 Agent。</p>
-      <p class="pitch-en">Tune out work. Tune in life.</p>
-      <p class="cs-label">honesty Soft Healthcare / 非医疗 · 交互 + 部分工程原型</p>
-      <div class="version-bridge" aria-label="版本桥">
-        <a href="anxious.html">Previous · Anxious Kit</a>
-        <span>·</span>
-        <span>Attunia · 本页</span>
-        <span>·</span>
-        <a href="#mindcalm">Forward · MindCalm</a>
+      <div class="cover-meta">
+        <div class="cover-meta-left">
+          <p class="kicker">VITAL · Soft Healthcare</p>
+          <p class="huge">Attunia</p>
+          <p class="pitch-lead">帮助用户克服工作脑雾与 WLB 切换中的大脑状态真空期——心理调适 Agent。</p>
+          <p class="pitch-en">Tune out work. Tune in life.</p>
+        </div>
+        <aside class="cover-meta-right" aria-label="诚实口径与版本桥">
+          <p class="cs-label">honesty Soft Healthcare / 非医疗 · 交互 + 部分工程原型</p>
+          <div class="version-bridge" aria-label="版本桥">
+            <div class="bridge-row">
+              <a href="anxious.html">Previous · Anxious Kit</a>
+              <span>·</span>
+              <span>Attunia · 本页</span>
+            </div>
+            <div class="bridge-row">
+              <a href="#mindcalm">Forward · MindCalm</a>
+            </div>
+          </div>
+        </aside>
       </div>
-      <figure class="banner-bleed">
-        <img src="../media/attunia/pitch-home-afterwork-eeg.png" alt="Attunia Pitch 第一页：EEG 头环肖像 + Friends + VITAL Soft Healthcare">
-        <figcaption><span class="ev ev-public">可用于公开叙事</span> Pitch 封面：Friends 帮你拿回状态；产品是调适 Agent，不是诊疗。原图亦存 <code>pitch-home-afterwork-eeg.png</code>。</figcaption>
-      </figure>
+      <div class="cover-pitch-demo">
+        <div class="embed-frame">
+          <iframe src="../attunia-pitch/index.html" title="Attunia Pitch 可翻页演示" loading="lazy"></iframe>
+        </div>
+        <p class="demo-cap"><span class="ev ev-public">可用于公开叙事</span> 封面主视觉改为可点击翻页的 Pitch 演示（同 <code>site/attunia-pitch/</code>）。原静态封面图 <code>pitch-home-afterwork-eeg.png</code> 仍在媒体库。</p>
+      </div>
     </article>
 
     <div class="case-body">
@@ -650,11 +803,28 @@
       <section class="cs-view" id="intro">
         <p class="cs-num">作品介绍</p>
         <h3>从痛点入手：状态真空期。</h3>
-        <div class="pain-intro">
-          <p class="row"><span class="tag">【场景】</span>工位 / 上下班切换——早起进不去工作、午后脑雾、下班切不进休息。</p>
-          <p class="row"><span class="tag">【用户】</span>白领，以及需要短暂逃离脑雾的人（含 ADHD 真实用户语境，不夸大疗效）。</p>
-          <p class="row"><span class="tag">【痛点】</span>大脑状态真空期——知道该休息或专注，却进不去状态。</p>
-          <p class="beat">一段及时的冥想调适，可辅助短暂逃离脑雾（Soft Healthcare · 非医疗）。</p>
+        <div class="pain-stage">
+          <div class="pain-intro">
+            <p class="row"><span class="tag">【场景】</span>工位 / 上下班切换——早起进不去工作、午后脑雾、下班切不进休息。</p>
+            <p class="row"><span class="tag">【用户】</span>白领，以及需要短暂逃离脑雾的人（含 ADHD 真实用户语境，不夸大疗效）。</p>
+            <p class="row"><span class="tag">【痛点】</span>大脑状态真空期——知道该休息或专注，却进不去状态。</p>
+            <p class="beat">一段及时的冥想调适，可辅助短暂逃离脑雾（Soft Healthcare · 非医疗）。</p>
+          </div>
+          <div class="pitch-tri" aria-label="WLB 三处真空">
+            <figure>
+              <img src="../attunia-pitch/pitch-p1-0900-notready.png" alt="09:00 启不来" data-lb>
+              <figcaption>09:00 · 启不来</figcaption>
+            </figure>
+            <figure>
+              <img src="../attunia-pitch/pitch-p1-1430-brainfog.png" alt="14:30 脑雾" data-lb>
+              <figcaption>14:30 · 脑雾</figcaption>
+            </figure>
+            <figure>
+              <img src="../attunia-pitch/pitch-p1-1900-clockout.png" alt="19:00 切不掉" data-lb>
+              <figcaption>19:00 · 切不掉</figcaption>
+            </figure>
+          </div>
+          <p class="pain-note">Pitch 痛点三帧：启不来 → 扛过头 → 切不掉。人离开了工位，状态还没有。</p>
         </div>
         <div class="meta-strip">
           <div>
@@ -774,154 +944,162 @@
         </div>
       </section>
 
-      <!-- USER SHOWCASE (was P6 prototype + P7 feedback) -->
-      <section class="cs-view" id="showcase"><span id="prototype" hidden></span><span id="evidence" hidden></span>
-        <p class="cs-num">USER SHOWCASE</p>
-        <h3>现场 DEMO：ADHD 用户录屏 + 口述反馈</h3>
-        <p class="cap">同一叙事节拍：先看真实用户怎么用，再听他们说了什么。小样本 · 个案 · Soft Healthcare / 非医疗疗效宣称。</p>
+      <!-- P2: 用户体验心流 | 实际测试 + 用户反馈 (folded tabs) -->
+      <section class="cs-view" id="experience"><span id="showcase" hidden></span><span id="prototype" hidden></span><span id="evidence" hidden></span>
+        <p class="cs-num">体验 / 测试 · P2</p>
+        <h3>路径怎么走，用户怎么说。</h3>
+        <p class="cap">同一位置折叠两块：点左侧看产品体验心流；点右侧看现场测试与反馈。默认一次只展开一块。</p>
 
-        <div class="showcase-grid">
-          <div class="evidence-video">
-            <video controls preload="metadata" src="../media/attunia/videos/3333ADHD-user.mp4">
-              你的浏览器不支持 video 标签。
-            </video>
-            <p class="cs-note">ADHD User · 现场产品 DEMO 会话中的屏幕录制。</p>
-          </div>
-          <div class="showcase-cards">
-            <article class="showcase-card">
-              <div class="tag">Who</div>
-              <h4>ADHD User · 现场 DEMO</h4>
-              <p>真实用户在现场产品演示中的屏幕录制，不是棚拍广告片。</p>
-            </article>
-            <article class="showcase-card">
-              <div class="tag">Focus</div>
-              <h4>专注可见变化</h4>
-              <p>可作为「产品有助于改善专注」的个案旁证——非疗效宣称，仅描述单次可见变化。</p>
-            </article>
-            <article class="showcase-card">
-              <div class="tag">Self-awareness</div>
-              <h4>自我觉察被点亮</h4>
-              <p>用户意识到脑雾 / 走神时刻会出现；Agent 建议贴着实时状态，沉浸感完整。</p>
-            </article>
-          </div>
+        <div class="exp-tabs" role="tablist" aria-label="体验与测试">
+          <button type="button" class="exp-tab is-on" role="tab" id="tab-journey" aria-selected="true" aria-controls="panel-journey" data-panel="journey">用户体验心流</button>
+          <button type="button" class="exp-tab" role="tab" id="tab-test" aria-selected="false" aria-controls="panel-test" data-panel="test">实际测试 + 用户反馈</button>
         </div>
 
-        <div class="showcase-feedback">
-          <p class="cs-num">他们说什么</p>
-          <ul class="quote-list">
-            <li>「听完音乐后，确实看见自己变得专注了。」</li>
-            <li>「才真正意识到自己的脑雾 / 走神状态时刻会出现。」</li>
-            <li>「Agent 真的在基于自己的实况去给建议反馈。」</li>
-            <li>「产品的体验和沉浸感很完整。」</li>
-            <li class="soft">下一版愿望：希望更加 Customize · 想看到更细的大脑数据分析</li>
-          </ul>
-          <p class="honesty-strip">ADHD 试戴个案演示口径：专注 23→80 等仅作单次可见变化描述。小样本 · 非疗效宣称 · Soft Healthcare。</p>
-        </div>
-
-        <div class="folds" style="margin-top:18px;">
-          <details class="fold">
-            <summary>路径画廊（备用）：从戴上到练完</summary>
-            <div class="fold-body">
-              <div class="journey-rail" aria-label="路径总览">
-                <strong>开屏</strong><span class="sep">→</span>
-                <strong>说明书 / 合规</strong><span class="sep">→</span>
-                <strong>校准</strong><span class="sep">→</span>
-                <strong>首页</strong><span class="sep">→</span>
-                <strong>六景</strong><span class="sep">→</span>
-                <strong>Session</strong><span class="sep">→</span>
-                <strong>复盘</strong><span class="sep">→</span>
-                <strong>Tuno</strong>
+        <div class="exp-panel" id="panel-journey" role="tabpanel" aria-labelledby="tab-journey">
+          <div class="journey-rail" aria-label="路径总览">
+            <strong>开屏</strong><span class="sep">→</span>
+            <strong>说明书 / 合规</strong><span class="sep">→</span>
+            <strong>校准</strong><span class="sep">→</span>
+            <strong>首页</strong><span class="sep">→</span>
+            <strong>六景</strong><span class="sep">→</span>
+            <strong>Session</strong><span class="sep">→</span>
+            <strong>复盘</strong><span class="sep">→</span>
+            <strong>Tuno</strong>
+          </div>
+          <div class="folds">
+            <details class="fold">
+              <summary>画廊 · 入门三屏（开屏 / 说明书 / 合规 / 校准）</summary>
+              <div class="fold-body">
+                <div class="cs-phones four">
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/15-splash.jpg" alt="开屏" data-lb>
+                    <figcaption>开屏</figcaption>
+                  </figure>
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/03-manual.png" alt="说明书" data-lb>
+                    <figcaption>说明书</figcaption>
+                  </figure>
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/01-compliance-popup.png" alt="合规" data-lb>
+                    <figcaption>合规 · 非医疗</figcaption>
+                  </figure>
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/02-know-you.png" alt="校准" data-lb>
+                    <figcaption>校准 / 认识你</figcaption>
+                  </figure>
+                </div>
               </div>
-              <details class="fold">
-                <summary>画廊 · 入门三屏（开屏 / 说明书 / 合规 / 校准）</summary>
-                <div class="fold-body">
-                  <div class="cs-phones four">
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/15-splash.jpg" alt="开屏" data-lb>
-                      <figcaption>开屏</figcaption>
-                    </figure>
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/03-manual.png" alt="说明书" data-lb>
-                      <figcaption>说明书</figcaption>
-                    </figure>
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/01-compliance-popup.png" alt="合规" data-lb>
-                      <figcaption>合规 · 非医疗</figcaption>
-                    </figure>
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/02-know-you.png" alt="校准" data-lb>
-                      <figcaption>校准 / 认识你</figcaption>
-                    </figure>
-                  </div>
+            </details>
+            <details class="fold">
+              <summary>画廊 · 首页与探索</summary>
+              <div class="fold-body">
+                <div class="cs-phones three">
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/04-home-chat.png" alt="首页对话" data-lb>
+                    <figcaption>首页 · 对话入口</figcaption>
+                  </figure>
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/07-home-rec.png" alt="首页推荐" data-lb>
+                    <figcaption>首页 · 推荐卡</figcaption>
+                  </figure>
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/05-explore.png" alt="探索六景" data-lb>
+                    <figcaption>探索 · 六景</figcaption>
+                  </figure>
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/11-scene-path.png" alt="场景路径" data-lb>
+                    <figcaption>场景路径</figcaption>
+                  </figure>
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/12-duration-sheet.png" alt="选时长" data-lb>
+                    <figcaption>选时长</figcaption>
+                  </figure>
                 </div>
-              </details>
-              <details class="fold">
-                <summary>画廊 · 首页与探索</summary>
-                <div class="fold-body">
-                  <div class="cs-phones three">
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/04-home-chat.png" alt="首页对话" data-lb>
-                      <figcaption>首页 · 对话入口</figcaption>
-                    </figure>
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/07-home-rec.png" alt="首页推荐" data-lb>
-                      <figcaption>首页 · 推荐卡</figcaption>
-                    </figure>
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/05-explore.png" alt="探索六景" data-lb>
-                      <figcaption>探索 · 六景</figcaption>
-                    </figure>
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/11-scene-path.png" alt="场景路径" data-lb>
-                      <figcaption>场景路径</figcaption>
-                    </figure>
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/12-duration-sheet.png" alt="选时长" data-lb>
-                      <figcaption>选时长</figcaption>
-                    </figure>
-                  </div>
+              </div>
+            </details>
+            <details class="fold">
+              <summary>画廊 · Session 与复盘</summary>
+              <div class="fold-body">
+                <div class="cs-phones three">
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/06-session.png" alt="Session" data-lb>
+                    <figcaption>Session</figcaption>
+                  </figure>
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/08-debrief.png" alt="复盘" data-lb>
+                    <figcaption>复盘</figcaption>
+                  </figure>
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/10-debrief-actions.png" alt="复盘行动" data-lb>
+                    <figcaption>复盘 · 下一步</figcaption>
+                  </figure>
                 </div>
-              </details>
-              <details class="fold">
-                <summary>画廊 · Session 与复盘</summary>
-                <div class="fold-body">
-                  <div class="cs-phones three">
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/06-session.png" alt="Session" data-lb>
-                      <figcaption>Session</figcaption>
-                    </figure>
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/08-debrief.png" alt="复盘" data-lb>
-                      <figcaption>复盘</figcaption>
-                    </figure>
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/10-debrief-actions.png" alt="复盘行动" data-lb>
-                      <figcaption>复盘 · 下一步</figcaption>
-                    </figure>
-                  </div>
+              </div>
+            </details>
+            <details class="fold">
+              <summary>画廊 · Tuno 与会诊</summary>
+              <div class="fold-body">
+                <div class="cs-phones two">
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/13-chat-tuno.png" alt="Tuno 对话" data-lb>
+                    <figcaption>Tuno · 目录内建议</figcaption>
+                  </figure>
+                  <figure>
+                    <img class="phone" src="../media/attunia/journey/14-consult.png" alt="Friends 会诊" data-lb>
+                    <figcaption>Friends · 会诊拼目录</figcaption>
+                  </figure>
                 </div>
-              </details>
-              <details class="fold">
-                <summary>画廊 · Tuno 与会诊</summary>
-                <div class="fold-body">
-                  <div class="cs-phones two">
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/13-chat-tuno.png" alt="Tuno 对话" data-lb>
-                      <figcaption>Tuno · 目录内建议</figcaption>
-                    </figure>
-                    <figure>
-                      <img class="phone" src="../media/attunia/journey/14-consult.png" alt="Friends 会诊" data-lb>
-                      <figcaption>Friends · 会诊拼目录</figcaption>
-                    </figure>
-                  </div>
-                </div>
-              </details>
-              <p class="links" style="margin-top:12px;">
-                <a href="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/purpose" target="_blank" rel="noopener">本地体验静态页</a>
-              </p>
-              <p class="honesty-strip">静态页无法跑实机 TUNO Agent。无头环时可用演示信号把路径走完；GitHub Pages ≠ 已接头环或本地 Agent API。</p>
+              </div>
+            </details>
+          </div>
+          <p class="links" style="margin-top:12px;">
+            <a href="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/purpose" target="_blank" rel="noopener">本地体验静态页</a>
+          </p>
+          <p class="honesty-strip">路径画廊只讲产品 UX 心流（开屏→…→Tuno），不堆长文。静态页无法跑实机 TUNO Agent。</p>
+        </div>
+
+        <div class="exp-panel" id="panel-test" role="tabpanel" aria-labelledby="tab-test" hidden>
+          <p class="cs-num">实际测试 + 用户反馈</p>
+          <h3 style="font-size:clamp(22px,2.4vw,30px);margin:6px 0 8px;">现场 DEMO：ADHD 用户录屏 + 口述反馈</h3>
+          <p class="cap">同一叙事节拍：先看真实用户怎么用，再听他们说了什么。小样本 · 个案 · Soft Healthcare / 非医疗疗效宣称。</p>
+
+          <div class="showcase-grid">
+            <div class="evidence-video">
+              <video controls preload="metadata" src="../media/attunia/videos/3333ADHD-user.mp4">
+                你的浏览器不支持 video 标签。
+              </video>
+              <p class="cs-note">ADHD User · 现场产品 DEMO 会话中的屏幕录制。</p>
             </div>
-          </details>
+            <div class="showcase-cards">
+              <article class="showcase-card">
+                <div class="tag">Who</div>
+                <h4>ADHD User · 现场 DEMO</h4>
+                <p>真实用户在现场产品演示中的屏幕录制，不是棚拍广告片。</p>
+              </article>
+              <article class="showcase-card">
+                <div class="tag">Focus</div>
+                <h4>专注可见变化</h4>
+                <p>可作为「产品有助于改善专注」的个案旁证——非疗效宣称，仅描述单次可见变化。</p>
+              </article>
+              <article class="showcase-card">
+                <div class="tag">Self-awareness</div>
+                <h4>自我觉察被点亮</h4>
+                <p>用户意识到脑雾 / 走神时刻会出现；Agent 建议贴着实时状态，沉浸感完整。</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="showcase-feedback">
+            <p class="cs-num">他们说什么</p>
+            <ul class="quote-list">
+              <li>「听完音乐后，确实看见自己变得专注了。」</li>
+              <li>「才真正意识到自己的脑雾 / 走神状态时刻会出现。」</li>
+              <li>「Agent 真的在基于自己的实况去给建议反馈。」</li>
+              <li>「产品的体验和沉浸感很完整。」</li>
+              <li class="soft">下一版愿望：希望更加 Customize · 想看到更细的大脑数据分析</li>
+            </ul>
+            <p class="honesty-strip">ADHD 试戴个案演示口径：专注 23→80 等仅作单次可见变化描述。小样本 · 非疗效宣称 · Soft Healthcare。</p>
+          </div>
         </div>
       </section>
 
@@ -1103,6 +1281,36 @@
       btn.addEventListener("click", function () {
         var open = document.body.classList.toggle("case-toc-open");
         btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+  </script>
+
+
+  <script>
+    (function () {
+      var root = document.getElementById("experience");
+      if (!root) return;
+      var tabs = root.querySelectorAll(".exp-tab");
+      var panels = {
+        journey: document.getElementById("panel-journey"),
+        test: document.getElementById("panel-test")
+      };
+      function show(key) {
+        tabs.forEach(function (t) {
+          var on = t.getAttribute("data-panel") === key;
+          t.classList.toggle("is-on", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        Object.keys(panels).forEach(function (k) {
+          if (!panels[k]) return;
+          if (k === key) panels[k].removeAttribute("hidden");
+          else panels[k].setAttribute("hidden", "");
+        });
+      }
+      tabs.forEach(function (t) {
+        t.addEventListener("click", function () {
+          show(t.getAttribute("data-panel"));
+        });
       });
     })();
   </script>
