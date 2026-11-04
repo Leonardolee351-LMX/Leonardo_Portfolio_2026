@@ -3,65 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Attunia — Leonardo Li</title>
-  <link rel="stylesheet" href="../css/site.css?v=cs5">
+  <title>Attunia — VITAL Soft Healthcare · Leonardo Li</title>
+  <link rel="stylesheet" href="../css/site.css?v=cs6">
   <style>
-    /* Dark journey overrides: phones on near-black, borderless, soft shadow */
+    /* Dark case overrides: phones + pitch figures, borderless soft shadow */
     body.case-soft .cs-phones figure,
     body.case-soft .cs-grid figure,
-    body.case-soft .journey-step figure {
+    body.case-soft .pitch-figure,
+    body.case-soft .friends-strip figure {
       background: transparent;
       border: 0;
     }
     body.case-soft .cs-phones img,
-    body.case-soft .journey-step img.phone {
+    body.case-soft img.phone {
       background: #0e0e0e;
       border-radius: 18px;
       box-shadow: 0 18px 48px rgba(0,0,0,.55);
       height: auto;
-      max-height: 560px;
+      max-height: 520px;
       object-fit: contain;
       object-position: top center;
       cursor: zoom-in;
     }
     body.case-soft .cs-phones.three { grid-template-columns: repeat(3, 1fr); }
     body.case-soft .cs-phones.two { grid-template-columns: repeat(2, 1fr); max-width: 680px; }
+    body.case-soft .cs-phones.four { grid-template-columns: repeat(4, 1fr); }
     body.case-soft .cs-phones.one { grid-template-columns: 1fr; max-width: 320px; }
-    body.case-soft .journey-rail {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 14px;
-      margin: 18px 0 8px;
-      padding: 14px 16px;
-      background: #1a1d21;
-      border: 1px solid #2f3338;
-      border-radius: 12px;
-      font-size: 14px;
-      color: #d5d2c8;
-      letter-spacing: -0.01em;
-    }
-    body.case-soft .journey-rail strong { color: #ece8e0; font-weight: 650; }
-    body.case-soft .journey-rail .sep { color: #6a6d6a; }
-    body.case-soft .journey-step {
-      padding: 40px 0 12px;
-      border-top: 1px solid #2a2d32;
-      scroll-margin-top: 156px;
-    }
-    body.case-soft .journey-step .cs-num { color: #8d8f8c; }
-    body.case-soft .journey-step h3 {
-      font-size: clamp(22px, 2.6vw, 32px);
-      letter-spacing: -0.04em;
-      line-height: 1.15;
-      max-width: 28ch;
-      margin: 8px 0 10px;
-      font-weight: 600;
-    }
-    body.case-soft .journey-step .cap {
-      font-size: 15px;
-      color: #b7b9b8;
-      max-width: 62ch;
-      margin: 0 0 16px;
-    }
+
     body.case-soft .meta-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -84,20 +52,292 @@
     }
     body.case-soft .meta-strip p { margin: 0; font-size: 14px; color: #d5d2c8; max-width: none; }
     body.case-soft .meta-strip a { color: #d3fb71; border-bottom-color: rgba(211,251,113,.35); }
+
     body.case-soft .honesty-strip {
-      margin: 8px 0 28px;
+      margin: 8px 0 20px;
       padding: 12px 16px;
       border-left: 2px solid #d3fb71;
       color: #9a9c98;
       font-size: 13px;
       max-width: 72ch;
     }
-    body.case-soft .cs-photo.night img {
-      border-radius: 8px;
-      box-shadow: 0 22px 60px rgba(0,0,0,.5);
-    }
+
     body.case-soft .fold summary:hover { background: #22262b; }
-    /* Lightbox */
+
+    /* Cover: pitch slide 1 feel */
+    body.case-soft .cover-pitch {
+      padding-bottom: 8px;
+    }
+    body.case-soft .friends-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 18px;
+      margin: 8px 0 22px;
+      align-items: flex-end;
+    }
+    body.case-soft .friends-strip figure {
+      margin: 0;
+      width: 72px;
+      text-align: center;
+    }
+    body.case-soft .friends-strip img {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 10px 28px rgba(0,0,0,.45);
+      background: #141618;
+    }
+    body.case-soft .friends-strip figcaption {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #8d8f8c;
+      letter-spacing: 0.02em;
+    }
+    body.case-soft .cover-pitch .huge {
+      font-size: clamp(42px, 7vw, 72px);
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      margin: 6px 0 14px;
+      font-weight: 650;
+      color: #ece8e0;
+    }
+    body.case-soft .cover-pitch .pitch-lead {
+      font-size: clamp(16px, 2vw, 20px);
+      color: #b7b9b8;
+      max-width: 34ch;
+      line-height: 1.45;
+      margin: 0 0 10px;
+    }
+    body.case-soft .cover-pitch .pitch-en {
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      color: #8d8f8c;
+      margin: 0 0 18px;
+    }
+    body.case-soft .version-bridge {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin: 0 0 22px;
+      font-size: 13px;
+    }
+    body.case-soft .version-bridge a {
+      color: #d3fb71;
+      border-bottom: 1px solid rgba(211,251,113,.35);
+      text-decoration: none;
+    }
+    body.case-soft .version-bridge span {
+      color: #6a6d6a;
+    }
+
+    body.case-soft .banner-bleed {
+      margin: 8px 0 0;
+    }
+    body.case-soft .banner-bleed img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      box-shadow: 0 22px 60px rgba(0,0,0,.5);
+      object-fit: contain;
+      background: #0c0c0b;
+    }
+    body.case-soft .banner-bleed figcaption {
+      margin-top: 10px;
+      color: #8d8f8c;
+      font-size: 13px;
+      max-width: 68ch;
+    }
+
+    /* Pitch narrative figures */
+    body.case-soft .pitch-block {
+      padding: 36px 0 8px;
+      border-top: 1px solid #2a2d32;
+      scroll-margin-top: 156px;
+    }
+    body.case-soft .pitch-block .cs-num { color: #8d8f8c; }
+    body.case-soft .pitch-block h3 {
+      font-size: clamp(22px, 2.6vw, 32px);
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      max-width: 28ch;
+      margin: 8px 0 10px;
+      font-weight: 600;
+    }
+    body.case-soft .pitch-block .cap {
+      font-size: 15px;
+      color: #b7b9b8;
+      max-width: 62ch;
+      margin: 0 0 6px;
+    }
+    body.case-soft .pitch-block .en-anchor {
+      font-size: 13px;
+      color: #8d8f8c;
+      margin: 0 0 16px;
+      letter-spacing: 0.01em;
+    }
+    body.case-soft .pitch-figure {
+      margin: 0 0 12px;
+    }
+    body.case-soft .pitch-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 18px 48px rgba(0,0,0,.45);
+      cursor: zoom-in;
+      background: #0e0e0e;
+    }
+    body.case-soft .pitch-tri {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 0 0 8px;
+    }
+    body.case-soft .pitch-tri figure { margin: 0; }
+    body.case-soft .pitch-tri img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 14px 36px rgba(0,0,0,.4);
+      cursor: zoom-in;
+      background: #0e0e0e;
+    }
+    body.case-soft .pitch-tri figcaption {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #8d8f8c;
+    }
+
+    body.case-soft .journey-rail {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin: 14px 0 16px;
+      padding: 14px 16px;
+      background: #1a1d21;
+      border: 1px solid #2f3338;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #d5d2c8;
+      letter-spacing: -0.01em;
+    }
+    body.case-soft .journey-rail strong { color: #ece8e0; font-weight: 650; }
+    body.case-soft .journey-rail .sep { color: #6a6d6a; }
+
+    body.case-soft .embed-frame {
+      margin-top: 12px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      background: #0a0a0b;
+    }
+    body.case-soft .embed-frame iframe {
+      width: 100%;
+      height: min(78vh, 820px);
+      border: 0;
+      display: block;
+      background: #0a0a0b;
+    }
+
+    body.case-soft .quote-list {
+      margin: 12px 0 16px;
+      padding: 0;
+      list-style: none;
+      max-width: 68ch;
+    }
+    body.case-soft .quote-list li {
+      margin: 0 0 12px;
+      padding: 14px 16px;
+      background: #1a1d21;
+      border: 1px solid #2f3338;
+      border-radius: 12px;
+      color: #d5d2c8;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    body.case-soft .quote-list li.soft {
+      color: #9a9c98;
+      font-size: 14px;
+    }
+
+    body.case-soft .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+    body.case-soft .comp-grid article {
+      background: #1a1d21;
+      border: 1px solid #2f3338;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    body.case-soft .comp-grid .tag {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8d8f8c;
+      margin: 0 0 8px;
+    }
+    body.case-soft .comp-grid h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: #ece8e0;
+      font-weight: 600;
+    }
+    body.case-soft .comp-grid p {
+      margin: 0;
+      font-size: 13px;
+      color: #b7b9b8;
+      max-width: none;
+    }
+    body.case-soft .comp-grid article.us {
+      border-color: rgba(211,251,113,.35);
+    }
+
+    body.case-soft .q-pair {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 12px;
+      margin: 12px 0 8px;
+    }
+    body.case-soft .q-pair .qbox,
+    body.case-soft .q-pair .abox {
+      background: #1a1d21;
+      border: 1px solid #2f3338;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    body.case-soft .q-pair .q {
+      margin: 4px 0 0;
+      font-size: 16px;
+      color: #ece8e0;
+      font-weight: 600;
+    }
+    body.case-soft .q-pair .abox ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: #d5d2c8;
+      font-size: 14px;
+    }
+    body.case-soft .q-pair .abox li { margin-bottom: 6px; }
+
+    body.case-soft .evidence-video {
+      margin: 12px 0 8px;
+      max-width: 720px;
+    }
+    body.case-soft .evidence-video video {
+      width: 100%;
+      border-radius: 12px;
+      background: #000;
+      box-shadow: 0 18px 48px rgba(0,0,0,.45);
+      display: block;
+    }
+
+    /* Lightbox: wide for pitch art, narrow for phones */
     .lb {
       position: fixed; inset: 0; z-index: 80;
       display: none; align-items: center; justify-content: center;
@@ -106,23 +346,34 @@
     }
     .lb.is-on { display: flex; }
     .lb img {
-      max-width: min(92vw, 420px);
+      max-width: min(94vw, 1100px);
       max-height: 92vh;
-      border-radius: 20px;
+      border-radius: 14px;
       box-shadow: 0 24px 80px rgba(0,0,0,.65);
       object-fit: contain;
+    }
+    .lb img.is-phone {
+      max-width: min(92vw, 420px);
+      border-radius: 20px;
     }
     .lb button {
       position: absolute; top: 18px; right: 22px;
       background: transparent; border: 0; color: #ece8e0;
       font-size: 28px; cursor: pointer; line-height: 1;
     }
+
     @media (max-width: 860px) {
-      body.case-soft .meta-strip { grid-template-columns: 1fr; }
+      body.case-soft .meta-strip,
+      body.case-soft .pitch-tri,
+      body.case-soft .comp-grid,
+      body.case-soft .q-pair { grid-template-columns: 1fr; }
       body.case-soft .cs-phones.three,
-      body.case-soft .cs-phones.two { grid-template-columns: 1fr 1fr; }
+      body.case-soft .cs-phones.two,
+      body.case-soft .cs-phones.four { grid-template-columns: 1fr 1fr; }
       body.case-soft .cs-phones img,
-      body.case-soft .journey-step img.phone { max-height: 420px; }
+      body.case-soft img.phone { max-height: 420px; }
+      body.case-soft .friends-strip figure { width: 56px; }
+      body.case-soft .friends-strip img { width: 48px; height: 48px; }
     }
   </style>
 </head>
@@ -141,40 +392,66 @@
     <nav class="cs-index" aria-label="本页索引">
       <a href="#cover">Cover</a>
       <a href="#intro">介绍</a>
-      <a href="#path">完整路径</a>
-      <a href="#j-splash">开屏</a>
-      <a href="#j-manual">说明书</a>
-      <a href="#j-compliance">合规</a>
-      <a href="#j-calibrate">校准</a>
-      <a href="#j-home">首页</a>
-      <a href="#j-explore">探索</a>
-      <a href="#j-duration">时长</a>
-      <a href="#j-session">Session</a>
-      <a href="#j-debrief">复盘</a>
-      <a href="#j-tuno">Tuno</a>
-      <a href="#j-consult">会诊</a>
-      <a href="#pitch">Pitch</a>
+      <a href="#pitch-story">Pitch P1–5</a>
+      <a href="#prototype">原型</a>
+      <a href="#evidence">反馈</a>
+      <a href="#whyus">质疑</a>
       <a href="#links">链接</a>
       <a href="#archive">附录</a>
     </nav>
 
-    <article class="cs-hero" id="cover">
-      <p class="kicker">Attunia · Soft Healthcare · 非医疗</p>
-      <h1>Attunia.</h1>
-      <h2>Designing <em>human-controlled</em> guidance from imperfect signals.</h2>
-      <p class="lede">从戴上到练完、需要时再找 Tuno——这条用户旅程是本页的阅读顺序。人不被读数替做决定。</p>
+    <!-- COVER = Pitch slide 1 -->
+    <article class="cs-hero cover-pitch" id="cover">
+      <div class="friends-strip" aria-label="Tuno &amp; Friends">
+        <figure>
+          <img src="../attunia-pitch/brand/friends/tuno.png" alt="Tuno">
+          <figcaption>Tuno</figcaption>
+        </figure>
+        <figure>
+          <img src="../attunia-pitch/brand/friends/mira.png" alt="Mira">
+          <figcaption>Mira</figcaption>
+        </figure>
+        <figure>
+          <img src="../attunia-pitch/brand/friends/chen.png" alt="Chen">
+          <figcaption>Chen</figcaption>
+        </figure>
+        <figure>
+          <img src="../attunia-pitch/brand/friends/kai.png" alt="Kai">
+          <figcaption>Kai</figcaption>
+        </figure>
+        <figure>
+          <img src="../attunia-pitch/brand/friends/vega.png" alt="Vega">
+          <figcaption>Vega</figcaption>
+        </figure>
+        <figure>
+          <img src="../attunia-pitch/brand/friends/sona.png" alt="Sona">
+          <figcaption>Sona</figcaption>
+        </figure>
+      </div>
+      <p class="kicker">VITAL · Soft Healthcare</p>
+      <p class="huge">Attunia</p>
+      <p class="pitch-lead">帮助用户克服工作脑雾与 WLB 切换中的大脑状态真空期——心理调适 Agent。</p>
+      <p class="pitch-en">Tune out work. Tune in life.</p>
       <p class="cs-label">honesty Soft Healthcare / 非医疗 · 交互 + 部分工程原型</p>
-      <figure class="cs-photo night">
-        <img src="../media/attunia/pitch-cover.jpg" alt="Attunia：调律而非诊疗，End session 始终可见。">
-        <figcaption><span class="ev ev-public">可用于公开叙事</span> 封面按一件可以拿在手里的产品来拍。屏幕上的读数是界面，不是临床结果。</figcaption>
+      <div class="version-bridge" aria-label="版本桥">
+        <a href="anxious.html">Previous · Anxious Kit</a>
+        <span>·</span>
+        <span>Attunia · 本页</span>
+        <span>·</span>
+        <a href="#mindcalm">Forward · MindCalm</a>
+      </div>
+      <figure class="banner-bleed">
+        <img src="../attunia-pitch/brand/attunia-purpose.png" alt="Attunia Brain Attunement 开屏意象（Pitch 封面）">
+        <figcaption><span class="ev ev-public">可用于公开叙事</span> Pitch 第一页：Friends 帮你拿回状态；产品是调适 Agent，不是诊疗。</figcaption>
       </figure>
     </article>
 
     <div class="case-body">
+      <!-- INTRO -->
       <section class="cs-view" id="intro">
         <p class="cs-num">作品介绍</p>
-        <h3>下班后的过渡时刻，一段可停可退的短练习。</h3>
-        <p>Attunia 是面向下班后过渡时刻的 Soft Healthcare 交互原型：用不完美的脑电或演示信号，加上可随时暂停的短练习与目录内 Tuno 建议。人不被读数替做决定；它不是医疗诊断，也不是已验证的情绪识别。</p>
+        <h3>下班切不进休息时，一段可停可退的短练习。</h3>
+        <p>Attunia 面向下班后切不进休息的白领，用脑电（或演示信号）做传感器，用 Agent 给可替换、可退出的短练习建议——Pitch 讲清产品定位与效果假设，原型页让人走完一次体验；静态演示不能跑实机 TUNO Agent。</p>
         <div class="meta-strip">
           <div>
             <h4>Role</h4>
@@ -189,207 +466,336 @@
             <p>AnxiousKit = 起源概念<br>Attunia = 本页主体<br>MindCalm = 概念提案（非样机）</p>
           </div>
         </div>
-      </section>
 
-      <section class="cs-view" id="path">
-        <p class="cs-num">一次完整路径</p>
-        <h3>戴上 → 读懂当下 → 练 3～10 分钟 → 需要时找 Tuno</h3>
-        <p>产品只问一件事：你现在要不要停几分钟。下面按真实界面顺序展开；每一步说明它在链路里为什么存在。</p>
-        <div class="journey-rail" aria-label="路径总览">
-          <strong>开屏</strong><span class="sep">→</span>
-          <strong>说明书</strong><span class="sep">→</span>
-          <strong>合规</strong><span class="sep">→</span>
-          <strong>校准</strong><span class="sep">→</span>
-          <strong>首页</strong><span class="sep">→</span>
-          <strong>探索六景</strong><span class="sep">→</span>
-          <strong>选时长</strong><span class="sep">→</span>
-          <strong>Session</strong><span class="sep">→</span>
-          <strong>复盘</strong><span class="sep">→</span>
-          <strong>Tuno</strong><span class="sep">→</span>
-          <strong>会诊</strong>
+        <div class="folds" style="margin-top:20px;">
+          <details class="fold">
+            <summary>面试时可展开：浏览 Attunia 静态体验页</summary>
+            <div class="fold-body">
+              <p class="cs-note">静态网页无法运行实机的 TUNO Agent。下面嵌的是 GitHub Pages 上的 purpose 路径，方便面试官当场点开走一眼。</p>
+              <p class="links">
+                <a href="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/purpose" target="_blank" rel="noopener">新标签打开静态体验</a>
+              </p>
+              <div class="embed-frame">
+                <iframe src="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/purpose" title="Attunia 静态体验页" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+            </div>
+          </details>
         </div>
       </section>
 
-      <section class="journey-step" id="j-splash">
-        <p class="cs-num">01 · 开屏</p>
-        <h3>先落品牌与调性，再进设备。</h3>
-        <p class="cap">每次打开先见 Attunia 开启页：深色几何封面把「调律而非诊疗」说在前面，避免用户误以为进了医疗 App。</p>
-        <div class="cs-phones one">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/15-splash.jpg" alt="Attunia 开屏" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 开屏是旅程入口，不是功能菜单。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="journey-step" id="j-manual">
-        <p class="cs-num">02 · 说明书</p>
-        <h3>戴上 → 看见 → 练习，四页说清怎么用。</h3>
-        <p class="cap">说明书把「是什么 / 帮什么 / 怎么用 / 边界」压成可翻页的短篇，让第一次使用在进校准前就有心理模型。</p>
-        <div class="cs-phones one">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/03-manual.png" alt="产品说明书" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 边界写进说明书，不藏在设置深处。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="journey-step" id="j-compliance">
-        <p class="cs-num">03 · 合规</p>
-        <h3>第一次就说清：身心放松练习 · 非医疗。</h3>
-        <p class="cap">合规弹层出现在开屏/校准前关键路径上——用途、热线与「非诊断」必须可读，不能被 UX 对冲掉。</p>
-        <div class="cs-phones one">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/01-compliance-popup.png" alt="非医疗合规弹层" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 原始脑电按仓库约定不送外部模型。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="journey-step" id="j-calibrate">
-        <p class="cs-num">04 · 设备认识你 / 校准</p>
-        <h3>正式界面前，设备先认识你一下。</h3>
-        <p class="cap">校准只要求一个小动作，不堆生理名词；分得开「真机 / 演示信号 / 接触不好」，避免把噪声写成「我懂你」。</p>
-        <div class="cs-phones one">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/02-know-you.png" alt="设备认识你 / 校准" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 无头环时可用演示信号把路径走完。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="journey-step" id="j-home">
-        <p class="cs-num">05 · 首页 · 对话入口</p>
-        <h3>首页先问「此刻」，对话是默认入口。</h3>
-        <p class="cap">黄油条改成状态输入，默认进 Conversation；推荐卡可出现，但不替用户自动打开练习——入口仍是人点进去。</p>
-        <div class="cs-phones two">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/04-home-chat.png" alt="首页对话入口" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 说当下状态，再拿建议。</figcaption>
-          </figure>
-          <figure>
-            <img class="phone" src="../media/attunia/journey/07-home-rec.png" alt="首页推荐卡" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 推荐是线索，不是自动开训。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="journey-step" id="j-explore">
-        <p class="cs-num">06 · 探索 · 六景</p>
-        <h3>六种生活节点，自己选此刻要停哪一段。</h3>
-        <p class="cap">开工 / 会后 / 午憩 / 超载 / 摸鱼回笼 / 下工——场景是任务分类，不是六种「疾病识别」。点进场景页才看到路径与主 CTA。</p>
-        <div class="cs-phones two">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/05-explore.png" alt="探索六景" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 场景在目录里，不由读数自动打开。</figcaption>
-          </figure>
-          <figure>
-            <img class="phone" src="../media/attunia/journey/11-scene-path.png" alt="场景路径" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 超载等场景按「先落地→松身体→…」展示何时用。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="journey-step" id="j-duration">
-        <p class="cs-num">07 · 选时长</p>
-        <h3>进训前先选 3～10 分钟，把预期说死。</h3>
-        <p class="cap">快速训练用 Bottom Sheet 滑动选分钟，再进 Session——让「大概多久、中途能不能停」在开始前就可见。</p>
-        <div class="cs-phones one">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/12-duration-sheet.png" alt="时长选择 Bottom Sheet" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 时长是用户确认，不是系统强加。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="journey-step" id="j-session">
-        <p class="cs-num">08 · Session 短训</p>
-        <h3>练习有时长，也有停止。读数不是情绪真相。</h3>
-        <p class="cap">Session 页上的唤醒 / 专注 / 平静是原型当时的通道表达，<strong>不是已验证的情绪识别</strong>。底部加速仅属演示；End session 始终可离开。</p>
-        <div class="cs-phones one">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/06-session.png" alt="训练 Session" data-lb>
-            <figcaption><span class="ev ev-retro">复盘判断</span> 通道文案 ≠ 已验证情绪识别。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="journey-step" id="j-debrief">
-        <p class="cs-num">09 · 复盘</p>
-        <h3>练完先看一小段复盘，再决定要不要继续。</h3>
-        <p class="cap">结果页用可折叠的发现与行动，避免「诊断报告」感；高亮可点开，曲线与洞察默认不压迫。</p>
-        <div class="cs-phones two">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/08-debrief.png" alt="复盘" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 复盘是闭环，不是疗效证明。</figcaption>
-          </figure>
-          <figure>
-            <img class="phone" src="../media/attunia/journey/10-debrief-actions.png" alt="复盘行动" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 下一步仍由用户挑：再练、问 Tuno、或离开。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="journey-step" id="j-tuno">
-        <p class="cs-num">10 · Tuno 对话</p>
-        <h3>一个面对用户的角色：从目录里挑，等你确认。</h3>
-        <p class="cap">Tuno 看当下任务与有限历史，只从已有练习目录给建议；目的、步骤、可替换选项和退出放在前面。用户原话在前。</p>
-        <div class="cs-phones one">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/13-chat-tuno.png" alt="Tuno 对话" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 建议来自目录，不能现编疗法。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="journey-step" id="j-consult">
-        <p class="cs-num">11 · 会诊 · Tuno &amp; Friends</p>
-        <h3>多角色只拼目录，不替用户诊断。</h3>
-        <p class="cap">Friends 按环节分工出现，拼接的仍是现成疗法目录——不做即兴、不生图作曲。人看见的是建议与下一步，不是模型内部推理。</p>
-        <div class="cs-phones one">
-          <figure>
-            <img class="phone" src="../media/attunia/journey/14-consult.png" alt="Tuno & Friends 会诊" data-lb>
-            <figcaption><span class="ev ev-known">已知</span> 会诊 = 目录内组合，不是无限生成。</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="cs-view" id="pitch" open>
-        <p class="cs-num">Pitch</p>
-        <h3>VITAL Soft Healthcare — 路演页（可翻页）</h3>
-        <p class="cap">工程目录里的 HTML pitch，嵌在本页内阅读；也可单独打开全屏。</p>
+      <!-- P1–P5 Pitch story -->
+      <section class="cs-view" id="pitch-story">
+        <p class="cs-num">产品故事 · Pitch P1–5</p>
+        <h3>先把定位说清，再进原型。</h3>
+        <p>下面直接用路演图：一图一句中文 + 一句英文锚。不另写长篇判断文。</p>
         <p class="links">
           <a href="../attunia-pitch/index.html" target="_blank" rel="noopener">全屏打开 Pitch</a>
-          <a href="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/purpose" target="_blank" rel="noopener">本地体验静态页</a>
         </p>
-        <p class="cs-note">备注：Pitch 与静态体验页均无法运行实机的 TUNO Agent。</p>
-        <div class="pitch-embed" style="margin-top:1rem;border-radius:16px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.35);background:#0a0a0b;">
-          <iframe src="../attunia-pitch/index.html" title="Attunia VITAL Soft Healthcare Pitch" loading="lazy" style="width:100%;height:min(78vh,820px);border:0;display:block;background:#0a0a0b;"></iframe>
+
+        <!-- P1 Friends / opener -->
+        <div class="pitch-block" id="p1">
+          <p class="cs-num">P1 · Friends</p>
+          <h3>谁帮你拿回状态：Tuno &amp; Friends</h3>
+          <p class="cap">编排中枢 + 五位目录内专家，只拼现成练习，不即兴诊疗。</p>
+          <p class="en-anchor">Who helps reclaim state — Tuno &amp; friends.</p>
+          <div class="friends-strip" aria-label="Friends roster">
+            <figure>
+              <img src="../attunia-pitch/brand/friends/tuno.png" alt="Tuno" data-lb>
+              <figcaption>Tuno · 编排</figcaption>
+            </figure>
+            <figure>
+              <img src="../attunia-pitch/brand/friends/mira.png" alt="Mira" data-lb>
+              <figcaption>Mira</figcaption>
+            </figure>
+            <figure>
+              <img src="../attunia-pitch/brand/friends/chen.png" alt="Chen" data-lb>
+              <figcaption>Chen</figcaption>
+            </figure>
+            <figure>
+              <img src="../attunia-pitch/brand/friends/kai.png" alt="Kai" data-lb>
+              <figcaption>Kai</figcaption>
+            </figure>
+            <figure>
+              <img src="../attunia-pitch/brand/friends/vega.png" alt="Vega" data-lb>
+              <figcaption>Vega</figcaption>
+            </figure>
+            <figure>
+              <img src="../attunia-pitch/brand/friends/sona.png" alt="Sona" data-lb>
+              <figcaption>Sona</figcaption>
+            </figure>
+          </div>
+          <figure class="pitch-figure">
+            <img src="../attunia-pitch/brand/attunia-purpose.png" alt="Attunia 开屏意象" data-lb>
+          </figure>
+        </div>
+
+        <!-- P2 WLB vacuum -->
+        <div class="pitch-block" id="p2">
+          <p class="cs-num">P2 · Pain</p>
+          <h3>白领 WLB 三处真空</h3>
+          <p class="cap">启不来 → 扛过头 → 切不掉。人离开了工位，状态还没有。</p>
+          <p class="en-anchor">Three vacuums in work–life switching.</p>
+          <div class="pitch-tri">
+            <figure>
+              <img src="../attunia-pitch/pitch-p1-0900-notready.png" alt="09:00 启不来" data-lb>
+              <figcaption>09:00 · 启不来</figcaption>
+            </figure>
+            <figure>
+              <img src="../attunia-pitch/pitch-p1-1430-brainfog.png" alt="14:30 脑雾" data-lb>
+              <figcaption>14:30 · 脑雾</figcaption>
+            </figure>
+            <figure>
+              <img src="../attunia-pitch/pitch-p1-1900-clockout.png" alt="19:00 切不掉" data-lb>
+              <figcaption>19:00 · 切不掉</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- P3 Positioning -->
+        <div class="pitch-block" id="p3">
+          <p class="cs-num">P3 · Positioning</p>
+          <h3>Attunia：心理调适 Agent</h3>
+          <p class="cap">定位一句——克服工作脑雾与 WLB 切换里的大脑状态真空期；调节与福祉支持，不诊疗。</p>
+          <p class="en-anchor">Soft Healthcare agent for the vacuum between work and life.</p>
+          <figure class="pitch-figure">
+            <img src="../attunia-pitch/pitch-p2-attunia-hero.png" alt="Attunia 产品定位" data-lb>
+          </figure>
+        </div>
+
+        <!-- P4 Sensor vs Agent -->
+        <div class="pitch-block" id="p4">
+          <p class="cs-num">P4 · Sell</p>
+          <h3>脑电是传感器，Agent 才是产品</h3>
+          <p class="cap">定制短训、接住尚未自知的走神、记忆反哺下一次推荐——头环只是入口。</p>
+          <p class="en-anchor">EEG senses; the agent is the product.</p>
+          <figure class="pitch-figure">
+            <img src="../attunia-pitch/pitch-p3-sell-soft-healthcare.png" alt="脑电是传感器，Agent 才是产品" data-lb>
+          </figure>
+        </div>
+
+        <!-- P5 Architecture -->
+        <div class="pitch-block" id="p5">
+          <p class="cs-num">P5 · Architecture</p>
+          <h3>系统架构：信号 → 估计 → 自述 → 建议 → 选择</h3>
+          <p class="cap">脑电 / 情境入 → Tuno 编排 → 短训交付 → 本机记忆回写。原始脑电不进外部 LLM。</p>
+          <p class="en-anchor">Signal → estimate → self-report → suggestion → choice.</p>
+          <figure class="pitch-figure">
+            <img src="../attunia-pitch/pitch-p4-system-architecture.png" alt="Attunia 核心系统架构" data-lb>
+          </figure>
+        </div>
+
+        <div class="folds" style="margin-top:8px;">
+          <details class="fold">
+            <summary>面试时可展开：内嵌完整 Pitch HTML</summary>
+            <div class="fold-body">
+              <p class="cs-note">与「全屏打开 Pitch」同一套页面。路演 P9–P11（下一步 / TAM / 联系二维码）不在本页主叙事里展开。</p>
+              <div class="embed-frame">
+                <iframe src="../attunia-pitch/index.html" title="Attunia VITAL Soft Healthcare Pitch" loading="lazy"></iframe>
+              </div>
+            </div>
+          </details>
         </div>
       </section>
 
-      <section class="cs-view" id="limits">
-        <p class="cs-num">边界一句</p>
-        <h3>演示能走完；静态页 ≠ 完整后端。</h3>
-        <p class="honesty-strip">无头环时可用演示信号走完整条路径。GitHub Pages 上的静态界面不等于已接头环或本地 Agent API。本页角色：可走完的交互原型 + 部分工程。</p>
-      </section>
+      <!-- P6 Prototype -->
+      <section class="cs-view" id="prototype">
+        <p class="cs-num">原型 · P6</p>
+        <h3>走一遍：从戴上到练完</h3>
+        <p class="cap">界面不必逐屏唠叨。路径一行看清；截图进折叠画廊。</p>
+        <div class="journey-rail" aria-label="路径总览">
+          <strong>开屏</strong><span class="sep">→</span>
+          <strong>说明书 / 合规</strong><span class="sep">→</span>
+          <strong>校准</strong><span class="sep">→</span>
+          <strong>首页</strong><span class="sep">→</span>
+          <strong>六景</strong><span class="sep">→</span>
+          <strong>Session</strong><span class="sep">→</span>
+          <strong>复盘</strong><span class="sep">→</span>
+          <strong>Tuno</strong>
+        </div>
 
-      <section class="cs-view" id="links">
-        <p class="cs-num">链接</p>
-        <h3>本地体验 · 仓库 · 资产清单</h3>
+        <div class="folds">
+          <details class="fold">
+            <summary>画廊 · 入门三屏（开屏 / 说明书 / 合规 / 校准）</summary>
+            <div class="fold-body">
+              <div class="cs-phones four">
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/15-splash.jpg" alt="开屏" data-lb>
+                  <figcaption>开屏</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/03-manual.png" alt="说明书" data-lb>
+                  <figcaption>说明书</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/01-compliance-popup.png" alt="合规" data-lb>
+                  <figcaption>合规 · 非医疗</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/02-know-you.png" alt="校准" data-lb>
+                  <figcaption>校准 / 认识你</figcaption>
+                </figure>
+              </div>
+            </div>
+          </details>
+
+          <details class="fold">
+            <summary>画廊 · 首页与探索（对话入口 / 推荐 / 六景 / 场景路径 / 时长）</summary>
+            <div class="fold-body">
+              <div class="cs-phones three">
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/04-home-chat.png" alt="首页对话" data-lb>
+                  <figcaption>首页 · 对话入口</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/07-home-rec.png" alt="首页推荐" data-lb>
+                  <figcaption>首页 · 推荐卡</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/05-explore.png" alt="探索六景" data-lb>
+                  <figcaption>探索 · 六景</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/11-scene-path.png" alt="场景路径" data-lb>
+                  <figcaption>场景路径</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/12-duration-sheet.png" alt="选时长" data-lb>
+                  <figcaption>选时长</figcaption>
+                </figure>
+              </div>
+            </div>
+          </details>
+
+          <details class="fold">
+            <summary>画廊 · Session 与复盘</summary>
+            <div class="fold-body">
+              <div class="cs-phones three">
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/06-session.png" alt="Session" data-lb>
+                  <figcaption>Session · End 始终可见</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/08-debrief.png" alt="复盘" data-lb>
+                  <figcaption>复盘</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/10-debrief-actions.png" alt="复盘行动" data-lb>
+                  <figcaption>复盘 · 下一步</figcaption>
+                </figure>
+              </div>
+              <p class="cs-note" style="margin-top:10px;">通道文案是原型表达，不是已验证的情绪识别。</p>
+            </div>
+          </details>
+
+          <details class="fold">
+            <summary>画廊 · Tuno 与会诊</summary>
+            <div class="fold-body">
+              <div class="cs-phones two">
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/13-chat-tuno.png" alt="Tuno 对话" data-lb>
+                  <figcaption>Tuno · 目录内建议</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone" src="../media/attunia/journey/14-consult.png" alt="Friends 会诊" data-lb>
+                  <figcaption>Friends · 会诊拼目录</figcaption>
+                </figure>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <p class="cs-num" style="margin-top:28px;">旁证 · 三点</p>
+        <div class="evidence-video">
+          <video controls preload="metadata" src="../media/attunia/videos/3333ADHD-user.mp4">
+            你的浏览器不支持 video 标签。
+          </video>
+          <p class="cs-note">真实 ADHD 用户试戴与口语反馈（喜欢专注模式古典乐；基线很低，冥想后专注分显著上升）。Soft Healthcare / 非医疗疗效宣称 · 个案演示口径。</p>
+        </div>
         <p class="links">
           <a href="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/purpose" target="_blank" rel="noopener">本地体验静态页</a>
+        </p>
+        <p class="honesty-strip">静态页无法跑实机 TUNO Agent。无头环时可用演示信号把路径走完；GitHub Pages ≠ 已接头环或本地 Agent API。</p>
+      </section>
+
+      <!-- P7 Evidence -->
+      <section class="cs-view" id="evidence">
+        <p class="cs-num">反馈 · P7</p>
+        <h3>用完之后，他们说什么</h3>
+        <ul class="quote-list">
+          <li>「听完音乐后，确实看见自己变得专注了。」</li>
+          <li>「才真正意识到自己的脑雾 / 走神状态时刻会出现。」</li>
+          <li>「Agent 真的在基于自己的实况去给建议反馈。」</li>
+          <li>「产品的体验和沉浸感很完整。」</li>
+          <li class="soft">下一版愿望：希望更加 Customize · 想看到更细的大脑数据分析</li>
+        </ul>
+        <p class="honesty-strip">ADHD 试戴个案演示口径：专注 23→80 等仅作单次可见变化描述。小样本 · 非疗效宣称 · Soft Healthcare。</p>
+      </section>
+
+      <!-- P8 Why us -->
+      <section class="cs-view" id="whyus">
+        <p class="cs-num">质疑 · P8</p>
+        <h3>说得对。但忽略了大前提。</h3>
+        <p>他们多为睡眠 / 专注力机构向冥想 App。我们是工作与上下班场景的调适 Agent。</p>
+        <div class="comp-grid">
+          <article>
+            <div class="tag">Content apps</div>
+            <h4>Calm / Headspace…</h4>
+            <p>睡前与通用放松 · 被动选课播放</p>
+          </article>
+          <article>
+            <div class="tag">EEG + content</div>
+            <h4>Muse 等</h4>
+            <p>冥想练习中看状态 · 仍偏「练冥想」</p>
+          </article>
+          <article class="us">
+            <div class="tag">Attunia</div>
+            <h4>WLB 调适 Agent</h4>
+            <p>工位 + 上下班切换 · Tuno 主动编排实况短训</p>
+          </article>
+        </div>
+        <div class="q-pair">
+          <div>
+            <div class="qbox" style="margin-bottom:12px;">
+              <p class="kicker" style="margin:0;">Q1</p>
+              <p class="q">为什么一定要用脑电？</p>
+            </div>
+            <div class="qbox">
+              <p class="kicker" style="margin:0;">Q2</p>
+              <p class="q">为什么非得选你？</p>
+            </div>
+          </div>
+          <div class="abox">
+            <p class="kicker" style="margin:0;">Answer · 说得对，但是——</p>
+            <ul>
+              <li><strong>Agent 框架</strong> — Tuno 编排；Friends 只拼目录，不是静态课表</li>
+              <li><strong>主动实况切换</strong> — 接住启不来 / 脑雾 / 切不掉</li>
+              <li><strong>脑电 + 长期记忆</strong> — 真采集当下通道，记忆越来越贴合个人</li>
+              <li><strong>良性反馈</strong> — 被读懂 · 沉浸完整 · 通道可见</li>
+            </ul>
+          </div>
+        </div>
+        <p class="honesty-strip">收束：面向工作与上下班场景的大脑状态调适 Agent · Soft Healthcare：调节不诊疗。</p>
+      </section>
+
+      <!-- Links -->
+      <section class="cs-view" id="links">
+        <p class="cs-num">链接</p>
+        <h3>体验 · Pitch · 仓库 · 资产</h3>
+        <p class="links">
+          <a href="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/purpose" target="_blank" rel="noopener">本地体验静态页</a>
+          <a href="../attunia-pitch/index.html" target="_blank" rel="noopener">全屏 Pitch</a>
           <a href="https://github.com/Leonardolee351-LMX/Attunia_Brainlink-meditation" target="_blank" rel="noopener">GitHub 仓库</a>
           <a href="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/" target="_blank" rel="noopener">GitHub Pages 首页</a>
           <a href="../ledger.html#attunia">ledger · Attunia 资产</a>
         </p>
-        <p class="cs-note">备注：静态网页无法运行实机的 TUNO Agent。完整头环与 Agent API 不在此静态页里。</p>
+        <p class="cs-note">备注：静态网页无法运行实机的 TUNO Agent。</p>
       </section>
 
+      <!-- Appendix -->
       <section class="cs-view" id="archive">
         <p class="cs-num">附录 · 默认收起</p>
-        <h3>起源、概念提案与问卷 caveat——不抢旅程主线。</h3>
-        <p>公开阅读以用户旅程为主。下面保留诚实边界：AnxiousKit 起源、MindCalm 概念-only、15 人问卷 caveat。</p>
+        <h3>起源、Forward 概念与问卷 caveat——不抢主叙事。</h3>
+        <p>公开阅读以 Pitch 定位 + 可走完的原型为主。下面保留诚实边界。</p>
         <p>
           <span class="ev ev-known">已知</span>
           <span class="ev ev-public">公开叙事</span>
@@ -405,6 +811,7 @@
               <p><span class="ev ev-public">公开叙事</span> 我不是先看见一条赛道才做它。我在意的是：人已经该休息了，却进不去休息。所以入口要低，离开要随时可以。</p>
               <img src="../media/anxious/P1.png" alt="AnxiousKit 概念展板。">
               <p><span class="ev ev-gap">待补</span> 年份、课程、当时有没有访谈。具体的个人疾病经历不放在公开页。</p>
+              <p class="links"><a href="anxious.html">打开 Anxious Kit 案例页</a></p>
             </div>
           </details>
           <details class="fold">
@@ -413,18 +820,10 @@
               <p>AnxiousKit 把问题放进概念。Attunia 把它做成可以演示的流程。MindCalm 是之后的 Future Exploration。黑客松日期和团队分工 <span class="ev ev-gap">待补</span>。三者完成度不同，不能排成已验证的 V1 / V2 / V3。</p>
             </div>
           </details>
-          <details class="fold">
-            <summary>03 Market · 15 人问卷 caveat（MindCalm 阶段）</summary>
+          <details class="fold" id="mindcalm">
+            <summary>03 Forward · MindCalm（概念-only，非样机）</summary>
             <div class="fold-body">
-              <p><span class="ev ev-known">已知</span> 15 份有效答卷，12 人 26–35 岁。11 人用刷手机缓解。9 人说近三个月常感到压力。问卷写明头戴和微电流之后，12 人只接受私密场景。9 人把「觉得没用」当成最大的阻力。</p>
-              <p><span class="ev ev-gap">待补</span> Pitch 另引过 60 多份问卷。两份是否同一批人尚未核对，故不合并，也不倒回去当成 Attunia 开题时的研究。</p>
-              <img src="../media/attunia/survey/default-p01.jpg" alt="15 人默认报告。">
-            </div>
-          </details>
-          <details class="fold">
-            <summary>04 MindCalm · 概念渲染，不是样机</summary>
-            <div class="fold-body">
-              <p>从「你可以选择一段练习」走到微电流或温热，是另一段合作里的产品概念与投资提案，不是 Attunia 被用户数据证明后的自然升级。发带是 Pitch 渲染，没有进入制造；主动刺激要单独的安全与有效性研究。</p>
+              <p>Forward 版本说明：从「你可以选择一段练习」走到微电流或温热，是另一段合作里的产品概念与投资提案，不是 Attunia 被用户数据证明后的自然升级。发带是 Pitch 渲染，没有进入制造；主动刺激要单独的安全与有效性研究。</p>
               <div class="cs-grid">
                 <figure>
                   <img src="../media/attunia/mindcalm/pitch-p01.jpg" alt="MindCalm 发带概念。">
@@ -438,6 +837,14 @@
             </div>
           </details>
           <details class="fold">
+            <summary>04 Market · 15 人问卷 caveat（MindCalm 阶段）</summary>
+            <div class="fold-body">
+              <p><span class="ev ev-known">已知</span> 15 份有效答卷，12 人 26–35 岁。11 人用刷手机缓解。9 人说近三个月常感到压力。问卷写明头戴和微电流之后，12 人只接受私密场景。9 人把「觉得没用」当成最大的阻力。</p>
+              <p><span class="ev ev-gap">待补</span> Pitch 另引过 60 多份问卷。两份是否同一批人尚未核对，故不合并，也不倒回去当成 Attunia 开题时的研究。</p>
+              <img src="../media/attunia/survey/default-p01.jpg" alt="15 人默认报告。">
+            </div>
+          </details>
+          <details class="fold">
             <summary>05 信号诚实 · 不把 EEG 包装成情绪真相</summary>
             <div class="fold-body">
               <p>体验拆成五层，不准跳层：Signal → Estimate → Self-report → Suggestion → Choice。约束句：Signal ≠ Emotion ≠ User Need ≠ Permission to Act ≠ Proven Benefit。</p>
@@ -448,8 +855,8 @@
       </section>
 
       <p class="next">
-        <a href="laborlink.html">上一件 · LaborLink</a>
-        <a href="teem.html">下一件 · TEEM</a>
+        <a href="anxious.html">上一件 · Anxious Kit</a>
+        <a href="laborlink.html">下一件 · LaborLink</a>
       </p>
     </div>
   </div>
@@ -465,9 +872,10 @@
       var lb = document.getElementById("lb");
       var img = lb.querySelector("img");
       var btn = lb.querySelector("button");
-      function openLb(src, alt) {
+      function openLb(src, alt, isPhone) {
         img.src = src;
         img.alt = alt || "";
+        img.classList.toggle("is-phone", !!isPhone);
         lb.hidden = false;
         lb.classList.add("is-on");
         document.documentElement.style.overflow = "hidden";
@@ -476,13 +884,14 @@
         lb.classList.remove("is-on");
         lb.hidden = true;
         img.removeAttribute("src");
+        img.classList.remove("is-phone");
         document.documentElement.style.overflow = "";
       }
       document.addEventListener("click", function (e) {
         var t = e.target;
         if (t && t.matches && t.matches("img[data-lb]")) {
           e.preventDefault();
-          openLb(t.currentSrc || t.src, t.alt);
+          openLb(t.currentSrc || t.src, t.alt, t.classList.contains("phone"));
         }
       });
       btn.addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
