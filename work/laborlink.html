@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LaborLink · Leonardo Li</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #f7f3ec;
+  --bg-elevated: rgba(0,0,0,0.03);
+  --text: #1c1a17;
+  --text-dim: #4a4640;
+  --text-muted: #8a8378;
+  --accent: #e07030;
+  --accent-soft: rgba(224,112,48,0.12);
+  --link: #c45a18;
+  --link-soft: rgba(196,90,24,0.25);
+  --border: rgba(28,26,23,0.08);
+  --sidebar-bg: linear-gradient(to right, rgba(247,243,236,0.98), rgba(247,243,236,0.94));
+  --card-bg: rgba(255,255,255,0.55);
+  --shadow: 0 18px 48px rgba(28,26,23,0.14);
+  --shadow-soft: 0 8px 28px rgba(28,26,23,0.08);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+
+.page { display: flex; min-height: 100vh; }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 240px;
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  padding: 28px 20px;
+  overflow-y: auto;
+  z-index: 100;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent); }
+.toc-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+.toc-list { list-style: none; }
+.toc-list li { margin-bottom: 2px; }
+.toc-list a {
+  display: block;
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.toc-list a:hover { color: var(--text); background: var(--bg-elevated); }
+.toc-list a.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-left-color: var(--accent);
+}
+.toc-list a.sub { padding-left: 22px; font-size: 12px; color: var(--text-muted); }
+.toc-list a.sub.active { color: var(--accent); }
+
+.mobile-toc-toggle {
+  display: none;
+  position: fixed;
+  top: 14px; right: 14px;
+  z-index: 120;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ===== MAIN ===== */
+.main {
+  margin-left: 240px;
+  flex: 1;
+  max-width: 980px;
+  padding: 48px 56px 120px;
+}
+
+.project-hero {
+  margin: -48px -56px 36px;
+  padding: 72px 56px 48px;
+  background: linear-gradient(135deg, #f4a261 0%, #e07030 52%, #c45a18 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.project-hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -60px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(255,255,255,0.28), transparent 70%);
+  filter: blur(40px);
+}
+.project-hero .kicker {
+  position: relative;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+.project-hero h1 {
+  position: relative;
+  font-size: clamp(40px, 6vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.project-hero .subtitle {
+  position: relative;
+  font-size: 16px;
+  max-width: 42ch;
+  opacity: 0.92;
+  letter-spacing: -0.01em;
+}
+.project-hero .label {
+  position: relative;
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+}
+
+.meta-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  padding: 22px 0 28px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+.meta-group h4 {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.meta-group p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.75;
+}
+.meta-group a { color: var(--link); text-decoration: none; border-bottom: 1px solid var(--link-soft); }
+.meta-group a:hover { border-bottom-color: var(--link); }
+
+.section-block { margin-bottom: 56px; scroll-margin-top: 24px; }
+.section-block h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-bottom: 18px;
+}
+.section-block p {
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.9;
+  margin-bottom: 14px;
+  max-width: 68ch;
+}
+.section-block p strong { color: var(--text); font-weight: 600; }
+.section-block a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid var(--link-soft);
+}
+.section-block a:hover { border-bottom-color: var(--link); }
+
+.links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+.links-row a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.links-row a:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===== BOARDS: no frame boxes ===== */
+.boards { display: grid; gap: 36px; }
+.board {
+  margin: 0;
+  scroll-margin-top: 24px;
+  background: transparent;
+  border: none;
+}
+.board button {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+  border-radius: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.board button:hover,
+.board button:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  outline: none;
+}
+.board img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 10px;
+  background: transparent;
+}
+.board figcaption {
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.quote-block {
+  border-left: 3px solid var(--accent);
+  padding: 8px 0 8px 20px;
+  margin: 8px 0 24px;
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.9;
+  max-width: 68ch;
+}
+.appendix-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.appendix-list li {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.appendix-list a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid var(--link-soft);
+}
+
+/* ===== LIGHTBOX (zoom + pan) ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  background: rgba(16,14,12,0.88);
+  cursor: default;
+}
+.lightbox.open { display: block; }
+.lightbox-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox-stage.is-zoomed { cursor: grab; }
+.lightbox-stage.is-zoomed.is-dragging { cursor: grabbing; }
+.lightbox-stage img {
+  max-width: min(96vw, 1600px);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+  background: #fff;
+  transform-origin: center center;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+.lightbox-toolbar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+.lightbox-toolbar button {
+  min-width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  background: rgba(20,18,16,0.72);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+.lightbox-toolbar button:hover { background: rgba(40,36,32,0.9); }
+.lightbox-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.72);
+  pointer-events: none;
+  text-align: center;
+  max-width: 90vw;
+}
+
+
+.intro-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+.intro-beats p { margin-bottom: 12px; }
+.intro-beats p strong {
+  display: inline;
+  color: var(--text);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+
+/* ===== SECTION COLLAPSE (飞书式渐进披露) ===== */
+.section-block { margin-bottom: 28px; }
+.section-toggle {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 6px 8px 6px 4px;
+  margin: 0 0 4px -4px;
+  border-radius: 10px;
+  color: var(--text);
+  transition: background 0.18s ease;
+}
+.section-toggle:hover { background: var(--bg-elevated); }
+.section-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.section-toggle .chev {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: transform 0.22s ease, color 0.18s ease;
+  transform: rotate(0deg);
+}
+.section-block.is-open > .section-toggle .chev { transform: rotate(90deg); color: var(--accent); }
+.section-toggle .chev svg { width: 12px; height: 12px; display: block; }
+.section-toggle .section-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
+}
+.section-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease;
+}
+.section-block.is-open > .section-body { grid-template-rows: 1fr; }
+.section-body-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.section-body-inner > :first-child { margin-top: 8px; }
+.section-block:not(.is-open) > .section-toggle { margin-bottom: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .section-body, .section-toggle .chev { transition: none; }
+}
+
+/* ===== OUTCOME CARDS ===== */
+.outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 18px 0 16px;
+}
+.outcome-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  width: 100%;
+}
+.outcome-card:hover,
+.outcome-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  outline: none;
+}
+.outcome-card .thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #efeae2;
+  overflow: hidden;
+}
+.outcome-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #f3efe8;
+}
+.outcome-card .body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.outcome-card .label {
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+.outcome-card .sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.outcome-card .cta {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--link);
+  letter-spacing: 0.02em;
+}
+.outcome-honesty {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 4px 0 10px;
+  max-width: 68ch;
+}
+.outcome-secondary {
+  margin-top: 4px;
+}
+.figma-embed-wrap {
+  margin-top: 28px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+.figma-embed-wrap h3 {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 16px 0;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.figma-embed-wrap .embed-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 4px 16px 10px;
+}
+.figma-embed-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 560px;
+  border: 0;
+  background: #1e1e1e;
+}
+@media (max-width: 900px) {
+  .outcome-grid { grid-template-columns: 1fr; }
+  .figma-embed-wrap iframe { height: 420px; }
+}
+
+@media (max-width: 900px) {
+  .mobile-toc-toggle { display: inline-flex; }
+  .sidebar {
+    transform: translateX(-110%);
+    transition: transform 0.25s ease;
+    width: min(80vw, 280px);
+    background: #f7f3ec;
+  }
+  .sidebar.open { transform: translateX(0); box-shadow: var(--shadow); }
+  .main { margin-left: 0; padding: 72px 20px 96px; max-width: none; }
+  .project-hero { margin: -72px -20px 28px; padding: 88px 20px 40px; }
+  .meta-bar { grid-template-columns: 1fr; gap: 16px; }
+}
+</style>
+</head>
+<body>
+<button class="mobile-toc-toggle" type="button" id="tocToggle" aria-expanded="false">目录</button>
+
+<div class="page">
+  <aside class="sidebar" id="sidebar">
+    <a class="back-link" href="../index.html">← Leonardo Li</a>
+    <div class="toc-title">本页</div>
+    <ul class="toc-list">
+      <li><a href="#介绍正文">介绍</a></li>
+      <li><a href="#职责">职责</a></li>
+      <li><a href="#成果与链接">成果与链接</a></li>
+      <li><a href="#展板">八页展板</a></li>
+      <li><a class="sub" href="#p1">P1</a></li>
+      <li><a class="sub" href="#p2">P2</a></li>
+      <li><a class="sub" href="#p3">P3</a></li>
+      <li><a class="sub" href="#p4">P4</a></li>
+      <li><a class="sub" href="#p5">P5</a></li>
+      <li><a class="sub" href="#p6">P6</a></li>
+      <li><a class="sub" href="#p7">P7</a></li>
+      <li><a class="sub" href="#p8">P8</a></li>
+      <li><a href="#收束">收束</a></li>
+      <li><a href="#附录">附录</a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+    <header class="project-hero" id="介绍">
+      <p class="kicker">Mobile UX/UI · Design system · AI-assisted workflow</p>
+      <h1>LaborLink</h1>
+      <p class="subtitle">Making fragmented interfaces work as one experience.</p>
+      <span class="label">Collaborative student concept / Interactive prototype — not a launched service</span>
+    </header>
+
+    <section class="section-block is-open" id="介绍正文">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="介绍正文-body" id="介绍正文-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">作品介绍</span>
+      </button>
+      <div class="section-body" id="介绍正文-body">
+        <div class="section-body-inner">
+<p><strong>【背景】</strong>LaborLink 是面向社区短工匹配的概念原型。原始社会议题与问题框定由陈诚昊完成；我接手后负责 Develop &amp; Deliver。</p>
+      <p><strong>【用户】</strong>两端是找短工的劳工，与需要临时人力的雇主——往往要在语言、信任与时段都不对齐的情况下，把同一份工作说清楚。</p>
+      <p><strong>【痛点】</strong>机会散在群聊、海报和平台之间；岗位细节、工资与确认节点容易含糊；多轮 AI 探索又容易把界面做成互相不像一套产品的碎片。</p>
+      <p><strong>【解决措施】</strong>把双角色服务压成可走通的移动路径：找工 / 发工 → 沟通 → 确认 → 完成；用统一信息层级与状态，让两端共享同一套工作约定。</p>
+      <p><strong>【具体解法】</strong>用 AI 工具批量产出低保真探索，再人工筛选与改结构；沉淀 Lo-Fi 组件库与 Design tokens / 规范，约束雇工端与雇主端的一致性，再推进高保真与可点原型。<span lang="en">Making fragmented interfaces work as one experience.</span></p>
+      <p class="intro-note">下方八页为项目展板原文（PDF 200 DPI）。点开可缩放查看。</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="meta-bar">
+      <div class="meta-group">
+        <h4>Role</h4>
+        <p>Develop &amp; Deliver<br>IA → UI · AI lo-fi filter · HiFi · system · prototype</p>
+      </div>
+      <div class="meta-group">
+        <h4>Focus</h4>
+        <p>双角色短工匹配界面<br>信息层级 · 双语确认 · 视觉统一</p>
+      </div>
+      <div class="meta-group">
+        <h4>Links</h4>
+        <p>
+          <a href="https://www.figma.com/design/OJbjC9kLiBnMleEfaklVLS/LABORLINK%E6%8E%92%E7%89%88%E8%BF%87%E7%A8%8B?node-id=1-13781&t=KNr2EuICRg8kLmHj-1" target="_blank" rel="noopener">Figma</a><br>
+          <a href="https://psj6echfbu4eo.ok.kimi.link/" target="_blank" rel="noopener">可点原型</a><br>
+          <a href="../ledger.html#laborlink">资产清单</a>
+        </p>
+      </div>
+    </div>
+
+    <section class="section-block" id="职责">
+      <button type="button" class="section-toggle" aria-expanded="false" aria-controls="职责-body" id="职责-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">职责边界</span>
+      </button>
+      <div class="section-body" id="职责-body">
+        <div class="section-body-inner">
+<p><strong>Original discovery &amp; problem framing — Chen Chenghao。</strong> 背景、人物、旅程和服务蓝图是我收到的输入，不是我重新做过的田野。</p>
+      <p><strong>My work — Develop &amp; Deliver。</strong> 信息架构到界面、AI 辅助低保真筛选、高保真、设计系统、可点原型。工作证据从展板后半段开始。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block is-open" id="成果与链接">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="成果与链接-body" id="成果与链接-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">项目成果</span>
+      </button>
+      <div class="section-body" id="成果与链接-body">
+        <div class="section-body-inner">
+<p class="outcome-honesty">概念原型 / 可点路径证明；非上线服务，无投放或匹配指标。</p>
+      <div class="outcome-grid">
+        <a class="outcome-card" href="https://psj6echfbu4eo.ok.kimi.link/laborlink-components.html" target="_blank" rel="noopener" aria-label="在新标签打开 Lo-Fi 组件库">
+          <span class="thumb"><img src="../media/laborlink/outcome-p2-components.png" alt="LaborLink Lo-Fi 组件库总览"></span>
+          <span class="body">
+            <span class="label">P2 · 组件库</span>
+            <span class="sub">Lo-Fi 组件与令牌，约束双端一致性</span>
+            <span class="cta">打开组件库 ↗</span>
+          </span>
+        </a>
+        <a class="outcome-card" href="https://psj6echfbu4eo.ok.kimi.link/laborlink-prototype.html#/index" target="_blank" rel="noopener" aria-label="在新标签打开界面案例库">
+          <span class="thumb"><img src="../media/laborlink/outcome-p3-hifi.png" alt="LaborLink 界面案例库 / Gallery Index"></span>
+          <span class="body">
+            <span class="label">P3 · 保真模拟</span>
+            <span class="sub">界面案例库：高保真双角色屏幕总览</span>
+            <span class="cta">打开界面案例库 ↗</span>
+          </span>
+        </a>
+        <a class="outcome-card" href="https://www.figma.com/design/OJbjC9kLiBnMleEfaklVLS/LABORLINK%E6%8E%92%E7%89%88%E8%BF%87%E7%A8%8B?node-id=1-13781&t=KNr2EuICRg8kLmHj-1" target="_blank" rel="noopener" aria-label="在新标签打开 Figma 排版过程">
+          <span class="thumb"><img src="../media/laborlink/outcome-p4-figma.png" alt="LaborLink Figma 低保真排版画布总览"></span>
+          <span class="body">
+            <span class="label">P4 · Figma 排版过程</span>
+            <span class="sub">线框画布与双角色流程排版（新文件）</span>
+            <span class="cta">打开 Figma ↗</span>
+          </span>
+        </a>
+      </div>
+      <div class="links-row outcome-secondary">
+        <a href="https://psj6echfbu4eo.ok.kimi.link/" target="_blank" rel="noopener">打开可点原型 →</a>
+        <a href="../ledger.html#laborlink">打开资产清单 →</a>
+        <a href="https://www.figma.com/design/OJbjC9kLiBnMleEfaklVLS/LABORLINK%E6%8E%92%E7%89%88%E8%BF%87%E7%A8%8B?node-id=1-13781&t=KNr2EuICRg8kLmHj-1" target="_blank" rel="noopener">打开 Figma →</a>
+      </div>
+      <div class="figma-embed-wrap">
+        <h3>排版过程 · Figma 内嵌</h3>
+        <p class="embed-note">只读嵌入；若加载失败可点上方卡片或链接在新标签打开。</p>
+        <iframe title="LaborLink Figma 排版过程" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FOJbjC9kLiBnMleEfaklVLS%2FLABORLINK%25E6%258E%2592%25E7%2589%2588%25E8%25BF%2587%25E7%25A8%258B%3Fnode-id%3D1-13781%26t%3DKNr2EuICRg8kLmHj-1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block is-open" id="展板">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="展板-body" id="展板-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">八页展板</span>
+      </button>
+      <div class="section-body" id="展板-body">
+        <div class="section-body-inner">
+<p>完整版面，不裁切。无边框；悬停有阴影；单击进入可缩放全屏。</p>
+      <div class="boards">
+        <figure class="board" id="p1">
+          <button type="button" data-full="../media/laborlink/p1.jpg" aria-label="放大 P1">
+            <img src="../media/laborlink/p1.jpg" alt="LaborLink 展板 P1">
+          </button>
+          <figcaption>P1</figcaption>
+        </figure>
+        <figure class="board" id="p2">
+          <button type="button" data-full="../media/laborlink/p2.jpg" aria-label="放大 P2">
+            <img src="../media/laborlink/p2.jpg" alt="LaborLink 展板 P2">
+          </button>
+          <figcaption>P2</figcaption>
+        </figure>
+        <figure class="board" id="p3">
+          <button type="button" data-full="../media/laborlink/p3.jpg" aria-label="放大 P3">
+            <img src="../media/laborlink/p3.jpg" alt="LaborLink 展板 P3">
+          </button>
+          <figcaption>P3</figcaption>
+        </figure>
+        <figure class="board" id="p4">
+          <button type="button" data-full="../media/laborlink/p4.jpg" aria-label="放大 P4">
+            <img src="../media/laborlink/p4.jpg" alt="LaborLink 展板 P4">
+          </button>
+          <figcaption>P4</figcaption>
+        </figure>
+        <figure class="board" id="p5">
+          <button type="button" data-full="../media/laborlink/p5.jpg" aria-label="放大 P5">
+            <img src="../media/laborlink/p5.jpg" alt="LaborLink 展板 P5">
+          </button>
+          <figcaption>P5</figcaption>
+        </figure>
+        <figure class="board" id="p6">
+          <button type="button" data-full="../media/laborlink/p6.jpg" aria-label="放大 P6">
+            <img src="../media/laborlink/p6.jpg" alt="LaborLink 展板 P6">
+          </button>
+          <figcaption>P6</figcaption>
+        </figure>
+        <figure class="board" id="p7">
+          <button type="button" data-full="../media/laborlink/p7.jpg" aria-label="放大 P7">
+            <img src="../media/laborlink/p7.jpg" alt="LaborLink 展板 P7">
+          </button>
+          <figcaption>P7</figcaption>
+        </figure>
+        <figure class="board" id="p8">
+          <button type="button" data-full="../media/laborlink/p8.jpg" aria-label="放大 P8">
+            <img src="../media/laborlink/p8.jpg" alt="LaborLink 展板 P8">
+          </button>
+          <figcaption>P8</figcaption>
+        </figure>
+      </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block" id="收束">
+      <button type="button" class="section-toggle" aria-expanded="false" aria-controls="收束-body" id="收束-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">收束</span>
+      </button>
+      <div class="section-body" id="收束-body">
+        <div class="section-body-inner">
+<div class="quote-block">
+        AI made interface exploration faster, but not necessarily better. My responsibility was to decide which information mattered, where decisions needed to become explicit, and how scattered screens could behave like a single product. LaborLink remains a concept prototype; the next meaningful milestone is to test this experience with the people it was intended for.
+      </div>
+      <p>AI 让界面探索变快，但不等于变好。我要负责的是：哪些信息该先出现，哪些决定必须变成可复查的状态，以及散开的屏幕怎么表现得像同一个产品。LaborLink 仍是概念原型；下一件有意义的事，是把它交到原本设想的用户手里试。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block" id="附录">
+      <button type="button" class="section-toggle" aria-expanded="false" aria-controls="附录-body" id="附录-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">附录</span>
+      </button>
+      <div class="section-body" id="附录-body">
+        <div class="section-body-inner">
+<ul class="appendix-list">
+        <li>Figma（只读）：<a href="https://www.figma.com/design/OJbjC9kLiBnMleEfaklVLS/LABORLINK%E6%8E%92%E7%89%88%E8%BF%87%E7%A8%8B?node-id=1-13781&t=KNr2EuICRg8kLmHj-1" target="_blank" rel="noopener">LABORLINK 排版过程</a></li>
+        <li>可点原型：<a href="https://psj6echfbu4eo.ok.kimi.link/" target="_blank" rel="noopener">HTML prototype</a></li>
+        <li>资产清单：<a href="../ledger.html#laborlink">ledger · LaborLink</a></li>
+        <li>原板 PDF：
+          <a href="../../source/laborlink/%E9%99%88%E8%AF%9A%E6%98%8A%E9%A1%B9%E7%9B%AE1P1.pdf">P1</a> ·
+          <a href="../../source/laborlink/%E9%99%88%E8%AF%9A%E6%98%8A%E9%A1%B9%E7%9B%AE1P2.pdf">P2</a> ·
+          <a href="../../source/laborlink/%E9%99%88%E8%AF%9A%E6%98%8A%E9%A1%B9%E7%9B%AE1P3.pdf">P3</a> ·
+          <a href="../../source/laborlink/%E9%99%88%E8%AF%9A%E6%98%8A%E9%A1%B9%E7%9B%AE1P4.pdf">P4</a> ·
+          <a href="../../source/laborlink/%E9%99%88%E8%AF%9A%E6%98%8A%E9%A1%B9%E7%9B%AE1P5.pdf">P5</a> ·
+          <a href="../../source/laborlink/%E9%99%88%E8%AF%9A%E6%98%8A%E9%A1%B9%E7%9B%AE1P6.pdf">P6</a> ·
+          <a href="../../source/laborlink/%E9%99%88%E8%AF%9A%E6%98%8A%E9%A1%B9%E7%9B%AE1P7.pdf">P7</a> ·
+          <a href="../../source/laborlink/%E9%99%88%E8%AF%9A%E6%98%8A%E9%A1%B9%E7%9B%AE1P8.pdf">P8</a>
+        </li>
+        <li>协作说明：学生概念 / 交互原型；非上线服务。</li>
+      </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="lightbox" id="lightbox" hidden aria-hidden="true">
+  <div class="lightbox-toolbar">
+    <button type="button" id="lbZoomOut" aria-label="缩小">−</button>
+    <button type="button" id="lbZoomIn" aria-label="放大">+</button>
+    <button type="button" id="lbReset" aria-label="适配整页">⟲</button>
+    <button type="button" id="lbClose" aria-label="关闭">×</button>
+  </div>
+  <div class="lightbox-stage" id="lightboxStage">
+    <img id="lightboxImg" alt="">
+  </div>
+  <div class="lightbox-hint">滚轮 / +− 缩放 · 拖动平移 · 双击复位 · 适配时可点图关闭 · Esc / 背景关闭</div>
+</div>
+
+<script>
+(function () {
+  const lightbox = document.getElementById('lightbox');
+  const stage = document.getElementById('lightboxStage');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const sidebar = document.getElementById('sidebar');
+  const tocToggle = document.getElementById('tocToggle');
+  const tocLinks = Array.from(document.querySelectorAll('.toc-list a'));
+  const btnIn = document.getElementById('lbZoomIn');
+  const btnOut = document.getElementById('lbZoomOut');
+  const btnReset = document.getElementById('lbReset');
+  const btnClose = document.getElementById('lbClose');
+
+  let scale = 1;
+  let tx = 0;
+  let ty = 0;
+  let dragging = false;
+  let moved = false;
+  let startX = 0;
+  let startY = 0;
+  let originTx = 0;
+  let originTy = 0;
+  const MIN = 1;
+  const MAX = 6;
+
+  function applyTransform() {
+    lightboxImg.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
+    stage.classList.toggle('is-zoomed', scale > 1.01);
+  }
+
+  function resetView() {
+    scale = 1;
+    tx = 0;
+    ty = 0;
+    applyTransform();
+  }
+
+  function zoomAt(factor, cx, cy) {
+    const rect = stage.getBoundingClientRect();
+    const x = (cx == null ? rect.left + rect.width / 2 : cx) - rect.left - rect.width / 2;
+    const y = (cy == null ? rect.top + rect.height / 2 : cy) - rect.top - rect.height / 2;
+    const next = Math.min(MAX, Math.max(MIN, scale * factor));
+    if (next === scale) return;
+    const k = next / scale;
+    tx = x - (x - tx) * k;
+    ty = y - (y - ty) * k;
+    scale = next;
+    if (scale <= 1.01) {
+      scale = 1;
+      tx = 0;
+      ty = 0;
+    }
+    applyTransform();
+  }
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    resetView();
+    lightbox.hidden = false;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.hidden = true;
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.removeAttribute('src');
+    lightboxImg.style.transform = '';
+    stage.classList.remove('is-zoomed', 'is-dragging');
+    document.body.style.overflow = '';
+    scale = 1; tx = 0; ty = 0;
+  }
+
+  document.querySelectorAll('.board button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var img = btn.querySelector('img');
+      openLightbox(btn.getAttribute('data-full'), img ? img.alt : '');
+    });
+  });
+
+  btnClose.addEventListener('click', function (e) {
+    e.stopPropagation();
+    closeLightbox();
+  });
+  btnIn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    zoomAt(1.25);
+  });
+  btnOut.addEventListener('click', function (e) {
+    e.stopPropagation();
+    zoomAt(1 / 1.25);
+  });
+  btnReset.addEventListener('click', function (e) {
+    e.stopPropagation();
+    resetView();
+  });
+
+  stage.addEventListener('wheel', function (e) {
+    if (!lightbox.classList.contains('open')) return;
+    e.preventDefault();
+    const factor = e.deltaY < 0 ? 1.12 : 1 / 1.12;
+    zoomAt(factor, e.clientX, e.clientY);
+  }, { passive: false });
+
+  stage.addEventListener('dblclick', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (scale > 1.01) resetView();
+    else zoomAt(2.2, e.clientX, e.clientY);
+  });
+
+  stage.addEventListener('pointerdown', function (e) {
+    if (e.button !== 0) return;
+    dragging = true;
+    moved = false;
+    startX = e.clientX;
+    startY = e.clientY;
+    originTx = tx;
+    originTy = ty;
+    stage.setPointerCapture(e.pointerId);
+    stage.classList.add('is-dragging');
+  });
+
+  stage.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+    if (scale > 1.01) {
+      tx = originTx + dx;
+      ty = originTy + dy;
+      applyTransform();
+    }
+  });
+
+  function endDrag(e) {
+    if (!dragging) return;
+    dragging = false;
+    stage.classList.remove('is-dragging');
+    try { stage.releasePointerCapture(e.pointerId); } catch (_) {}
+    if (!moved) {
+      if (scale <= 1.01) closeLightbox();
+    }
+  }
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
+
+  // backdrop feel: clicking empty stage at fit closes (handled above).
+  // prevent toolbar clicks from bubbling already stopped.
+
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if ((e.ctrlKey || e.metaKey) && (e.key === '=' || e.key === '+')) {
+      e.preventDefault();
+      zoomAt(1.25);
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === '-') {
+      e.preventDefault();
+      zoomAt(1 / 1.25);
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === '0') {
+      e.preventDefault();
+      resetView();
+    }
+  });
+
+  tocToggle.addEventListener('click', function () {
+    const open = sidebar.classList.toggle('open');
+    tocToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  tocLinks.forEach(function (a) {
+    a.addEventListener('click', function () {
+      sidebar.classList.remove('open');
+      tocToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+
+  // ===== Section collapse (飞书式) =====
+  const sections = Array.from(document.querySelectorAll('.section-block[id]'));
+  const STORAGE_KEY = 'laborlink-section-open-v1';
+
+  function setSectionOpen(sec, open, persist) {
+    sec.classList.toggle('is-open', open);
+    const btn = sec.querySelector('.section-toggle');
+    if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (persist) {
+      try {
+        const map = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}');
+        map[sec.id] = open;
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+      } catch (_) {}
+    }
+  }
+
+  function expandForHash(hash) {
+    if (!hash || hash.charAt(0) !== '#') return;
+    const id = decodeURIComponent(hash.slice(1));
+    let el = document.getElementById(id);
+    if (!el) return;
+    let sec = el.classList.contains('section-block') ? el : el.closest('.section-block');
+    // board anchors live inside 展板
+    if (!sec && id.match(/^p[1-8]$/)) sec = document.getElementById('展板');
+    if (sec) setSectionOpen(sec, true, true);
+  }
+
+  // restore session prefs over defaults
+  try {
+    const map = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}');
+    sections.forEach(function (sec) {
+      if (Object.prototype.hasOwnProperty.call(map, sec.id)) {
+        setSectionOpen(sec, !!map[sec.id], false);
+      }
+    });
+  } catch (_) {}
+
+  sections.forEach(function (sec) {
+    const btn = sec.querySelector('.section-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      setSectionOpen(sec, !sec.classList.contains('is-open'), true);
+    });
+  });
+
+  expandForHash(location.hash);
+  window.addEventListener('hashchange', function () {
+    expandForHash(location.hash);
+  });
+
+  // TOC clicks: expand target before scroll settles
+  tocLinks.forEach(function (a) {
+    a.addEventListener('click', function () {
+      expandForHash(a.getAttribute('href'));
+    });
+  });
+
+  const tocSections = tocLinks
+    .map(function (a) {
+      const id = a.getAttribute('href').slice(1);
+      return { a: a, el: document.getElementById(id) };
+    })
+    .filter(function (x) { return x.el; });
+
+  function setActive() {
+    let current = tocSections[0];
+    const y = window.scrollY + 80;
+    tocSections.forEach(function (s) {
+      if (s.el.offsetTop <= y) current = s;
+    });
+    tocLinks.forEach(function (a) { a.classList.remove('active'); });
+    if (current) current.a.classList.add('active');
+  }
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+})();
+</script>
+</body>
+</html>

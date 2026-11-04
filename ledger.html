@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核对 · LaborLink / Attunia / TEEM</title>
+  <link rel="stylesheet" href="css/site.css?v=ledger1">
+  <style>
+    .ledger { max-width: 980px; margin: 0 auto; padding: 28px 5vw 80px; }
+    .ledger h1 { font-size: 40px; letter-spacing: -0.04em; margin: 8px 0 8px; }
+    .ledger h2 { font-size: 22px; margin: 0; }
+    .ledger h3 { font-size: 15px; margin: 18px 0 8px; letter-spacing: 0.04em; }
+    .ledger p, .ledger li { max-width: 68ch; }
+    .lede { color: var(--muted); }
+    .jump { display: flex; flex-wrap: wrap; gap: 10px 16px; margin: 16px 0 8px; }
+    .jump a { border-bottom: 1px solid var(--ink); }
+    details.pack { border-top: 1px solid var(--line); padding: 8px 0 18px; }
+    details.pack > summary { cursor: pointer; list-style: none; padding: 14px 0; }
+    details.pack > summary::-webkit-details-marker { display: none; }
+    .stack { display: flex; flex-direction: column; gap: 8px; }
+    .row {
+      display: grid;
+      grid-template-columns: 22px 92px 148px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .row.in { background: #f3f7ef; }
+    .row.out { background: #fff; }
+    .row.ban, .row.miss { background: #f8efe8; }
+    .row.disk, .row.note { background: #f6f4ea; }
+    .row.is-checked { opacity: 0.55; }
+    .row[hidden] { display: none; }
+    .tag { font-size: 12px; letter-spacing: 0.04em; }
+    .shot img, .shot.empty {
+      width: 148px; height: 96px; object-fit: contain; background: #efece6; display: block;
+    }
+    .shot.empty {
+      display: grid; place-items: center; font-size: 12px; color: var(--muted);
+    }
+    .meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .meta strong { font-size: 14px; }
+    .meta em, .meta code { font-style: normal; color: var(--muted); font-size: 13px; }
+    .meta code { font-family: ui-monospace, Consolas, monospace; word-break: break-all; }
+    .find {
+      width: min(420px, 100%); margin: 8px 0 18px; padding: 8px 10px;
+      border: 1px solid var(--line); background: #fff; font: inherit;
+    }
+    @media (max-width: 720px) {
+      .row { grid-template-columns: 22px 1fr; }
+      .tag { grid-column: 2; }
+      .shot { grid-column: 2; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html">Leonardo Li</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html#showcase">Showcase</a>
+      <a href="ledger.html" aria-current="page">核对</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+  <main class="ledger">
+    <p class="eyebrow">Asset check · 2026-11-03</p>
+    <h1>先核对文件，再谈叙事。</h1>
+    <p class="lede">这一页不讲故事。三件作品的图、原件和还没补上的东西都折在下面。勾选只存在你这台浏览器里，用来标「我看过了」。缩略图点开是原图。</p>
+    <p class="jump">
+      <a href="#gaps">先看还缺什么</a>
+      <a href="#laborlink">LaborLink</a>
+      <a href="#attunia">Attunia 系列</a>
+      <a href="#teem">TEEM 家族</a>
+    </p>
+    <input class="find" type="search" placeholder="搜文件名，例如 p7、pitch、气模" aria-label="搜索">
+
+    <section id="gaps">
+      <h2>还要做、或还没放进这个网站的</h2>
+      <details class="pack" open>
+        <summary><h2>三件一起看的缺口</h2></summary>
+        <div class="stack">
+          <label class="row miss textonly">
+  <input type="checkbox" data-id="gap-ll-figma">
+  <span class="tag">还要做</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>LaborLink · Figma 原文件</strong><em>没到。字号、对比度、组件变体、哪一屏是你改的，都不能从 PDF 展板定论。</em></span>
+</label>
+          <label class="row miss textonly">
+  <input type="checkbox" data-id="gap-ll-employer">
+  <span class="tag">还要做</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>LaborLink · 雇主任务流</strong><em>正文只有雇工灰阶流。母稿要的雇主关键任务流没有单独拆开。</em></span>
+</label>
+          <label class="row miss textonly">
+  <input type="checkbox" data-id="gap-ll-pay">
+  <span class="tag">还要做</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>LaborLink · 工资和时间</strong><em>P8 上 $/day 和时段写法还不自洽。正文故意留着现稿，没有悄悄改。</em></span>
+</label>
+          <label class="row miss textonly">
+  <input type="checkbox" data-id="gap-ll-feedback">
+  <span class="tag">还要做</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>LaborLink · user feedback</strong><em>P7 写 After user feedback 后用橙色。谁反馈的、记在哪，没有原始记录。</em></span>
+</label>
+          <label class="row miss textonly">
+  <input type="checkbox" data-id="gap-at-video">
+  <span class="tag">还要做</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>Attunia · 60–90 秒录屏</strong><em>母稿要一条能走完的演示。网站上没有视频。</em></span>
+</label>
+          <label class="row miss textonly">
+  <input type="checkbox" data-id="gap-at-facts">
+  <span class="tag">还要做</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>Attunia · 事实卡仍空着</strong><em>AnxiousKit 年份和课程、黑客松日期和分工、15 人问卷与 Pitch 里 60+ 是否同一批，都还没填。</em></span>
+</label>
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="gap-at-repo">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>Attunia · 本机仓库不在这个站点</strong><em>完整原型在 E 盘 Brainlink Meditation / NeuroFlow-AgentLab。这里只有截图和复盘 MD。静态 GitHub 页不等于连上了头环。</em></span>
+</label>
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="gap-mc-ppt">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>MindCalm · 原 Pitch</strong><em>母稿写的是 MINDCALM PITCH.pptx。本站只有抽出来的若干页 JPEG，没有整份 26 页。</em></span>
+</label>
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="gap-tm-src">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>TEEM · 制作原件不在本站</strong><em>分章记录写在 E 盘 CityU-Year1 / PreCityu / 过去 / TEEM仔：主 KV 的 ai、快闪 ai、1211 和 1215 的 skp、贴纸、墙面、推文 png。这次没有重新打开那个盘确认它们还在。</em></span>
+</label>
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="gap-tm-emoji">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>TEEM · 表情包</strong><em>16 个 psd 在同一目录的表情包源文件。公开征集一等奖是梁贤泽。不要署成个人原创。</em></span>
+</label>
+          <label class="row miss textonly">
+  <input type="checkbox" data-id="gap-tm-rev">
+  <span class="tag">还要做</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>TEEM · 前后稿</strong><em>母稿要同一张物料的修改轮次。网站上没有第一版对最终版。</em></span>
+</label>
+          <label class="row miss textonly">
+  <input type="checkbox" data-id="gap-tm-crop">
+  <span class="tag">还要做</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>TEEM · 航拍三处局部</strong><em>母稿要入口、路线、兑奖三块裁切。正文只有整张航拍。</em></span>
+</label>
+        </div>
+      </details>
+    </section>
+
+    <section id="laborlink">
+      <details class="pack" open>
+        <summary><h2>LaborLink · 陈诚昊项目 P1–P8，加上我做的界面</h2></summary>
+        <p>原 PDF 在本仓库 <code>source/laborlink/陈诚昊项目1P1.pdf</code> 到 P8。更早的登记路径是 <code>E:\AT工作成果导出\</code>。可点原型：<a href="https://psj6echfbu4eo.ok.kimi.link/" target="_blank" rel="noopener">kimi.link</a>。提示词在 <code>source/laborlink/prompts/</code>，不是界面证据。</p>
+        <p>正文页：<a href="work/laborlink.html">work/laborlink.html</a></p>
+        <h3>正文正在用 · 11</h3>
+<div class="stack">
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-0">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink-board.png" target="_blank" rel="noopener"><img src="media/laborlink-board.png" alt=""></a>
+  <span class="meta"><strong>laborlink-board.png</strong><em>VIEW09 · 可点原型板，不是单屏裁切</em><code>media/laborlink-board.png</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-1">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink/p6-home-gray.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p6-home-gray.jpg" alt=""></a>
+  <span class="meta"><strong>p6-home-gray.jpg</strong><em>VIEW05 左侧 · 同一张 Hello John 的灰阶</em><code>media/laborlink/p6-home-gray.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-2">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink/p6-phones.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p6-phones.jpg" alt=""></a>
+  <span class="meta"><strong>p6-phones.jpg</strong><em>VIEW06 · P6 雇工灰阶任务流</em><code>media/laborlink/p6-phones.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-3">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink/p7-home-iterate.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p7-home-iterate.jpg" alt=""></a>
+  <span class="meta"><strong>p7-home-iterate.jpg</strong><em>90 秒和 VIEW07 · Home 四版本 · 从 P7 右列裁出</em><code>media/laborlink/p7-home-iterate.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-4">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink/p7-mood.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p7-mood.jpg" alt=""></a>
+  <span class="meta"><strong>p7-mood.jpg</strong><em>VIEW08A · P7 moodboard</em><code>media/laborlink/p7-mood.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-5">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink/p7-skills-iterate.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p7-skills-iterate.jpg" alt=""></a>
+  <span class="meta"><strong>p7-skills-iterate.jpg</strong><em>VIEW07 · Skills 四版本 · 从 P7 裁出</em><code>media/laborlink/p7-skills-iterate.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-6">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink/p7-system.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p7-system.jpg" alt=""></a>
+  <span class="meta"><strong>p7-system.jpg</strong><em>VIEW08B · P7 设计系统页</em><code>media/laborlink/p7-system.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-7">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink/screen-apply.jpg" target="_blank" rel="noopener"><img src="media/laborlink/screen-apply.jpg" alt=""></a>
+  <span class="meta"><strong>screen-apply.jpg</strong><em>正文封面 / 浏览对照右侧 / 交付特写 · Apply Jobs · P8</em><code>media/laborlink/screen-apply.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-8">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink/screen-complete.jpg" target="_blank" rel="noopener"><img src="media/laborlink/screen-complete.jpg" alt=""></a>
+  <span class="meta"><strong>screen-complete.jpg</strong><em>正文封面 / 达成一致 · Job Completed · P8</em><code>media/laborlink/screen-complete.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-9">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink/screen-confirm.jpg" target="_blank" rel="noopener"><img src="media/laborlink/screen-confirm.jpg" alt=""></a>
+  <span class="meta"><strong>screen-confirm.jpg</strong><em>正文封面 / 达成一致 · Confirm Job · P8</em><code>media/laborlink/screen-confirm.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="ll-in-10">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/laborlink/screen-skills.jpg" target="_blank" rel="noopener"><img src="media/laborlink/screen-skills.jpg" alt=""></a>
+  <span class="meta"><strong>screen-skills.jpg</strong><em>正文封面 · Your Skills · 从 P8 裁出</em><code>media/laborlink/screen-skills.jpg</code></span>
+</label>
+</div>
+<h3>仓库里有，正文没放 · 15</h3>
+<div class="stack">
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-0">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/p1-ui.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p1-ui.jpg" alt=""></a>
+  <span class="meta"><strong>p1-ui.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/laborlink/p1-ui.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-1">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/p1.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p1.jpg" alt=""></a>
+  <span class="meta"><strong>p1.jpg</strong><em>P1–P8 整页展板。母稿要求不整页贴进正文。核对原板时打开这张。</em><code>media/laborlink/p1.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-2">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/p2.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p2.jpg" alt=""></a>
+  <span class="meta"><strong>p2.jpg</strong><em>P1–P8 整页展板。母稿要求不整页贴进正文。核对原板时打开这张。</em><code>media/laborlink/p2.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-3">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/p3.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p3.jpg" alt=""></a>
+  <span class="meta"><strong>p3.jpg</strong><em>P1–P8 整页展板。母稿要求不整页贴进正文。核对原板时打开这张。</em><code>media/laborlink/p3.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-4">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/p4.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p4.jpg" alt=""></a>
+  <span class="meta"><strong>p4.jpg</strong><em>P1–P8 整页展板。母稿要求不整页贴进正文。核对原板时打开这张。</em><code>media/laborlink/p4.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-5">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/p5.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p5.jpg" alt=""></a>
+  <span class="meta"><strong>p5.jpg</strong><em>P1–P8 整页展板。母稿要求不整页贴进正文。核对原板时打开这张。</em><code>media/laborlink/p5.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-6">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/p6-job-lofi.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p6-job-lofi.jpg" alt=""></a>
+  <span class="meta"><strong>p6-job-lofi.jpg</strong><em>早一版裁切，裁到了信息架构树，正文已改用 p6-phones.jpg。</em><code>media/laborlink/p6-job-lofi.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-7">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/p6.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p6.jpg" alt=""></a>
+  <span class="meta"><strong>p6.jpg</strong><em>P1–P8 整页展板。母稿要求不整页贴进正文。核对原板时打开这张。</em><code>media/laborlink/p6.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-8">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/p7.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p7.jpg" alt=""></a>
+  <span class="meta"><strong>p7.jpg</strong><em>P1–P8 整页展板。母稿要求不整页贴进正文。核对原板时打开这张。</em><code>media/laborlink/p7.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-9">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/p8.jpg" target="_blank" rel="noopener"><img src="media/laborlink/p8.jpg" alt=""></a>
+  <span class="meta"><strong>p8.jpg</strong><em>P1–P8 整页展板。母稿要求不整页贴进正文。核对原板时打开这张。</em><code>media/laborlink/p8.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-10">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/screen-chat.jpg" target="_blank" rel="noopener"><img src="media/laborlink/screen-chat.jpg" alt=""></a>
+  <span class="meta"><strong>screen-chat.jpg</strong><em>从 P8 或原型裁出的屏。正文没选它。</em><code>media/laborlink/screen-chat.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-11">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/screen-community.jpg" target="_blank" rel="noopener"><img src="media/laborlink/screen-community.jpg" alt=""></a>
+  <span class="meta"><strong>screen-community.jpg</strong><em>从 P8 或原型裁出的屏。正文没选它。</em><code>media/laborlink/screen-community.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-12">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/screen-detail.jpg" target="_blank" rel="noopener"><img src="media/laborlink/screen-detail.jpg" alt=""></a>
+  <span class="meta"><strong>screen-detail.jpg</strong><em>从 P8 或原型裁出的屏。正文没选它。</em><code>media/laborlink/screen-detail.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-13">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/screen-eval.jpg" target="_blank" rel="noopener"><img src="media/laborlink/screen-eval.jpg" alt=""></a>
+  <span class="meta"><strong>screen-eval.jpg</strong><em>从 P8 或原型裁出的屏。正文没选它。</em><code>media/laborlink/screen-eval.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="ll-out-14">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/laborlink/screen-home.jpg" target="_blank" rel="noopener"><img src="media/laborlink/screen-home.jpg" alt=""></a>
+  <span class="meta"><strong>screen-home.jpg</strong><em>从 P8 或原型裁出的屏。正文没选它。</em><code>media/laborlink/screen-home.jpg</code></span>
+</label>
+</div>
+        <h3>原件 · 不在网页图片夹</h3>
+        <div class="stack">
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="ll-pdf">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>陈诚昊项目1P1.pdf – P8.pdf</strong><em>source/laborlink。每页一张横版展板。网页用的是从这里裁出来的 JPEG。</em></span>
+</label>
+          <label class="row note textonly">
+  <input type="checkbox" data-id="ll-prompt">
+  <span class="tag">备忘</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>laborlink-agent-prompts.zip / prompts</strong><em>SPEC、plan、PROMPTS。给生成用的说明，不是屏幕。</em></span>
+</label>
+          <label class="row miss textonly">
+  <input type="checkbox" data-id="ll-hifi-pdf">
+  <span class="tag">还要做</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>低保真独立 PDF、高保真独立 PDF</strong><em>编辑母稿提到过。这个站点的 source/laborlink 里只有八页展板，没有单独的 lo-fi / hi-fi PDF。</em></span>
+</label>
+        </div>
+      </details>
+    </section>
+
+    <section id="attunia">
+      <details class="pack" open>
+        <summary><h2>Attunia 系列 · AnxiousKit、Attunia、MindCalm</h2></summary>
+        <p>三者完成度不同，不要排成 V1 / V2 / V3。复盘母稿在 <code>source/storytelling-v2/attunia/ATTUNIA_CASE_STUDY_REVIEW_V1.md</code>。</p>
+        <p>正文页：<a href="work/attunia.html">work/attunia.html</a> · 旧的 Anxious Kit 页：<a href="work/anxious.html">work/anxious.html</a></p>
+        <p>仓库 <a href="https://github.com/Leonardolee351-LMX/Attunia_Brainlink-meditation" target="_blank" rel="noopener">GitHub</a> · 静态页 <a href="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/" target="_blank" rel="noopener">GitHub Pages</a>（不能等于完整后端）</p>
+        <h3>正文正在用 · 12</h3>
+<div class="stack">
+<label class="row in">
+  <input type="checkbox" data-id="at-in-0">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/anxious/P1.png" target="_blank" rel="noopener"><img src="media/anxious/P1.png" alt=""></a>
+  <span class="meta"><strong>P1.png</strong><em>附录 01 · AnxiousKit 展板</em><code>media/anxious/P1.png</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-1">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/01-compliance.png" target="_blank" rel="noopener"><img src="media/attunia/01-compliance.png" alt=""></a>
+  <span class="meta"><strong>01-compliance.png</strong><em>判断 1 · 非医疗说明</em><code>media/attunia/01-compliance.png</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-2">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/02-know-you.png" target="_blank" rel="noopener"><img src="media/attunia/02-know-you.png" alt=""></a>
+  <span class="meta"><strong>02-know-you.png</strong><em>判断 1 · 校准</em><code>media/attunia/02-know-you.png</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-3">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/05-explore.png" target="_blank" rel="noopener"><img src="media/attunia/05-explore.png" alt=""></a>
+  <span class="meta"><strong>05-explore.png</strong><em>90 秒 · 六场景</em><code>media/attunia/05-explore.png</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-4">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/06-session.png" target="_blank" rel="noopener"><img src="media/attunia/06-session.png" alt=""></a>
+  <span class="meta"><strong>06-session.png</strong><em>90 秒和判断 1 · Session，出现两次</em><code>media/attunia/06-session.png</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-5">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/13-tuno.png" target="_blank" rel="noopener"><img src="media/attunia/13-tuno.png" alt=""></a>
+  <span class="meta"><strong>13-tuno.png</strong><em>90 秒和判断 2 · Tuno，出现两次</em><code>media/attunia/13-tuno.png</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-6">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/14-consult.png" target="_blank" rel="noopener"><img src="media/attunia/14-consult.png" alt=""></a>
+  <span class="meta"><strong>14-consult.png</strong><em>判断 2 · Tuno 与 Friends</em><code>media/attunia/14-consult.png</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-7">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/mindcalm/pitch-p01.jpg" target="_blank" rel="noopener"><img src="media/attunia/mindcalm/pitch-p01.jpg" alt=""></a>
+  <span class="meta"><strong>pitch-p01.jpg</strong><em>判断 3 · 发带概念渲染，不是样机</em><code>media/attunia/mindcalm/pitch-p01.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-8">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/mindcalm/pitch-p16.jpg" target="_blank" rel="noopener"><img src="media/attunia/mindcalm/pitch-p16.jpg" alt=""></a>
+  <span class="meta"><strong>pitch-p16.jpg</strong><em>附录 12–15 · 闭环概念图</em><code>media/attunia/mindcalm/pitch-p16.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-9">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/mindcalm/pitch-p18.jpg" target="_blank" rel="noopener"><img src="media/attunia/mindcalm/pitch-p18.jpg" alt=""></a>
+  <span class="meta"><strong>pitch-p18.jpg</strong><em>判断 3 · 概念六屏</em><code>media/attunia/mindcalm/pitch-p18.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-10">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/pitch-cover.jpg" target="_blank" rel="noopener"><img src="media/attunia/pitch-cover.jpg" alt=""></a>
+  <span class="meta"><strong>pitch-cover.jpg</strong><em>封面 · Fashion-tech 产品图</em><code>media/attunia/pitch-cover.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="at-in-11">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/attunia/survey/default-p01.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/default-p01.jpg" alt=""></a>
+  <span class="meta"><strong>default-p01.jpg</strong><em>附录 03 · 15 人问卷默认报告第 1 页</em><code>media/attunia/survey/default-p01.jpg</code></span>
+</label>
+</div>
+<h3>仓库里有，正文没放 · 16</h3>
+<div class="stack">
+<label class="row out">
+  <input type="checkbox" data-id="at-out-0">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/anxious.png" target="_blank" rel="noopener"><img src="media/anxious.png" alt=""></a>
+  <span class="meta"><strong>anxious.png</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/anxious.png</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-1">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/anxious/P2.png" target="_blank" rel="noopener"><img src="media/anxious/P2.png" alt=""></a>
+  <span class="meta"><strong>P2.png</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/anxious/P2.png</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-2">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/anxious/P3.png" target="_blank" rel="noopener"><img src="media/anxious/P3.png" alt=""></a>
+  <span class="meta"><strong>P3.png</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/anxious/P3.png</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-3">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/11-scene.png" target="_blank" rel="noopener"><img src="media/attunia/11-scene.png" alt=""></a>
+  <span class="meta"><strong>11-scene.png</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/11-scene.png</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-4">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/mindcalm/pitch-p05.jpg" target="_blank" rel="noopener"><img src="media/attunia/mindcalm/pitch-p05.jpg" alt=""></a>
+  <span class="meta"><strong>pitch-p05.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/mindcalm/pitch-p05.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-5">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/mindcalm/pitch-p06.jpg" target="_blank" rel="noopener"><img src="media/attunia/mindcalm/pitch-p06.jpg" alt=""></a>
+  <span class="meta"><strong>pitch-p06.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/mindcalm/pitch-p06.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-6">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/mindcalm/pitch-p08.jpg" target="_blank" rel="noopener"><img src="media/attunia/mindcalm/pitch-p08.jpg" alt=""></a>
+  <span class="meta"><strong>pitch-p08.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/mindcalm/pitch-p08.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-7">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/mindcalm/pitch-p11.jpg" target="_blank" rel="noopener"><img src="media/attunia/mindcalm/pitch-p11.jpg" alt=""></a>
+  <span class="meta"><strong>pitch-p11.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/mindcalm/pitch-p11.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-8">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/mindcalm/pitch-p17.jpg" target="_blank" rel="noopener"><img src="media/attunia/mindcalm/pitch-p17.jpg" alt=""></a>
+  <span class="meta"><strong>pitch-p17.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/mindcalm/pitch-p17.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-9">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/pitch-hero.png" target="_blank" rel="noopener"><img src="media/attunia/pitch-hero.png" alt=""></a>
+  <span class="meta"><strong>pitch-hero.png</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/pitch-hero.png</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-10">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/survey/default-p02.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/default-p02.jpg" alt=""></a>
+  <span class="meta"><strong>default-p02.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/survey/default-p02.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-11">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/survey/default-p03.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/default-p03.jpg" alt=""></a>
+  <span class="meta"><strong>default-p03.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/survey/default-p03.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-12">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/survey/default-p04.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/default-p04.jpg" alt=""></a>
+  <span class="meta"><strong>default-p04.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/survey/default-p04.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-13">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/survey/default-p05.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/default-p05.jpg" alt=""></a>
+  <span class="meta"><strong>default-p05.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/survey/default-p05.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-14">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/survey/default-p06.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/default-p06.jpg" alt=""></a>
+  <span class="meta"><strong>default-p06.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/survey/default-p06.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="at-out-15">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/attunia/tuno.png" target="_blank" rel="noopener"><img src="media/attunia/tuno.png" alt=""></a>
+  <span class="meta"><strong>tuno.png</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/attunia/tuno.png</code></span>
+</label>
+</div>
+<h3>不要当成项目证据 · 6</h3>
+<div class="stack">
+<label class="row ban">
+  <input type="checkbox" data-id="at-ban-0">
+  <span class="tag">不要当证据</span>
+  <a class="shot" href="media/attunia/survey/survey-p01.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/survey-p01.jpg" alt=""></a>
+  <span class="meta"><strong>survey-p01.jpg</strong><em>不要代替 15 人原始报告。这组是另一份扩写页。</em><code>media/attunia/survey/survey-p01.jpg</code></span>
+</label>
+<label class="row ban">
+  <input type="checkbox" data-id="at-ban-1">
+  <span class="tag">不要当证据</span>
+  <a class="shot" href="media/attunia/survey/survey-p02.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/survey-p02.jpg" alt=""></a>
+  <span class="meta"><strong>survey-p02.jpg</strong><em>同上。</em><code>media/attunia/survey/survey-p02.jpg</code></span>
+</label>
+<label class="row ban">
+  <input type="checkbox" data-id="at-ban-2">
+  <span class="tag">不要当证据</span>
+  <a class="shot" href="media/attunia/survey/survey-p03.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/survey-p03.jpg" alt=""></a>
+  <span class="meta"><strong>survey-p03.jpg</strong><em>同上。</em><code>media/attunia/survey/survey-p03.jpg</code></span>
+</label>
+<label class="row ban">
+  <input type="checkbox" data-id="at-ban-3">
+  <span class="tag">不要当证据</span>
+  <a class="shot" href="media/attunia/survey/survey-p04.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/survey-p04.jpg" alt=""></a>
+  <span class="meta"><strong>survey-p04.jpg</strong><em>同上。</em><code>media/attunia/survey/survey-p04.jpg</code></span>
+</label>
+<label class="row ban">
+  <input type="checkbox" data-id="at-ban-4">
+  <span class="tag">不要当证据</span>
+  <a class="shot" href="media/attunia/survey/survey-p05.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/survey-p05.jpg" alt=""></a>
+  <span class="meta"><strong>survey-p05.jpg</strong><em>同上。</em><code>media/attunia/survey/survey-p05.jpg</code></span>
+</label>
+<label class="row ban">
+  <input type="checkbox" data-id="at-ban-5">
+  <span class="tag">不要当证据</span>
+  <a class="shot" href="media/attunia/survey/survey-p06.jpg" target="_blank" rel="noopener"><img src="media/attunia/survey/survey-p06.jpg" alt=""></a>
+  <span class="meta"><strong>survey-p06.jpg</strong><em>同上。</em><code>media/attunia/survey/survey-p06.jpg</code></span>
+</label>
+</div>
+        <h3>原件和还没交来的</h3>
+        <div class="stack">
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="at-p23">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>AnxiousKit 展板 P2、P3</strong><em>在 media/anxious/，Anxious Kit 旧页用了，Attunia 正文只用了 P1。</em></span>
+</label>
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="at-survey">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>15 人问卷其余页</strong><em>default-p02.jpg 到 default-p06.jpg 在仓库里。正文附录只放了第 1 页。</em></span>
+</label>
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="at-pitch-rest">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>MindCalm 其余已导出的页</strong><em>pitch-p05、p06、p08、p11、p17 在 media/attunia/mindcalm/。正文没用。</em></span>
+</label>
+          <label class="row ban textonly">
+  <input type="checkbox" data-id="at-art">
+  <span class="tag">不要当证据</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>six-screens 装饰图</strong><em>source/storytelling-v2/attunia/six-screens/ppt-screens/art 和 ref。是后期视觉试验，不是黑客松界面，不要放进案例当证据。</em></span>
+</label>
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="at-extra-ui">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>界面截图还没进正文的</strong><em>11-scene.png、tuno.png、pitch-hero.png、attunia-splash.jpg、attunia-session.png、attunia-chat.png、attunia-boundary.png。先打开看是不是重复或旧版，再决定进不进正文。</em></span>
+</label>
+        </div>
+      </details>
+    </section>
+
+    <section id="teem">
+      <details class="pack" open>
+        <summary><h2>TEEM 家族 · 城中大冒险，不是角色原创</h2></summary>
+        <p>本站原件只有活动总结 PDF：<code>source/teem/TEEM仔城中大冒险-活动总结.pdf</code>（37 页）。叙事母稿在 <code>source/storytelling-v2/teem/TEEM_Fork02_Storytelling/</code>。下面的 JPEG 多半是从这份 PDF 裁的。</p>
+        <p>正文页：<a href="work/teem.html">work/teem.html</a></p>
+        <h3>正文正在用 · 14</h3>
+<div class="stack">
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-0">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem-route.jpg" target="_blank" rel="noopener"><img src="media/teem-route.jpg" alt=""></a>
+  <span class="meta"><strong>teem-route.jpg</strong><em>平面 · 航拍黄线</em><code>media/teem-route.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-1">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem-wall.png" target="_blank" rel="noopener"><img src="media/teem-wall.png" alt=""></a>
+  <span class="meta"><strong>teem-wall.png</strong><em>视觉 · 墙面</em><code>media/teem-wall.png</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-2">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/kv-poster.jpg" target="_blank" rel="noopener"><img src="media/teem/kv-poster.jpg" alt=""></a>
+  <span class="meta"><strong>kv-poster.jpg</strong><em>视觉 · 竖版</em><code>media/teem/kv-poster.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-3">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/kv-wide.jpg" target="_blank" rel="noopener"><img src="media/teem/kv-wide.jpg" alt=""></a>
+  <span class="meta"><strong>kv-wide.jpg</strong><em>视觉 · 主 KV 横版</em><code>media/teem/kv-wide.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-4">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/photo-inflatable.jpg" target="_blank" rel="noopener"><img src="media/teem/photo-inflatable.jpg" alt=""></a>
+  <span class="meta"><strong>photo-inflatable.jpg</strong><em>封面全幅 · 现场气模</em><code>media/teem/photo-inflatable.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-5">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/photo-mascot-group.jpg" target="_blank" rel="noopener"><img src="media/teem/photo-mascot-group.jpg" alt=""></a>
+  <span class="meta"><strong>photo-mascot-group.jpg</strong><em>Brief 下，五天段再用一次</em><code>media/teem/photo-mascot-group.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-6">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/photo-mascot.jpg" target="_blank" rel="noopener"><img src="media/teem/photo-mascot.jpg" alt=""></a>
+  <span class="meta"><strong>photo-mascot.jpg</strong><em>Brief 下 · 人偶</em><code>media/teem/photo-mascot.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-7">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/photo-plaza.jpg" target="_blank" rel="noopener"><img src="media/teem/photo-plaza.jpg" alt=""></a>
+  <span class="meta"><strong>photo-plaza.jpg</strong><em>五天 · 广场</em><code>media/teem/photo-plaza.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-8">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/photo-popup.jpg" target="_blank" rel="noopener"><img src="media/teem/photo-popup.jpg" alt=""></a>
+  <span class="meta"><strong>photo-popup.jpg</strong><em>视觉 / 快闪 / 五天，同一张用了三次</em><code>media/teem/photo-popup.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-9">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/photo-workshop.jpg" target="_blank" rel="noopener"><img src="media/teem/photo-workshop.jpg" alt=""></a>
+  <span class="meta"><strong>photo-workshop.jpg</strong><em>五天 · 工作坊</em><code>media/teem/photo-workshop.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-10">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/summary-p14.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p14.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p14.jpg</strong><em>游园规则</em><code>media/teem/summary-p14.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-11">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/summary-p27.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p27.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p27.jpg</strong><em>尺寸 · 气模</em><code>media/teem/summary-p27.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-12">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/summary-p28.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p28.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p28.jpg</strong><em>尺寸 · 用电</em><code>media/teem/summary-p28.jpg</code></span>
+</label>
+<label class="row in">
+  <input type="checkbox" data-id="tm-in-13">
+  <span class="tag">已进正文</span>
+  <a class="shot" href="media/teem/summary-p29.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p29.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p29.jpg</strong><em>尺寸和快闪，同一张用了两次</em><code>media/teem/summary-p29.jpg</code></span>
+</label>
+</div>
+<h3>仓库里有，正文没放 · 25</h3>
+<div class="stack">
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-0">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/contact-sheet.jpg" target="_blank" rel="noopener"><img src="media/teem/contact-sheet.jpg" alt=""></a>
+  <span class="meta"><strong>contact-sheet.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/contact-sheet.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-1">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/cover-inflatable.jpg" target="_blank" rel="noopener"><img src="media/teem/cover-inflatable.jpg" alt=""></a>
+  <span class="meta"><strong>cover-inflatable.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/cover-inflatable.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-2">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/cover-live.jpg" target="_blank" rel="noopener"><img src="media/teem/cover-live.jpg" alt=""></a>
+  <span class="meta"><strong>cover-live.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/cover-live.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-3">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/photo-inflatable-wide.jpg" target="_blank" rel="noopener"><img src="media/teem/photo-inflatable-wide.jpg" alt=""></a>
+  <span class="meta"><strong>photo-inflatable-wide.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/photo-inflatable-wide.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-4">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/photo-selfie.jpg" target="_blank" rel="noopener"><img src="media/teem/photo-selfie.jpg" alt=""></a>
+  <span class="meta"><strong>photo-selfie.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/photo-selfie.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-5">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/source-files.jpg" target="_blank" rel="noopener"><img src="media/teem/source-files.jpg" alt=""></a>
+  <span class="meta"><strong>source-files.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/source-files.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-6">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p01.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p01.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p01.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p01.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-7">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p02.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p02.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p02.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p02.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-8">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p11.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p11.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p11.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p11.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-9">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p15.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p15.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p15.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p15.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-10">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p16.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p16.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p16.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p16.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-11">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p20.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p20.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p20.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p20.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-12">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p21.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p21.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p21.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p21.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-13">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p22.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p22.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p22.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p22.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-14">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p23.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p23.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p23.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p23.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-15">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p24.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p24.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p24.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p24.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-16">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p25.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p25.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p25.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p25.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-17">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p26.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p26.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p26.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p26.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-18">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p30.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p30.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p30.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p30.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-19">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p31.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p31.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p31.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p31.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-20">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p32.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p32.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p32.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p32.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-21">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p33.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p33.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p33.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p33.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-22">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p34.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p34.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p34.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p34.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-23">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p36.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p36.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p36.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p36.jpg</code></span>
+</label>
+<label class="row out">
+  <input type="checkbox" data-id="tm-out-24">
+  <span class="tag">未进正文</span>
+  <a class="shot" href="media/teem/summary-p37.jpg" target="_blank" rel="noopener"><img src="media/teem/summary-p37.jpg" alt=""></a>
+  <span class="meta"><strong>summary-p37.jpg</strong><em>仓库里有这张图。三个正文页都没有引用它。</em><code>media/teem/summary-p37.jpg</code></span>
+</label>
+</div>
+        <h3>总结 PDF 里已经导出、正文没放的页</h3>
+        <p>文件名 <code>summary-pXX.jpg</code> 对应该页。核对「报告里还有什么没进网页」时从这里点开，不要凭记忆。</p>
+        <h3>登记过、但不在这个网站文件夹里的原件</h3>
+        <div class="stack">
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="tm-ai">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>主 KV / 海报 / 贴纸 / 墙面 / 快闪物料的 ai</strong><em>分章记录：E 盘 CityU-Year1 / PreCityu / 过去 / TEEM仔。含主KV横竖版、ppt、贴纸 21.0x14.8cm、跳转页、快闪介绍、6 块小板、横幅、10 米地贴、墙面印刷。</em></span>
+</label>
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="tm-skp">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>SketchUp</strong><em>同一目录：1211快闪店冲刺.skp / .skb，1215结构.skp / .skb。网页没有模型附件。</em></span>
+</label>
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="tm-tweet">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>推文插图</strong><em>E 盘 CityU-Year1 / PreCityu / 过去 / 番禺天河城 下的第一篇、第二篇推文 png。网页没有逐张推文。</em></span>
+</label>
+          <label class="row disk textonly">
+  <input type="checkbox" data-id="tm-psd">
+  <span class="tag">原件在别处</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>表情包 16 个 psd</strong><em>谢谢、可不可以、下班收工、犀利、财源滚滚、生日快乐、冇问题、打call、再来亿杯、新花怒放、我的天啊、睡大觉、期待、你好、咩事、好朋友。不署个人。</em></span>
+</label>
+          <label class="row note textonly">
+  <input type="checkbox" data-id="tm-tips">
+  <span class="tag">备忘</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>TEEM TIPS 截图 13 张</strong><em>在作品集根目录 TEEM TIPS。是面试问答备忘，不是活动物料。静态网站服务器读不到这个文件夹。</em></span>
+</label>
+          <label class="row note textonly">
+  <input type="checkbox" data-id="tm-award">
+  <span class="tag">备忘</span>
+  <span class="shot empty">无图</span>
+  <span class="meta"><strong>公开征集</strong><em>http://www.1zhengji.com/a/1jq6d.html 一等奖梁贤泽。用来核对表情包和原形象归属。</em></span>
+</label>
+        </div>
+      </details>
+    </section>
+  </main>
+  <script>
+    (function () {
+      var key = "portfolio-ledger-v1";
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) {}
+      document.querySelectorAll("input[data-id]").forEach(function (box) {
+        if (saved[box.dataset.id]) {
+          box.checked = true;
+          box.closest(".row").classList.add("is-checked");
+        }
+        box.addEventListener("change", function () {
+          saved[box.dataset.id] = box.checked;
+          box.closest(".row").classList.toggle("is-checked", box.checked);
+          localStorage.setItem(key, JSON.stringify(saved));
+        });
+      });
+      var q = document.querySelector(".find");
+      q.addEventListener("input", function () {
+        var s = q.value.trim().toLowerCase();
+        document.querySelectorAll(".row").forEach(function (row) {
+          row.hidden = s && row.textContent.toLowerCase().indexOf(s) === -1;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
