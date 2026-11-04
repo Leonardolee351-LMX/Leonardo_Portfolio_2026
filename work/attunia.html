@@ -225,6 +225,94 @@
       font-size: 13px;
     }
 
+
+
+    /* Red emphasis card for critical honesty (TUNO unavailable on static) */
+    body.case-soft .honesty-alert {
+      margin: 12px 0 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(180, 40, 40, 0.14);
+      border: 1px solid rgba(220, 72, 72, 0.55);
+      box-shadow: 0 0 0 1px rgba(220, 72, 72, 0.12), 0 10px 28px rgba(0,0,0,.22);
+      color: #ffb4b4;
+      font-size: 14px;
+      font-weight: 650;
+      line-height: 1.45;
+      letter-spacing: 0.01em;
+    }
+    body.case-soft .honesty-alert strong {
+      color: #ffd0d0;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: #d3fb71;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 2px;
+    }
+
+    /* Standalone chapter spacing after split tabs */
+    body.case-soft .cs-view + .cs-view { margin-top: 8px; }
+
+    /* Appendix outbound project cards */
+    body.case-soft .lineage-out-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    body.case-soft a.lineage-out-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #16191d;
+      border: 1px solid #2a2e33;
+      box-shadow: 0 18px 40px rgba(0,0,0,.28);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    body.case-soft a.lineage-out-card:hover {
+      transform: translateY(-3px);
+      border-color: #3d434a;
+      box-shadow: 0 22px 48px rgba(0,0,0,.36);
+    }
+    body.case-soft a.lineage-out-card:focus-visible {
+      outline: 2px solid #d3fb71;
+      outline-offset: 3px;
+    }
+    body.case-soft .lineage-out-card .still {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: #0e1012;
+    }
+    body.case-soft .lineage-out-card .meta {
+      padding: 14px 16px 16px;
+    }
+    body.case-soft .lineage-out-card .meta .k {
+      margin: 0 0 4px;
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #8d8f8c;
+    }
+    body.case-soft .lineage-out-card .meta h4 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: #ece8e0;
+      font-weight: 650;
+    }
+    body.case-soft .lineage-out-card .meta p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #b7b9b8;
+    }
+    @media (max-width: 720px) {
+      body.case-soft .lineage-out-cards { grid-template-columns: 1fr; }
+    }
+
     /* P2 dual tabs: 用户体验心流 | 实际测试+用户反馈 */
     body.case-soft .exp-tabs {
       display: flex;
@@ -923,9 +1011,11 @@
       <a href="#cover">Cover</a>
       <a href="#intro">介绍</a>
       <a href="#pitch-story">Pitch</a>
-      <a href="#experience">体验/测试</a>
+      <a href="#experience">体验</a>
+      <a href="#user-cases">用户案例</a>
+      <a href="#tech-evidence">证据</a>
       <a href="#links">链接</a>
-      <a href="#archive">附录·谱系</a>
+      <a href="#archive">附录</a>
     </nav>
 
     <!-- COVER: title left · honesty/bridge right · interactive Pitch deck below -->
@@ -1104,19 +1194,13 @@
         </div>
       </section>
 
-      <!-- P2: 用户体验心流 | 实际测试 + 用户反馈 (folded tabs) -->
-      <section class="cs-view" id="experience"><span id="showcase" hidden></span><span id="prototype" hidden></span><span id="evidence" hidden></span>
-        <p class="cs-num">体验 / 测试 · P2</p>
-        <h3>路径怎么走，用户怎么说。</h3>
-        <p class="cap">同一位置折叠两块：点左侧看产品体验心流；点右侧看现场测试与反馈。默认一次只展开一块。</p>
+      <!-- 用户体验心流 · standalone chapter -->
+      <section class="cs-view" id="experience"><span id="showcase" hidden></span><span id="prototype" hidden></span>
+        <p class="cs-num">用户体验心流</p>
+        <h3>从开屏走进 Tuno：产品怎么被走完。</h3>
+        <p class="cap">独立章节：路径总览 · purpose 静态演示 · 关键画廊。只讲 UX 心流，不混用户个案或技术证据。</p>
 
-        <div class="exp-tabs" role="tablist" aria-label="体验与测试">
-          <button type="button" class="exp-tab is-on" role="tab" id="tab-journey" aria-selected="true" aria-controls="panel-journey" data-panel="journey">用户体验心流</button>
-          <button type="button" class="exp-tab" role="tab" id="tab-test" aria-selected="false" aria-controls="panel-test" data-panel="test">实际测试 + 用户反馈</button>
-        </div>
-
-        <div class="exp-panel" id="panel-journey" role="tabpanel" aria-labelledby="tab-journey">
-          <div class="journey-rail" aria-label="路径总览">
+<div class="journey-rail" aria-label="路径总览">
             <strong>开屏</strong><span class="sep">→</span>
             <strong>说明书 / 合规</strong><span class="sep">→</span>
             <strong>校准</strong><span class="sep">→</span>
@@ -1129,7 +1213,8 @@
           <div class="prototype-demo" id="journey-purpose-demo">
             <p class="cs-num">实机原型演示</p>
             <h3 style="font-size:clamp(18px,2vw,24px);margin:4px 0 8px;">从开屏说明书点进去走一遍 UX</h3>
-            <p class="cs-note">下方嵌的是 GitHub Pages 上的 <code>purpose</code> 静态页，可直接点击翻页体验链路。美术 / 视频 / 场景音频应可加载；完整 TUNO Agent（/api · 实机脑电）在静态部署上仍不可用。</p>
+            <p class="cs-note">下方嵌的是 GitHub Pages 上的 <code>purpose</code> 静态页，可直接点击翻页体验链路。美术 / 视频 / 场景音频应可加载。</p>
+            <p class="honesty-alert" role="note"><strong>完整 TUNO Agent（/api · 实机脑电）在静态部署上仍不可用。</strong></p>
             <div class="embed-frame">
               <iframe src="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/purpose" title="Attunia 实机 UX 演示 · purpose 起" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allow="autoplay"></iframe>
             </div>
@@ -1226,13 +1311,15 @@
           <p class="links" style="margin-top:12px;">
             <a href="https://leonardolee351-lmx.github.io/Attunia_Brainlink-meditation/purpose" target="_blank" rel="noopener">本地体验静态页</a>
           </p>
-          <p class="honesty-strip">路径画廊只讲产品 UX 心流（开屏→…→Tuno），不堆长文。上方嵌页可点走静态 UX；完整 TUNO Agent 在静态 Pages 上仍不可用，但美术与音频应可加载。</p>
-        </div>
+          <p class="honesty-strip">路径画廊只讲产品 UX 心流（开屏→…→Tuno），不堆长文。上方嵌页可点走静态 UX；美术与音频应可加载。</p>
+          <p class="honesty-alert" role="note"><strong>完整 TUNO Agent（/api · 实机脑电）在静态部署上仍不可用。</strong></p>
+      </section>
 
-        <div class="exp-panel" id="panel-test" role="tabpanel" aria-labelledby="tab-test" hidden>
-          <p class="cs-num">实际测试 + 用户反馈</p>
-          <h3 style="font-size:clamp(22px,2.4vw,30px);margin:6px 0 8px;">现场 DEMO：ADHD 用户录屏 + 口述反馈</h3>
-          <p class="cap">同一叙事节拍：先看真实用户怎么用，再听他们说了什么。小样本 · 个案 · Soft Healthcare / 非医疗疗效宣称。</p>
+      <!-- ADHD 用户案例 / 真实反馈 · standalone chapter -->
+      <section class="cs-view" id="user-cases">
+        <p class="cs-num">用户数据 / 案例证明</p>
+        <h3 style="font-size:clamp(22px,2.4vw,30px);margin:6px 0 8px;">ADHD 用户案例 · 真实反馈</h3>
+        <p class="cap">个案·小样本。先看真实用户怎么用，再听他们说了什么。Soft Healthcare / 非医疗疗效宣称。本板块只讲人与反馈，不堆工程证据。</p>
 
           <div class="showcase-grid">
             <div class="evidence-video">
@@ -1271,7 +1358,108 @@
             </ul>
             <p class="honesty-strip">ADHD 试戴个案演示口径：专注 23→80 等仅作单次可见变化描述。小样本 · 非疗效宣称 · Soft Healthcare。</p>
           </div>
+      </section>
+
+      <!-- 后台技术实验 · 可用可信 · standalone chapter -->
+      <section class="cs-view" id="tech-evidence"><span id="evidence" hidden></span>
+        <p class="cs-num">后台技术实验 · 可用可信</p>
+        <h3>经得住考验：可量化、可解释、可核对。</h3>
+        <p class="cap">独立证据板块——不是 ADHD 故事的复述。评测集、Agent 架构边界、脑电采集后台的测试与分析界面，用来证明产品本身可用、可解释、有工程依据。</p>
+        <p class="en-anchor">Evidence that the product holds up: evals, architecture, EEG backend — Soft Healthcare honesty stays.</p>
+
+        <div class="folds" style="margin-top:16px;">
+            <details class="fold" id="eval-sets">
+                <summary>评测集 · 量化与下载</summary>
+                <div class="fold-body">
+                  <p><span class="ev ev-known">已知</span> 源文件来自 <code>E:\Attunia_Brainlink-meditation\eval</code>：`eval_No.1`（状态 / 对话 / 对抗 / 时序）与 `eval_No.2`（+ 10 分钟工作窗 `detectWorkNeed`）。`CURRENT.json` 指向现行集。已从 JSONL 扁平导出可下载的 <strong>Excel / CSV</strong>。</p>
+                  <p class="en-anchor">Eval proves engineering paths &amp; guardrails — not a generalizable emotion-diagnosis model.</p>
+                  <p style="margin:10px 0 12px">
+                    <a href="../media/attunia/appendix/eval/Attunia_eval_sets.xlsx"><strong>下载 Excel · Attunia_eval_sets.xlsx</strong></a>
+                    · <a href="../media/attunia/appendix/eval/eval_No1_states.csv">states.csv</a>
+                    · <a href="../media/attunia/appendix/eval/eval_No1_dialog.csv">dialog.csv</a>
+                    · <a href="../media/attunia/appendix/eval/eval_No1_adversarial.csv">adversarial.csv</a>
+                    · <a href="../media/attunia/appendix/eval/eval_No2_work_windows.csv">work_windows.csv</a>
+                    · <a href="../media/attunia/appendix/eval/eval_No1_dataset.zip">原始 dataset.zip</a>
+                    · <a href="../media/attunia/appendix/eval/eval_No1_REPORT.md">REPORT.md</a>
+                  </p>
+                  <img class="evidence" src="../media/attunia/appendix/eval/eval-preview-table.png" alt="评测集 states 前 12 条表格预览" data-lb>
+                  <p class="cap">表格预览（states 前 12 条）。全量 240 状态 · 30 对话 · 20 对抗 · 42 时序；规则基线与标注一致。真实 EEG 仅作统计特征来源。</p>
+                  <img class="evidence" src="../media/attunia/appendix/eval-sets-card.png" alt="评测集构成一览卡片" data-lb>
+                  <p class="cap">构成一览卡（对照 REPORT）。黑客松日期与团队分工 <span class="ev ev-gap">待补</span>。</p>
+                </div>
+              </details>
+
+            <details class="fold" id="agent-framework">
+                <summary>AGENT 框架 · 职责分离与边界</summary>
+                <div class="fold-body">
+                  <p><span class="ev ev-retro">复盘判断</span> 价值不在“有多少 Agent”，而在职责分离、目录边界与用户最终决定权。下图比卡片更有说服力：<strong>EEG/情境入 → Tuno 编排 → Friends 多专家（只拼目录）→ 短训交付 → 本机记忆</strong>。</p>
+                  <p><span class="ev ev-known">已知</span> 现行禁止：即兴新练习、生图、作曲、专家多轮互改；原始脑电与可识别健康信息不进外部生成 API。详见 <a href="../media/attunia/appendix/agent/multi-agent-boundary.md">multi-agent-boundary.md</a>。</p>
+                  <img class="evidence" src="../media/attunia/appendix/agent/agent-architecture.png" alt="Attunia Agent 架构图：Tuno 编排与 Friends 多专家" data-lb>
+                  <p class="cap">架构图（SVG 同源：<a href="../media/attunia/appendix/agent/agent-architecture.svg">agent-architecture.svg</a>）。单 Agent 对话另走 combo，不经会诊。</p>
+                  <div class="evidence-grid">
+                    <figure>
+                      <img src="../media/attunia/appendix/agent/pitch-system-architecture.png" alt="Pitch 系统架构视觉" data-lb>
+                      <figcaption>Pitch 系统架构页（对照）。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/agent-tuno-chat.png" alt="Tuno 对话界面" data-lb class="phone">
+                      <figcaption>单 Agent 对话：建议可理解、可跳过。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/agent-consult.png" alt="多专家会诊界面" data-lb class="phone">
+                      <figcaption>会诊路径：派工与拼接对用户可见。</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </details>
+
+            <details class="fold" id="eeg-backend">
+                <summary>脑电采集后台 · 测试与分析界面</summary>
+                <div class="fold-body">
+                  <p><span class="ev ev-known">已知</span> 原型把 BrainLink 等设备线索呈现为可读的三通道（唤醒 / 专注 / 平静），并区分真机与演示信号。下方直接给出<strong>测试界面</strong>与<strong>数据分析界面</strong>截图；另附评测时序样本的分析预览图。</p>
+                  <p class="en-anchor">Signal → Emotion → User Need → Permission to Act → Proven Benefit.</p>
+                  <div class="evidence-grid">
+                    <figure>
+                      <img src="../media/attunia/appendix/eeg/eeg-session-live.png" alt="Session 测试界面：实时脑电三通道" data-lb class="phone">
+                      <figcaption><span class="ev ev-known">测试界面</span> 训练中实时读数（可开关）；字幕与脑电可独立关闭。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/eeg/eeg-home-chat.png" alt="首页对话中的状态线索" data-lb class="phone">
+                      <figcaption>首页 / 对话语境下的状态线索。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/eeg/eeg-analysis-debrief.png" alt="Debrief 数据分析界面" data-lb class="phone">
+                      <figcaption><span class="ev ev-known">数据分析</span> Session 后 Debrief 复盘界面。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/eeg/eeg-analysis-actions.png" alt="Debrief 行动建议界面" data-lb class="phone">
+                      <figcaption>数据分析后的行动层（建议仍可由用户拒绝）。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/eeg/eeg-analysis-timeseries.png" alt="时序分析预览图" data-lb>
+                      <figcaption>评测集 timeseries 样本绘制的唤醒/专注/平静曲线（非医疗诊断图）。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/eeg/eeg-home-afterwork.png" alt="下班场景脑电语境" data-lb>
+                      <figcaption>Pitch / 场景语境：状态线索服务短时练习。</figcaption>
+                    </figure>
+                  </div>
+                  <p class="cap" style="margin-top:12px">硬件线索（MindCalm 提案延展，可选对照）：</p>
+                  <div class="evidence-grid">
+                    <figure>
+                      <img src="../media/attunia/appendix/hardware/electrode-acupoint-wearable.jpg" alt="电极穴位佩戴图" data-lb>
+                      <figcaption>电极 / 穴位佩戴示意。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="../media/attunia/appendix/hardware/handsketches-eeg-eda.png" alt="EEG EDA 手绘" data-lb>
+                      <figcaption>EEG / EDA 形态手绘迭代。</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </details>
         </div>
+
+        <p class="honesty-strip" style="margin-top:16px;">评测证明工程路径与护栏，不是可泛化的情绪诊断模型。原始脑电与可识别健康信息不进外部 LLM。调节，不诊疗。</p>
       </section>
 
       <!-- Links -->
@@ -1292,8 +1480,8 @@
       <section class="cs-view appendix-feishu" id="archive">
         <button type="button" class="appendix-toggle" aria-expanded="false" aria-controls="archive-body" id="archive-toggle">
           <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="section-title">附录 · 谱系与证据</span>
-          <span class="hint">默认收起 · 不抢主叙事</span>
+          <span class="section-title">附录 · 谱系</span>
+          <span class="hint">默认收起 · 关系谱系</span>
         </button>
         <div class="appendix-body" id="archive-body">
           <div class="appendix-body-inner">
@@ -1320,6 +1508,25 @@
               </article>
             </div>
 
+            <div class="lineage-out-cards" aria-label="谱系出口">
+              <a class="lineage-out-card" href="anxious.html">
+                <img class="still" src="../media/anxious/P1.png" alt="Anxious Kit 作品封面">
+                <div class="meta">
+                  <p class="k">Previous · Origin</p>
+                  <h4>Anxious Kit</h4>
+                  <p>创造可恢复的空间。早期 IA / 策划案与软硬件想象。</p>
+                </div>
+              </a>
+              <a class="lineage-out-card" href="../mindcalm/index.html">
+                <img class="still" src="../media/mindcalm-demo/P1.png" alt="MindCalm 作品封面">
+                <div class="meta">
+                  <p class="k">Forward · Proposal</p>
+                  <h4>MindCalm</h4>
+                  <p>研究协作提案（HKU 方向）· 主动干预硬件概念。非失败迭代。</p>
+                </div>
+              </a>
+            </div>
+
             <p>
               <span class="ev ev-known">已知</span>
               <span class="ev ev-public">公开叙事</span>
@@ -1336,7 +1543,7 @@
                   <p><span class="ev ev-retro">复盘判断</span> AnxiousKit 把问题放进概念与信息架构；当时的软硬件仍偏策划，完成度有限。</p>
                   <img class="evidence" src="../media/attunia/appendix/anxiouskit-p1.png" alt="AnxiousKit 概念展板。" data-lb>
                   <p class="cap"><span class="ev ev-gap">待补</span> 年份、课程、当时访谈范围。具体个人疾病经历不放在公开页。</p>
-                  <p class="links"><a href="anxious.html">打开 Anxious Kit 案例页</a></p>
+                  <p class="cap">出口见上方谱系卡片 · Anxious Kit。</p>
                 </div>
               </details>
 
@@ -1384,7 +1591,7 @@
                     </figure>
                   </div>
                 
-                  <p class="cap" style="margin-top:14px"><a href="../mindcalm/index.html"><strong>软件呈现 / 原型延展 →</strong></a> 打开 MindCalm 轻量演示页（六屏 PPT Demo · 原型截屏 · 硬件/穴位证据）。提案阶段 · Soft Healthcare 诚实边界见该页。</p>
+                  <p class="cap" style="margin-top:14px">出口见上方谱系卡片 · MindCalm。演示页含六屏 PPT Demo · 原型截屏 · 硬件/穴位证据；提案阶段 · Soft Healthcare 诚实边界见该页。</p>
                   <div class="evidence-grid" style="margin-top:10px">
                     <figure>
                       <img src="../media/attunia/appendix/hardware/emotiv-lifestyle-hardware.png" alt="MindCalm 硬件生活方式提案板" data-lb>
@@ -1398,98 +1605,8 @@
 </div>
               </details>
 
-                            <details class="fold" id="eval-sets">
-                <summary>04 证据加页 · 评测集</summary>
-                <div class="fold-body">
-                  <p><span class="ev ev-known">已知</span> 源文件来自 <code>E:\Attunia_Brainlink-meditation\eval</code>：`eval_No.1`（状态 / 对话 / 对抗 / 时序）与 `eval_No.2`（+ 10 分钟工作窗 `detectWorkNeed`）。`CURRENT.json` 指向现行集。已从 JSONL 扁平导出可下载的 <strong>Excel / CSV</strong>。</p>
-                  <p class="en-anchor">Eval proves engineering paths &amp; guardrails — not a generalizable emotion-diagnosis model.</p>
-                  <p style="margin:10px 0 12px">
-                    <a href="../media/attunia/appendix/eval/Attunia_eval_sets.xlsx"><strong>下载 Excel · Attunia_eval_sets.xlsx</strong></a>
-                    · <a href="../media/attunia/appendix/eval/eval_No1_states.csv">states.csv</a>
-                    · <a href="../media/attunia/appendix/eval/eval_No1_dialog.csv">dialog.csv</a>
-                    · <a href="../media/attunia/appendix/eval/eval_No1_adversarial.csv">adversarial.csv</a>
-                    · <a href="../media/attunia/appendix/eval/eval_No2_work_windows.csv">work_windows.csv</a>
-                    · <a href="../media/attunia/appendix/eval/eval_No1_dataset.zip">原始 dataset.zip</a>
-                    · <a href="../media/attunia/appendix/eval/eval_No1_REPORT.md">REPORT.md</a>
-                  </p>
-                  <img class="evidence" src="../media/attunia/appendix/eval/eval-preview-table.png" alt="评测集 states 前 12 条表格预览" data-lb>
-                  <p class="cap">表格预览（states 前 12 条）。全量 240 状态 · 30 对话 · 20 对抗 · 42 时序；规则基线与标注一致。真实 EEG 仅作统计特征来源。</p>
-                  <img class="evidence" src="../media/attunia/appendix/eval-sets-card.png" alt="评测集构成一览卡片" data-lb>
-                  <p class="cap">构成一览卡（对照 REPORT）。黑客松日期与团队分工 <span class="ev ev-gap">待补</span>。</p>
-                </div>
-              </details>
-
-                            <details class="fold" id="agent-framework">
-                <summary>05 证据加页 · AGENT 框架呈现</summary>
-                <div class="fold-body">
-                  <p><span class="ev ev-retro">复盘判断</span> 价值不在“有多少 Agent”，而在职责分离、目录边界与用户最终决定权。下图比卡片更有说服力：<strong>EEG/情境入 → Tuno 编排 → Friends 多专家（只拼目录）→ 短训交付 → 本机记忆</strong>。</p>
-                  <p><span class="ev ev-known">已知</span> 现行禁止：即兴新练习、生图、作曲、专家多轮互改；原始脑电与可识别健康信息不进外部生成 API。详见 <a href="../media/attunia/appendix/agent/multi-agent-boundary.md">multi-agent-boundary.md</a>。</p>
-                  <img class="evidence" src="../media/attunia/appendix/agent/agent-architecture.png" alt="Attunia Agent 架构图：Tuno 编排与 Friends 多专家" data-lb>
-                  <p class="cap">架构图（SVG 同源：<a href="../media/attunia/appendix/agent/agent-architecture.svg">agent-architecture.svg</a>）。单 Agent 对话另走 combo，不经会诊。</p>
-                  <div class="evidence-grid">
-                    <figure>
-                      <img src="../media/attunia/appendix/agent/pitch-system-architecture.png" alt="Pitch 系统架构视觉" data-lb>
-                      <figcaption>Pitch 系统架构页（对照）。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="../media/attunia/appendix/agent-tuno-chat.png" alt="Tuno 对话界面" data-lb class="phone">
-                      <figcaption>单 Agent 对话：建议可理解、可跳过。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="../media/attunia/appendix/agent-consult.png" alt="多专家会诊界面" data-lb class="phone">
-                      <figcaption>会诊路径：派工与拼接对用户可见。</figcaption>
-                    </figure>
-                  </div>
-                </div>
-              </details>
-
-                            <details class="fold" id="eeg-backend">
-                <summary>06 证据加页 · 脑电采集后台数据显示</summary>
-                <div class="fold-body">
-                  <p><span class="ev ev-known">已知</span> 原型把 BrainLink 等设备线索呈现为可读的三通道（唤醒 / 专注 / 平静），并区分真机与演示信号。下方直接给出<strong>测试界面</strong>与<strong>数据分析界面</strong>截图；另附评测时序样本的分析预览图。</p>
-                  <p class="en-anchor">Signal → Emotion → User Need → Permission to Act → Proven Benefit.</p>
-                  <div class="evidence-grid">
-                    <figure>
-                      <img src="../media/attunia/appendix/eeg/eeg-session-live.png" alt="Session 测试界面：实时脑电三通道" data-lb class="phone">
-                      <figcaption><span class="ev ev-known">测试界面</span> 训练中实时读数（可开关）；字幕与脑电可独立关闭。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="../media/attunia/appendix/eeg/eeg-home-chat.png" alt="首页对话中的状态线索" data-lb class="phone">
-                      <figcaption>首页 / 对话语境下的状态线索。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="../media/attunia/appendix/eeg/eeg-analysis-debrief.png" alt="Debrief 数据分析界面" data-lb class="phone">
-                      <figcaption><span class="ev ev-known">数据分析</span> Session 后 Debrief 复盘界面。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="../media/attunia/appendix/eeg/eeg-analysis-actions.png" alt="Debrief 行动建议界面" data-lb class="phone">
-                      <figcaption>数据分析后的行动层（建议仍可由用户拒绝）。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="../media/attunia/appendix/eeg/eeg-analysis-timeseries.png" alt="时序分析预览图" data-lb>
-                      <figcaption>评测集 timeseries 样本绘制的唤醒/专注/平静曲线（非医疗诊断图）。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="../media/attunia/appendix/eeg/eeg-home-afterwork.png" alt="下班场景脑电语境" data-lb>
-                      <figcaption>Pitch / 场景语境：状态线索服务短时练习。</figcaption>
-                    </figure>
-                  </div>
-                  <p class="cap" style="margin-top:12px">硬件线索（MindCalm 提案延展，可选对照）：</p>
-                  <div class="evidence-grid">
-                    <figure>
-                      <img src="../media/attunia/appendix/hardware/electrode-acupoint-wearable.jpg" alt="电极穴位佩戴图" data-lb>
-                      <figcaption>电极 / 穴位佩戴示意。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="../media/attunia/appendix/hardware/handsketches-eeg-eda.png" alt="EEG EDA 手绘" data-lb>
-                      <figcaption>EEG / EDA 形态手绘迭代。</figcaption>
-                    </figure>
-                  </div>
-                </div>
-              </details>
-
               <details class="fold">
-                <summary>07 Market caveat · 15 人问卷（MindCalm 阶段）</summary>
+                <summary>04 Market caveat · 15 人问卷（MindCalm 阶段）</summary>
                 <div class="fold-body">
                   <p><span class="ev ev-known">已知</span> 15 份有效答卷，12 人 26–35 岁。11 人用刷手机缓解。9 人说近三个月常感到压力。问卷写明头戴和微电流之后，12 人只接受私密场景。9 人把「觉得没用」当成最大的阻力。</p>
                   <p><span class="ev ev-gap">待补</span> Pitch 另引过 60 多份问卷。两份是否同一批人尚未核对，故不合并，也不倒回去当成 Attunia 开题时的研究。</p>
@@ -1563,34 +1680,6 @@
   </script>
 
 
-  <script>
-    (function () {
-      var root = document.getElementById("experience");
-      if (!root) return;
-      var tabs = root.querySelectorAll(".exp-tab");
-      var panels = {
-        journey: document.getElementById("panel-journey"),
-        test: document.getElementById("panel-test")
-      };
-      function show(key) {
-        tabs.forEach(function (t) {
-          var on = t.getAttribute("data-panel") === key;
-          t.classList.toggle("is-on", on);
-          t.setAttribute("aria-selected", on ? "true" : "false");
-        });
-        Object.keys(panels).forEach(function (k) {
-          if (!panels[k]) return;
-          if (k === key) panels[k].removeAttribute("hidden");
-          else panels[k].setAttribute("hidden", "");
-        });
-      }
-      tabs.forEach(function (t) {
-        t.addEventListener("click", function () {
-          show(t.getAttribute("data-panel"));
-        });
-      });
-    })();
-  </script>
 
 
   <script>
@@ -1619,6 +1708,26 @@
       }
       maybeOpenFromHash();
       window.addEventListener("hashchange", maybeOpenFromHash);
+    })();
+  </script>
+
+
+  <script>
+    (function () {
+      function openTechFold(id) {
+        var d = document.getElementById(id);
+        if (d && d.tagName === "DETAILS") d.open = true;
+        var sec = document.getElementById("tech-evidence");
+        if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      function maybeOpenTechFromHash() {
+        var h = (location.hash || "").toLowerCase().replace(/^#/, "");
+        if (h === "eval-sets" || h === "agent-framework" || h === "eeg-backend" || h === "tech-evidence" || h === "evidence") {
+          if (h !== "tech-evidence" && h !== "evidence") openTechFold(h);
+        }
+      }
+      maybeOpenTechFromHash();
+      window.addEventListener("hashchange", maybeOpenTechFromHash);
     })();
   </script>
 
