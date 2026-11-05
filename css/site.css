@@ -264,7 +264,7 @@ a:focus-visible, button:focus-visible {
   line-height: 1.05;
   font-weight: 620;
 }
-.show-card p { margin: 0; color: #3e403e; font-size: 15px; }
+.show-card > p:not(.show-tagline):not(.show-blurb) { margin: 0; color: #3e403e; font-size: 15px; }
 
 .album {
   background: #141416;
@@ -2809,4 +2809,60 @@ body.case-live .staggered-menu-wrapper:not([data-open]) .sm-toggle {
 body.home .hero-blast-frame {
   /* keep transparent; brightness comes from shader color/glow */
   background: transparent;
+}
+
+/* ===== home24: Showcase tagline + soft grey pills + longer Chinese blurb ===== */
+.show-card h3 {
+  margin: 16px 0 6px;
+}
+.show-tagline {
+  margin: 0 0 12px;
+  color: #5c5e5c;
+  font-size: clamp(13px, 1.35vw, 15px);
+  font-weight: 560;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+.show-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 7px;
+  margin: 0 0 14px;
+  padding: 0;
+}
+.show-tags li {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgb(25 27 29 / 0.1);
+  background: #eceae4;
+  color: #3a3c3a;
+  font-size: 11.5px;
+  font-weight: 560;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.show-blurb {
+  margin: 0;
+  color: #3e403e;
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+@media (max-width: 720px) {
+  .show-tagline {
+    font-size: 14px;
+  }
+  .show-tags li {
+    font-size: 11px;
+    padding: 5px 9px;
+    white-space: normal;
+  }
+  .show-blurb {
+    font-size: 15px;
+    line-height: 1.7;
+  }
 }
