@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css?v=home28">
+  <link rel="stylesheet" href="css/site.css?v=home32">
 </head>
 <body class="home">
   <!-- Primary nav: React Bits Staggered Menu (+ Fold Text labels) -->
@@ -45,7 +45,7 @@
       <iframe
         class="hero-models-frame"
         title="Cover models - hashbrown, cat, robot (local trial)"
-        src="experiments/cover-models/index.html?v=home28"
+        src="experiments/cover-models/index.html?v=home28b"
         tabindex="-1"
         allow="autoplay"
       ></iframe>
@@ -74,15 +74,13 @@
   </section>
 
   <section class="showcase" id="showcase">
-    <div class="tech-grid tech-grid--section" aria-hidden="true">
-      <div class="tech-grid-lines"></div>
-      <div class="tech-grid-pluses"></div>
-    </div>
-
-    <div class="wrap">
+    <!-- home31-local: Accordion Gallery; no tech-grid on Showcase -->
+    <div class="wrap showcase-wrap">
       <h2>Showcase</h2>
       <p class="showcase-lede">LaborLink、Attunia、TEEM。竖着看封面，进去才是过程。</p>
-            <div class="show-grid">
+      <!-- home32: Accordion Gallery removed after review; keep numbered 01/02/03 cards -->
+      <div class="show-grid">
+
         <a class="show-card" data-tint="labor" href="work/laborlink.html">
           <div class="show-shot">
             <span class="show-num">01</span>
@@ -125,6 +123,7 @@
           </ul>
           <p class="show-blurb">2024 年番禺天河城圣诞市集，也是 TEEM 仔品牌 IP 的首次集中线下亮相。我基于既有角色形象，参与活动视觉物料延展、线上宣传排版、场地动线与快闪店规划，并配合制作施工和现场执行，将品牌视觉转化为可参与的商业空间体验，探索数字传播与实体场景之间的设计衔接。</p>
         </a>
+      
       </div>
     </div>
   </section>
@@ -153,25 +152,45 @@
 </section>
 
   <footer class="ending" id="contact">
-    <div class="tech-grid tech-grid--section" aria-hidden="true">
-      <div class="tech-grid-lines"></div>
-      <div class="tech-grid-pluses"></div>
-    </div>
-
-    <div class="wrap">
-      <h2>Contact me</h2>
-      <div class="contacts">
-        <a href="mailto:leonardolee351@gmail.com"><span>Email</span><strong>leonardolee351@gmail.com</strong></a>
-        <a href="https://github.com/Leonardolee351-LMX" target="_blank" rel="noopener noreferrer"><span>GitHub</span><strong>https://github.com/Leonardolee351-LMX</strong></a>
-        <a href="https://www.xiaohongshu.com/search_result?keyword=310709340" target="_blank" rel="noopener noreferrer"><span>Rednote</span><strong>310709340</strong></a>
+    <div class="wrap ending-aiux">
+      <div class="ending-aiux-row" role="contentinfo">
+        <a class="ending-brand" href="index.html" aria-label="Leonardo home">
+          <img src="media/brand/leonardo-icon-white.svg" alt="" width="168" height="42" decoding="async" />
+        </a>
+        <p class="ending-copy">© 2026 Leonardo Li · All Rights Reserved</p>
+        <nav class="ending-socials" aria-label="Contact links">
+          <a href="https://github.com/Leonardolee351-LMX" target="_blank" rel="noopener noreferrer">
+            <svg class="ending-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.477 2 2 6.586 2 12.253c0 4.53 2.865 8.367 6.839 9.72.5.094.683-.222.683-.492 0-.243-.01-1.046-.014-1.898-2.782.618-3.37-1.342-3.37-1.342-.454-1.18-1.11-1.494-1.11-1.494-.908-.637.069-.624.069-.624 1.004.072 1.532 1.057 1.532 1.057.892 1.567 2.341 1.115 2.91.853.091-.663.35-1.115.636-1.371-2.22-.259-4.555-1.143-4.555-5.087 0-1.124.39-2.043 1.029-2.763-.103-.26-.446-1.302.098-2.714 0 0 .84-.276 2.75 1.054A9.3 9.3 0 0 1 12 6.918a9.3 9.3 0 0 1 2.504.346c1.909-1.33 2.748-1.054 2.748-1.054.546 1.412.203 2.454.1 2.714.64.72 1.028 1.639 1.028 2.763 0 3.953-2.338 4.825-4.566 5.079.36.318.68.945.68 1.905 0 1.375-.012 2.483-.012 2.82 0 .273.18.592.688.491C19.138 20.617 22 16.78 22 12.253 22 6.586 17.523 2 12 2Z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/%E9%93%AD%E6%99%9E-%E9%BB%8E-925845381/" target="_blank" rel="noopener noreferrer">
+            <svg class="ending-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.52V23H.24V8.25zM8.34 8.25h4.33v2.01h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.93V23h-4.52v-6.71c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.54V23H8.34V8.25z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://www.xiaohongshu.com/user/profile/5f16628e000000000100061f" target="_blank" rel="noopener noreferrer">
+            <span class="ending-ico ending-ico--rednote" aria-hidden="true">红</span>
+            <span>Rednote</span>
+          </a>
+          <a href="mailto:leonardolee351@gmail.com">
+            <svg class="ending-ico ending-ico--gmail" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#EA4335" d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 17.5v-11Z" opacity=".15"/>
+              <path fill="none" stroke="#EA4335" stroke-width="1.6" d="M3.2 6.2 12 12.4l8.8-6.2"/>
+              <path fill="none" stroke="#4285F4" stroke-width="1.6" d="M3.2 6.2V17.2"/>
+              <path fill="none" stroke="#34A853" stroke-width="1.6" d="M20.8 6.2V17.2"/>
+              <path fill="none" stroke="#FBBC05" stroke-width="1.6" d="M3.2 17.2h17.6"/>
+              <rect x="3.2" y="6.2" width="17.6" height="11" rx="1.2" fill="none" stroke="#4285F4" stroke-width="1.4"/>
+            </svg>
+            <span>Gmail</span>
+          </a>
+        </nav>
       </div>
     </div>
   </footer>
   <script src="js/catalog.js"></script>
-  <script src="js/home.js?v=home28"></script>
+  <script src="js/home.js?v=home32"></script>
   <!-- <script src="js/gallery.js?v=album5b"></script> unused while Flex Carousel trial is mounted -->
 <div id="site-nav-root" data-site-nav-theme="home" aria-live="polite"></div>
-  <link rel="stylesheet" href="experiments/site-nav/assets/index.css?v=home28">
-  <script type="module" src="experiments/site-nav/assets/site-nav.js?v=home28"></script>
+  <link rel="stylesheet" href="experiments/site-nav/assets/index.css?v=home29-menu">
+  <script type="module" src="experiments/site-nav/assets/site-nav.js?v=home29-menu"></script>
 </body>
 </html>

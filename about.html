@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About — Leonardo Li</title>
   <link rel="icon" type="image/png" href="media/brand/leonardo-icon.png">
-  <link rel="stylesheet" href="css/site.css?v=home27">
+  <link rel="stylesheet" href="css/site.css?v=home32">
 </head>
-<body>
-  <div class="wrap">
+<body class="about-page">
+  <div class="about-grid-bg tech-grid tech-grid--section" aria-hidden="true">
+    <div class="tech-grid-lines"></div>
+    <div class="tech-grid-pluses"></div>
+  </div>
+
+  <div class="wrap about-wrap">
     <header class="top top--legacy" hidden>
       <a class="brand" href="index.html"><img class="brand-mark" src="media/brand/leonardo-icon.png" alt="Leonardo"> Leonardo Li</a>
       <nav class="nav" aria-label="Primary">
@@ -18,31 +23,56 @@
         <a href="about.html" aria-current="page">About</a>
       </nav>
     </header>
-    <div class="about-grid">
-      <div>
-        <p class="eyebrow">Hihihi</p>
-        <h1>黎铭晞<br>Leonardo Li</h1>
-        <p>一只懒猫，有时如醒。正在香港城市大学读人机交互，Year 2，MFACM HCI。</p>
-        <p>以前做过数字媒体、交互和城市。现在把时间放在 AI、界面，以及人在里面怎么过。</p>
+
+    <section class="about-hero" aria-label="About">
+      <div class="about-lanyard">
+        <iframe
+          class="about-lanyard-frame"
+          title="Leonardo Li — interactive lanyard badge"
+          src="experiments/lanyard/index.html?v=about31-local&amp;front=./leonardo-portrait.png"
+          loading="eager"
+          allow="autoplay"
+        ></iframe>
+        <p class="about-lanyard-hint">Drag · click to flip</p>
       </div>
-      <div>
-        <p class="eyebrow">平时</p>
+
+      <div class="about-intro">
+        <p class="eyebrow">Hihihi</p>
+        <h1>黎铭晞<br><span class="about-en">Leonardo Li</span></h1>
+        <p>以前有做过数字媒体艺术和城市设计相关，如今更多会关注AGENT的机制（Alignment，Memory，Trust），具身性体验（Digital & Tangible），以及快速原型（Rapid Prototype）。近期base深圳与香港，欢迎交流。</p>
+
+        <p class="eyebrow about-eyebrow-gap">平时</p>
         <p class="life">
           <span>小猫</span>
           <span>Citywalk</span>
           <span>Archery</span>
           <span>Vibe Coding</span>
         </p>
-        <p>也会停在这些问题上：智能硬件、能走进去的装置、真的有人要用的产品，还有让人缓一缓的体验。</p>
-        <p>学校在香港，人也常在广州。欢迎交流，也欢迎随便唠。</p>
-        <p>电话 <a href="tel:+8615641159859">156 4115 9859</a>。邮箱 <a href="mailto:leonardolee351@gmail.com">leonardolee351@gmail.com</a>。</p>
+        <p>邮箱 <a href="mailto:leonardolee351@gmail.com">leonardolee351@gmail.com</a>。</p>
         <p class="next"><a href="index.html">回到首页</a><a href="practice.html">文件柜</a></p>
       </div>
-    </div>
+    </section>
+
+    <section class="about-life" aria-labelledby="about-life-title">
+      <div class="about-life-head">
+        <h2 id="about-life-title">LIFE CAPTURE</h2>
+        <p class="about-life-lede">Exhibitions · daily fragments · studio scraps.</p>
+      </div>
+      <div class="about-drift" data-local-trial="about31-local">
+        <iframe
+          class="about-drift-frame"
+          title="LIFE CAPTURE — Drift Wall"
+          src="experiments/drift-wall/index.html?v=about31-local"
+          loading="lazy"
+          allow="autoplay"
+        ></iframe>
+      </div>
+    </section>
   </div>
-<div id="site-nav-root" data-site-nav-theme="case" aria-live="polite"></div>
+
+  <div id="site-nav-root" data-site-nav-theme="case" aria-live="polite"></div>
   <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="experiments/site-nav/assets/index.css?v=home27">
-  <script type="module" src="experiments/site-nav/assets/site-nav.js?v=home27"></script>
+  <link rel="stylesheet" href="experiments/site-nav/assets/index.css?v=home29-menu">
+  <script type="module" src="experiments/site-nav/assets/site-nav.js?v=home29-menu"></script>
 </body>
 </html>

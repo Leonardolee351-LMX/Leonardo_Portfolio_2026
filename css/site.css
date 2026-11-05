@@ -3201,12 +3201,42 @@ body.home.no-cover-models .hero-models {
 }
 /* home28: mobile keeps .hero-models; bundle shows robot only */
 
-/* ===== about28-local: About Lanyard + bento — Cover 3D models (robot-only on narrow) ===== */
+/* ===== about30-local: About LIFE CAPTURE + tech-grid — LOCAL ONLY, do not push ===== */
 body.about-page {
+  position: relative;
   background: #f3f2ed;
   color: #191b1d;
+  isolation: isolate;
+}
+body.about-page .about-grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  --tg-inset-x: max(5vw, calc((100% - var(--max, 1120px)) / 2 + 5vw));
+  --tg-inset-y: 48px;
+  --tg-bottom: 48px;
+  --tg-x0: var(--tg-inset-x);
+  --tg-x1: calc(var(--tg-inset-x) + (100% - 2 * var(--tg-inset-x)) / 3);
+  --tg-x2: calc(var(--tg-inset-x) + 2 * (100% - 2 * var(--tg-inset-x)) / 3);
+  --tg-x3: calc(100% - var(--tg-inset-x));
+  --tg-x-mid: calc(var(--tg-inset-x) + (100% - 2 * var(--tg-inset-x)) / 2);
+  --tg-y0: var(--tg-inset-y);
+  --tg-y1: 28%;
+  --tg-y2: 50%;
+  --tg-y3: 72%;
+  --tg-y4: calc(100% - var(--tg-bottom));
+  --tg-line: rgb(25 27 29 / 0.07);
+  --tg-line-strong: rgb(25 27 29 / 0.11);
+  --tg-plus: rgb(25 27 29 / 0.22);
+  --tg-plus-size: 10px;
+  --tg-plus-thick: 1px;
+  --tg-line-w: 1px;
+  opacity: 0.95;
 }
 body.about-page .about-wrap {
+  position: relative;
+  z-index: 1;
   max-width: var(--max, 1120px);
   padding-top: max(96px, 10vh);
   padding-bottom: max(64px, 8vh);
@@ -3224,7 +3254,7 @@ body.about-page .about-lanyard {
   border-radius: 20px;
   background:
     radial-gradient(120% 80% at 50% 0%, rgb(255 255 255 / 0.9), transparent 55%),
-    linear-gradient(165deg, #e8e6df 0%, #d9d7cf 100%);
+    linear-gradient(165deg, rgb(232 230 223 / 0.92) 0%, rgb(217 215 207 / 0.9) 100%);
   overflow: hidden;
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.65);
 }
@@ -3251,7 +3281,6 @@ body.about-page .about-intro {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0;
   padding: 8px 0 12px;
 }
 body.about-page .about-intro h1 {
@@ -3318,8 +3347,10 @@ body.about-page .about-life-head {
 }
 body.about-page .about-life-head h2 {
   margin: 0;
-  font-size: clamp(22px, 2.4vw, 28px);
-  letter-spacing: -0.02em;
+  font-family: "Krona One", "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2.6vw, 30px);
+  letter-spacing: 0.04em;
 }
 body.about-page .about-life-lede {
   margin: 0;
@@ -3328,86 +3359,55 @@ body.about-page .about-life-lede {
   line-height: 1.5;
   color: #5a5c60;
 }
-body.about-page .about-life-lede code {
-  font-size: 0.92em;
-  padding: 1px 5px;
-  border-radius: 4px;
-  background: rgb(25 27 29 / 0.06);
-}
 
 body.about-page .about-bento {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: minmax(140px, auto);
-  gap: 14px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: minmax(120px, auto);
+  gap: 12px;
 }
 body.about-page .about-bento-card {
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-radius: 16px;
-  overflow: hidden;
-}
-body.about-page .about-bento-card--wide {
   grid-column: span 2;
 }
+body.about-page .about-bento-card--wide {
+  grid-column: span 3;
+}
 body.about-page .about-bento-card--tall {
+  grid-column: span 2;
   grid-row: span 2;
 }
-body.about-page .about-bento-card img,
-body.about-page .about-bento-ph {
+body.about-page .about-bento-card--sq {
+  grid-column: span 2;
+}
+body.about-page .about-bento-card img {
+  display: block;
   width: 100%;
   height: 100%;
   min-height: 160px;
   object-fit: cover;
   border-radius: 16px;
-  display: block;
+  background: #e4e2db;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.5);
 }
-body.about-page .about-bento-card--tall .about-bento-ph,
 body.about-page .about-bento-card--tall img {
-  min-height: 100%;
-  flex: 1;
-}
-body.about-page .about-bento-ph {
-  display: grid;
-  place-content: center;
-  gap: 6px;
-  text-align: center;
-  background:
-    linear-gradient(135deg, rgb(25 27 29 / 0.04), rgb(25 27 29 / 0.1)),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 8px,
-      rgb(25 27 29 / 0.03) 8px,
-      rgb(25 27 29 / 0.03) 16px
-    );
-  border: 1px dashed rgb(25 27 29 / 0.18);
-  box-sizing: border-box;
-  aspect-ratio: 1 / 1;
-}
-body.about-page .about-bento-card--wide .about-bento-ph {
-  aspect-ratio: 3 / 2;
-}
-body.about-page .about-bento-card--tall .about-bento-ph {
+  min-height: 320px;
   aspect-ratio: 3 / 4;
-  min-height: 280px;
 }
-body.about-page .about-bento-ph-label {
-  font-family: "Krona One", "Segoe UI", sans-serif;
-  font-size: 18px;
-  letter-spacing: 0.06em;
-  color: rgb(25 27 29 / 0.55);
+body.about-page .about-bento-card--wide img {
+  aspect-ratio: 16 / 10;
+  min-height: 180px;
 }
-body.about-page .about-bento-ph-meta {
-  font-size: 12px;
-  color: rgb(25 27 29 / 0.4);
+body.about-page .about-bento-card--sq img {
+  aspect-ratio: 1 / 1;
 }
 body.about-page .about-bento-card figcaption {
   margin: 0 4px;
-  font-size: 12px;
-  letter-spacing: 0.04em;
+  font-size: 11px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #6a6c70;
 }
@@ -3425,28 +3425,164 @@ body.about-page .about-bento-card figcaption {
   body.about-page .about-bento {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  body.about-page .about-bento-card,
+  body.about-page .about-bento-card--wide,
+  body.about-page .about-bento-card--tall,
+  body.about-page .about-bento-card--sq {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
   body.about-page .about-bento-card--wide {
     grid-column: span 2;
   }
-  body.about-page .about-bento-card--tall {
-    grid-row: span 1;
-  }
-  body.about-page .about-bento-card--tall .about-bento-ph {
-    aspect-ratio: 3 / 4;
-    min-height: 220px;
+  body.about-page .about-bento-card--tall img {
+    min-height: 240px;
   }
 }
 @media (max-width: 520px) {
-  body.about-page .about-wrap {
-    padding-top: max(88px, 9vh);
-  }
   body.about-page .about-bento {
     grid-template-columns: 1fr;
   }
   body.about-page .about-bento-card--wide {
     grid-column: span 1;
   }
-  body.about-page .about-bento-card--wide .about-bento-ph {
-    aspect-ratio: 16 / 10;
-  }
 }
+
+
+/* ===== home31-local: Drift Wall + Accordion + AIUX footer — LOCAL ONLY ===== */
+/* Showcase: drop section tech-grid wash; accordion stage */
+body.home #showcase .tech-grid { display: none !important; }
+body.home .showcase-wrap { position: relative; z-index: 1; }
+body.home .showcase-accordion {
+  margin-top: 18px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0a0a0c;
+  min-height: min(62vh, 560px);
+  box-shadow: 0 18px 50px -28px rgba(0,0,0,.55);
+}
+body.home .showcase-accordion-frame {
+  display: block;
+  width: 100%;
+  height: min(62vh, 560px);
+  border: 0;
+  background: #0a0a0c;
+}
+@media (max-width: 720px) {
+  body.home .showcase-accordion,
+  body.home .showcase-accordion-frame { height: min(78vh, 720px); min-height: 420px; }
+}
+
+/* About LIFE CAPTURE Drift Wall */
+body.about-page .about-drift {
+  margin-top: 8px;
+  border-radius: 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% 20%, rgb(255 255 255 / 0.55), transparent 60%),
+    linear-gradient(180deg, rgb(232 230 223 / 0.65), rgb(210 208 200 / 0.4));
+  min-height: min(70vh, 640px);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5);
+}
+body.about-page .about-drift-frame {
+  display: block;
+  width: 100%;
+  height: min(70vh, 640px);
+  border: 0;
+  background: transparent;
+}
+@media (max-width: 720px) {
+  body.about-page .about-drift,
+  body.about-page .about-drift-frame { height: min(62vh, 520px); min-height: 360px; }
+}
+
+/* AIUX Contact footer — home32 larger */
+body.home .ending {
+  background: #050505;
+  color: #f5f5f5;
+  padding: clamp(56px, 8vh, 96px) 0 clamp(48px, 6vh, 72px);
+  border-top: 1px solid #1a1a1a;
+}
+body.home .ending .tech-grid { display: none !important; }
+body.home .ending-aiux { max-width: var(--max, 1120px); }
+body.home .ending-aiux-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px 36px;
+  min-height: 88px;
+}
+body.home .ending-brand {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+body.home .ending-brand img {
+  display: block;
+  height: clamp(36px, 4.2vw, 48px);
+  width: auto;
+  filter: none;
+}
+body.home .ending-copy {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(15px, 1.35vw, 18px);
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,.92);
+  white-space: nowrap;
+}
+body.home .ending-socials {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+body.home .ending-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(14px, 1.2vw, 16px);
+  letter-spacing: 0.01em;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+body.home .ending-socials a:hover { opacity: 0.75; }
+body.home .ending-ico {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  flex: 0 0 20px;
+}
+body.home .ending-ico--rednote {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.85);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 700;
+}
+body.home .ending-ico--gmail { width: 22px; height: 22px; }
+@media (max-width: 900px) {
+  body.home .ending {
+    padding: 48px 0 40px;
+  }
+  body.home .ending-aiux-row {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 18px;
+    min-height: 0;
+  }
+  body.home .ending-copy { white-space: normal; font-size: 15px; }
+  body.home .ending-socials { justify-content: center; gap: 18px; }
+  body.home .ending-brand img { height: 40px; }
+}
+

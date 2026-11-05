@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIFE CAPTURE — Drift Wall</title>
+  <link rel="stylesheet" href="./assets/drift-wall.css?v=about31-local" />
+  <style>
+    html, body, #root { height: 100%; margin: 0; background: transparent; }
+    #root { width: 100%; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="./assets/drift-wall.js?v=about31-local"></script>
+  <script>
+    DriftWall(document.getElementById("root"), {
+      columns: 4,
+      tileWidth: 210,
+      tileHeight: 150,
+      gap: 14,
+      radius: 14,
+      speed: 36,
+      tilt: 14,
+      turn: -12,
+      depth: 100,
+      fade: 0.5,
+      dim: 0.62,
+      overlayColor: "#1a1814",
+      items: [
+    { image: "../../media/about/life/01-camel.jpg", title: "Camel" },
+    { image: "../../media/about/life/02-cat.png", title: "Cat" },
+    { image: "../../media/about/life/03-diqing.jpg", title: "Diqing" },
+    { image: "../../media/about/life/04-windowsill.jpg", title: "Window" },
+    { image: "../../media/about/life/05-exhibition-lights.jpg", title: "Exhibition" },
+    { image: "../../media/about/life/06-exhibition-monitor.jpg", title: "On-site" },
+    { image: "../../media/about/life/07-studio-desk.jpg", title: "Studio" },
+    { image: "../../media/about/life/08-blender.jpg", title: "Blender" },
+    { image: "../../media/about/life/09-touchdesigner.jpg", title: "TouchDesigner" },
+    { image: "../../media/about/life/10-hashbrown-cv.jpg", title: "Hashbrown" },
+    { image: "../../media/about/life/11-photospace.jpg", title: "Photo Space" },
+    { image: "../../media/about/life/12-temple-bells.jpg", title: "Temple" }
+      ]
+    });
+  </script>
+</body>
+</html>
