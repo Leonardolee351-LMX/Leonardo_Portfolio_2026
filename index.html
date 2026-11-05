@@ -3,28 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Leonardo Li — Designing between human, machine and culture</title>
+  <title>Leonardo Li — I Design Experiences Across Digital &amp; Physical Worlds.</title>
   <link rel="icon" type="image/png" href="media/brand/leonardo-icon.png">
   <meta name="description" content="交互与产品两条线。LaborLink、Attunia、TEEM，以及鸭、Seamless Journey、Anxious Kit。">
-  <link rel="stylesheet" href="css/site.css?v=home7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css?v=home21">
 </head>
-<body>
-  <header class="top">
-    <a class="brand" href="#hero"><img class="brand-mark" src="media/brand/leonardo-icon.png" alt="Leonardo"> Leonardo Li</a>
-    <nav class="nav" aria-label="Primary">
-      <a href="#showcase">Showcase</a>
-      <a href="#more">More</a>
-      <a href="#contact">Contact</a>
-      <a href="ledger.html">核对</a>
-      <a href="about.html">About</a>
-    </nav>
+<body class="home">
+  <!-- Primary nav: React Bits Staggered Menu (+ Fold Text labels) -->
+  <header class="top top--legacy" data-home-top hidden>
+    <a class="brand" href="#hero">Leonardo Li</a>
   </header>
 
   <section class="hero-screen" id="hero">
-    <div class="wrap">
-      <p class="eyebrow">黎铭晞 · Leonardo Li</p>
-      <h1>Designing between <em>human,</em> machine &amp; culture.</h1>
-      <p class="lede">先看见人，再看见机器，最后看见它落在哪一种文化里。下面三件是这次要讲完的。</p>
+    <div class="hero-blast" aria-hidden="true">
+      <iframe
+        class="hero-blast-frame"
+        title="Pixel Blast background"
+        src="experiments/pixel-blast/index.html?v=storm1"
+        tabindex="-1"
+      ></iframe>
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="hero-chrome">
+      <div class="hero-meta hero-meta--tri" aria-label="Cover intro">
+        <p class="hero-meta-col hero-meta-left">Human–Computer Interaction</p>
+        <p class="hero-meta-col hero-meta-center">Thinking across media.<br>Making ideas tangible.</p>
+        <p class="hero-meta-col hero-meta-right">I'm Leonardo, a curious designer exploring how people, technology, and the physical world interact. I like asking why, making things, and figuring out what actually works.</p>
+        <p class="hero-meta-col hero-meta-menu" aria-hidden="true"></p>
+      </div>
+      <div class="hero-claim hero-claim--tech">
+        <iframe
+          class="hero-tech-frame"
+          title="I Design Experiences Across Digital &amp; Physical Worlds."
+          src="experiments/tech-slogan/index.html?v=home21"
+          tabindex="0"
+        ></iframe>
+        <h1 class="visually-hidden">I Design Experiences Across Digital &amp; Physical Worlds.</h1>
+      </div>
+      <a class="hero-scroll" href="#showcase">
+        <span class="hero-scroll-label">Showcase</span>
+        <span class="hero-scroll-glyph" aria-hidden="true">↓</span>
+      </a>
     </div>
   </section>
 
@@ -39,7 +61,7 @@
             <img src="media/laborlink/p1-ui.jpg" alt="LaborLink 作品集 P1 左侧：欢迎页和找活界面浮在场景里。">
           </div>
           <h3>LaborLink</h3>
-          <p>一张工卡先回答四件事。项目主人是陈诚昊。我从界面结构做到可点的组件。</p>
+          <p>零工找活与接单。工卡式界面把身份、技能、档期和报酬一次说清，组件可点。</p>
         </a>
         <a class="show-card" data-tint="attunia" href="work/attunia.html">
           <div class="show-shot">
@@ -47,7 +69,7 @@
             <img src="media/attunia/pitch-cover.jpg" alt="Attunia pitch 封面：手机上的 Recalibrating 练习，旁边是脑电图形。">
           </div>
           <h3>Attunia</h3>
-          <p>几分钟的调节练习。原始脑电留在本机。它不是诊断。</p>
+          <p>几分钟的脑电调节练习。原始信号留在本机，不做诊断。</p>
         </a>
         <a class="show-card" data-tint="teem" href="work/teem.html">
           <div class="show-shot">
@@ -55,7 +77,7 @@
             <img src="media/teem-wall.png" alt="TEEM 仔墙面主视觉，橙黄色，常乐有喜、TEEM享生活。">
           </div>
           <h3>TEEM City Adventure</h3>
-          <p>把已经定稿的角色送进还在营业的商场：裁切、排版、动线、气模和快闪。</p>
+          <p>把定稿角色送进还在营业的商场：裁切、排版、动线、气模和快闪。</p>
         </a>
       </div>
     </div>
@@ -64,24 +86,50 @@
   <section class="album" id="more">
     <div class="wrap">
       <h2>More works</h2>
-      <p class="album-lede">不是这次的主推。同一时间五张封面，中间一张是当前这一张。左右切、滚轮切，也可以让它自己转。</p>
     </div>
-    <div class="album-ride" data-gallery></div>
-    <div class="wrap">
-      <p class="next"><a href="practice.html">打开文件柜</a></p>
+    <!-- trial: Flex Carousel Ribbon — rollback by restoring data-gallery + gallery.js -->
+    <iframe
+      class="album-ride album-ride--flex"
+      title="More works — Flex Carousel Ribbon trial"
+      src="experiments/flex-carousel/index.html?v=home21"
+      style="display:block;width:100%;height:64vh;border:0;background:#141416;"
+    ></iframe>
+    <!-- <div class="album-ride" data-gallery></div> -->
+  
+    <div class="album-go" aria-label="Go to original site">
+      <iframe
+        class="album-go-frame"
+        title="GO TO ORIGINAL SITE"
+        src="experiments/circular-go/index.html?v=home21"
+        loading="lazy"
+      ></iframe>
     </div>
-  </section>
+</section>
 
   <footer class="ending" id="contact">
     <div class="wrap">
       <h2>Contact me</h2>
       <div class="contacts">
-        <a href="tel:+8615641159859"><span>Phone</span><strong>156 4115 9859</strong></a>
-        <a href="mailto:2409778352@qq.com"><span>Email</span><strong>2409778352@qq.com</strong></a>
+        <a href="mailto:leonardolee351@gmail.com"><span>Email</span><strong>leonardolee351@gmail.com</strong></a>
+        <a href="https://github.com/Leonardolee351-LMX" target="_blank" rel="noopener noreferrer"><span>GitHub</span><strong>https://github.com/Leonardolee351-LMX</strong></a>
+        <a href="https://www.xiaohongshu.com/search_result?keyword=310709340" target="_blank" rel="noopener noreferrer"><span>Rednote</span><strong>310709340</strong></a>
       </div>
     </div>
   </footer>
   <script src="js/catalog.js"></script>
-  <script src="js/gallery.js?v=album5b"></script>
+  <script src="js/home.js?v=home21"></script>
+  <!-- <script src="js/gallery.js?v=album5b"></script> unused while Flex Carousel trial is mounted -->
+    <div class="nav-prev-go" data-nav-prev aria-label="Previous webpage">
+    <iframe
+      class="nav-prev-go-frame"
+      title="PREVIOUS WEBPAGE"
+      src="experiments/circular-go/index.html?v=home21&action=back&text=PREVIOUS*WEBPAGE&ink=light&size=104&core=←"
+      loading="lazy"
+    ></iframe>
+  </div>
+
+  <div id="site-nav-root" data-site-nav-theme="home" aria-live="polite"></div>
+  <link rel="stylesheet" href="experiments/site-nav/assets/index.css?v=home21">
+  <script type="module" src="experiments/site-nav/assets/site-nav.js?v=home21"></script>
 </body>
 </html>

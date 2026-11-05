@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>十万个为什么鸭 — Leonardo Li</title>
   <link rel="icon" type="image/png" href="../media/brand/leonardo-icon.png">
-  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/site.css?v=home21">
 </head>
 <body>
   <div class="wrap">
-    <header class="top">
+    <header class="top top--legacy" hidden>
       <a class="brand" href="../index.html"><img class="brand-mark" src="../media/brand/leonardo-icon.png" alt="Leonardo"> Leonardo Li</a>
       <nav class="nav" aria-label="Primary">
         <a href="../index.html#showcase">Showcase</a>
@@ -142,5 +142,18 @@
       </p>
     </div>
   </div>
+    <div class="nav-prev-go" data-nav-prev aria-label="Previous webpage">
+    <iframe
+      class="nav-prev-go-frame"
+      title="PREVIOUS WEBPAGE"
+      src="../experiments/circular-go/index.html?v=home21&action=back&text=PREVIOUS*WEBPAGE&ink=dark&size=104&core=←"
+      loading="lazy"
+    ></iframe>
+  </div>
+
+  <div id="site-nav-root" data-site-nav-theme="case" aria-live="polite"></div>
+  <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../experiments/site-nav/assets/index.css?v=home21">
+  <script type="module" src="../experiments/site-nav/assets/site-nav.js?v=home21"></script>
 </body>
 </html>

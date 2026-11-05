@@ -62,17 +62,63 @@ a:focus-visible, button:focus-visible {
 .nav a:hover { color: var(--muted); }
 
 .hero-screen {
-  min-height: calc(100dvh - 76px);
+  position: relative;
+  overflow: hidden;
+  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
   align-items: flex-end;
   padding: 48px 0 72px;
+  background: #030712;
+  color: #f3f2ed;
+}
+.hero-blast {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: auto;
+}
+.hero-blast-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #030712;
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgb(3 7 18 / 0.28) 0%, rgb(3 7 18 / 0.55) 55%, rgb(3 7 18 / 0.78) 100%),
+    radial-gradient(ellipse at 30% 70%, rgb(3 7 18 / 0.15), transparent 55%);
+}
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-copy a,
+.hero-copy button {
+  pointer-events: auto;
+}
+.hero-screen .eyebrow {
+  color: #c8c6be;
 }
 .hero-screen h1 {
   max-width: 14ch;
   margin: 12px 0 18px;
   padding-bottom: 6px;
+  color: #f7f5f0;
 }
-.hero-screen .lede { max-width: 42ch; margin: 0; }
+.hero-screen h1 em {
+  color: #f7f5f0;
+}
+.hero-screen .lede {
+  max-width: 42ch;
+  margin: 0;
+  color: #c8c6be;
+}
 .pathway {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -158,6 +204,12 @@ a:focus-visible, button:focus-visible {
   line-height: 0.95;
   font-weight: 620;
   margin: 0 0 12px;
+}
+.album .wrap {
+  text-align: center;
+}
+.album h2 {
+  text-align: center;
 }
 .showcase-lede {
   max-width: 42ch;
@@ -999,6 +1051,29 @@ a:focus-visible, button:focus-visible {
 @media (max-width: 520px) {
   .album-cover { width: 64vw; margin-left: calc(64vw / -2); }
 }
+
+/* home11 mobile chrome densify — keep full-bleed hero, compact overlay nav */
+@media (max-width: 720px) {
+  body.home .top {
+    height: auto;
+    min-height: 52px;
+    padding: 8px 4vw;
+    gap: 6px 10px;
+  }
+  body.home .nav {
+    width: auto;
+    max-width: 100%;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    order: 2;
+    gap: 6px 10px;
+  }
+  body.home .brand { order: 1; }
+  body.home .hero-meta {
+    margin-top: 8px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .tile-art img, .phone, .file img, .spread-page.is-on, .show-shot, .album-cover { transition: none; animation: none; }
@@ -1463,4 +1538,1231 @@ body.case-live .cs-note { color: #b9a89a; border-color: #5a3a48; }
   height: 22px;
   width: 22px;
   object-fit: contain;
+}
+
+
+/* —— Responsive densify pass (desktop story preserved) —— */
+/* Breakpoints: 1100 tablet-wide · 860 tablet · 720 phone-landscape · 480 phone */
+html, body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+img, video, iframe, canvas, svg {
+  max-width: 100%;
+}
+iframe {
+  border: 0;
+}
+.album-ride--flex,
+iframe.album-ride {
+  display: block;
+  width: 100%;
+  height: 70vh;
+  min-height: 440px;
+  border: 0;
+  background: #0a0a0c;
+}
+
+/* Keep all nav links; densify instead of hiding */
+.nav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.album-shift,
+.mobile-case-toc,
+.drawer-btn,
+.desk-row {
+  min-height: 44px;
+}
+.contacts a {
+  min-height: 44px;
+}
+
+@media (max-width: 1100px) {
+  .nav { gap: 18px; }
+  .wrap { padding: 0 4.5vw; }
+}
+
+@media (max-width: 860px) {
+  body { padding-top: 64px; font-size: 16px; }
+  .top {
+    height: 64px;
+    padding: 0 4vw;
+    gap: 12px;
+  }
+  .brand { font-size: 14px; flex: 0 1 auto; min-width: 0; }
+  .brand-mark { height: 16px; }
+  .nav {
+    gap: 10px 14px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 62%;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+  .nav a { min-height: 40px; }
+  html { scroll-padding-top: 72px; }
+
+  .hero-screen {
+    height: 100dvh;
+    min-height: 100dvh;
+    padding: 36px 0 48px;
+    align-items: flex-end;
+  }
+  body.home .hero-screen {
+    padding: 0;
+  }
+  .hero-screen h1,
+  .banner h1,
+  .hero h1 {
+    font-size: clamp(40px, 11vw, 72px);
+    max-width: 12ch;
+  }
+  .hero-screen .lede,
+  .showcase-lede,
+  .album-lede {
+    font-size: 15px;
+    max-width: 40ch;
+  }
+
+  .showcase { padding-top: 48px; }
+  .show-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+  .show-shot { max-width: none; width: 100%; }
+  .show-card h3 { font-size: clamp(22px, 6vw, 30px); }
+  .show-card p { font-size: 15px; }
+
+  .album { padding: 56px 0 40px; }
+  .album-ride--flex,
+  iframe.album-ride {
+    height: min(68vh, 540px);
+    min-height: 460px;
+  }
+  .album-stage { height: min(46vh, 320px); }
+  .album-bar { gap: 10px; padding-top: 18px; }
+  .album-shift { min-width: 48px; height: 48px; }
+
+  .contacts { grid-template-columns: 1fr; }
+  .contacts strong { font-size: 18px; word-break: break-word; }
+  .ending { padding: 64px 0 48px; }
+  .ending h2 { font-size: clamp(32px, 10vw, 56px); }
+
+  .files { grid-template-columns: 1fr 1fr; }
+  .drawer {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .drawer img { width: 100%; height: 180px; }
+  .desk {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .desk-drawers { border-right: 0; border-bottom: 1px solid var(--line); }
+  .desk-sheet { border-left: 0; border-top: 1px solid var(--line); }
+
+  .about-grid { grid-template-columns: 1fr; gap: 28px; }
+  .about-grid h1 { font-size: clamp(40px, 12vw, 72px); }
+  .life { gap: 8px; }
+  .life span { min-height: 36px; display: inline-flex; align-items: center; }
+
+  .cs-index {
+    top: 64px;
+    gap: 2px 0;
+  }
+  .cs-index a {
+    padding: 10px 10px;
+    font-size: 11px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .cs-hero { padding: 36px 0 16px; }
+  .cs-hero h1 { font-size: clamp(40px, 11vw, 72px); }
+  .cs-hero .lede { font-size: 16px; }
+  .compare img { height: auto; max-height: 420px; }
+  .live-cover,
+  .live-cover img { min-height: 60vh; height: auto; }
+  .live-cover img { aspect-ratio: 3/4; object-fit: cover; }
+  .live-bleed img { height: auto; max-height: 70vh; }
+}
+
+@media (max-width: 720px) {
+  .top {
+    height: auto;
+    min-height: 56px;
+    flex-wrap: wrap;
+    padding: 10px 4vw;
+    align-items: center;
+  }
+  body { padding-top: 88px; }
+  .nav {
+    max-width: 100%;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px 12px;
+    order: 3;
+  }
+  .brand { order: 1; }
+  html { scroll-padding-top: 96px; }
+
+  .wrap { padding: 0 5vw; }
+  .show-grid { max-width: none; }
+  .album-ride--flex,
+  iframe.album-ride {
+    height: min(66vh, 500px);
+    min-height: 420px;
+  }
+  .files { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .case-hero h1 { font-size: clamp(36px, 11vw, 56px); }
+  .case-hero .lede { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 15.5px; padding-top: 96px; }
+  .nav a { letter-spacing: 0.06em; font-size: 10.5px; }
+  .hero-screen { height: 100dvh; min-height: 100dvh; padding: 28px 0 40px; }
+  body.home .hero-screen { padding: 0; }
+  .hero-screen h1,
+  .banner h1,
+  .hero h1 {
+    font-size: clamp(34px, 12vw, 48px);
+  }
+  .show-card p,
+  .showcase-lede,
+  .album-lede { font-size: 14.5px; }
+  .album-ride--flex,
+  iframe.album-ride {
+    height: min(64vh, 460px);
+    min-height: 400px;
+  }
+  .album-cover { width: 70vw; margin-left: calc(70vw / -2); }
+  .album-stage { height: min(42vh, 280px); }
+  .files { grid-template-columns: 1fr; }
+  .contacts a { padding: 16px; }
+  .contacts strong { font-size: 17px; }
+  .ending h2 { font-size: clamp(30px, 11vw, 44px); }
+  .cs-phones img { height: auto; max-height: 420px; width: 100%; object-fit: contain; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .show-card:hover .show-shot {
+    transform: none;
+    box-shadow: 0 12px 32px rgb(25 27 29 / 0.1);
+  }
+  .show-card:active .show-shot {
+    transform: translateY(-4px) scale(0.99);
+  }
+  .file:hover img,
+  .file:hover .paper { transform: none; }
+}
+
+
+/* ===== home11: full-bleed edge hero + overlay chrome ===== */
+html:has(body.home) {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 0;
+}
+body.home {
+  padding-top: 0;
+}
+body.home .top {
+  background: transparent;
+  border-bottom-color: transparent;
+  color: #f3f2ed;
+  transition:
+    background-color 220ms var(--ease),
+    border-color 220ms var(--ease),
+    color 220ms var(--ease),
+    backdrop-filter 220ms var(--ease);
+}
+body.home .top.is-solid {
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--line);
+  color: var(--ink);
+}
+body.home .top .brand-mark--light { display: block; }
+body.home .top .brand-mark--dark { display: none; }
+body.home .top.is-solid .brand-mark--light { display: none; }
+body.home .top.is-solid .brand-mark--dark { display: block; }
+body.home .top .nav a:hover { color: #c8c6be; }
+body.home .top.is-solid .nav a:hover { color: var(--muted); }
+
+body.home .hero-screen {
+  height: 100dvh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  padding: 0;
+  display: block;
+  align-items: stretch;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+body.home #showcase {
+  scroll-snap-align: start;
+  min-height: 100dvh;
+  box-sizing: border-box;
+  padding-top: max(56px, 76px);
+}
+
+.hero-chrome {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  padding:
+    max(88px, calc(76px + 2.5vh))
+    max(5vw, calc((100% - var(--max)) / 2 + 5vw))
+    max(28px, 4vh);
+}
+.hero-meta {
+  position: absolute;
+  top: max(96px, calc(76px + 3vh));
+  right: max(5vw, calc((100% - var(--max)) / 2 + 5vw));
+  max-width: min(34ch, 42vw);
+  text-align: right;
+}
+.hero-meta .eyebrow {
+  margin: 0 0 10px;
+  color: #c8c6be;
+}
+.hero-meta .lede {
+  margin: 0;
+  max-width: none;
+  font-size: clamp(13px, 1.35vw, 16px);
+  line-height: 1.55;
+  color: #c8c6be;
+}
+.hero-claim {
+  position: absolute;
+  left: max(5vw, calc((100% - var(--max)) / 2 + 5vw));
+  bottom: max(56px, 7vh);
+  max-width: min(16ch, 88vw);
+  pointer-events: none;
+}
+body.home .hero-screen h1 {
+  max-width: none;
+  margin: 0;
+  padding-bottom: 0;
+  font-size: clamp(40px, 6.6vw, 92px);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  color: #f7f5f0;
+}
+.hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: max(22px, 3.2vh);
+  transform: translateX(-50%);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: auto;
+  color: #c8c6be;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.82;
+}
+.hero-scroll:hover { color: #f3f2ed; opacity: 1; }
+.hero-scroll-glyph {
+  font-size: 14px;
+  letter-spacing: 0;
+  animation: hero-scroll-pulse 1.8s var(--ease) infinite;
+}
+@keyframes hero-scroll-pulse {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+
+@media (max-width: 860px) {
+  body.home { padding-top: 0; }
+  body.home .hero-screen {
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    padding: 0;
+  }
+  .hero-meta {
+    top: max(78px, calc(64px + 2vh));
+    max-width: min(36ch, 52vw);
+  }
+  .hero-claim {
+    bottom: max(64px, 9vh);
+    max-width: min(14ch, 90vw);
+  }
+  body.home .hero-screen h1 {
+    font-size: clamp(34px, 10vw, 64px);
+  }
+  body.home #showcase {
+    padding-top: max(48px, 64px);
+    min-height: 100dvh;
+  }
+}
+
+@media (max-width: 720px) {
+  body.home { padding-top: 0; }
+  .hero-chrome {
+    padding:
+      max(108px, calc(88px + 1vh))
+      5vw
+      max(24px, 3vh);
+  }
+  .hero-meta {
+    position: static;
+    max-width: 42ch;
+    text-align: left;
+    margin: 0 0 auto;
+  }
+  .hero-claim {
+    position: absolute;
+    left: 5vw;
+    right: 5vw;
+    bottom: max(58px, 8vh);
+    max-width: none;
+  }
+  body.home .hero-screen h1 {
+    font-size: clamp(32px, 11vw, 52px);
+    max-width: 12ch;
+  }
+  html:has(body.home) { scroll-padding-top: 0; }
+}
+
+@media (max-width: 480px) {
+  body.home { padding-top: 0; }
+  body.home .hero-screen {
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    padding: 0;
+  }
+  .hero-meta .lede { font-size: 13px; }
+  body.home .hero-screen h1 {
+    font-size: clamp(30px, 11.5vw, 44px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-glyph { animation: none; }
+  html:has(body.home) { scroll-snap-type: none; }
+}
+/* ===== home12: black nav + staggered menu + tech slogan ===== */
+
+/* ===== home12: black nav + staggered menu + tech slogan ===== */
+#site-nav-root {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  pointer-events: none;
+}
+#site-nav-root > * {
+  pointer-events: none;
+}
+/* Interactive bits re-enable inside the React tree (StaggeredMenu already does this). */
+
+body.home .top--legacy[hidden],
+.top--legacy[hidden] {
+  display: none !important;
+}
+
+/* Homepage: black bar look is owned by site-nav theme=home; keep snap/hero intact */
+body.home .top {
+  background: #0a0a0c;
+  border-bottom-color: transparent;
+  color: #f3f2ed;
+}
+body.home .top .brand-mark--light { display: block; }
+body.home .top .brand-mark--dark { display: none; }
+
+.hero-claim--tech {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -48%);
+  width: min(96vw, 1200px);
+  height: min(42vh, 320px);
+  max-width: 96vw;
+  pointer-events: auto;
+  z-index: 2;
+}
+.hero-tech-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  pointer-events: auto;
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Ensure Showcase still clears the fixed chrome */
+body.home #showcase {
+  padding-top: max(56px, 76px);
+}
+
+@media (max-width: 720px) {
+  .hero-claim--tech {
+    width: 96vw;
+    height: min(36vh, 240px);
+    top: 52%;
+  }
+}
+
+/* ===== home12b: pixel-blast storm remount ===== */
+body.home .hero-blast-frame {
+  background: transparent;
+}
+
+/* ===== home12c: contact + socials ===== */
+body.home .contacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px 18px;
+}
+
+/* ===== home13: logo in slogan + taller tech claim ===== */
+.hero-claim--tech {
+  width: min(96vw, 1200px);
+  height: min(52vh, 420px);
+  top: 50%;
+  transform: translate(-50%, -46%);
+}
+@media (max-width: 720px) {
+  .hero-claim--tech {
+    width: 96vw;
+    height: min(46vh, 320px);
+    top: 52%;
+  }
+}
+/* Contact GitHub URL can be long — allow wrap */
+.contacts a strong {
+  word-break: break-all;
+}
+
+/* ===== home13c: panel logo + circular go ===== */
+.album-go {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 16px 28px;
+  background: #141416;
+}
+.album-go-frame {
+  display: block;
+  width: min(160px, 46vw);
+  height: min(160px, 46vw);
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+}
+/* ===== home14: cover tri-meta + Krona One paddles ===== */
+:root {
+  --hero-paddle: clamp(16px, 5vw, 48px);
+}
+
+body.home .hero-chrome {
+  --hero-paddle: clamp(16px, 5vw, 48px);
+  padding:
+    max(88px, calc(76px + 2.5vh))
+    var(--hero-paddle)
+    max(28px, 4vh);
+  box-sizing: border-box;
+}
+
+/* Top three-column meta on the Pixel Blast hero */
+.hero-meta--tri {
+  position: absolute;
+  top: max(88px, calc(72px + 2vh));
+  left: var(--hero-paddle);
+  right: var(--hero-paddle);
+  max-width: none;
+  text-align: left;
+  display: grid;
+  grid-template-columns: minmax(12ch, 0.9fr) minmax(16ch, 1.1fr) minmax(22ch, 1.35fr);
+  gap: clamp(12px, 2.2vw, 36px);
+  align-items: start;
+  z-index: 3;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.hero-meta--tri .hero-meta-col {
+  margin: 0;
+  color: #e8e6df;
+  text-shadow: 0 1px 12px rgb(3 7 18 / 0.45);
+  font-weight: 500;
+}
+
+.hero-meta--tri .hero-meta-left {
+  font-size: clamp(11px, 1.05vw, 13px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: #d4d2ca;
+  max-width: 18ch;
+}
+
+.hero-meta--tri .hero-meta-center {
+  font-size: clamp(13px, 1.25vw, 16px);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  color: #ebe9e2;
+  max-width: 28ch;
+}
+
+.hero-meta--tri .hero-meta-right {
+  font-size: clamp(12px, 1.15vw, 15px);
+  line-height: 1.55;
+  color: #cfcdd5;
+  max-width: 42ch;
+  justify-self: end;
+  text-align: left;
+}
+
+/* Centered Tech Text claim — keep paddles, never flush */
+.hero-claim--tech {
+  width: min(calc(100% - (2 * var(--hero-paddle))), 1200px);
+  max-width: calc(100vw - (2 * var(--hero-paddle)));
+  height: min(52vh, 420px);
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -42%);
+  box-sizing: border-box;
+}
+
+@media (max-width: 960px) {
+  .hero-meta--tri {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "left center"
+      "right right";
+  }
+  .hero-meta--tri .hero-meta-left { grid-area: left; }
+  .hero-meta--tri .hero-meta-center { grid-area: center; }
+  .hero-meta--tri .hero-meta-right {
+    grid-area: right;
+    justify-self: stretch;
+    max-width: none;
+  }
+}
+
+@media (max-width: 720px) {
+  :root,
+  body.home .hero-chrome {
+    --hero-paddle: clamp(16px, 5.5vw, 28px);
+  }
+
+  body.home .hero-chrome {
+    padding:
+      max(96px, calc(80px + 1vh))
+      var(--hero-paddle)
+      max(24px, 3vh);
+  }
+
+  /* Stack LEFT / CENTER / RIGHT; keep L+R gutters */
+  .hero-meta--tri {
+    position: absolute;
+    top: max(84px, calc(68px + 1.5vh));
+    left: var(--hero-paddle);
+    right: var(--hero-paddle);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: none;
+    width: auto;
+    box-sizing: border-box;
+  }
+
+  .hero-meta--tri .hero-meta-left,
+  .hero-meta--tri .hero-meta-center,
+  .hero-meta--tri .hero-meta-right {
+    max-width: none;
+    justify-self: stretch;
+    text-align: left;
+  }
+
+  .hero-meta--tri .hero-meta-left {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-meta--tri .hero-meta-center {
+    font-size: 13px;
+  }
+
+  .hero-meta--tri .hero-meta-right {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #c8c6be;
+  }
+
+  .hero-claim--tech {
+    left: 50%;
+    right: auto;
+    width: calc(100% - (2 * var(--hero-paddle)));
+    max-width: calc(100vw - (2 * var(--hero-paddle)));
+    height: min(40vh, 280px);
+    top: 58%;
+    transform: translate(-50%, -40%);
+  }
+}
+
+@media (max-width: 480px) {
+  :root,
+  body.home .hero-chrome {
+    --hero-paddle: max(16px, 5vw);
+  }
+
+  .hero-meta--tri {
+    top: max(78px, calc(64px + 1vh));
+    gap: 8px;
+  }
+
+  .hero-meta--tri .hero-meta-right {
+    font-size: 12px;
+  }
+
+  .hero-claim--tech {
+    width: calc(100% - (2 * var(--hero-paddle)));
+    max-width: calc(100vw - (2 * var(--hero-paddle)));
+    height: min(36vh, 240px);
+    top: 60%;
+  }
+}
+
+
+/* ===== home15: Krona One titles + cover MENU 4th col + mobile HAOQI ===== */
+.showcase h2,
+.album h2,
+.ending h2,
+.hero-scroll-label,
+.hero-meta--tri .hero-meta-left,
+.hero-meta--tri .hero-meta-center,
+body.home h1.visually-hidden {
+  font-family: "Krona One", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+}
+.showcase h2,
+.album h2,
+.ending h2 {
+  letter-spacing: -0.02em;
+}
+
+/* Desktop: meta row is 4 columns; MENU occupies the 4th */
+@media (min-width: 961px) {
+  body.home .hero-meta--tri {
+    grid-template-columns:
+      minmax(11ch, 0.85fr)
+      minmax(15ch, 1.05fr)
+      minmax(20ch, 1.25fr)
+      minmax(8ch, 0.55fr);
+    align-items: start;
+  }
+  body.home .hero-meta--tri .hero-meta-menu {
+    min-height: 1.2em;
+    pointer-events: none;
+  }
+  /* Align site-nav MENU with the meta row — large 4th-column toggle */
+  body.home .staggered-menu-wrapper[data-theme="home"] .staggered-menu-header {
+    background: transparent;
+    align-items: flex-start;
+    padding:
+      max(88px, calc(72px + 2vh))
+      var(--hero-paddle, clamp(16px, 5vw, 48px))
+      0;
+  }
+  body.home .staggered-menu-wrapper[data-theme="home"] .sm-logo {
+    /* keep brand accessible but out of the meta title row weight */
+    margin-top: -52px;
+  }
+  body.home .staggered-menu-wrapper[data-theme="home"] .sm-toggle {
+    font-family: "Krona One", "Segoe UI", Arial, sans-serif;
+    font-size: clamp(18px, 1.9vw, 30px);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #e8e6df;
+    text-shadow: 0 1px 12px rgb(3 7 18 / 0.45);
+    gap: 0.45rem;
+    align-self: flex-start;
+    margin-top: 0;
+  }
+  body.home .staggered-menu-wrapper[data-theme="home"] .sm-icon {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+  }
+  body.home .staggered-menu-wrapper[data-theme="home"] .sm-toggle-textWrap,
+  body.home .staggered-menu-wrapper[data-theme="home"] .sm-toggle-line {
+    font-size: inherit;
+  }
+}
+
+/* Mobile cover <=720: HCI/Thinking top-left; logo mid; intro larger; MENU unchanged */
+@media (max-width: 720px) {
+  body.home .hero-screen {
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+  }
+
+  /* Full-height meta layer so children pin top vs bottom */
+  body.home .hero-meta--tri {
+    top: 0;
+    bottom: 0;
+    left: var(--hero-paddle);
+    right: var(--hero-paddle);
+    display: block;
+    z-index: 3;
+  }
+  body.home .hero-meta--tri .hero-meta-menu {
+    display: none;
+  }
+
+  /* 1) Top-left: HCI + Thinking — stacked; gap so 2-line HCI never overlaps Thinking */
+  body.home .hero-meta--tri .hero-meta-left {
+    position: absolute;
+    top: max(18px, 2vh);
+    left: 0;
+    right: min(46vw, 12rem);
+    max-width: 34ch;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.9;
+    line-height: 1.35;
+  }
+  body.home .hero-meta--tri .hero-meta-center {
+    position: absolute;
+    top: max(56px, calc(2vh + 38px));
+    left: 0;
+    right: min(40vw, 11rem);
+    max-width: 28ch;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* 4) Intro paragraph — larger type, lower band */
+  body.home .hero-meta--tri .hero-meta-right {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: max(70px, 10.5vh);
+    font-size: 15px;
+    line-height: 1.55;
+    color: #c8c6be;
+    max-width: 42ch;
+  }
+
+  /* 3) Leonardo logo + slogan — mid / lower-mid */
+  body.home .hero-claim--tech {
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -42%);
+    width: calc(100% - (2 * var(--hero-paddle)));
+    max-width: calc(100vw - (2 * var(--hero-paddle)));
+    height: min(34vh, 280px);
+    z-index: 2;
+  }
+
+  body.home .hero-scroll {
+    bottom: max(18px, 2.5vh);
+  }
+
+  /* 2) MENU: lock default size/style/position — do not enlarge on mobile */
+  body.home .staggered-menu-wrapper[data-theme="home"] .staggered-menu-header {
+    background: transparent !important;
+    align-items: center;
+    padding: 1.1em 1.25em;
+  }
+  body.home .staggered-menu-wrapper[data-theme="home"] .sm-toggle {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: none;
+    gap: 0.3rem;
+    margin-top: 0;
+    align-self: center;
+    text-shadow: none;
+    color: #e9e9ef;
+  }
+  body.home .staggered-menu-wrapper[data-theme="home"] .sm-icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+  }
+  body.home .staggered-menu-wrapper[data-theme="home"] .sm-logo {
+    margin-top: 0;
+  }
+  body.home .staggered-menu-wrapper[data-theme="home"] .sm-toggle-textWrap,
+  body.home .staggered-menu-wrapper[data-theme="home"] .sm-toggle-line {
+    font-size: inherit;
+  }
+}
+
+@media (max-width: 480px) {
+  body.home .hero-claim--tech {
+    top: 48%;
+    height: min(32vh, 250px);
+  }
+  body.home .hero-meta--tri .hero-meta-left {
+    top: max(14px, 1.6vh);
+  }
+  body.home .hero-meta--tri .hero-meta-center {
+    top: max(52px, calc(1.6vh + 36px));
+  }
+  body.home .hero-meta--tri .hero-meta-right {
+    bottom: max(64px, 10vh);
+    font-size: 14.5px;
+  }
+}
+
+/* ===== home17b: HCI/Thinking gap fix + album/MENU/paddles (home17) ===== */
+.album {
+  padding: 40px 0 12px;
+}
+.album-go {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 16px 28px;
+  background: #141416;
+}
+.album-go-frame {
+  display: block;
+  width: min(150px, 42vw);
+  height: min(150px, 42vw);
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+}
+body.home iframe.album-ride,
+body.home .album-ride--flex {
+  height: 64vh;
+  min-height: 420px;
+}
+
+/* Case / work pages: mobile left-right paddles so content isn't edge-flush */
+@media (max-width: 720px) {
+  body.case-soft .wrap,
+  body.case-cream .wrap,
+  body.case-live .wrap,
+  body:not(.home) > .wrap,
+  body:not(.home) .wrap {
+    padding-left: max(16px, 5.5vw);
+    padding-right: max(16px, 5.5vw);
+    box-sizing: border-box;
+  }
+  body.case-soft,
+  body.case-cream,
+  body.case-live {
+    overflow-x: hidden;
+  }
+}
+
+/* MENU+ surface contrast helpers (JS sets inline color; reinforce open + past-hero) */
+body.home-past-hero .staggered-menu-wrapper:not([data-open]) .sm-toggle {
+  color: #111111 !important;
+  text-shadow: none;
+}
+body.home:not(.home-past-hero) .staggered-menu-wrapper:not([data-open]) .sm-toggle {
+  color: #ffffff !important;
+}
+body.case-soft .staggered-menu-wrapper:not([data-open]) .sm-toggle,
+body.case-live .staggered-menu-wrapper:not([data-open]) .sm-toggle {
+  color: #ffffff !important;
+}
+body.case-cream .staggered-menu-wrapper:not([data-open]) .sm-toggle,
+body:not(.home):not(.case-soft):not(.case-live) .staggered-menu-wrapper:not([data-open]) .sm-toggle {
+  color: #111111 !important;
+}
+.staggered-menu-wrapper[data-open] .sm-toggle {
+  color: #111111 !important;
+}
+
+/* Desktop locked MENU size on case pages — match homepage Krona One lock */
+@media (min-width: 961px) {
+  .staggered-menu-wrapper[data-theme="case"] .sm-toggle {
+    font-family: "Krona One", "Segoe UI", Arial, sans-serif !important;
+    font-size: clamp(18px, 1.9vw, 30px) !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    gap: 0.45rem;
+  }
+  .staggered-menu-wrapper[data-theme="case"] .sm-icon {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+  }
+  .staggered-menu-wrapper[data-theme="case"] .staggered-menu-header {
+    background: transparent !important;
+    align-items: flex-start;
+    padding: max(28px, 3.2vh) clamp(16px, 5vw, 48px) 0;
+  }
+}
+
+/* Mobile MENU lock — keep compact on home + case */
+@media (max-width: 720px) {
+  .staggered-menu-wrapper[data-theme="home"] .staggered-menu-header,
+  .staggered-menu-wrapper[data-theme="case"] .staggered-menu-header {
+    background: transparent !important;
+    align-items: center;
+    padding: 1.1em 1.25em;
+  }
+  .staggered-menu-wrapper[data-theme="home"] .sm-toggle,
+  .staggered-menu-wrapper[data-theme="case"] .sm-toggle {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    letter-spacing: normal;
+    text-transform: none;
+    gap: 0.3rem;
+    text-shadow: none;
+  }
+  .staggered-menu-wrapper[data-theme="home"] .sm-icon,
+  .staggered-menu-wrapper[data-theme="case"] .sm-icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+  }
+}
+
+/* ===== home18: mobile slogan flush-left host + menu panel row gaps ===== */
+
+/* Mobile cover: iframe host shares SAME left paddle edge as meta/Intro (no translateX) */
+@media (max-width: 720px) {
+  body.home .hero-claim--tech {
+    left: var(--hero-paddle) !important;
+    right: var(--hero-paddle) !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: translateY(-42%) !important;
+    top: 46%;
+    height: min(34vh, 280px);
+    z-index: 2;
+  }
+  body.home .hero-meta--tri .hero-meta-left {
+    left: 0;
+    right: auto;
+    max-width: min(90%, 34ch);
+  }
+  body.home .hero-meta--tri .hero-meta-center {
+    left: 0;
+    right: auto;
+    top: max(56px, calc(2vh + 38px));
+    max-width: min(90%, 28ch);
+  }
+  body.home .hero-meta--tri .hero-meta-right {
+    left: 0;
+    right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  body.home .hero-claim--tech {
+    left: var(--hero-paddle) !important;
+    right: var(--hero-paddle) !important;
+    width: auto !important;
+    transform: translateY(-42%) !important;
+    top: 48%;
+    height: min(32vh, 250px);
+  }
+}
+
+/* Open Staggered Menu: more vertical space between main rows + SHOWCASE kids */
+.staggered-menu-panel .sm-panel-list {
+  gap: 1.25rem !important;
+}
+.staggered-menu-panel .sm-panel-itemWrap {
+  line-height: 1.08;
+}
+.staggered-menu-panel .sm-panel-children {
+  gap: 0.85rem !important;
+  margin: 0.55rem 0 1.15rem !important;
+}
+.staggered-menu-panel .sm-panel-child {
+  padding-block: 0.4em !important;
+}
+.staggered-menu-panel .sm-panel-childWrap {
+  line-height: 1.25;
+}
+
+/* ===== home19: case mobile paddles restore + cream MENU ink + TOC=章节 ===== */
+
+/* Force paddles even when page inline styles zeroed padding-left after sidebar collapse */
+@media (max-width: 860px) {
+  body.case-soft .wrap,
+  body.case-cream .wrap,
+  body.case-live .wrap {
+    padding-left: max(16px, 5.5vw) !important;
+    padding-right: max(16px, 5.5vw) !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Cream / light cases: MENU+ must stay dark ink (黑字白底) */
+body.case-cream .staggered-menu-wrapper:not([data-open]) .sm-toggle,
+body.case-cream .staggered-menu-wrapper:not([data-open]) .sm-toggle-line,
+body.case-cream .staggered-menu-wrapper:not([data-open]) .sm-toggle-textWrap {
+  color: #111111 !important;
+  text-shadow: none !important;
+}
+
+/* Soft/dark cases: MENU+ white ink */
+body.case-soft .staggered-menu-wrapper:not([data-open]) .sm-toggle,
+body.case-live .staggered-menu-wrapper:not([data-open]) .sm-toggle {
+  color: #ffffff !important;
+}
+
+/* Chapter TOC pill — distinct from global MENU + */
+.mobile-case-toc {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0.08em;
+}
+
+/* ===== home20: mobile case chrome — CATALOGUE top-left + MENU+ top-right ===== */
+
+/* Mobile case pages: always show both chrome controls */
+@media (max-width: 860px) {
+  /* TOP-LEFT: in-case chapter catalogue */
+  body.case-soft .mobile-case-toc,
+  body.case-cream .mobile-case-toc,
+  body.case-live .mobile-case-toc {
+    display: inline-flex !important;
+    position: fixed !important;
+    top: max(14px, 1.8vh) !important;
+    left: max(14px, 4vw) !important;
+    right: auto !important;
+    bottom: auto !important;
+    z-index: 80 !important;
+    appearance: none;
+    border-radius: 999px;
+    padding: 10px 14px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 650;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Cream/light catalogue pill */
+  body.case-cream .mobile-case-toc {
+    background: #ffffff !important;
+    color: #111111 !important;
+    border: 1px solid rgba(28, 26, 23, 0.12) !important;
+  }
+
+  /* Dark/soft catalogue pill */
+  body.case-soft .mobile-case-toc,
+  body.case-live .mobile-case-toc {
+    background: rgba(20, 22, 24, 0.92) !important;
+    color: #f3f2ed !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  }
+
+  /* TOP-RIGHT: global MENU+ — same compact P2 lock as homepage mobile */
+  body.case-soft .staggered-menu-wrapper[data-theme="case"] .staggered-menu-header,
+  body.case-cream .staggered-menu-wrapper[data-theme="case"] .staggered-menu-header,
+  body.case-live .staggered-menu-wrapper[data-theme="case"] .staggered-menu-header {
+    background: transparent !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    padding: 1.1em 1.25em !important;
+  }
+
+  body.case-soft .staggered-menu-wrapper[data-theme="case"] .sm-toggle,
+  body.case-cream .staggered-menu-wrapper[data-theme="case"] .sm-toggle,
+  body.case-live .staggered-menu-wrapper[data-theme="case"] .sm-toggle {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    gap: 0.3rem !important;
+    text-shadow: none !important;
+  }
+
+  body.case-soft .staggered-menu-wrapper[data-theme="case"] .sm-icon,
+  body.case-cream .staggered-menu-wrapper[data-theme="case"] .sm-icon,
+  body.case-live .staggered-menu-wrapper[data-theme="case"] .sm-icon {
+    width: 14px !important;
+    height: 14px !important;
+    flex: 0 0 14px !important;
+  }
+
+  /* Keep contrast: cream → black MENU; soft/live → white MENU */
+  body.case-cream .staggered-menu-wrapper:not([data-open]) .sm-toggle {
+    color: #111111 !important;
+  }
+  body.case-soft .staggered-menu-wrapper:not([data-open]) .sm-toggle,
+  body.case-live .staggered-menu-wrapper:not([data-open]) .sm-toggle {
+    color: #ffffff !important;
+  }
+}
+
+/* ===== home21: nav PREVIOUS WEBPAGE circular (reuse circular-go) ===== */
+.nav-prev-go {
+  position: fixed;
+  z-index: 75;
+  left: max(10px, 2.5vw);
+  bottom: max(14px, 2.2vh);
+  width: min(112px, 28vw);
+  height: min(112px, 28vw);
+  pointer-events: auto;
+}
+.nav-prev-go-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+  border-radius: 50%;
+}
+/* Keep clear of mobile CATALOGUE (top-left) and MENU (top-right) */
+@media (max-width: 860px) {
+  body.case-soft .nav-prev-go,
+  body.case-cream .nav-prev-go,
+  body.case-live .nav-prev-go {
+    left: max(10px, 3vw);
+    bottom: max(18px, 3vh);
+    width: min(96px, 26vw);
+    height: min(96px, 26vw);
+  }
+}
+@media (min-width: 961px) {
+  body.home .nav-prev-go {
+    left: max(16px, 3vw);
+    bottom: max(20px, 3vh);
+  }
+  /* Desktop case: sit above left chapter rail gutter */
+  body.case-soft .nav-prev-go,
+  body.case-cream .nav-prev-go,
+  body.case-live .nav-prev-go {
+    left: max(12px, calc(var(--case-side-w, 188px) + 12px));
+    bottom: max(20px, 3vh);
+  }
 }
