@@ -3496,34 +3496,36 @@ body.about-page .about-drift-frame {
   body.about-page .about-drift-frame { height: min(62vh, 520px); min-height: 360px; }
 }
 
-/* AIUX Contact footer — home32 larger */
-body.home .ending {
+/* AIUX Contact footer — shared all pages (home33) */
+.ending.ending--aiux,
+body .ending.ending--aiux {
   background: #050505;
   color: #f5f5f5;
   padding: clamp(56px, 8vh, 96px) 0 clamp(48px, 6vh, 72px);
   border-top: 1px solid #1a1a1a;
+  margin-top: 0;
 }
-body.home .ending .tech-grid { display: none !important; }
-body.home .ending-aiux { max-width: var(--max, 1120px); }
-body.home .ending-aiux-row {
+.ending.ending--aiux .tech-grid { display: none !important; }
+.ending.ending--aiux .ending-aiux { max-width: var(--max, 1120px); }
+.ending.ending--aiux .ending-aiux-row {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 20px 36px;
   min-height: 88px;
 }
-body.home .ending-brand {
+.ending.ending--aiux .ending-brand {
   display: inline-flex;
   align-items: center;
   line-height: 0;
 }
-body.home .ending-brand img {
+.ending.ending--aiux .ending-brand img {
   display: block;
   height: clamp(36px, 4.2vw, 48px);
   width: auto;
   filter: none;
 }
-body.home .ending-copy {
+.ending.ending--aiux .ending-copy {
   margin: 0;
   text-align: center;
   font-size: clamp(15px, 1.35vw, 18px);
@@ -3531,14 +3533,14 @@ body.home .ending-copy {
   color: rgba(255,255,255,.92);
   white-space: nowrap;
 }
-body.home .ending-socials {
+.ending.ending--aiux .ending-socials {
   display: inline-flex;
   align-items: center;
   gap: 22px;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
-body.home .ending-socials a {
+.ending.ending--aiux .ending-socials a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -3550,14 +3552,14 @@ body.home .ending-socials a {
   padding: 0;
   background: transparent;
 }
-body.home .ending-socials a:hover { opacity: 0.75; }
-body.home .ending-ico {
+.ending.ending--aiux .ending-socials a:hover { opacity: 0.75; }
+.ending.ending--aiux .ending-ico {
   width: 20px;
   height: 20px;
   display: inline-block;
   flex: 0 0 20px;
 }
-body.home .ending-ico--rednote {
+.ending.ending--aiux .ending-ico--rednote {
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -3569,20 +3571,19 @@ body.home .ending-ico--rednote {
   line-height: 1;
   font-weight: 700;
 }
-body.home .ending-ico--gmail { width: 22px; height: 22px; }
+.ending.ending--aiux .ending-ico--gmail { width: 22px; height: 22px; }
 @media (max-width: 900px) {
-  body.home .ending {
+  .ending.ending--aiux {
     padding: 48px 0 40px;
   }
-  body.home .ending-aiux-row {
+  .ending.ending--aiux .ending-aiux-row {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
     gap: 18px;
     min-height: 0;
   }
-  body.home .ending-copy { white-space: normal; font-size: 15px; }
-  body.home .ending-socials { justify-content: center; gap: 18px; }
-  body.home .ending-brand img { height: 40px; }
+  .ending.ending--aiux .ending-copy { white-space: normal; font-size: 15px; }
+  .ending.ending--aiux .ending-socials { justify-content: center; gap: 18px; }
+  .ending.ending--aiux .ending-brand img { height: 40px; }
 }
-
