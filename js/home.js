@@ -65,3 +65,12 @@
     { passive: false }
   );
 })();
+
+/* home28: ?nomodels=1 disables Cover 3D trial */
+(function () {
+  try {
+    if (/[?&]nomodels=1\b/.test(location.search)) {
+      document.body.classList.add("no-cover-models");
+    }
+  } catch (e) {}
+})();

@@ -3165,3 +3165,288 @@ body.home .ending > .wrap {
 
 /* ===== home26: Pages base-path nav fix ===== */
 /* site-nav siteHref now prefixes detected site root (GH project Pages safe). */
+
+/* ===== home28: Cover 3D models (hashbrown/cat/robot) — Cover 3D models (robot-only on narrow) ===== */
+body.home .hero-models {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: auto;
+}
+body.home .hero-models-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  pointer-events: auto;
+}
+body.home .hero-chrome {
+  z-index: 2;
+  pointer-events: none;
+}
+body.home .hero-claim,
+body.home .hero-claim--tech,
+body.home .hero-tech-frame,
+body.home .hero-scroll {
+  pointer-events: auto;
+}
+body.home .tech-grid--hero {
+  z-index: 1;
+  pointer-events: none;
+}
+body.home.no-cover-models .hero-models {
+  display: none !important;
+  pointer-events: none !important;
+}
+/* home28: mobile keeps .hero-models; bundle shows robot only */
+
+/* ===== about28-local: About Lanyard + bento — Cover 3D models (robot-only on narrow) ===== */
+body.about-page {
+  background: #f3f2ed;
+  color: #191b1d;
+}
+body.about-page .about-wrap {
+  max-width: var(--max, 1120px);
+  padding-top: max(96px, 10vh);
+  padding-bottom: max(64px, 8vh);
+}
+body.about-page .about-hero {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.92fr) minmax(280px, 1.08fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: stretch;
+  min-height: min(72vh, 640px);
+}
+body.about-page .about-lanyard {
+  position: relative;
+  min-height: min(62vh, 560px);
+  border-radius: 20px;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgb(255 255 255 / 0.9), transparent 55%),
+    linear-gradient(165deg, #e8e6df 0%, #d9d7cf 100%);
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.65);
+}
+body.about-page .about-lanyard-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: min(62vh, 560px);
+  border: 0;
+  background: transparent;
+}
+body.about-page .about-lanyard-hint {
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(25 27 29 / 0.45);
+  pointer-events: none;
+}
+body.about-page .about-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  padding: 8px 0 12px;
+}
+body.about-page .about-intro h1 {
+  margin: 0 0 18px;
+  font-family: "Krona One", "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: clamp(34px, 4.6vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+body.about-page .about-intro .about-en {
+  font-size: 0.55em;
+  letter-spacing: -0.02em;
+  color: #3a3c40;
+}
+body.about-page .about-intro p {
+  margin: 0 0 12px;
+  max-width: 42ch;
+  font-size: clamp(15px, 1.35vw, 17px);
+  line-height: 1.65;
+  color: #2c2e32;
+}
+body.about-page .about-intro .eyebrow {
+  margin: 0 0 10px;
+}
+body.about-page .about-eyebrow-gap {
+  margin-top: 18px;
+}
+body.about-page .about-intro .life {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+body.about-page .about-intro .life span {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgb(25 27 29 / 0.06);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+body.about-page .about-intro .next {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+body.about-page .about-intro .next a {
+  font-weight: 600;
+}
+
+body.about-page .about-life {
+  margin-top: clamp(48px, 8vh, 88px);
+}
+body.about-page .about-life-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-bottom: 20px;
+}
+body.about-page .about-life-head h2 {
+  margin: 0;
+  font-size: clamp(22px, 2.4vw, 28px);
+  letter-spacing: -0.02em;
+}
+body.about-page .about-life-lede {
+  margin: 0;
+  max-width: 48ch;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #5a5c60;
+}
+body.about-page .about-life-lede code {
+  font-size: 0.92em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgb(25 27 29 / 0.06);
+}
+
+body.about-page .about-bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(140px, auto);
+  gap: 14px;
+}
+body.about-page .about-bento-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+body.about-page .about-bento-card--wide {
+  grid-column: span 2;
+}
+body.about-page .about-bento-card--tall {
+  grid-row: span 2;
+}
+body.about-page .about-bento-card img,
+body.about-page .about-bento-ph {
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+body.about-page .about-bento-card--tall .about-bento-ph,
+body.about-page .about-bento-card--tall img {
+  min-height: 100%;
+  flex: 1;
+}
+body.about-page .about-bento-ph {
+  display: grid;
+  place-content: center;
+  gap: 6px;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgb(25 27 29 / 0.04), rgb(25 27 29 / 0.1)),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgb(25 27 29 / 0.03) 8px,
+      rgb(25 27 29 / 0.03) 16px
+    );
+  border: 1px dashed rgb(25 27 29 / 0.18);
+  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+}
+body.about-page .about-bento-card--wide .about-bento-ph {
+  aspect-ratio: 3 / 2;
+}
+body.about-page .about-bento-card--tall .about-bento-ph {
+  aspect-ratio: 3 / 4;
+  min-height: 280px;
+}
+body.about-page .about-bento-ph-label {
+  font-family: "Krona One", "Segoe UI", sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  color: rgb(25 27 29 / 0.55);
+}
+body.about-page .about-bento-ph-meta {
+  font-size: 12px;
+  color: rgb(25 27 29 / 0.4);
+}
+body.about-page .about-bento-card figcaption {
+  margin: 0 4px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6a6c70;
+}
+
+@media (max-width: 900px) {
+  body.about-page .about-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    gap: 28px;
+  }
+  body.about-page .about-lanyard,
+  body.about-page .about-lanyard-frame {
+    min-height: min(54vh, 480px);
+  }
+  body.about-page .about-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body.about-page .about-bento-card--wide {
+    grid-column: span 2;
+  }
+  body.about-page .about-bento-card--tall {
+    grid-row: span 1;
+  }
+  body.about-page .about-bento-card--tall .about-bento-ph {
+    aspect-ratio: 3 / 4;
+    min-height: 220px;
+  }
+}
+@media (max-width: 520px) {
+  body.about-page .about-wrap {
+    padding-top: max(88px, 9vh);
+  }
+  body.about-page .about-bento {
+    grid-template-columns: 1fr;
+  }
+  body.about-page .about-bento-card--wide {
+    grid-column: span 1;
+  }
+  body.about-page .about-bento-card--wide .about-bento-ph {
+    aspect-ratio: 16 / 10;
+  }
+}

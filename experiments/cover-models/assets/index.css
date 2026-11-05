@@ -1,0 +1,10 @@
+.pixel-blast-container{width:100%;height:100%;position:relative;overflow:hidden}.pixel-blast-canvas{width:100%;height:100%;display:block;position:absolute;inset:0}.tech-text{touch-action:pan-y;-webkit-user-select:none;user-select:none;width:100%;height:100%;position:relative}.tech-text-canvas{width:100%;height:100%;display:block}html,body,#root{background:transparent;width:100%;height:100%;margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;overflow:hidden}.stage{background:transparent;width:100%;height:100%;position:relative}.blast-layer{z-index:0;position:absolute;inset:0}.glass-layer{z-index:1;pointer-events:auto;position:absolute;inset:0}.cover{z-index:2;pointer-events:none;place-items:center;padding:6vw 5vw;display:grid;position:absolute;inset:0}.cover .tech-text{pointer-events:none}.hud{z-index:3;color:#ffffffb8;pointer-events:none;text-shadow:0 1px 8px #0009;flex-direction:column;gap:4px;display:flex;position:absolute;bottom:20px;left:20px}.hud strong{letter-spacing:.02em;color:#ffffffe6;font-size:14px;font-weight:600}.hud span{opacity:.75;font-size:12px}
+
+/* home28: composite over portfolio Cover */
+html,body,#root,.stage{background:transparent!important}
+.cover,.hud{display:none!important;pointer-events:none!important}
+.blast-layer{z-index:0}
+.glass-layer{z-index:1;pointer-events:auto}
+/* home28: keep glass-layer on mobile; JS shows robot only */
+
+.blast-layer{display:none!important;pointer-events:none!important}
