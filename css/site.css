@@ -2803,3 +2803,10 @@ body.case-live .staggered-menu-wrapper:not([data-open]) .sm-toggle {
     bottom: max(52px, 8.5vh);
   }
 }
+
+/* ===== home23: PREVIOUS PORTFOLIO + hover hint + pixel blast brighter ===== */
+/* Pixel Blast: color #7c3aed → #8b4ff0, glow .66 → .72 (patched in pixel-blast.js) */
+body.home .hero-blast-frame {
+  /* keep transparent; brightness comes from shader color/glow */
+  background: transparent;
+}
