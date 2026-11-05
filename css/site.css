@@ -3063,3 +3063,5 @@ body.home .ending > .wrap {
     display: none; /* keep Showcase clean on small screens; Cover grid remains */
   }
 }
+/* ===== home26: Pages base-path nav fix ===== */
+/* site-nav siteHref now prefixes detected site root (GH project Pages safe). */
