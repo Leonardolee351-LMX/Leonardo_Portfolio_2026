@@ -2766,3 +2766,40 @@ body.case-live .staggered-menu-wrapper:not([data-open]) .sm-toggle {
     bottom: max(20px, 3vh);
   }
 }
+
+/* ===== home22: mobile Cover slogan larger + Intro banner full paddles; hide floating prev ===== */
+.nav-prev-go {
+  display: none !important;
+}
+@media (max-width: 720px) {
+  body.home .hero-claim--tech {
+    left: var(--hero-paddle) !important;
+    right: var(--hero-paddle) !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: translateY(-42%) !important;
+    top: 44%;
+    height: min(42vh, 340px) !important;
+    z-index: 2;
+  }
+  body.home .hero-meta--tri .hero-meta-right {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box;
+    font-size: 15px;
+    line-height: 1.55;
+    bottom: max(58px, 9vh);
+  }
+}
+@media (max-width: 480px) {
+  body.home .hero-claim--tech {
+    height: min(40vh, 320px) !important;
+    top: 46%;
+  }
+  body.home .hero-meta--tri .hero-meta-right {
+    font-size: 14.5px;
+    bottom: max(52px, 8.5vh);
+  }
+}
