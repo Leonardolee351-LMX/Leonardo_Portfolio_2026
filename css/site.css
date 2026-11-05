@@ -2867,7 +2867,7 @@ body.home .hero-blast-frame {
   }
 }
 
-/* ===== home25: HAOQI-style technical grid (Cover + home sections) ===== */
+/* ===== home27: tech-grid + snapped to shared line-center coords ===== */
 body.home .tech-grid {
   position: absolute;
   inset: 0;
@@ -2876,17 +2876,28 @@ body.home .tech-grid {
   overflow: hidden;
   --tg-inset-x: var(--hero-paddle, clamp(16px, 5vw, 48px));
   --tg-inset-y: max(72px, 8vh);
-  --tg-cols: 3;
-  --tg-rows: 5;
+  --tg-bottom: max(28px, 4vh);
+  /* Line / plus centers (single source of truth) */
+  --tg-x0: var(--tg-inset-x);
+  --tg-x1: calc(var(--tg-inset-x) + (100% - 2 * var(--tg-inset-x)) / 3);
+  --tg-x2: calc(var(--tg-inset-x) + 2 * (100% - 2 * var(--tg-inset-x)) / 3);
+  --tg-x3: calc(100% - var(--tg-inset-x));
+  --tg-x-mid: calc(var(--tg-inset-x) + (100% - 2 * var(--tg-inset-x)) / 2);
+  --tg-y0: var(--tg-inset-y);
+  --tg-y1: 28%;
+  --tg-y2: 50%;
+  --tg-y3: 72%;
+  --tg-y4: calc(100% - var(--tg-bottom));
   --tg-line: rgb(243 242 237 / 0.13);
   --tg-line-strong: rgb(243 242 237 / 0.2);
-  --tg-plus: rgb(243 242 237 / 0.38);
-  --tg-plus-size: 9px;
+  --tg-plus: rgb(243 242 237 / 0.42);
+  --tg-plus-size: 10px;
   --tg-plus-thick: 1px;
+  --tg-line-w: 1px;
 }
 
 body.home .tech-grid--hero {
-  z-index: 1; /* above blast/scrim (0), below chrome (1+) — chrome is z-index 1; raise chrome */
+  z-index: 1;
 }
 
 body.home .hero-chrome {
@@ -2897,111 +2908,160 @@ body.home .hero-blast {
   z-index: 0;
 }
 
-/* Vertical + horizontal rules aligned to paddles / 3-col Cover */
+/* 1px rules centered on --tg-x* / --tg-y* (offset by half stroke) */
 body.home .tech-grid-lines {
   position: absolute;
   inset: 0;
   background:
-    /* left paddle */
-    linear-gradient(to right, var(--tg-line-strong), var(--tg-line-strong)) var(--tg-inset-x) 0 / 1px 100% no-repeat,
-    /* col 1|2 */
-    linear-gradient(to right, var(--tg-line), var(--tg-line))
-      calc(var(--tg-inset-x) + (100% - 2 * var(--tg-inset-x)) / 3) 0 / 1px 100% no-repeat,
-    /* col 2|3 */
-    linear-gradient(to right, var(--tg-line), var(--tg-line))
-      calc(var(--tg-inset-x) + 2 * (100% - 2 * var(--tg-inset-x)) / 3) 0 / 1px 100% no-repeat,
-    /* right paddle */
     linear-gradient(to right, var(--tg-line-strong), var(--tg-line-strong))
-      calc(100% - var(--tg-inset-x)) 0 / 1px 100% no-repeat,
-    /* top band */
-    linear-gradient(to bottom, var(--tg-line-strong), var(--tg-line-strong)) 0 var(--tg-inset-y) / 100% 1px no-repeat,
-    /* row guides */
-    linear-gradient(to bottom, var(--tg-line), var(--tg-line)) 0 28% / 100% 1px no-repeat,
-    linear-gradient(to bottom, var(--tg-line), var(--tg-line)) 0 50% / 100% 1px no-repeat,
-    linear-gradient(to bottom, var(--tg-line), var(--tg-line)) 0 72% / 100% 1px no-repeat,
-    /* bottom band */
-    linear-gradient(to bottom, var(--tg-line-strong), var(--tg-line-strong)) 0 calc(100% - max(28px, 4vh)) / 100% 1px no-repeat;
+      calc(var(--tg-x0) - var(--tg-line-w) / 2) 0 / var(--tg-line-w) 100% no-repeat,
+    linear-gradient(to right, var(--tg-line), var(--tg-line))
+      calc(var(--tg-x1) - var(--tg-line-w) / 2) 0 / var(--tg-line-w) 100% no-repeat,
+    linear-gradient(to right, var(--tg-line), var(--tg-line))
+      calc(var(--tg-x2) - var(--tg-line-w) / 2) 0 / var(--tg-line-w) 100% no-repeat,
+    linear-gradient(to right, var(--tg-line-strong), var(--tg-line-strong))
+      calc(var(--tg-x3) - var(--tg-line-w) / 2) 0 / var(--tg-line-w) 100% no-repeat,
+    linear-gradient(to bottom, var(--tg-line-strong), var(--tg-line-strong))
+      0 calc(var(--tg-y0) - var(--tg-line-w) / 2) / 100% var(--tg-line-w) no-repeat,
+    linear-gradient(to bottom, var(--tg-line), var(--tg-line))
+      0 calc(var(--tg-y1) - var(--tg-line-w) / 2) / 100% var(--tg-line-w) no-repeat,
+    linear-gradient(to bottom, var(--tg-line), var(--tg-line))
+      0 calc(var(--tg-y2) - var(--tg-line-w) / 2) / 100% var(--tg-line-w) no-repeat,
+    linear-gradient(to bottom, var(--tg-line), var(--tg-line))
+      0 calc(var(--tg-y3) - var(--tg-line-w) / 2) / 100% var(--tg-line-w) no-repeat,
+    linear-gradient(to bottom, var(--tg-line-strong), var(--tg-line-strong))
+      0 calc(var(--tg-y4) - var(--tg-line-w) / 2) / 100% var(--tg-line-w) no-repeat;
 }
 
-/* + crosshairs at intersections — tiled within the paddle frame */
+/* + marks: same full-bleed box as lines; centers use identical --tg-x/--tg-y */
 body.home .tech-grid-pluses {
   position: absolute;
-  left: var(--tg-inset-x);
-  right: var(--tg-inset-x);
-  top: var(--tg-inset-y);
-  bottom: max(28px, 4vh);
-  background-image:
-    linear-gradient(to right, var(--tg-plus), var(--tg-plus)),
-    linear-gradient(to bottom, var(--tg-plus), var(--tg-plus));
-  background-size:
-    var(--tg-plus-size) var(--tg-plus-thick),
-    var(--tg-plus-thick) var(--tg-plus-size);
-  background-repeat: repeat, repeat;
-  background-position:
-    calc(var(--tg-plus-size) / -2) 0,
-    0 calc(var(--tg-plus-size) / -2);
-  /* cell = 1/3 width × 1/4 height of the framed area */
-  --tg-cell-x: calc(100% / 3);
-  --tg-cell-y: calc(100% / 4);
-  /* Use mask so plus only shows near lattice points: draw via 4-corner placement trick */
-  opacity: 0.9;
-  /* Override: explicit multi-layer plus marks at known intersections */
-  background-image: none;
-}
-
-/* Explicit plus marks via radial-ish cross layers at grid nodes */
-body.home .tech-grid-pluses {
+  inset: 0;
+  opacity: 1;
   background:
-    /* row of pluses helper: each pair is H-stroke + V-stroke at a node */
-    /* y = 0% */
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 0% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 0% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 33.333% 0% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 33.333% 0% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 66.666% 0% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 66.666% 0% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 0% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 0% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    /* y = 25% */
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 25% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 25% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 33.333% 25% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 33.333% 25% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 66.666% 25% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 66.666% 25% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 25% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 25% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    /* y = 50% */
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 50% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 50% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 33.333% 50% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 33.333% 50% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 66.666% 50% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 66.666% 50% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 50% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 50% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    /* y = 75% */
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 75% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 75% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 33.333% 75% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 33.333% 75% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 66.666% 75% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 66.666% 75% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 75% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 75% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    /* y = 100% */
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 100% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 100% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 33.333% 100% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 33.333% 100% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 66.666% 100% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 66.666% 100% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 100% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-    linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 100% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat;
-  background-repeat: no-repeat;
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-size) / 2) calc(var(--tg-y0) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-thick) / 2) calc(var(--tg-y0) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x1) - var(--tg-plus-size) / 2) calc(var(--tg-y0) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x1) - var(--tg-plus-thick) / 2) calc(var(--tg-y0) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x2) - var(--tg-plus-size) / 2) calc(var(--tg-y0) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x2) - var(--tg-plus-thick) / 2) calc(var(--tg-y0) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-size) / 2) calc(var(--tg-y0) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-thick) / 2) calc(var(--tg-y0) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-size) / 2) calc(var(--tg-y1) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-thick) / 2) calc(var(--tg-y1) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x1) - var(--tg-plus-size) / 2) calc(var(--tg-y1) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x1) - var(--tg-plus-thick) / 2) calc(var(--tg-y1) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x2) - var(--tg-plus-size) / 2) calc(var(--tg-y1) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x2) - var(--tg-plus-thick) / 2) calc(var(--tg-y1) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-size) / 2) calc(var(--tg-y1) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-thick) / 2) calc(var(--tg-y1) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-size) / 2) calc(var(--tg-y2) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-thick) / 2) calc(var(--tg-y2) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x1) - var(--tg-plus-size) / 2) calc(var(--tg-y2) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x1) - var(--tg-plus-thick) / 2) calc(var(--tg-y2) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x2) - var(--tg-plus-size) / 2) calc(var(--tg-y2) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x2) - var(--tg-plus-thick) / 2) calc(var(--tg-y2) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-size) / 2) calc(var(--tg-y2) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-thick) / 2) calc(var(--tg-y2) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-size) / 2) calc(var(--tg-y3) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-thick) / 2) calc(var(--tg-y3) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x1) - var(--tg-plus-size) / 2) calc(var(--tg-y3) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x1) - var(--tg-plus-thick) / 2) calc(var(--tg-y3) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x2) - var(--tg-plus-size) / 2) calc(var(--tg-y3) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x2) - var(--tg-plus-thick) / 2) calc(var(--tg-y3) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-size) / 2) calc(var(--tg-y3) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-thick) / 2) calc(var(--tg-y3) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-size) / 2) calc(var(--tg-y4) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-thick) / 2) calc(var(--tg-y4) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x1) - var(--tg-plus-size) / 2) calc(var(--tg-y4) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x1) - var(--tg-plus-thick) / 2) calc(var(--tg-y4) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x2) - var(--tg-plus-size) / 2) calc(var(--tg-y4) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x2) - var(--tg-plus-thick) / 2) calc(var(--tg-y4) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-size) / 2) calc(var(--tg-y4) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-thick) / 2) calc(var(--tg-y4) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat;
 }
 
-/* Light sections: ink grid, softer */
+/* Light sections: same geometry, ink colors */
 body.home .showcase,
 body.home .ending {
   position: relative;
@@ -3009,10 +3069,11 @@ body.home .ending {
 body.home .tech-grid--section {
   --tg-inset-x: max(5vw, calc((100% - var(--max)) / 2 + 5vw));
   --tg-inset-y: 48px;
+  --tg-bottom: 48px;
   --tg-line: rgb(25 27 29 / 0.07);
   --tg-line-strong: rgb(25 27 29 / 0.11);
-  --tg-plus: rgb(25 27 29 / 0.22);
-  opacity: 0.9;
+  --tg-plus: rgb(25 27 29 / 0.24);
+  opacity: 0.95;
   z-index: 0;
 }
 body.home .showcase > .wrap,
@@ -3021,47 +3082,86 @@ body.home .ending > .wrap {
   z-index: 1;
 }
 
-/* Mobile: fewer horizontal rules + smaller pluses */
 @media (max-width: 720px) {
   body.home .tech-grid {
-    --tg-plus-size: 7px;
-    opacity: 0.75;
+    --tg-plus-size: 8px;
   }
   body.home .tech-grid--hero .tech-grid-lines {
     background:
-      linear-gradient(to right, var(--tg-line-strong), var(--tg-line-strong)) var(--tg-inset-x) 0 / 1px 100% no-repeat,
-      linear-gradient(to right, var(--tg-line), var(--tg-line)) 50% 0 / 1px 100% no-repeat,
       linear-gradient(to right, var(--tg-line-strong), var(--tg-line-strong))
-        calc(100% - var(--tg-inset-x)) 0 / 1px 100% no-repeat,
-      linear-gradient(to bottom, var(--tg-line-strong), var(--tg-line-strong)) 0 var(--tg-inset-y) / 100% 1px no-repeat,
-      linear-gradient(to bottom, var(--tg-line), var(--tg-line)) 0 50% / 100% 1px no-repeat,
-      linear-gradient(to bottom, var(--tg-line-strong), var(--tg-line-strong)) 0 calc(100% - max(28px, 4vh)) / 100% 1px no-repeat;
+        calc(var(--tg-x0) - var(--tg-line-w) / 2) 0 / var(--tg-line-w) 100% no-repeat,
+      linear-gradient(to right, var(--tg-line), var(--tg-line))
+        calc(var(--tg-x-mid) - var(--tg-line-w) / 2) 0 / var(--tg-line-w) 100% no-repeat,
+      linear-gradient(to right, var(--tg-line-strong), var(--tg-line-strong))
+        calc(var(--tg-x3) - var(--tg-line-w) / 2) 0 / var(--tg-line-w) 100% no-repeat,
+      linear-gradient(to bottom, var(--tg-line-strong), var(--tg-line-strong))
+        0 calc(var(--tg-y0) - var(--tg-line-w) / 2) / 100% var(--tg-line-w) no-repeat,
+      linear-gradient(to bottom, var(--tg-line), var(--tg-line))
+        0 calc(var(--tg-y2) - var(--tg-line-w) / 2) / 100% var(--tg-line-w) no-repeat,
+      linear-gradient(to bottom, var(--tg-line-strong), var(--tg-line-strong))
+        0 calc(var(--tg-y4) - var(--tg-line-w) / 2) / 100% var(--tg-line-w) no-repeat;
   }
   body.home .tech-grid--hero .tech-grid-pluses {
     background:
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 0% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 0% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 50% 0% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 50% 0% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 0% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 0% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 50% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 50% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 50% 50% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 50% 50% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 50% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 50% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 100% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 0% 100% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 50% 100% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 50% 100% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 100% / var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
-      linear-gradient(var(--tg-plus), var(--tg-plus)) 100% 100% / var(--tg-plus-thick) var(--tg-plus-size) no-repeat;
-    background-repeat: no-repeat;
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-size) / 2) calc(var(--tg-y0) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-thick) / 2) calc(var(--tg-y0) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x-mid) - var(--tg-plus-size) / 2) calc(var(--tg-y0) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x-mid) - var(--tg-plus-thick) / 2) calc(var(--tg-y0) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-size) / 2) calc(var(--tg-y0) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-thick) / 2) calc(var(--tg-y0) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-size) / 2) calc(var(--tg-y2) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-thick) / 2) calc(var(--tg-y2) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x-mid) - var(--tg-plus-size) / 2) calc(var(--tg-y2) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x-mid) - var(--tg-plus-thick) / 2) calc(var(--tg-y2) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-size) / 2) calc(var(--tg-y2) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-thick) / 2) calc(var(--tg-y2) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-size) / 2) calc(var(--tg-y4) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x0) - var(--tg-plus-thick) / 2) calc(var(--tg-y4) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x-mid) - var(--tg-plus-size) / 2) calc(var(--tg-y4) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x-mid) - var(--tg-plus-thick) / 2) calc(var(--tg-y4) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-size) / 2) calc(var(--tg-y4) - var(--tg-plus-thick) / 2) /
+      var(--tg-plus-size) var(--tg-plus-thick) no-repeat,
+    linear-gradient(var(--tg-plus), var(--tg-plus))
+      calc(var(--tg-x3) - var(--tg-plus-thick) / 2) calc(var(--tg-y4) - var(--tg-plus-size) / 2) /
+      var(--tg-plus-thick) var(--tg-plus-size) no-repeat;
   }
   body.home .tech-grid--section {
-    display: none; /* keep Showcase clean on small screens; Cover grid remains */
+    display: none;
   }
 }
+
 /* ===== home26: Pages base-path nav fix ===== */
 /* site-nav siteHref now prefixes detected site root (GH project Pages safe). */
