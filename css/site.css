@@ -3587,3 +3587,24 @@ body .ending.ending--aiux {
   .ending.ending--aiux .ending-socials { justify-content: center; gap: 18px; }
   .ending.ending--aiux .ending-brand img { height: 40px; }
 }
+
+
+/* ===== home36: TEEM ROI 白底黑字 + site loader ===== */
+/* ROI metric cards: force white cards + black type on dark case pages */
+body.case-soft .cs-stats div,
+body.case-live .cs-stats div {
+  background: #ffffff !important;
+  border: 1px solid #e6e2da !important;
+  color: #111111 !important;
+}
+body.case-soft .cs-stats strong,
+body.case-live .cs-stats strong {
+  color: #111111 !important;
+}
+body.case-soft .cs-stats span,
+body.case-live .cs-stats span {
+  color: #3a3a3a !important;
+}
+.cs-stats strong {
+  color: #111111;
+}

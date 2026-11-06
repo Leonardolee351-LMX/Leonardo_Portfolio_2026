@@ -1,0 +1,56 @@
+/* Sitewide pre-entry loading gate */
+#site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #0a0a0c;
+  color: #f3f2ed;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+#site-loader[data-done="1"] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#site-loader .site-loader-mark {
+  width: min(160px, 42vw);
+  height: auto;
+  display: block;
+  filter: none;
+}
+#site-loader .site-loader-label {
+  margin: 0;
+  font-family: "Krona One", "Segoe UI", Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(243, 242, 237, 0.72);
+}
+#site-loader .site-loader-bar {
+  width: min(220px, 56vw);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+#site-loader .site-loader-bar > i {
+  display: block;
+  height: 100%;
+  width: 28%;
+  background: #fff;
+  border-radius: inherit;
+  animation: site-loader-slide 1.1s ease-in-out infinite;
+}
+@keyframes site-loader-slide {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(420%); }
+}
+html.site-loading,
+html.site-loading body {
+  overflow: hidden !important;
+}
