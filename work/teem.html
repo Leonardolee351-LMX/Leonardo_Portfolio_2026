@@ -251,6 +251,7 @@
   </style>
 <link rel="stylesheet" href="../css/site-loader.css?v=home37">
   <script src="../js/site-loader.js?v=home37" defer></script>
+<script src="../js/case-lightbox.js?v=home39" defer></script>
 </head>
 <body class="case-soft">
   <header class="top top--legacy" hidden>
@@ -267,12 +268,14 @@
   <nav class="cs-index" aria-label="Catalogue">
     <div class="case-side-label">Catalogue</div>
     <a href="#v01">00 封面</a>
+    <a href="#teem-pdf">00b 总结PDF</a>
     <a href="#v02">01 IP世界观</a>
     <a href="#v03">01b 形象条件</a>
     <a href="#v04">02 视觉物料</a>
     <a href="#v05">03 线下规划</a>
     <a href="#v08">03b 游园路径</a>
     <a href="#v06">04 空间施工</a>
+    <a href="#teem-skp-live">04c SKP/LIVE</a>
     <a href="#v07">04b 快闪搭建</a>
     <a href="#v09">05 现场实拍</a>
     <a href="#v10">06 结果</a>
@@ -289,22 +292,35 @@
         </div>
         <aside class="cover-meta-right" aria-label="现场封面">
           <figure class="cover-still">
-            <img src="../media/teem/photo-inflatable.jpg" alt="番禺天河城现场气模。">
+            <img src="../media/teem/photo-inflatable.jpg" alt="番禺天河城现场气模。" data-lb>
           </figure>
         </aside>
       </div>
     </article>
 
+    <section class="cs-view" id="teem-pdf">
+      <p class="cs-num">00b · 完整活动总结 PDF</p>
+      <h3>直接阅读原件，不做截图裁切。</h3>
+      <p>以下内嵌为《TEEM仔城中大冒险》活动总结 PDF 全文。可滚动、缩放浏览器内阅读；需要下载可开新标签。</p>
+      <div class="pdf-embed">
+        <header>
+          <span>TEEM仔城中大冒险 · 活动总结.pdf</span>
+          <a href="../media/teem/TEEM-city-adventure-summary.pdf" target="_blank" rel="noopener">新标签打开 / 下载</a>
+        </header>
+        <iframe src="../media/teem/TEEM-city-adventure-summary.pdf#view=FitH" title="TEEM仔城中大冒险 活动总结 PDF" loading="lazy"></iframe>
+      </div>
+    </section>
+
     <section class="cs-view appendix-feishu" id="teem-ledger">
       <button type="button" class="appendix-toggle" aria-expanded="false" aria-controls="teem-ledger-body" id="teem-ledger-toggle">
         <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="section-title">核对文件 · 现场照片不等于全部原件。制作文件大多还不在这个网站。</span>
+        <span class="section-title">核对文件 · 资产清单与原件入口</span>
         <span class="hint">默认收起</span>
       </button>
       <div class="appendix-body" id="teem-ledger-body">
         <div class="appendix-body-inner">
-          <p><a href="../ledger.html#teem">打开 TEEM 家族资产清单</a>。正文用了气模、人偶、主视觉、航拍、P27–P29 尺寸、游园卡和现场照片。活动总结 PDF 的其余页在清单里可以逐张打开。</p>
-          <p>还不在本站：ai 源文件、SketchUp、推文逐张、16 个表情包 psd、同一物料的修改前后稿。表情包不署个人。</p>
+          <p><a href="../ledger.html#teem">打开 TEEM 家族资产清单</a>。本页已内嵌活动总结 PDF；正文补充现场照片、施工/LIVE 记录与 IP 起点图。</p>
+          <p>源工程文件（ai / SketchUp 原生 .skp 等）体积较大，清单中可按需核对；本页提供可网页阅读的导出与实拍。</p>
         </div>
       </div>
     </section>
@@ -316,17 +332,47 @@
         <h3>既有 IP 是输入，不是从零原创。</h3>
         <p>TEEM仔原本已经拥有可辨认的形象与品牌故事。2024 年 12 月，番禺天河城四周年节点需要一次能够被看到、拍到、走进去、参与并传播的线下亮相。项目与广州美术学院相关团队协作，把现有 IP 延展到主视觉、推文、海报、快闪店、巨型气模、游园集章、现场导视、人偶与周边产品上。</p>
         <p>这不是从零画一个角色的品牌设计，也不是一场只靠漂亮效果图的展览。商场在营业；一楼与负一楼都要布置摊位；活动需要招募、排位、供电、搭建、路由、兑奖、协作与现场运营。对我而言最大的工作是让同一个品牌，在手机屏幕、墙面、展位和人的真实移动中保持连贯，而且每一个实际尺寸和行动路径都能落地。</p>
-        <p>团队总结介绍既有形象调整、角色小传、家族设定与表情包语言。造型优化服务于玩偶服制作；表情包围绕粤语、购物与上班族松弛感等情境。我参与过世界观讨论，但<strong>不能据此认领这些全部图形设计</strong>。我接手后真正需要回答的是：现有图形如何适应不同媒介的裁切、比例、字号和制作材料。</p>
+        <p>团队总结介绍既有形象调整、角色小传、家族设定与表情包语言。造型优化服务于玩偶服制作；表情包围绕粤语、购物与上班族松弛感等情境。角色图形为既有输入；我接手后的重点是媒介适配——裁切、比例、字号与制作材料如何在真实渠道里站住。</p>
       </section>
+
+      <details class="case-fold" id="teem-ip-start">
+        <summary>
+          <span>市集策划与 IP 宣发的第一步起点 · TEE仔主视角（原生 IP）</span>
+          <span class="hint">默认收起 · 点击展开</span>
+        </summary>
+        <div class="fold-body">
+          <p>既有 IP 形象是项目输入。以下为 TEE仔主视角设定图——整场市集策划与宣发延展从这里起步。</p>
+          <img src="../media/teem/ip-teezai-main.png" alt="TEE仔 IP形象-主视角（原生设定）" data-lb>
+          <p class="live-cap" style="margin-top:10px">IP形象-主视角 · 输入资产，非从零原创署名。</p>
+          <img src="../media/teem/ip-promo-offline-sheet.png" alt="宣发海报与线下工作拆解页" data-lb style="margin-top:12px">
+          <p class="live-cap" style="margin-top:10px">左系宣发海报气质；右系线下工作流拆解——作为策划起点对照。</p>
+        </div>
+      </details>
+
+
+      <details class="case-fold" id="teem-worldview-docs">
+        <summary>
+          <span>世界观重塑 · 两篇推文 DOCX（可下载）</span>
+          <span class="hint">默认收起</span>
+        </summary>
+        <div class="fold-body">
+          <p>接手后的世界观与家族叙事，落在两篇推文文稿中。此处折叠附原件，便于对照线上物料。</p>
+          <div class="doc-links">
+            <a href="../media/teem/docs/teem-worldview-02.docx" download>第一篇 · 遇见Teem仔 / 世界观与 Slogan</a>
+            <a href="../media/teem/docs/teem-worldview-01.docx" download>第二篇 · 阿橙奇妙冒险 / 家族大揭秘</a>
+          </div>
+        </div>
+      </details>
+
       <div class="live-bleed">
-        <img src="../media/teem/kv-wide.jpg" alt="TEEM 主视觉宽幅。">
+        <img src="../media/teem/kv-wide.jpg" alt="TEEM 主视觉宽幅。" data-lb>
       </div>
       <p class="live-cap">主视觉宽幅：既有角色进入城市尺度的第一眼识别。</p>
       <div class="live-grid two">
-        <img src="../media/teem/kv-poster.jpg" alt="TEEM 主视觉海报。">
-        <img src="../media/teem/summary-p02.jpg" alt="团队总结中的角色与设定页。">
+        <img src="../media/teem/kv-poster.jpg" alt="TEEM 主视觉海报。" data-lb>
+        <img src="../media/teem/summary-p02.jpg" alt="团队总结中的角色与设定页。" data-lb>
       </div>
-      <p class="live-cap">左：宣发海报。右：总结中的角色/设定页——输入资产，而非我独立原创署名。</p>
+      <p class="live-cap">左：宣发海报。右：总结设定页（输入资产）。完整原文见上方 PDF。</p>
 
       <section class="cs-view" id="v03">
         <p class="cs-num">01b · 怎样让一次 IP 亮相不碎成互不相关的物料</p>
@@ -346,12 +392,12 @@
         <p>最值得展示的设计思考不是「我做了很多物料」，而是<strong>同一视觉元素在不同观看距离和使用任务中，需要不同的信息密度</strong>。手机端推文要让用户快速知道什么时候、在哪里、怎么玩；远处的活动门头必须先被识别；现场规则牌需要能被正在排队的人读懂；贴纸和周边还承担 IP 传播与纪念用途。</p>
       </section>
       <div class="live-grid two">
-        <img src="../media/teem/summary-p11.jpg" alt="视觉物料与宣发页。">
-        <img src="../media/teem/source-files.jpg" alt="源文件与物料截图。">
+        <img src="../media/teem/summary-p11.jpg" alt="视觉物料与宣发页。" data-lb>
+        <img src="../media/teem/source-files.jpg" alt="源文件与物料截图。" data-lb>
       </div>
       <p class="live-cap">宣发/物料页与源文件痕迹：横竖版、墙面、贴纸与推文画板对应不同观看距离。</p>
       <div class="live-bleed">
-        <img src="../media/teem/summary-p31.jpg" alt="社交媒体传播汇总页。">
+        <img src="../media/teem/summary-p31.jpg" alt="社交媒体传播汇总页。" data-lb>
       </div>
       <p class="live-cap">社媒与线下传播形成连续路径（公众号 / 私域 / 小红书汇总口径——非个人排版因果 ROI）。</p>
 
@@ -362,8 +408,8 @@
         <p>设计时要把人走路的方向、视线、停留空间和商场既有通行关系放到一张图里看；同一地点可能既是视觉打卡点，也是客流聚集点。用户可能先从公众号或小红书看到内容，来到商场后寻找入口，领取游园卡，沿途打卡、参与体验、观看人偶或气模，再去兑换周边。</p>
       </section>
       <div class="live-bleed">
-        <img src="../media/teem-route.jpg" alt="场地航拍与动线规划。" onerror="this.style.display='none'">
-        <img src="../media/teem/summary-p20.jpg" alt="场地与摊位规划页。">
+        <img src="../media/teem-route.jpg" alt="场地航拍与动线规划。" onerror="this.style.display='none'" data-lb>
+        <img src="../media/teem/summary-p20.jpg" alt="场地与摊位规划页。" data-lb>
       </div>
       <p class="live-cap">场地/摊位与动线：营业中的楼里如何布置而不堵死商铺。</p>
 
@@ -374,11 +420,11 @@
         <p>服务设计逻辑很简单：游客需要知道「我要先领什么—去哪里—做什么—完成后换什么」。摊主则需要清晰的摊位信息、品牌门头、营业规则与可找到的客流。</p>
       </section>
       <div class="live-bleed">
-        <img src="../media/teem/summary-p14.jpg" alt="游园规则与冒险卡。">
+        <img src="../media/teem/summary-p14.jpg" alt="游园规则与冒险卡。" data-lb>
       </div>
       <div class="live-grid two">
-        <img src="../media/teem/summary-p15.jpg" alt="游园点位与规则补充。">
-        <img src="../media/teem/summary-p16.jpg" alt="集章与奖励相关页。">
+        <img src="../media/teem/summary-p15.jpg" alt="游园点位与规则补充。" data-lb>
+        <img src="../media/teem/summary-p16.jpg" alt="集章与奖励相关页。" data-lb>
       </div>
       <p class="live-cap">规则牌、冒险卡与点位：把分散体验收成一条可完成的路径。</p>
 
@@ -394,11 +440,11 @@
         </div>
       </section>
       <div class="live-grid two">
-        <img src="../media/teem/summary-p27.jpg" alt="气模与帐篷尺寸页。">
-        <img src="../media/teem/summary-p29.jpg" alt="快闪结构与材料页。">
+        <img src="../media/teem/summary-p27.jpg" alt="气模与帐篷尺寸页。" data-lb>
+        <img src="../media/teem/summary-p29.jpg" alt="快闪结构与材料页。" data-lb>
       </div>
       <div class="live-bleed">
-        <img src="../media/teem/summary-p28.jpg" alt="供电与线缆示意页。">
+        <img src="../media/teem/summary-p28.jpg" alt="供电与线缆示意页。" data-lb>
       </div>
       <p class="live-cap">尺寸 / 结构 / 供电：进入施工语言，而不是停在效果图。</p>
 
@@ -408,10 +454,47 @@
         <p>只跟一只快闪走完：它在场地的哪一块，结构怎么转折、展示面在哪，印刷和材料怎么交出去，最后人走进去时它长什么样。施工是团队完成的；我能负责的是把尺寸和构件说清楚，让别人拿去制作和调整。</p>
       </section>
       <div class="live-grid two">
-        <img src="../media/teem/summary-p21.jpg" alt="快闪相关图纸页。">
-        <img src="../media/teem/photo-popup.jpg" alt="快闪店现场实拍。">
+        <img src="../media/teem/summary-p21.jpg" alt="快闪相关图纸页。" data-lb>
+        <img src="../media/teem/photo-popup.jpg" alt="快闪店现场实拍。" data-lb>
       </div>
       <p class="live-cap">图纸语言与现场安装对照：画完和做出来不是同一件事。</p>
+
+      
+      <section class="cs-view" id="teem-skp-live">
+        <p class="cs-num">04c · 施工图 / LIVE 记录</p>
+        <h3>来自 TEEM RECORD 的可网页阅读导出。</h3>
+        <p>原工程含 SketchUp 与 LIVE 过程文件。此处放入完整导出图（非 PDF 裁切页），点击可放大缩小阅读。</p>
+        <p class="live-cap">SketchUp 施工相关导出</p>
+        <div class="live-grid two">
+          <img src="../media/teem/record/skp-01.png" alt="TEEM SketchUp 导出 01" data-lb>
+          <img src="../media/teem/record/skp-02.png" alt="TEEM SketchUp 导出 02" data-lb>
+          <img src="../media/teem/record/skp-03.png" alt="TEEM SketchUp 导出 03" data-lb>
+          <img src="../media/teem/record/skp-04.png" alt="TEEM SketchUp 导出 04" data-lb>
+          <img src="../media/teem/record/skp-05.png" alt="TEEM SketchUp 导出 05" data-lb>
+          <img src="../media/teem/record/skp-06.png" alt="TEEM SketchUp 导出 06" data-lb>
+          <img src="../media/teem/record/skp-07.png" alt="TEEM SketchUp 导出 07" data-lb>
+          <img src="../media/teem/record/skp-08.png" alt="TEEM SketchUp 导出 08" data-lb>
+          <img src="../media/teem/record/skp-09.png" alt="TEEM SketchUp 导出 09" data-lb>
+        </div>
+        <p class="live-cap" style="margin-top:18px">LIVE 现场/过程记录</p>
+        <div class="live-grid two">
+          <img src="../media/teem/record/live-01.png" alt="TEEM LIVE 记录 01" data-lb>
+          <img src="../media/teem/record/live-02.png" alt="TEEM LIVE 记录 02" data-lb>
+          <img src="../media/teem/record/live-03.png" alt="TEEM LIVE 记录 03" data-lb>
+          <img src="../media/teem/record/live-04.png" alt="TEEM LIVE 记录 04" data-lb>
+          <img src="../media/teem/record/live-05.png" alt="TEEM LIVE 记录 05" data-lb>
+          <img src="../media/teem/record/live-06.png" alt="TEEM LIVE 记录 06" data-lb>
+          <img src="../media/teem/record/live-07.png" alt="TEEM LIVE 记录 07" data-lb>
+          <img src="../media/teem/record/live-08.png" alt="TEEM LIVE 记录 08" data-lb>
+          <img src="../media/teem/record/live-09.png" alt="TEEM LIVE 记录 09" data-lb>
+          <img src="../media/teem/record/live-10.png" alt="TEEM LIVE 记录 10" data-lb>
+          <img src="../media/teem/record/live-11.png" alt="TEEM LIVE 记录 11" data-lb>
+          <img src="../media/teem/record/live-12.png" alt="TEEM LIVE 记录 12" data-lb>
+          <img src="../media/teem/record/live-13.png" alt="TEEM LIVE 记录 13" data-lb>
+          <img src="../media/teem/record/live-14.png" alt="TEEM LIVE 记录 14" data-lb>
+          <img src="../media/teem/record/live-15.png" alt="TEEM LIVE 记录 15" data-lb>
+        </div>
+      </section>
 
       <section class="cs-view" id="v09">
         <p class="cs-num">05 · 活动现场实拍记录</p>
@@ -419,22 +502,22 @@
         <p>活动于 2024 年 12 月 21–25 日举行。现场包括大型气模、人偶巡游、快闪店、艺术工作坊、摊位区、游园路线与奖励点。工作坊记录为五场、每场平均约 13 人。下面用实拍说明它们是否站在同一栋还在营业的楼里。</p>
       </section>
       <div class="live-bleed">
-        <img src="../media/teem/photo-plaza.jpg" alt="广场气模与人流。">
+        <img src="../media/teem/photo-plaza.jpg" alt="广场气模与人流。" data-lb>
       </div>
       <div class="live-grid">
-        <img src="../media/teem/photo-inflatable.jpg" alt="气模近景。">
-        <img src="../media/teem/photo-mascot-group.jpg" alt="人偶互动。">
-        <img src="../media/teem/photo-workshop.jpg" alt="工作坊现场。">
-        <img src="../media/teem/photo-selfie.jpg" alt="现场互动自拍。">
+        <img src="../media/teem/photo-inflatable.jpg" alt="气模近景。" data-lb>
+        <img src="../media/teem/photo-mascot-group.jpg" alt="人偶互动。" data-lb>
+        <img src="../media/teem/photo-workshop.jpg" alt="工作坊现场。" data-lb>
+        <img src="../media/teem/photo-selfie.jpg" alt="现场互动自拍。" data-lb>
       </div>
       <div class="live-bleed">
-        <img src="../media/teem/photo-inflatable-wide.jpg" alt="气模与场地宽幅。">
+        <img src="../media/teem/photo-inflatable-wide.jpg" alt="气模与场地宽幅。" data-lb>
       </div>
       <p class="live-cap">广场、气模、人偶、工作坊与快闪——同一场地里的真实五天。</p>
 
       <section class="cs-view" id="v10">
         <p class="cs-num">06 · 获得结果与复盘</p>
-        <h3>团队结果 · 诚实口径 · 我的贡献边界。</h3>
+        <h3>团队结果与我的贡献。</h3>
         <p>报告不同页面使用「40+ 主理人」「45+ 摊主」「46 个品牌」等口径，正式讲述更稳妥表述是「超过 40 个主理品牌参与」。游园卡发放 1,082 张以上、礼品发放 1,892 份；市集销售额据总结约 28.2 万元，应标为<strong>摊主销售总额</strong>，不能等同项目利润或个人设计 ROI。曝光与小红书浏览为渠道汇总口径，不能写成「我的排版直接产生了 100 万曝光」。</p>
         <p>我的部分是：基础 IP 定稿后的视觉延展、社媒版式、空间与动线规划、核心展位及施工配合、现场执行与维护。材料中的规模、参与和销售均为<strong>团队/活动数据</strong>。</p>
         <div class="cs-stats">
@@ -452,8 +535,8 @@
         <p>These figures do not establish a direct causal ROI for an individual design decision.</p>
       </section>
       <div class="live-grid two">
-        <img src="../media/teem/summary-p34.jpg" alt="销售与结果数据页。">
-        <img src="../media/teem/summary-p33.jpg" alt="传播数据汇总页。">
+        <img src="../media/teem/summary-p34.jpg" alt="销售与结果数据页。" data-lb>
+        <img src="../media/teem/summary-p33.jpg" alt="传播数据汇总页。" data-lb>
       </div>
 
       <section class="cs-view" id="v11">

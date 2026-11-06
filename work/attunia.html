@@ -1004,6 +1004,7 @@
   </style>
 <link rel="stylesheet" href="../css/site-loader.css?v=home37">
   <script src="../js/site-loader.js?v=home37" defer></script>
+<script src="../js/case-lightbox.js?v=home39" defer></script>
 </head>
 <body class="case-soft">
   <div class="wrap">
@@ -1070,7 +1071,7 @@
             <p class="row"><span class="tag">【场景】</span>工位 / 上下班切换——早起进不去工作、午后脑雾、下班切不进休息。</p>
             <p class="row"><span class="tag">【用户】</span>白领，以及需要短暂逃离脑雾的人（含 ADHD 真实用户语境，不夸大疗效）。</p>
             <p class="row"><span class="tag">【痛点】</span>大脑状态真空期——知道该休息或专注，却进不去状态。</p>
-            <p class="beat">一段及时的冥想调适，可辅助短暂逃离脑雾（Soft Healthcare · 非医疗）。</p>
+            <p class="beat">一段及时的冥想调适，可辅助短暂逃离脑雾。</p>
           </div>
           <div class="pitch-tri" aria-label="WLB 三处真空">
             <figure>
@@ -1334,7 +1335,7 @@
       <section class="cs-view" id="user-cases">
         <p class="cs-num">用户数据 / 案例证明</p>
         <h3 style="font-size:clamp(22px,2.4vw,30px);margin:6px 0 8px;">ADHD 用户案例 · 真实反馈</h3>
-        <p class="cap">个案·小样本。先看真实用户怎么用，再听他们说了什么。Soft Healthcare / 非医疗疗效宣称。本板块只讲人与反馈，不堆工程证据。</p>
+        <p class="cap">个案·小样本。先看真实用户怎么用，再听他们说了什么。本板块只讲人与反馈，不堆工程证据。</p>
 
           <div class="showcase-grid">
             <div class="evidence-video">
@@ -1371,7 +1372,7 @@
               <li>「产品的体验和沉浸感很完整。」</li>
               <li class="soft">下一版愿望：希望更加 Customize · 想看到更细的大脑数据分析</li>
             </ul>
-            <p class="honesty-strip">ADHD 试戴个案演示口径：专注 23→80 等仅作单次可见变化描述。小样本 · 非疗效宣称 · Soft Healthcare。</p>
+            <p class="honesty-strip">ADHD 试戴个案：专注 23→80 等仅作单次可见变化描述（小样本）。</p>
           </div>
       </section>
 
@@ -1452,7 +1453,7 @@
                     </figure>
                     <figure>
                       <img src="../media/attunia/appendix/eeg/eeg-analysis-timeseries.png" alt="时序分析预览图" data-lb>
-                      <figcaption>评测集 timeseries 样本绘制的唤醒/专注/平静曲线（非医疗诊断图）。</figcaption>
+                      <figcaption>评测集 timeseries 样本绘制的唤醒/专注/平静曲线。</figcaption>
                     </figure>
                     <figure>
                       <img src="../media/attunia/appendix/eeg/eeg-home-afterwork.png" alt="下班场景脑电语境" data-lb>
@@ -1606,7 +1607,7 @@
                     </figure>
                   </div>
                 
-                  <p class="cap" style="margin-top:14px">出口见上方谱系卡片 · MindCalm。演示页含六屏 PPT Demo · 原型截屏 · 硬件/穴位证据；提案阶段 · Soft Healthcare 诚实边界见该页。</p>
+                  <p class="cap" style="margin-top:14px">出口见上方谱系卡片 · MindCalm。演示页含六屏 PPT Demo · 原型截屏 · 硬件/穴位证据；提案阶段细节见该页。</p>
                   <div class="evidence-grid" style="margin-top:10px">
                     <figure>
                       <img src="../media/attunia/appendix/hardware/emotiv-lifestyle-hardware.png" alt="MindCalm 硬件生活方式提案板" data-lb>
@@ -1642,7 +1643,7 @@
     </div>
   </div>
 
-  <div class="lb" id="lb" hidden>
+  <div class="lb" id="lbLegacy" hidden>
     <button type="button" aria-label="关闭">×</button>
     <img alt="">
   </div>
@@ -1650,7 +1651,7 @@
   <script src="../js/case-index.js"></script>
   <script>
     (function () {
-      var lb = document.getElementById("lb");
+      var lb = document.getElementById("lbLegacy"); if(!lb) return; // superseded by case-lightbox
       var img = lb.querySelector("img");
       var btn = lb.querySelector("button");
       function openLb(src, alt, isPhone) {
