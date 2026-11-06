@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TEEM City Adventure — Leonardo Li</title>
   <link rel="icon" type="image/png" href="../media/brand/leonardo-icon.png">
-  <link rel="stylesheet" href="../css/site.css?v=home37">
+  <link rel="stylesheet" href="../css/site.css?v=home40">
   <style>
     /* Align TEEM chrome with Attunia case-soft: left TOC, cover meta, Feishu folds, dark visuals.
        Content/copy unchanged. */
@@ -253,7 +253,7 @@
   <script src="../js/site-loader.js?v=home37" defer></script>
 <script src="../js/case-lightbox.js?v=home39" defer></script>
 </head>
-<body class="case-soft">
+<body class="case-soft teem-case">
   <header class="top top--legacy" hidden>
     <a class="brand" href="../index.html"><img class="brand-mark" src="../media/brand/leonardo-icon.png" alt="Leonardo"> Leonardo Li</a>
     <nav class="nav" aria-label="Primary">
@@ -275,8 +275,9 @@
     <a href="#v05">03 线下规划</a>
     <a href="#v08">03b 游园路径</a>
     <a href="#v06">04 空间施工</a>
-    <a href="#teem-skp-live">04c SKP/LIVE</a>
-    <a href="#v07">04b 快闪搭建</a>
+    <a href="#v07">04b 位置 · 结构 · 材料</a>
+    <a href="#teem-skp">04c SKP 施工导出 ↓</a>
+    <a href="#teem-dome-gallery">04d 活动现场纪实 ↓</a>
     <a href="#v09">05 现场实拍</a>
     <a href="#v10">06 结果</a>
     <a href="#v11">06b 复盘</a>
@@ -319,8 +320,8 @@
       </button>
       <div class="appendix-body" id="teem-ledger-body">
         <div class="appendix-body-inner">
-          <p><a href="../ledger.html#teem">打开 TEEM 家族资产清单</a>。本页已内嵌活动总结 PDF；正文补充现场照片、施工/LIVE 记录与 IP 起点图。</p>
-          <p>源工程文件（ai / SketchUp 原生 .skp 等）体积较大，清单中可按需核对；本页提供可网页阅读的导出与实拍。</p>
+          <p><a href="../ledger.html#teem">打开 TEEM 家族资产清单</a>。本页已内嵌活动总结 PDF；正文补充现场照片、SKP 导出与 IP 起点图。</p>
+          <p>源工程文件（ai / SketchUp 原生 .skp 等）体积较大，清单中可按需核对；SKP 导出收在「位置→结构→材料」折叠区；15 张 LIVE 现场照片以 Dome Gallery 呈现。</p>
         </div>
       </div>
     </section>
@@ -368,7 +369,7 @@
         <img src="../media/teem/kv-wide.jpg" alt="TEEM 主视觉宽幅。" data-lb>
       </div>
       <p class="live-cap">主视觉宽幅：既有角色进入城市尺度的第一眼识别。</p>
-      <div class="live-grid two">
+      <div class="live-grid teem-board-stack">
         <img src="../media/teem/kv-poster.jpg" alt="TEEM 主视觉海报。" data-lb>
         <img src="../media/teem/summary-p02.jpg" alt="团队总结中的角色与设定页。" data-lb>
       </div>
@@ -391,7 +392,7 @@
         <p>团队产出了主 KV、活动宣发海报、落位图、推文与社媒素材、贴纸、快闪物料及多种印刷品。我参与的重点是把既有角色应用于这些真实渠道：调整网格、裁切、文字长短、信息层级与尺寸，使视觉在手机长图、实体墙面、摊位横幅等差异极大的介质上维持识别度。</p>
         <p>最值得展示的设计思考不是「我做了很多物料」，而是<strong>同一视觉元素在不同观看距离和使用任务中，需要不同的信息密度</strong>。手机端推文要让用户快速知道什么时候、在哪里、怎么玩；远处的活动门头必须先被识别；现场规则牌需要能被正在排队的人读懂；贴纸和周边还承担 IP 传播与纪念用途。</p>
       </section>
-      <div class="live-grid two">
+      <div class="live-grid teem-board-stack">
         <img src="../media/teem/summary-p11.jpg" alt="视觉物料与宣发页。" data-lb>
         <img src="../media/teem/source-files.jpg" alt="源文件与物料截图。" data-lb>
       </div>
@@ -422,7 +423,7 @@
       <div class="live-bleed">
         <img src="../media/teem/summary-p14.jpg" alt="游园规则与冒险卡。" data-lb>
       </div>
-      <div class="live-grid two">
+      <div class="live-grid teem-board-stack">
         <img src="../media/teem/summary-p15.jpg" alt="游园点位与规则补充。" data-lb>
         <img src="../media/teem/summary-p16.jpg" alt="集章与奖励相关页。" data-lb>
       </div>
@@ -439,7 +440,7 @@
           <div class="cs-card"><span>Power</span><strong>电箱 / 电缆 / 防雨</strong><p>技术约束也是体验设计的一部分；最终以有资质人员审核为准。</p></div>
         </div>
       </section>
-      <div class="live-grid two">
+      <div class="live-grid teem-board-stack">
         <img src="../media/teem/summary-p27.jpg" alt="气模与帐篷尺寸页。" data-lb>
         <img src="../media/teem/summary-p29.jpg" alt="快闪结构与材料页。" data-lb>
       </div>
@@ -453,48 +454,49 @@
         <h3>位置 → 结构 → 材料 → 人走进去。</h3>
         <p>只跟一只快闪走完：它在场地的哪一块，结构怎么转折、展示面在哪，印刷和材料怎么交出去，最后人走进去时它长什么样。施工是团队完成的；我能负责的是把尺寸和构件说清楚，让别人拿去制作和调整。</p>
       </section>
-      <div class="live-grid two">
+      <div class="live-grid teem-board-stack">
         <img src="../media/teem/summary-p21.jpg" alt="快闪相关图纸页。" data-lb>
         <img src="../media/teem/photo-popup.jpg" alt="快闪店现场实拍。" data-lb>
       </div>
       <p class="live-cap">图纸语言与现场安装对照：画完和做出来不是同一件事。</p>
 
-      
-      <section class="cs-view" id="teem-skp-live">
-        <p class="cs-num">04c · 施工图 / LIVE 记录</p>
-        <h3>来自 TEEM RECORD 的可网页阅读导出。</h3>
-        <p>原工程含 SketchUp 与 LIVE 过程文件。此处放入完整导出图（非 PDF 裁切页），点击可放大缩小阅读。</p>
-        <p class="live-cap">SketchUp 施工相关导出</p>
-        <div class="live-grid two">
-          <img src="../media/teem/record/skp-01.png" alt="TEEM SketchUp 导出 01" data-lb>
-          <img src="../media/teem/record/skp-02.png" alt="TEEM SketchUp 导出 02" data-lb>
-          <img src="../media/teem/record/skp-03.png" alt="TEEM SketchUp 导出 03" data-lb>
-          <img src="../media/teem/record/skp-04.png" alt="TEEM SketchUp 导出 04" data-lb>
-          <img src="../media/teem/record/skp-05.png" alt="TEEM SketchUp 导出 05" data-lb>
-          <img src="../media/teem/record/skp-06.png" alt="TEEM SketchUp 导出 06" data-lb>
-          <img src="../media/teem/record/skp-07.png" alt="TEEM SketchUp 导出 07" data-lb>
-          <img src="../media/teem/record/skp-08.png" alt="TEEM SketchUp 导出 08" data-lb>
-          <img src="../media/teem/record/skp-09.png" alt="TEEM SketchUp 导出 09" data-lb>
+      <details class="case-fold" id="teem-skp">
+        <summary>
+          <span>SketchUp 施工与位置结构导出</span>
+          <span class="hint">9 张 · 默认收起 · 点击展开</span>
+        </summary>
+        <div class="fold-body">
+          <p>从原工程导出的位置、结构与施工辅助图。逐张完整显示，点击可保留原比例放大阅读。</p>
+          <div class="live-grid teem-board-stack">
+            <img src="../media/teem/record/skp-01.png" alt="TEEM SketchUp 导出 01" data-lb>
+            <img src="../media/teem/record/skp-02.png" alt="TEEM SketchUp 导出 02" data-lb>
+            <img src="../media/teem/record/skp-03.png" alt="TEEM SketchUp 导出 03" data-lb>
+            <img src="../media/teem/record/skp-04.png" alt="TEEM SketchUp 导出 04" data-lb>
+            <img src="../media/teem/record/skp-05.png" alt="TEEM SketchUp 导出 05" data-lb>
+            <img src="../media/teem/record/skp-06.png" alt="TEEM SketchUp 导出 06" data-lb>
+            <img src="../media/teem/record/skp-07.png" alt="TEEM SketchUp 导出 07" data-lb>
+            <img src="../media/teem/record/skp-08.png" alt="TEEM SketchUp 导出 08" data-lb>
+            <img src="../media/teem/record/skp-09.png" alt="TEEM SketchUp 导出 09" data-lb>
+          </div>
+          <p class="live-cap">SKP 01–09 · 原图完整比例；黑边仅用于留白，不裁切。</p>
         </div>
-        <p class="live-cap" style="margin-top:18px">LIVE 现场/过程记录</p>
-        <div class="live-grid two">
-          <img src="../media/teem/record/live-01.png" alt="TEEM LIVE 记录 01" data-lb>
-          <img src="../media/teem/record/live-02.png" alt="TEEM LIVE 记录 02" data-lb>
-          <img src="../media/teem/record/live-03.png" alt="TEEM LIVE 记录 03" data-lb>
-          <img src="../media/teem/record/live-04.png" alt="TEEM LIVE 记录 04" data-lb>
-          <img src="../media/teem/record/live-05.png" alt="TEEM LIVE 记录 05" data-lb>
-          <img src="../media/teem/record/live-06.png" alt="TEEM LIVE 记录 06" data-lb>
-          <img src="../media/teem/record/live-07.png" alt="TEEM LIVE 记录 07" data-lb>
-          <img src="../media/teem/record/live-08.png" alt="TEEM LIVE 记录 08" data-lb>
-          <img src="../media/teem/record/live-09.png" alt="TEEM LIVE 记录 09" data-lb>
-          <img src="../media/teem/record/live-10.png" alt="TEEM LIVE 记录 10" data-lb>
-          <img src="../media/teem/record/live-11.png" alt="TEEM LIVE 记录 11" data-lb>
-          <img src="../media/teem/record/live-12.png" alt="TEEM LIVE 记录 12" data-lb>
-          <img src="../media/teem/record/live-13.png" alt="TEEM LIVE 记录 13" data-lb>
-          <img src="../media/teem/record/live-14.png" alt="TEEM LIVE 记录 14" data-lb>
-          <img src="../media/teem/record/live-15.png" alt="TEEM LIVE 记录 15" data-lb>
-        </div>
+      </details>
+
+      <section class="cs-view" id="teem-dome-gallery">
+        <p class="cs-num">04d / TEEM RECORD · LIVE 01–15</p>
+        <details class="case-fold teem-dome-fold">
+          <summary>
+            <span>活动现场照片纪实记录</span>
+            <span class="hint">15 张彩色照片 · Dome Gallery · 默认收起</span>
+          </summary>
+          <div class="fold-body">
+            <p>展开后，拖动旋转穹顶浏览现场记录；点击照片放大，按 Esc 返回。所有照片保留原始比例与色彩。</p>
+            <iframe class="teem-dome-frame" src="about:blank" data-src="../experiments/dome-gallery/index.html?v=home40" loading="lazy" title="活动现场照片纪实记录 — 15 张 TEEM RECORD 现场照片，拖动旋转、点击查看完整图片"></iframe>
+            <noscript><p><a href="../experiments/dome-gallery/index.html?v=home40">打开活动现场照片 Dome Gallery</a></p></noscript>
+          </div>
+        </details>
       </section>
+
 
       <section class="cs-view" id="v09">
         <p class="cs-num">05 · 活动现场实拍记录</p>
@@ -534,7 +536,7 @@
         </div>
         <p>These figures do not establish a direct causal ROI for an individual design decision.</p>
       </section>
-      <div class="live-grid two">
+      <div class="live-grid teem-board-stack">
         <img src="../media/teem/summary-p34.jpg" alt="销售与结果数据页。" data-lb>
         <img src="../media/teem/summary-p33.jpg" alt="传播数据汇总页。" data-lb>
       </div>
@@ -620,6 +622,31 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      var fold = document.querySelector('.teem-dome-fold');
+      var frame = document.querySelector('.teem-dome-frame');
+      if (!fold || !frame) return;
+      function loadDome() {
+        if (!fold.open || frame.getAttribute('src') !== 'about:blank') return;
+        frame.src = frame.dataset.src;
+      }
+      fold.addEventListener('toggle', loadDome);
+      var box = document.querySelector('a[href="#teem-skp"]');
+      var dome = document.querySelector('a[href="#teem-dome-gallery"]');
+      window.addEventListener('message', function (event) {
+        if (event.origin !== window.location.origin || !event.data || event.data.type !== 'teem-dome-static') return;
+        frame.style.height = event.data.open ? Math.ceil(event.data.height + 36) + 'px' : '';
+      });
+      if (box) box.addEventListener('click', function () { document.getElementById('teem-skp').open = true; });
+      if (dome) dome.addEventListener('click', function () {
+        var target = document.querySelector('.teem-dome-fold');
+        target.open = true;
+        loadDome();
+      });
+      loadDome();
+    })();
+  </script>
 <div id="site-nav-root" data-site-nav-theme="case" aria-live="polite"></div>
   <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../experiments/site-nav/assets/index.css?v=home33">

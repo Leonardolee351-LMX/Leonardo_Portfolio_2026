@@ -3608,3 +3608,75 @@ body.case-live .cs-stats span {
 .cs-stats strong {
   color: #111111;
 }
+
+/* t125/t126: TEEM only. Show every complete PDF export and original asset.
+   Replaced img boxes provide their own stable 16:9 frame; contain never crops.
+   Summary/PDF boards get full width so half-column copies are never enforced. */
+body.teem-case .live-bleed,
+body.teem-case .live-grid {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+body.teem-case .live-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+body.teem-case .live-grid.teem-board-stack {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 22px;
+}
+body.teem-case .live-bleed img,
+body.teem-case .live-grid img,
+body.teem-case .live-grid.two img,
+body.teem-case .case-fold .fold-body img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center;
+  box-sizing: border-box;
+  background: #0a0a0b;
+  border-radius: 14px;
+}
+body.teem-case .teem-dome-fold .fold-body > p:first-child {
+  margin-top: 0;
+}
+body.teem-case .teem-dome-frame {
+  display: block;
+  width: 100%;
+  height: clamp(560px, 78vh, 780px);
+  border: 0;
+  border-radius: 14px;
+  background: #120F17;
+  touch-action: pan-y;
+}
+@media (max-width: 860px) {
+  body.teem-case .live-grid,
+  body.teem-case .live-grid.two img,
+  body.teem-case .live-grid img,
+  body.teem-case .live-bleed img {
+    height: auto;
+  }
+  body.teem-case .live-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  body.teem-case .live-grid.teem-board-stack { grid-template-columns: minmax(0, 1fr); }
+  body.teem-case .live-grid { gap: 14px; }
+  body.teem-case .case-fold > summary { flex-wrap: wrap; gap: 6px 12px; }
+  body.teem-case .case-fold > summary > span:first-child { flex-basis: 100%; }
+  body.teem-case .case-fold > summary .hint { margin-left: 0; }
+}
+@media (max-width: 620px) {
+  body.teem-case .live-grid { grid-template-columns: minmax(0, 1fr); }
+  body.teem-case .teem-dome-frame { height: 560px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.teem-case .teem-dome-fold .fold-body > p:first-child::after {
+    content: " 若系统偏好减少动态效果，可使用下方静态照片索引。";
+  }
+}
