@@ -28,15 +28,15 @@
           href: "work/attunia.html"
         },
         {
-          id: "teem",
-          title: "TEEM City Adventure",
-          year: "2024.12",
-          tab: "Mall",
-          img: "media/teem-wall.png",
-          stand: "鎶婂凡缁忓畾绋跨殑瑙掕壊閫佽繘杩樺湪钀ヤ笟鐨勫晢鍦猴細寤跺睍鐗╂枡銆佸姩绾垮拰鐜板満銆?,
-          role: "瑙嗚寤跺睍銆佸満鍦扮瓥鍒掋€佹柦宸ュ拰浜斿ぉ鐜板満銆傜暘绂哄ぉ娌冲煄锛?2 鏈?21 鏃ヨ嚦 25 鏃ャ€?,
-          limit: "閿€鍞鏄憡涓荤殑锛屼笉鏄璁℃寚鏍囥€傚姩绾胯璁╁紑姝ｅ湪钀ヤ笟鐨勫簵銆傝鑹插師璁句笉鍦ㄨ繖涓€椤靛睍寮€銆?,
-          href: "work/teem.html"
+          id: "memorylens",
+          title: "MemoryLens",
+          year: "2025.07",
+          tab: "Lens",
+          img: "media/memorylens/cover.jpg",
+          stand: "在 Vision Pro 上把找不到的东西指出来：看见、说清方位、在空间里高亮。",
+          role: "产品体验和可运行原型的前端。识别与语言模型接在同一条寻物链路上。",
+          limit: "黑客松里的可运行演示，不是上线产品。没有用户测试。多个物体同时出现时没有方案。",
+          href: "work/memorylens.html"
         }
       ]
     },
@@ -116,17 +116,6 @@
           stand: "瀵煎笀涓嶆槸绌哄璇濇銆傛湁鐢紝鍚屾椂涓嶈鍐枫€?,
           role: "姹傝亴瀵硅瘽鐨勪骇鍝佷笌鐣岄潰銆?,
           limit: "褰撴椂娌℃湁鎵?3 鍒?5 涓簲灞婄敓鍋氬彲鐢ㄦ祴璇曘€?,
-          href: ""
-        },
-        {
-          id: "memory",
-          title: "MemoryLens",
-          year: "榛戝鏉?,
-          tab: "Lens",
-          img: "media/archive/memorylens.jpg",
-          stand: "鍦?Vision Pro 涓婂府鑰佸勾浜烘妸鎵句笉鍒扮殑涓滆タ鎸囧嚭鏉ャ€?,
-          role: "榛戝鏉鹃噷鍋氬嚭鍙繍琛屾紨绀恒€?,
-          limit: "澶氫欢涓滆タ鍚屾椂鍑虹幇鏃讹紝娌℃湁鏂规銆?,
           href: ""
         },
         {

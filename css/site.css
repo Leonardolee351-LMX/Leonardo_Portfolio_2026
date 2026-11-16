@@ -197,6 +197,13 @@ a:focus-visible, button:focus-visible {
   opacity: 1;
   background: radial-gradient(ellipse at 82% 70%, rgb(255 121 31 / 0.2), transparent 58%);
 }
+.showcase:has(.show-card[data-tint="lens"]:hover) {
+  background: #e6eef4;
+}
+.showcase:has(.show-card[data-tint="lens"]:hover)::before {
+  opacity: 1;
+  background: radial-gradient(ellipse at 82% 70%, rgb(64 122 176 / 0.24), transparent 58%);
+}
 .showcase h2,
 .album h2 {
   font-size: clamp(42px, 6vw, 84px);

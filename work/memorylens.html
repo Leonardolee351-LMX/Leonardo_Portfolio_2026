@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MemoryLens — Leonardo Li</title>
+  <link rel="icon" type="image/png" href="../media/brand/leonardo-icon.png">
+  <link rel="stylesheet" href="../css/site.css?v=home41">
+  <style>
+    body.case-soft .meta-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 22px 0 8px;
+    }
+    body.case-soft .meta-strip div {
+      background: #1a1d21;
+      border: 1px solid #2f3338;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    body.case-soft .meta-strip h4 {
+      margin: 0 0 8px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #8d8f8c;
+      font-weight: 650;
+    }
+    body.case-soft .meta-strip p { margin: 0; font-size: 14px; color: #d5d2c8; max-width: none; }
+    body.case-soft .meta-strip a { color: #d3fb71; }
+    body.case-soft .honesty-strip {
+      margin: 8px 0 22px;
+      padding: 12px 16px;
+      border-left: 2px solid #d3fb71;
+      color: #9a9c98;
+      font-size: 13px;
+      max-width: 72ch;
+    }
+    body.case-soft .cover-pitch .huge {
+      font-size: clamp(42px, 7vw, 72px);
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      margin: 6px 0 14px;
+      font-weight: 650;
+      color: #ece8e0;
+    }
+    body.case-soft .cover-pitch .pitch-lead {
+      font-size: clamp(16px, 2vw, 20px);
+      color: #b7b9b8;
+      max-width: 36ch;
+      line-height: 1.45;
+      margin: 0 0 10px;
+    }
+    body.case-soft .lens-still img {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+    }
+    body.case-soft .lens-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 16px 0 8px;
+    }
+    body.case-soft .lens-grid img,
+    body.case-soft .lens-wide img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+    }
+    body.case-soft .cap { color: #8d8f8c; font-size: 13px; margin: 8px 0 18px; }
+    @media (max-width: 800px) {
+      body.case-soft .meta-strip,
+      body.case-soft .lens-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="../css/site-loader.css?v=home37">
+  <script src="../js/site-loader.js?v=home37" defer></script>
+  <script src="../js/case-lightbox.js?v=home39" defer></script>
+</head>
+<body class="case-soft">
+  <header class="top top--legacy" hidden>
+    <a class="brand" href="../index.html"><img class="brand-mark" src="../media/brand/leonardo-icon.png" alt="Leonardo"> Leonardo Li</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../index.html#showcase">Showcase</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <button class="mobile-case-toc" type="button" id="caseTocToggle" aria-label="Catalogue" title="Catalogue" aria-expanded="false">CATALOGUE</button>
+  <nav class="cs-index" aria-label="Catalogue">
+    <div class="case-side-label">Catalogue</div>
+    <a href="#cover">00 封面</a>
+    <a href="#problem">01 问题</a>
+    <a href="#system">02 寻物链路</a>
+    <a href="#boundary">03 边界</a>
+    <a href="#assets">04 画面</a>
+  </nav>
+
+  <div class="wrap">
+    <article class="cs-hero cover-pitch" id="cover">
+      <div class="cover-meta">
+        <div class="cover-meta-left">
+          <p class="kicker">Spatial computing · 2025.07 · 杭州黑客松</p>
+          <p class="huge">MemoryLens.</p>
+          <p class="pitch-lead">一句话，帮老年人把找不到的东西指出来。看见、说清方位、在空间里高亮。</p>
+        </div>
+        <aside class="cover-meta-right" aria-label="概念封面">
+          <figure class="lens-still">
+            <img src="../media/memorylens/cover.jpg" alt="MemoryLens 概念：老人面前的钥匙被空间界面标出。" data-lb>
+          </figure>
+        </aside>
+      </div>
+      <div class="meta-strip">
+        <div>
+          <h4>角色</h4>
+          <p>产品体验，以及可运行原型的前端实现。</p>
+        </div>
+        <div>
+          <h4>载体</h4>
+          <p>Apple Vision Pro。visionOS、视觉识别、语言模型工作流。</p>
+        </div>
+        <div>
+          <h4>完成度</h4>
+          <p>一套可运行的 Demo。不是上线产品。</p>
+        </div>
+      </div>
+      <p class="honesty-strip">时长按案例材料写：黑客松里 48 小时以上做出可运行演示。简历里另有「五天」的写法，这里不合成一个新数字。没有用户测试。多个物体同时出现时，没有方案。</p>
+    </article>
+
+    <section class="cs-view" id="problem">
+      <p class="cs-num">01 · 问题</p>
+      <h3>不是再做一个聊天窗口，是把「东西在哪」变成能执行的反馈。</h3>
+      <p>老年人会把钥匙、眼镜放在一个固定的地方，过后又找不到。MemoryLens 选 Apple Vision Pro 做载体，目标是把「看见物体」收到三件事里：听懂那句话，在空间里标出目标，再用语音把方位说清楚。</p>
+      <p>问题定义停在这一句：不是单纯的目标检测，而是视觉定位、语音引导和有温度的反馈连成一次交互。概念图里的那句「你看，钥匙是不是在这里」，是这条链路的样子，不是已经验证过的用户原话。</p>
+      <figure class="lens-wide">
+        <img src="../media/memorylens/Memory01.png" alt="MemoryLens 核心概念图。" data-lb>
+      </figure>
+      <p class="cap">核心概念图。空间框、物体信息和一句确认，放在同一张画面里。</p>
+    </section>
+
+    <section class="cs-view" id="system">
+      <p class="cs-num">02 · 寻物链路</p>
+      <h3>问一句，扫一遍，高亮，再说方位。</h3>
+      <p>体验上，用户用自然语言问，例如「我的钥匙在哪」。设备扫描眼前的空间，高亮目标，同时用语音给出方位。反馈分成三层：看见、语音、空间。</p>
+      <p>我负责产品体验和前端实现，用 TRAE 把可交互原型做出来。识别接的是 YOLO，语言接的是 Dify 上的工作流。这两段是系统的一部分，不写成我一个人做完了算法。</p>
+      <div class="lens-grid">
+        <figure>
+          <img src="../media/memorylens/Memory02.png" alt="视觉识别与反馈逻辑。" data-lb>
+          <figcaption class="cap">识别与反馈怎么接在一起。</figcaption>
+        </figure>
+        <figure>
+          <img src="../media/memorylens/Memory03.png" alt="多模态交互界面细节。" data-lb>
+          <figcaption class="cap">多模态界面：问句、高亮和物体信息。</figcaption>
+        </figure>
+      </div>
+      <p class="links"><a href="https://github.com/QiriZ/MemoryLens" target="_blank" rel="noopener">GitHub 开源仓库</a></p>
+    </section>
+
+    <section class="cs-view" id="boundary">
+      <p class="cs-num">03 · 边界</p>
+      <h3>能演示的，和还没做的，分开讲。</h3>
+      <div class="cs-cols">
+        <div class="cs-card"><span>做出来的</span><strong>一套可运行的 Vision Pro Demo</strong><p>视觉、语音、空间三层反馈能走通一次寻物。</p></div>
+        <div class="cs-card"><span>没做的</span><strong>用户测试</strong><p>没有被试人数，也没有前后对比。</p></div>
+        <div class="cs-card"><span>还没有方案的</span><strong>多个物体同时出现</strong><p>冲突时怎么选，案例里没有写。</p></div>
+      </div>
+      <p>如果继续做，优先补的是用户测试，以及多物体冲突时的策略。AI 交互要落到一个具体情境里，形成可以执行的下一步，而不是停在聊天。</p>
+    </section>
+
+    <section class="cs-view" id="assets">
+      <p class="cs-num">04 · 画面</p>
+      <h3>概念、界面和系统图放在一起，方便对着讲。</h3>
+      <div class="lens-grid">
+        <img src="../media/memorylens/Memory03-2.png" alt="MemoryLens 界面 03-2" data-lb>
+        <img src="../media/memorylens/Memory03-3.png" alt="MemoryLens 界面 03-3" data-lb>
+        <img src="../media/memorylens/Memory03-4.png" alt="MemoryLens 界面 03-4" data-lb>
+        <img src="../media/memorylens/Memory04.png" alt="MemoryLens 界面 04" data-lb>
+        <img src="../media/memorylens/Memory05.png" alt="MemoryLens 界面 05" data-lb>
+        <img src="../media/memorylens/Memory05-2.png" alt="MemoryLens 界面 05-2" data-lb>
+        <img src="../media/memorylens/Memory0N.png" alt="MemoryLens 补充画面" data-lb>
+        <img src="../media/memorylens/062648d4-41cc-4082-8881-1bcb99180151.png" alt="MemoryLens 系统图" data-lb>
+      </div>
+      <p class="next">
+        <a href="attunia.html">上一件 · Attunia</a>
+        <a href="../index.html#showcase">回到主推</a>
+      </p>
+    </section>
+  </div>
+
+  <script src="../js/case-index.js"></script>
+  <script>
+    (function () {
+      var btn = document.getElementById("caseTocToggle");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        var open = document.body.classList.toggle("case-toc-open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+  </script>
+  <footer class="ending ending--aiux" id="contact">
+    <div class="wrap ending-aiux">
+      <div class="ending-aiux-row" role="contentinfo">
+        <a class="ending-brand" href="../index.html" aria-label="Leonardo home">
+          <img src="../media/brand/leonardo-icon-white.svg" alt="" width="168" height="42" decoding="async" />
+        </a>
+        <p class="ending-copy">© 2026 Leonardo Li · All Rights Reserved</p>
+        <nav class="ending-socials" aria-label="Contact links">
+          <a href="https://github.com/Leonardolee351-LMX" target="_blank" rel="noopener noreferrer"><span>GitHub</span></a>
+          <a href="https://www.linkedin.com/in/%E9%93%AD%E6%99%9E-%E9%BB%8E-925845381/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span></a>
+          <a href="mailto:leonardolee351@gmail.com"><span>Gmail</span></a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <div id="site-nav-root" data-site-nav-theme="case" aria-live="polite"></div>
+  <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../experiments/site-nav/assets/index.css?v=home33">
+  <script type="module" src="../experiments/site-nav/assets/site-nav.js?v=home41"></script>
+</body>
+</html>
