@@ -7,6 +7,10 @@
     ".case-lb.is-open{display:block}",
     ".case-lb-toolbar{position:absolute;top:16px;right:16px;z-index:2;display:flex;gap:8px}",
     ".case-lb-toolbar button{min-width:40px;height:40px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(20,18,16,.72);color:#fff;font-size:18px;line-height:1;cursor:pointer;backdrop-filter:blur(8px)}",
+    ".case-lb-nav{position:absolute;top:50%;z-index:2;transform:translateY(-50%);min-width:44px;height:44px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(20,18,16,.72);color:#fff;font-size:22px;line-height:1;cursor:pointer;backdrop-filter:blur(8px)}",
+    ".case-lb-nav[data-act=prev]{left:16px}",
+    ".case-lb-nav[data-act=next]{right:16px}",
+    ".case-lb:not(.has-gallery) .case-lb-nav{display:none}",
     ".case-lb-stage{position:absolute;inset:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:zoom-out}",
     ".case-lb-stage.is-zoomed{cursor:grab}",
     ".case-lb-stage.is-zoomed.is-dragging{cursor:grabbing}",
@@ -55,6 +59,8 @@
       '<button type="button" data-act="reset" aria-label="适配">핏</button>' +
       '<button type="button" data-act="close" aria-label="关闭">×</button>' +
       "</div>" +
+      '<button type="button" class="case-lb-nav" data-act="prev" aria-label="上一页">‹</button>' +
+      '<button type="button" class="case-lb-nav" data-act="next" aria-label="下一页">›</button>' +
       '<div class="case-lb-stage" id="caseLbStage"><img alt=""></div>' +
       '<div class="case-lb-hint">滚轮 / +− 缩放 · 拖动平移 · 双击复位 · Esc / × 关闭</div>';
     // fix garbled reset label
@@ -71,6 +77,9 @@
     var scale = 1, tx = 0, ty = 0, dragging = false, moved = false;
     var startX = 0, startY = 0, originTx = 0, originTy = 0;
     var MIN = 1, MAX = 6;
+    var gallery = [];
+    var galleryIndex = -1;
+    var BASE_HINT = "滚轮 / +− 缩放 · 拖动平移 · 双击复位 · Esc / × 关闭";
 
     function apply() {
       img.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + scale + ")";
@@ -90,16 +99,40 @@
       if (scale <= 1.01) { scale = 1; tx = 0; ty = 0; }
       apply();
     }
-    function open(src, alt, isPhone) {
+    function setGallery(items, index) {
+      gallery = Array.isArray(items) && items.length > 1 ? items : [];
+      galleryIndex = gallery.length ? index : -1;
+      root.classList.toggle("has-gallery", gallery.length > 1);
+      var hint = root.querySelector(".case-lb-hint");
+      if (hint) {
+        hint.textContent = gallery.length > 1
+          ? "← → 切换页面 · " + BASE_HINT
+          : BASE_HINT;
+      }
+    }
+    function open(src, alt, isPhone, items, index) {
       img.src = src;
       img.alt = alt || "";
       img.classList.toggle("is-phone", !!isPhone);
+      setGallery(items, index == null ? -1 : index);
       reset();
       root.hidden = false;
       root.classList.add("is-open");
       root.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
     }
+    function showAt(i) {
+      if (gallery.length < 2) return;
+      var n = (i + gallery.length) % gallery.length;
+      var item = gallery[n];
+      galleryIndex = n;
+      img.src = item.src;
+      img.alt = item.alt || "";
+      img.classList.toggle("is-phone", !!item.isPhone);
+      reset();
+    }
+    function showPrev() { showAt(galleryIndex - 1); }
+    function showNext() { showAt(galleryIndex + 1); }
     function close() {
       root.classList.remove("is-open");
       root.hidden = true;
@@ -107,6 +140,9 @@
       img.removeAttribute("src");
       img.classList.remove("is-phone");
       stage.classList.remove("is-zoomed", "is-dragging");
+      root.classList.remove("has-gallery");
+      gallery = [];
+      galleryIndex = -1;
       document.body.style.overflow = "";
       scale = 1; tx = 0; ty = 0;
     }
@@ -115,6 +151,8 @@
     root.querySelector('[data-act="in"]').addEventListener("click", function (e) { e.stopPropagation(); zoomAt(1.25); });
     root.querySelector('[data-act="out"]').addEventListener("click", function (e) { e.stopPropagation(); zoomAt(1 / 1.25); });
     root.querySelector('[data-act="reset"]').addEventListener("click", function (e) { e.stopPropagation(); reset(); });
+    root.querySelector('[data-act="prev"]').addEventListener("click", function (e) { e.stopPropagation(); showPrev(); });
+    root.querySelector('[data-act="next"]').addEventListener("click", function (e) { e.stopPropagation(); showNext(); });
     stage.addEventListener("wheel", function (e) {
       if (!root.classList.contains("is-open")) return;
       e.preventDefault();
@@ -147,12 +185,16 @@
     stage.addEventListener("pointerup", endDrag);
     stage.addEventListener("pointercancel", endDrag);
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && root.classList.contains("is-open")) close();
+      if (!root.classList.contains("is-open")) return;
+      if (e.key === "Escape") { close(); return; }
+      if (gallery.length < 2) return;
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); showPrev(); }
+      else if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); showNext(); }
     });
 
     function bindImage(el) {
       if (!el || el.dataset.lbBound === "1") return;
-      if (el.closest("a.brand, header, footer, .brand, .cs-index, .lightbox-toolbar, .case-lb")) return;
+      if (el.closest("a.brand, header, footer, .brand, .cs-index, .lightbox-toolbar, .case-lb, .board button[data-full]")) return;
       var src = el.getAttribute("src") || "";
       if (!src || src.indexOf("brand/") !== -1 || src.indexOf("leonardo-icon") !== -1) return;
       el.dataset.lbBound = "1";
@@ -166,14 +208,25 @@
     function bindAll() {
       var scope = document.querySelector(".wrap, .case-body, article, main") || document.body;
       scope.querySelectorAll("img").forEach(bindImage);
-      // LaborLink board buttons with data-full
-      document.querySelectorAll(".board button[data-full]").forEach(function (btn) {
+      // LaborLink (or any) board buttons with data-full, grouped for ← → paging
+      var boardBtns = Array.prototype.slice.call(document.querySelectorAll(".board button[data-full]"));
+      boardBtns.forEach(function (btn, i) {
         if (btn.dataset.lbBound === "1") return;
         btn.dataset.lbBound = "1";
         btn.addEventListener("click", function (e) {
           e.preventDefault();
+          e.stopPropagation();
+          var groupName = btn.getAttribute("data-lb-group");
+          var members = groupName
+            ? boardBtns.filter(function (b) { return b.getAttribute("data-lb-group") === groupName; })
+            : [btn];
+          var items = members.map(function (b) {
+            var im = b.querySelector("img");
+            return { src: b.getAttribute("data-full"), alt: im ? im.alt : "", isPhone: false };
+          });
+          var index = members.indexOf(btn);
           var im = btn.querySelector("img");
-          open(btn.getAttribute("data-full"), im ? im.alt : "");
+          open(btn.getAttribute("data-full"), im ? im.alt : "", false, items, index);
         });
       });
     }
