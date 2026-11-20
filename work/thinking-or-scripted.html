@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thinking or Scripted? · Leonardo Li</title>
+  <link rel="icon" type="image/png" href="../media/brand/leonardo-icon.png">
+  <link rel="stylesheet" href="../css/site.css?v=home37">
+  <style>
+    /* LaborLink cream chrome (left Catalogue, cover meta, section-block). */
+    :root {
+      --ll-bg: #f7f3ec;
+      --ll-elevated: rgba(0,0,0,0.03);
+      --ll-text: #1c1a17;
+      --ll-dim: #4a4640;
+      --ll-muted: #8a8378;
+      --ll-accent: #e07030;
+      --ll-accent-soft: rgba(224,112,48,0.12);
+      --ll-link: #c45a18;
+      --ll-link-soft: rgba(196,90,24,0.25);
+      --ll-border: rgba(28,26,23,0.08);
+      --ll-card: rgba(255,255,255,0.72);
+      --ll-shadow: 0 18px 48px rgba(28,26,23,0.14);
+      --ll-shadow-soft: 0 8px 28px rgba(28,26,23,0.08);
+      --case-side-w: 188px;
+    }
+    body.case-cream {
+      background: var(--ll-bg);
+      color: var(--ll-text);
+      --bg: var(--ll-bg);
+      --bg-elevated: var(--ll-elevated);
+      --text: var(--ll-text);
+      --text-dim: var(--ll-dim);
+      --text-muted: var(--ll-muted);
+      --accent: var(--ll-accent);
+      --accent-soft: var(--ll-accent-soft);
+      --link: var(--ll-link);
+      --link-soft: var(--ll-link-soft);
+      --border: var(--ll-border);
+      --shadow: var(--ll-shadow);
+      --shadow-soft: var(--ll-shadow-soft);
+    }
+    body.case-cream .top {
+      background: color-mix(in srgb, var(--ll-bg) 92%, transparent);
+      border-bottom-color: var(--ll-border);
+      backdrop-filter: blur(12px);
+    }
+    body.case-cream .cs-index {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: var(--case-side-w);
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      gap: 2px;
+      margin: 0;
+      padding: 92px 12px 28px;
+      overflow-y: auto;
+      background: linear-gradient(to right, rgba(247,243,236,0.98), rgba(247,243,236,0.94));
+      border-bottom: 0;
+      border-right: 1px solid var(--ll-border);
+      backdrop-filter: none;
+      box-sizing: border-box;
+    }
+    body.case-cream .cs-index .case-side-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ll-muted);
+      padding: 0 10px 10px;
+      font-weight: 650;
+    }
+    body.case-cream .cs-index a {
+      display: block;
+      padding: 8px 12px;
+      font-size: 13px;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--ll-dim);
+      border-bottom: 0;
+      border-left: 2px solid transparent;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.3;
+    }
+    body.case-cream .cs-index a:hover {
+      color: var(--ll-text);
+      background: var(--ll-elevated);
+    }
+    body.case-cream .cs-index a.is-now {
+      color: var(--ll-accent);
+      border-bottom-color: transparent;
+      border-left-color: var(--ll-accent);
+      background: var(--ll-accent-soft);
+    }
+    body.case-cream .cs-index a.sub {
+      padding-left: 22px;
+      font-size: 12px;
+      color: var(--ll-muted);
+    }
+    body.case-cream .cs-index a.sub.is-now { color: var(--ll-accent); }
+    body.case-cream .wrap {
+      padding-left: calc(var(--case-side-w) + 8px);
+      box-sizing: border-box;
+      max-width: calc(1120px + var(--case-side-w));
+    }
+    html:has(body.case-cream .cs-index) {
+      scroll-padding-top: 96px;
+      scroll-padding-left: var(--case-side-w);
+    }
+    body.case-cream .mobile-case-toc {
+      display: none;
+      position: fixed;
+      top: max(14px, 1.8vh);
+      left: max(14px, 4vw); right: auto;
+      z-index: 70;
+      appearance: none;
+      border: 1px solid var(--ll-border);
+      background: #fff;
+      color: var(--ll-text);
+      border-radius: 999px;
+      padding: 10px 16px;
+      min-height: 44px;
+      min-width: 44px;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: var(--ll-shadow-soft);
+    }
+    @media (max-width: 820px) {
+      body.case-cream .cs-index { display: none; }
+      body.case-cream .wrap {
+        padding-left: max(16px, 5.5vw);
+        padding-right: max(16px, 5.5vw);
+        box-sizing: border-box;
+        max-width: 1120px;
+      }
+      body.case-cream .mobile-case-toc { display: inline-flex; }
+      body.case-cream.case-toc-open .cs-index {
+        display: flex;
+        width: min(80vw, 280px);
+        box-shadow: 18px 0 40px rgba(28,26,23,.18);
+        background: #f7f3ec;
+      }
+    }
+
+    body.case-cream .cover-meta {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 20px 28px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+    body.case-cream .cover-meta-left .huge {
+      font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: -0.05em;
+      line-height: 0.98;
+      margin: 6px 0 12px;
+      font-weight: 650;
+      color: var(--ll-text);
+    }
+    body.case-cream .cover-meta-left .pitch-lead {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: var(--ll-dim);
+      max-width: 42ch;
+      line-height: 1.45;
+      margin: 0;
+    }
+    body.case-cream .cover-meta-left .pitch-lead em { color: var(--ll-accent); font-style: normal; }
+    body.case-cream .cover-meta-left .kicker {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 650;
+      color: var(--ll-muted);
+      margin: 0 0 8px;
+    }
+    body.case-cream .cover-meta-left .cs-label {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 10px;
+      font-size: 12px;
+      background: #fff;
+      border: 1px solid var(--ll-border);
+      border-radius: 999px;
+      color: var(--ll-dim);
+    }
+    @media (max-width: 900px) {
+      body.case-cream .cover-meta { grid-template-columns: 1fr; }
+    }
+
+    body.case-cream .meta-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    body.case-cream .meta-row > div {
+      background: #fff;
+      border: 1px solid var(--ll-border);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    body.case-cream .meta-row .eyebrow {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ll-muted);
+      margin-bottom: 6px;
+      font-weight: 650;
+    }
+    body.case-cream .meta-row strong {
+      color: var(--ll-text);
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 550;
+    }
+    body.case-cream .meta-row a {
+      color: var(--ll-link);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ll-link-soft);
+    }
+    body.case-cream .meta-row a:hover { border-bottom-color: var(--ll-link); }
+    @media (max-width: 860px) {
+      body.case-cream .meta-row { grid-template-columns: 1fr; }
+    }
+
+
+    body.case-cream.thinking-scripted .ts-cover-conditions {
+      margin: 6px 0 0;
+    }
+    body.case-cream.thinking-scripted .ts-cover-conditions button {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: 1px solid var(--ll-border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      cursor: zoom-in;
+      line-height: 0;
+    }
+    body.case-cream.thinking-scripted .ts-cover-conditions img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1774 / 887;
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
+    }
+
+    body.case-cream .case-body { padding-bottom: 64px; }
+    body.case-cream .section-block { scroll-margin-top: 96px; }
+    body.case-cream .section-block p {
+      font-size: 15px;
+      color: var(--ll-dim);
+      line-height: 1.9;
+      margin-bottom: 14px;
+      max-width: 68ch;
+    }
+    body.case-cream .section-block p strong { color: var(--ll-text); font-weight: 600; }
+    body.case-cream .section-block a {
+      color: var(--ll-link);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ll-link-soft);
+    }
+    body.case-cream .section-block a:hover { border-bottom-color: var(--ll-link); }
+    body.case-cream .cs-close { color: var(--ll-text); }
+    body.case-cream .next a { color: var(--ll-link); }
+
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .links-row a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .links-row a:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .board {
+      margin: 0 0 28px;
+      scroll-margin-top: 96px;
+      background: transparent;
+      border: none;
+    }
+    .board button {
+      all: unset;
+      display: block;
+      width: 100%;
+      cursor: zoom-in;
+      border-radius: 10px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .board button:hover,
+    .board button:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      outline: none;
+    }
+    .board img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .board figcaption {
+      margin-top: 10px;
+      font-size: 13px;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 72ch;
+    }
+
+    .quote-block {
+      border-left: 3px solid var(--accent);
+      padding: 8px 0 8px 20px;
+      margin: 8px 0 24px;
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.9;
+      max-width: 68ch;
+    }
+
+    .section-block { margin-bottom: 28px; }
+    .section-toggle {
+      all: unset;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      cursor: pointer;
+      box-sizing: border-box;
+      padding: 6px 8px 6px 4px;
+      margin: 0 0 4px -4px;
+      border-radius: 10px;
+      color: var(--text);
+      transition: background 0.18s ease;
+    }
+    .section-toggle:hover { background: var(--bg-elevated); }
+    .section-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .section-toggle .chev {
+      flex: 0 0 auto;
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: transform 0.22s ease, color 0.18s ease;
+      transform: rotate(0deg);
+    }
+    .section-block.is-open > .section-toggle .chev { transform: rotate(90deg); color: var(--accent); }
+    .section-toggle .chev svg { width: 12px; height: 12px; display: block; }
+    .section-toggle .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+    }
+    .section-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.28s ease;
+    }
+    .section-block.is-open > .section-body { grid-template-rows: 1fr; }
+    .section-body-inner {
+      overflow: hidden;
+      min-height: 0;
+    }
+    .section-body-inner > :first-child { margin-top: 8px; }
+    .section-block:not(.is-open) > .section-toggle { margin-bottom: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      .section-body, .section-toggle .chev { transition: none; }
+    }
+
+    /* ===== Page-specific: Thinking or Scripted? ===== */
+    body.case-cream.thinking-scripted .ts-cn-title {
+      margin: -4px 0 14px;
+      max-width: 36ch;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ll-dim);
+      font-weight: 450;
+    }
+    body.case-cream.thinking-scripted .ts-cover-type {
+      background: #fff;
+      border: 1px solid var(--ll-border);
+      border-radius: 16px;
+      box-shadow: var(--ll-shadow);
+      padding: 36px 32px 40px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+    body.case-cream.thinking-scripted .ts-cover-kicker {
+      margin: 0 0 22px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 650;
+      color: var(--ll-muted);
+    }
+    body.case-cream.thinking-scripted .ts-cover-line {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(22px, 2.6vw, 32px);
+      line-height: 1.25;
+      color: var(--ll-text);
+      font-weight: 400;
+    }
+    body.case-cream.thinking-scripted .ts-cover-neq {
+      margin: 8px 0;
+      color: var(--ll-accent);
+      font-size: 22px;
+      font-weight: 650;
+      line-height: 1;
+    }
+    body.case-cream.thinking-scripted .ts-summary {
+      margin: 20px 0 0;
+      max-width: 72ch;
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--ll-dim);
+    }
+    body.case-cream.thinking-scripted .ts-sub {
+      margin: 22px 0 10px;
+      font-size: 15px;
+      font-weight: 650;
+      color: var(--ll-text);
+      letter-spacing: 0.01em;
+    }
+    body.case-cream.thinking-scripted .ts-note {
+      margin: 8px 0 18px;
+      max-width: 68ch;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ll-muted);
+    }
+    body.case-cream.thinking-scripted .ts-list {
+      margin: 0 0 16px;
+      padding-left: 1.2em;
+      max-width: 68ch;
+      color: var(--ll-dim);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+    body.case-cream.thinking-scripted .ts-list li { margin-bottom: 6px; }
+    body.case-cream.thinking-scripted .ts-list strong { color: var(--ll-text); font-weight: 600; }
+    body.case-cream.thinking-scripted .quote-block cite {
+      display: block;
+      margin-top: 4px;
+      font-style: normal;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ll-muted);
+    }
+    body.case-cream.thinking-scripted .quote-block p { margin: 0 0 10px; max-width: none; }
+    body.case-cream.thinking-scripted .quote-block p:last-child { margin-bottom: 0; }
+    body.case-cream.thinking-scripted .quote-block.is-core {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      line-height: 1.55;
+      color: var(--ll-text);
+      max-width: 36em;
+    }
+
+    body.case-cream.thinking-scripted .ts-path {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 8px 0 16px;
+    }
+    body.case-cream.thinking-scripted .ts-path > div {
+      background: #fff;
+      border: 1px solid var(--ll-border);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    body.case-cream.thinking-scripted .ts-path .eyebrow {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ll-muted);
+      margin-bottom: 6px;
+      font-weight: 650;
+    }
+    body.case-cream.thinking-scripted .ts-path strong {
+      display: block;
+      color: var(--ll-text);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+    body.case-cream.thinking-scripted .ts-path span.desc {
+      display: block;
+      margin-top: 6px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--ll-dim);
+    }
+    @media (max-width: 860px) {
+      body.case-cream.thinking-scripted .ts-path { grid-template-columns: 1fr; }
+    }
+
+    body.case-cream.thinking-scripted .ts-findings {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 8px 0 22px;
+    }
+    body.case-cream.thinking-scripted .ts-finding {
+      background: #fff;
+      border: 1px solid var(--ll-border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    body.case-cream.thinking-scripted .ts-finding .eyebrow {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ll-muted);
+      margin-bottom: 8px;
+      font-weight: 650;
+    }
+    body.case-cream.thinking-scripted .ts-finding .stat {
+      margin: 0 0 6px;
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--ll-text);
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+    }
+    body.case-cream.thinking-scripted .ts-finding .result {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--ll-dim);
+    }
+    @media (max-width: 860px) {
+      body.case-cream.thinking-scripted .ts-findings { grid-template-columns: 1fr; }
+    }
+
+    body.case-cream.thinking-scripted .ts-table-wrap {
+      overflow-x: auto;
+      margin: 8px 0 28px;
+      border: 1px solid var(--ll-border);
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: var(--ll-shadow-soft);
+      -webkit-overflow-scrolling: touch;
+    }
+    body.case-cream.thinking-scripted .ts-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      line-height: 1.5;
+      min-width: 560px;
+    }
+    body.case-cream.thinking-scripted .ts-table caption {
+      caption-side: top;
+      text-align: left;
+      padding: 14px 16px 10px;
+      font-weight: 650;
+      color: var(--ll-text);
+      font-size: 14px;
+      line-height: 1.5;
+      background: #fff;
+    }
+    body.case-cream.thinking-scripted .ts-table th,
+    body.case-cream.thinking-scripted .ts-table td {
+      padding: 10px 14px;
+      border-top: 1px solid var(--ll-border);
+      text-align: left;
+      vertical-align: top;
+      color: var(--ll-dim);
+    }
+    body.case-cream.thinking-scripted .ts-table thead th {
+      background: #f3efe8;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ll-muted);
+      font-weight: 650;
+      white-space: nowrap;
+    }
+    body.case-cream.thinking-scripted .ts-table tbody th {
+      font-weight: 600;
+      color: var(--ll-text);
+      white-space: nowrap;
+    }
+    body.case-cream.thinking-scripted .ts-table.nums td,
+    body.case-cream.thinking-scripted .ts-table.nums tbody th {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    body.case-cream.thinking-scripted .ts-table-note {
+      margin: -16px 0 28px;
+      max-width: 72ch;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ll-muted);
+    }
+    body.case-cream.thinking-scripted figure.board.paper-fig {
+      background: #fff;
+      border: 1px solid var(--ll-border);
+      border-radius: 14px;
+      padding: 12px 12px 16px;
+      box-shadow: var(--ll-shadow-soft);
+    }
+    body.case-cream.thinking-scripted figure.board.paper-fig img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
+      border-radius: 8px;
+    }
+    body.case-cream.thinking-scripted figure.board.paper-fig figcaption {
+      padding: 4px 4px 0;
+    }
+
+    body.case-cream.thinking-scripted .ts-papers {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 8px 0 16px;
+    }
+    body.case-cream.thinking-scripted .ts-paper-card {
+      background: #fff;
+      border: 1px solid var(--ll-border);
+      border-radius: 14px;
+      padding: 18px 18px 16px;
+      box-shadow: var(--ll-shadow-soft);
+    }
+    body.case-cream.thinking-scripted .ts-paper-card .eyebrow {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ll-muted);
+      margin-bottom: 8px;
+      font-weight: 650;
+    }
+    body.case-cream.thinking-scripted .ts-paper-card h3 {
+      margin: 0 0 14px;
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 600;
+      color: var(--ll-text);
+    }
+    body.case-cream.thinking-scripted .ts-paper-card .links-row a {
+      border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 860px) {
+      body.case-cream.thinking-scripted .ts-papers { grid-template-columns: 1fr; }
+    }
+
+    body.case-cream.thinking-scripted .ts-spine {
+      list-style: none;
+      margin: 8px 0 18px;
+      padding: 0;
+      max-width: 72ch;
+    }
+    body.case-cream.thinking-scripted .ts-spine li {
+      display: grid;
+      grid-template-columns: 7.5em minmax(0, 1fr);
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid var(--ll-border);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ll-dim);
+    }
+    body.case-cream.thinking-scripted .ts-spine li:last-child {
+      border-bottom: 1px solid var(--ll-border);
+    }
+    body.case-cream.thinking-scripted .ts-spine strong {
+      color: var(--ll-text);
+      font-weight: 650;
+      font-size: 13px;
+    }
+    @media (max-width: 640px) {
+      body.case-cream.thinking-scripted .ts-spine li { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    body.case-cream.thinking-scripted .ts-key {
+      margin: 8px 0 28px;
+      padding: 16px 18px 14px;
+      background: #fff;
+      border: 1px solid var(--ll-border);
+      border-radius: 14px;
+      box-shadow: var(--ll-shadow-soft);
+    }
+    body.case-cream.thinking-scripted .ts-key > .eyebrow {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ll-muted);
+      margin: 0 0 12px;
+      font-weight: 650;
+    }
+    body.case-cream.thinking-scripted .ts-key-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 16px 28px;
+    }
+    body.case-cream.thinking-scripted .ts-key-h {
+      margin: 0 0 8px;
+      font-size: 12px;
+      font-weight: 650;
+      color: var(--ll-text);
+    }
+    body.case-cream.thinking-scripted .ts-key dl {
+      margin: 0;
+    }
+    body.case-cream.thinking-scripted .ts-key dl > div {
+      display: grid;
+      grid-template-columns: 4.2em minmax(0, 1fr);
+      gap: 8px 12px;
+      padding: 7px 0;
+      border-top: 1px solid var(--ll-border);
+      align-items: start;
+    }
+    body.case-cream.thinking-scripted .ts-key dt {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 650;
+      color: var(--ll-text);
+      line-height: 1.5;
+    }
+    body.case-cream.thinking-scripted .ts-key dd {
+      margin: 0;
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: var(--ll-dim);
+    }
+    @media (max-width: 860px) {
+      body.case-cream.thinking-scripted .ts-key-grid { grid-template-columns: 1fr; }
+    }
+
+    body.case-cream.thinking-scripted .ts-table-wrap:has(+ .ts-read) {
+      margin-bottom: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      box-shadow: none;
+    }
+    body.case-cream.thinking-scripted .ts-read {
+      margin: 0 0 28px;
+      padding: 12px 16px 14px;
+      max-width: 72ch;
+      background: #f3efe8;
+      border: 1px solid var(--ll-border);
+      border-top: 0;
+      border-radius: 0 0 14px 14px;
+    }
+    body.case-cream.thinking-scripted .ts-read p {
+      margin: 0 0 8px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ll-dim);
+      max-width: none;
+    }
+    body.case-cream.thinking-scripted .ts-read p:last-child { margin-bottom: 0; }
+    body.case-cream.thinking-scripted .ts-read .lbl {
+      display: inline;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--ll-muted);
+      margin-right: 6px;
+    }
+
+    body.case-cream.thinking-scripted abbr.ts-abbr {
+      text-decoration: none;
+      border-bottom: 1px dotted color-mix(in srgb, currentColor 42%, transparent);
+      cursor: help;
+      color: inherit;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      background: none;
+    }
+    body.case-cream.thinking-scripted abbr.ts-abbr:hover,
+    body.case-cream.thinking-scripted abbr.ts-abbr:focus-visible,
+    body.case-cream.thinking-scripted abbr.ts-abbr.is-tip {
+      border-bottom-style: solid;
+      border-bottom-color: color-mix(in srgb, currentColor 68%, transparent);
+    }
+    body.case-cream.thinking-scripted abbr.ts-abbr:focus-visible {
+      outline: none;
+      border-radius: 2px;
+      box-shadow: 0 0 0 2px var(--ll-accent-soft);
+    }
+    body.case-cream.thinking-scripted #ts-abbr-tip {
+      position: fixed;
+      z-index: 80;
+      max-width: 272px;
+      padding: 10px 12px;
+      background: #fffdf8;
+      color: var(--ll-text);
+      border: 1px solid rgba(28,26,23,0.10);
+      border-radius: 10px;
+      box-shadow: 0 8px 28px rgba(28,26,23,0.12);
+      font-size: 12.5px;
+      line-height: 1.65;
+      font-weight: 450;
+      pointer-events: none;
+    }
+    body.case-cream.thinking-scripted #ts-abbr-tip[hidden] { display: none; }
+  
+    body.case-cream.thinking-scripted .ts-var-rq {
+      margin: 8px 0 22px;
+      padding: 16px 18px 6px;
+      background: #fff;
+      border: 1px solid var(--ll-border);
+      border-radius: 16px;
+    }
+    body.case-cream.thinking-scripted .ts-var-rq > p {
+      max-width: none;
+    }
+    body.case-cream.thinking-scripted .ts-var-rq dl {
+      margin: 0 0 12px;
+    }
+    body.case-cream.thinking-scripted .ts-var-rq dt {
+      margin: 12px 0 4px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 650;
+      color: var(--ll-muted);
+    }
+    body.case-cream.thinking-scripted .ts-var-rq dd {
+      margin: 0 0 8px;
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--ll-dim);
+    }
+    body.case-cream.thinking-scripted .ts-rq-dock {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 85;
+    }
+    body.case-cream.thinking-scripted .ts-rq-btn {
+      width: 56px;
+      height: 56px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid #e07030;
+      background: #e07030;
+      box-shadow: 0 10px 28px rgba(224,112,48,0.35);
+      display: grid;
+      place-items: center;
+      cursor: help;
+    }
+    body.case-cream.thinking-scripted .ts-rq-btn img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+    body.case-cream.thinking-scripted .ts-rq-dock:hover .ts-rq-btn,
+    body.case-cream.thinking-scripted .ts-rq-dock:focus-within .ts-rq-btn {
+      box-shadow: var(--ll-shadow);
+    }
+    body.case-cream.thinking-scripted .ts-rq-panel {
+      position: absolute;
+      right: 0;
+      bottom: calc(100% + 12px);
+      width: min(380px, calc(100vw - 48px));
+      max-height: min(70vh, 560px);
+      overflow: auto;
+      padding: 16px 18px 18px;
+      background: #fffef9;
+      border: 1px solid var(--ll-border);
+      border-radius: 16px;
+      box-shadow: var(--ll-shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+      pointer-events: none;
+    }
+    body.case-cream.thinking-scripted .ts-rq-dock:hover .ts-rq-panel,
+    body.case-cream.thinking-scripted .ts-rq-dock:focus-within .ts-rq-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      pointer-events: auto;
+    }
+    body.case-cream.thinking-scripted .ts-rq-panel h2 {
+      margin: 0 0 10px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 650;
+      color: var(--ll-muted);
+    }
+    body.case-cream.thinking-scripted .ts-rq-panel .rq {
+      margin: 0 0 14px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ll-text);
+    }
+    body.case-cream.thinking-scripted .ts-rq-panel dl { margin: 0; }
+    body.case-cream.thinking-scripted .ts-rq-panel dt {
+      margin: 8px 0 2px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 650;
+      color: var(--ll-muted);
+    }
+    body.case-cream.thinking-scripted .ts-rq-panel dd {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ll-dim);
+    }
+    @media (max-width: 720px) {
+      body.case-cream.thinking-scripted .ts-rq-dock {
+        right: 16px;
+        bottom: 16px;
+      }
+      body.case-cream.thinking-scripted .ts-rq-btn {
+        width: 52px;
+        height: 52px;
+      }
+    }
+
+  </style>
+  <link rel="stylesheet" href="../css/site-loader.css?v=home37">
+  <script src="../js/site-loader.js?v=home37" defer></script>
+  <script src="../js/case-lightbox.js?v=home41" defer></script>
+</head>
+<body class="case-cream thinking-scripted">
+  <header class="top top--legacy" hidden>
+    <a class="brand" href="../index.html"><img class="brand-mark" src="../media/brand/leonardo-icon.png" alt="Leonardo"> Leonardo Li</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../index.html#showcase">Showcase</a>
+      <a href="../practice.html">Files</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <button class="mobile-case-toc" type="button" id="caseTocToggle" aria-label="Catalogue" title="Catalogue" aria-expanded="false">CATALOGUE</button>
+  <nav class="cs-index" aria-label="Catalogue">
+    <div class="case-side-label">Catalogue</div>
+    <a href="#介绍">01 封面</a>
+    <a href="#摘要">02 摘要</a>
+    <a href="#引言">03 引言</a>
+    <a href="#方法">04 方法</a>
+    <a href="#回答路径">05 如何回答 RQ</a>
+    <a href="#结果">06 实验结果</a>
+    <a href="#洞察">07 数据洞察</a>
+    <a href="#边界">08 证明边界</a>
+    <a href="#贡献">09 论证与贡献</a>
+    <a href="#附录图表">10 关键附录</a>
+    <a class="sub" href="#表1">表 1</a>
+    <a class="sub" href="#表2">表 2</a>
+    <a class="sub" href="#表3">表 3</a>
+    <a class="sub" href="#图1">图 1</a>
+    <a class="sub" href="#图2">图 2</a>
+    <a class="sub" href="#表4">表 4</a>
+    <a href="#论文附件">11 论文附件</a>
+  </nav>
+
+  <div class="wrap">
+    <article class="cs-hero cover-pitch" id="介绍">
+      <div class="cover-meta">
+        <div class="cover-meta-left">
+          <p class="kicker">HCI · HRI · Experimental pilot</p>
+          <p class="huge">Thinking or Scripted?</p>
+          <p class="ts-cn-title">认真思考，还是照着脚本回应？机器人开口前的身体动作、时序与被理解感</p>
+          <p class="pitch-lead">在 LLM 实体机器人开口之前展示“思考动作”，能否让用户认为它在认真思考，并进一步提升被理解感？</p>
+          <span class="cs-label">Reachy Mini 预演研究 · 8 人被试内实验</span>
+        </div>
+        <aside class="cover-meta-right" aria-label="作品封面">
+          <div class="ts-cover-type" role="img" aria-label="三个层次：看起来在思考，不等于被认为认真思考，不等于感到被理解。">
+            <p class="ts-cover-kicker">三个层次 · this pilot</p>
+            <p class="ts-cover-line">看起来在思考</p>
+            <p class="ts-cover-neq" aria-hidden="true">≠</p>
+            <p class="ts-cover-line">被认为认真思考</p>
+            <p class="ts-cover-neq" aria-hidden="true">≠</p>
+            <p class="ts-cover-line">感到被理解</p>
+          </div>
+        </aside>
+      </div>
+      <figure class="ts-cover-conditions">
+        <button type="button" data-full="../media/thinking-or-scripted/conditions-overview.png" data-lb-group="thinking-scripted-cover" aria-label="放大四种回述前等待条件示意">
+          <img src="../media/thinking-or-scripted/conditions-overview.png" width="1774" height="887" alt="四种回述前等待条件示意：S 静默，等待期间保持中立姿态，无额外动作与语音；V 口头填充，在等待期间发出简短口头填充语并保持中立姿态；BA 身体思考·对齐，在等待期间做思考动作并保持该姿态直到回述开口前回正并开口；BM 身体思考·未对齐，先做思考动作后提前回正，随后静默等待至开口。">
+        </button>
+      </figure>
+      <div class="meta-row">
+        <div>
+          <span class="eyebrow">Role</span>
+          <strong>Li Mingxi, Jia Yibo<br>香港城市大学</strong>
+        </div>
+        <div>
+          <span class="eyebrow">Focus</span>
+          <strong>身体思考展示 → 思考归因（PT）→ 被理解感（FU）</strong>
+        </div>
+        <div>
+          <span class="eyebrow">Links</span>
+          <strong>
+            <a href="../media/thinking-or-scripted/paper-zh.pdf" target="_blank" rel="noopener">中文论文</a><br>
+            <a href="../media/thinking-or-scripted/paper-en.pdf" target="_blank" rel="noopener">英文论文</a>
+          </strong>
+        </div>
+      </div>
+      <p class="ts-summary">我们研究实体机器人在开口前展示“思考动作”，能否让用户认为它正在认真思考，而不是按脚本回应，并进一步提升被理解感。实验发现：动作能够被识别为思考，但尚未证明这种思考归因能够转化为被理解感。</p>
+    </article>
+
+    <div class="case-body">
+
+<section class="section-block is-open" id="摘要">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="摘要-body" id="摘要-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">摘要 · 五个核心信息</span>
+      </button>
+      <div class="section-body" id="摘要-body">
+        <div class="section-body-inner">
+
+      <p>这篇预演研究围绕五个核心信息展开。</p>
+      <ul class="ts-list">
+        <li><strong>Problem：</strong>LLM 生成延迟使机器人在回应前出现等待；静默无法明确传递处理状态。</li>
+        <li><strong>Gap：</strong>身体动作能够表达思考或意图，但能否通过思考归因提高被理解感，缺少直接证据。</li>
+        <li><strong>Method：</strong>Reachy Mini；8 名参与者；4 种实验条件；测量 PT、FU、NAT，结合系统日志、评分和访谈。</li>
+        <li><strong>Findings：</strong>重演中身体动作被认为更像思考；真实对话中 PT、FU 未呈现可靠提升。</li>
+        <li><strong>Contribution：</strong>区分“看起来在思考”“被认为认真思考”和“让用户感到被理解”三个层次。</li>
+      </ul>
+
+        </div>
+      </div>
+    </section>
+<section class="section-block is-open" id="引言">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="引言-body" id="引言-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">引言 · 为什么做、研究什么</span>
+      </button>
+      <div class="section-body" id="引言-body">
+        <div class="section-body-inner">
+
+      <h3 class="ts-sub">做项目的契机</h3>
+      <p>LLM 实体机器人存在语音识别、语言生成、语音合成造成的响应延迟。传统方案包括静默等待、口头填充、视觉或动作反馈。已有研究显示，机器人动作、视线回避能够影响用户对机器人思考状态的判断。</p>
+      <p>尚未解决的是：用户认为机器人正在思考，是否真的会使用户觉得机器人理解了自己？</p>
+
+      <h3 class="ts-sub">唯一核心 RQ</h3>
+      <blockquote class="quote-block">在 LLM 驱动的实体机器人开口回述之前，身体姿态的“思考展示”（相比于毫无动作或口头填充），是否能通过增强用户“它正在认真思考”的归因，进而提升用户的“被理解感”？</blockquote>
+
+      <h3 class="ts-sub">核心变量与理论路径</h3>
+      <div class="ts-path">
+        <div>
+          <span class="eyebrow">自变量 · Independent Variable</span>
+          <strong>身体思考展示</strong>
+          <span class="desc">BA / BM 与 S / V 的实验比较</span>
+        </div>
+        <div>
+          <span class="eyebrow">机制变量 · Mediator</span>
+          <strong>思考归因（PT）</strong>
+          <span class="desc">认真思考，还是按预设脚本回应？</span>
+        </div>
+        <div>
+          <span class="eyebrow">因变量 · Dependent Variable</span>
+          <strong>被理解感（FU）</strong>
+          <span class="desc">回述是否真正理解用户的表达和个人特征？</span>
+        </div>
+      </div>
+      <p>NAT（等待自然度）是辅助指标，不是核心机制变量。</p>
+
+        </div>
+      </div>
+    </section>
+<section class="section-block is-open" id="方法">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="方法-body" id="方法-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">方法 · 实验如何实现</span>
+      </button>
+      <div class="section-body" id="方法-body">
+        <div class="section-body-inner">
+
+      <h3 class="ts-sub">实验设计</h3>
+      <div class="ts-table-wrap" id="方法设计表">
+        <table class="ts-table">
+          <caption>实验设计一览</caption>
+          <thead>
+            <tr><th scope="col">项目</th><th scope="col">设计</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">平台</th><td>Reachy Mini 实体机器人</td></tr>
+            <tr><th scope="row">参与者</th><td>8 人，22–27 岁</td></tr>
+            <tr><th scope="row">类型</th><td>被试内实验，每人体验 4 种条件</td></tr>
+            <tr><th scope="row">任务</th><td>四个日常话题的初识对话</td></tr>
+            <tr><th scope="row">机器人输出</th><td>根据用户回答生成个人印象回述</td></tr>
+            <tr><th scope="row">评价</th><td>每轮回述后填写 7 分量表</td></tr>
+            <tr><th scope="row">补充材料</th><td>会后动作重演、开放题、访谈</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="ts-sub">四种实验条件</h3>
+      <p>BA–S 是核心比较之一，BA–BM 用于辅助考察时序安排，BA–V 为探索性比较。完整条件表见<a href="#表1">附录表 1</a>。</p>
+      <ul class="ts-list">
+        <li><strong>S：</strong>静默、无指定思考动作（无反馈基线）</li>
+        <li><strong>V：</strong>口头填充，如“嗯……”（语言反馈基线）</li>
+        <li><strong>BA：</strong>歪头并保持思考姿态，回述就绪后回正开口（身体思考展示）</li>
+        <li><strong>BM：</strong>相同思考动作提前结束，随后静默等待（辅助观察动作时序）</li>
+      </ul>
+
+      <h3 class="ts-sub" id="变量与RQ">变量含义与 RQ 的对应</h3>
+      <div class="ts-var-rq">
+        <p>方法里的四种条件，是为了把唯一 RQ 落到可比较的操作上。RQ 要问的是一条机制路径：开口回述前的身体思考展示，是否能先增强用户的思考归因，再提升被理解感。下面按论文原文给出各自变量、机制变量、因变量的完整含义，并说明它们如何对应这条问题。</p>
+        <dl>
+          <dt>实验目标</dt>
+          <dd>在 Reachy Mini 的真实对话里，于个性化印象回述开口之前比较不同的等待展示，检验「身体思考展示 → 思考归因（PT）→ 被理解感（FU）」是否成立。这是待验证机制，本次预演尚未证实。</dd>
+          <dt>自变量 · Independent Variable</dt>
+          <dd>开口回述前的展示条件（S、V、BA、BM）；BA 与 BM 另涉及身体姿态结束时机的差异。这是 RQ 中「身体姿态的“思考展示”（相比于毫无动作或口头填充）」的操作定义。S 是无反馈基线，V 是语言反馈基线，BA 是身体思考展示（动作保持至回述就绪再回正开口），BM 采用相同思考动作但提前结束、随后静默等待。BA–S 是核心比较，BA–BM 辅助考察时序，BA–V 为探索性比较。所有条件最终都会生成个性化印象回述，因此比较的是等待如何被展示，不是有没有回述。</dd>
+          <dt>机制变量 · Mediator</dt>
+          <dd>思考归因（PT：认为机器人认真思考，还是照着脚本回应）。由「像认真想过」（PT1）与「像预设脚本回应」（PT2）综合，按 (PT1 + 8 − PT2)/2 计算。它对应 RQ 里「是否能通过增强用户“它正在认真思考”的归因」这一中间环节。</dd>
+          <dt>主因变量 · Dependent Variable</dt>
+          <dd>被理解感（FU）。每轮回述后三道自拟题的均值，评价机器人是否抓住真实特质、听懂陈述，以及是否针对本人。它对应 RQ 最终要问的：这种思考归因，能否进一步提升用户的“被理解感”。</dd>
+          <dt>辅助指标</dt>
+          <dd>等待自然度（NAT / NAT1）以单题评价从用户说完到机器人开口的过渡是否自然；不测量主观等待秒数，也不是核心机制变量。</dd>
+        </dl>
+      </div>
+
+      <h3 class="ts-sub">Reachy 后台与数据采集</h3>
+      <p>用户语音输入后，系统进行语音识别，再由 LLM 生成跟进问题或印象回述；同时控制身体动作，并进行语音合成与播放。系统记录轮次、条件、事件时间戳和对话文本，并采集 PT / FU / NAT 评分与会后访谈。</p>
+      <p>后台数据的作用：核对用户说了什么、机器人回应了什么、动作何时结束、语音何时提交播放，以及评分对应哪一轮。</p>
+
+      <h3 class="ts-sub">实验控制及预定分析</h3>
+      <ul class="ts-list">
+        <li><strong>时序目标：</strong>用户结束发言后约 3.5 秒开口；预定容差及排除标准用于控制响应时间。</li>
+        <li><strong>条件控制：</strong>每人经历四条件；原计划平衡顺序，但实际执行存在人工切换与顺序偏差。</li>
+        <li><strong>内容控制：</strong>使用相同的任务框架；LLM 回述内容未做到完全一致或独立质量控制。</li>
+        <li><strong>主要分析：</strong>BA 与 S、BM 的配对差异；均差、95% CI、Cohen’s <em>d<sub>z</sub></em>、p 值。</li>
+        <li><strong>补充分析：</strong>重复测量 ANOVA、PT–FU 个体内相关、逐人差异、访谈主题核查。</li>
+      </ul>
+
+        </div>
+      </div>
+    </section>
+<section class="section-block is-open" id="回答路径">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="回答路径-body" id="回答路径-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">数据将如何回答 RQ？</span>
+      </button>
+      <div class="section-body" id="回答路径-body">
+        <div class="section-body-inner">
+
+      <div class="ts-table-wrap">
+        <table class="ts-table">
+          <caption>数据、分析方式与对 RQ 的证明任务</caption>
+          <thead>
+            <tr><th scope="col">数据</th><th scope="col">分析方式</th><th scope="col">对 RQ 的证明任务</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">MC2 会后重演</th><td>BA 与 S/V/BM 比较</td><td>身体动作是否被看作思考</td></tr>
+            <tr><th scope="row">PT 真实对话评分</th><td>条件配对比较</td><td>身体展示是否增强认真思考归因</td></tr>
+            <tr><th scope="row">FU 真实对话评分</th><td>条件配对比较</td><td>身体展示是否提高被理解感</td></tr>
+            <tr><th scope="row">PT + FU</th><td>个体内相关、机制检验</td><td>思考归因是否与被理解感相关</td></tr>
+            <tr><th scope="row">NAT1</th><td>条件比较、个体差异</td><td>等待自然度是否受到影响</td></tr>
+            <tr><th scope="row">系统时间戳</th><td>与预定时序比较</td><td>实验操纵是否有效</td></tr>
+            <tr><th scope="row">用户原话 + 对话记录</th><td>按参与者和轮次交叉核查</td><td>解释评分变化，识别可能的内容干扰</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>核心原则：</strong>MC2 证明的是动作的可读性；PT 证明的是实际对话后的思考归因；FU 才直接对应最终研究目标。三者不能相互替代。</p>
+
+        </div>
+      </div>
+    </section>
+<section class="section-block is-open" id="结果">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="结果-body" id="结果-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">实验结果</span>
+      </button>
+      <div class="section-body" id="结果-body">
+        <div class="section-body-inner">
+
+      <p>8 名参与者，32 组条件评分，其中 31 组现场记录、1 组 P008 会后补录。以下为探索性分析。配对 p 值未校正多重比较；非显著不等于证明没有效应。完整描述统计与配对差见<a href="#附录图表">关键附录</a>。</p>
+
+      <h3 class="ts-sub">三项核心 Findings</h3>
+      <div class="ts-findings">
+        <article class="ts-finding">
+          <span class="eyebrow">F1 · 等待自然度</span>
+          <p class="stat">NAT1：BA–S = +0.13，p = .836</p>
+          <p class="result">未发现稳定改善。</p>
+        </article>
+        <article class="ts-finding">
+          <span class="eyebrow">F2 · 思考归因（重演）</span>
+          <p class="stat">MC2：BA 比 S 高 1.75 分，7/8 人更高</p>
+          <p class="result">动作在重演中更像思考。</p>
+        </article>
+        <article class="ts-finding">
+          <span class="eyebrow">F2 · 真实思考归因</span>
+          <p class="stat">PT：BA–S = −0.06，p = .912</p>
+          <p class="result">未发现稳定提升。</p>
+        </article>
+        <article class="ts-finding">
+          <span class="eyebrow">F3 · 被理解感</span>
+          <p class="stat">FU：BA–S = −0.25，p = .378</p>
+          <p class="result">未发现稳定提升。</p>
+        </article>
+        <article class="ts-finding">
+          <span class="eyebrow">F3 · PT–FU 关系</span>
+          <p class="stat">r = .33，95% CI [−.07, .64]，p = .103</p>
+          <p class="result">正向相关估计，但证据不足。</p>
+        </article>
+      </div>
+
+      <h3 class="ts-sub">最重要的逐人结果</h3>
+      <p>BA 相比 S：</p>
+      <ul class="ts-list">
+        <li>4 人 PT 提高，但这 4 人的 FU 均未提高。</li>
+        <li>2 人 FU 提高，但这 2 人的 PT 没有提高。</li>
+        <li>8 人中没有一人同时提高 PT 和 FU。</li>
+      </ul>
+      <p>这是与唯一 RQ 最直接相关的描述性发现，但不构成正式的中介效应检验。</p>
+
+        </div>
+      </div>
+    </section>
+<section class="section-block is-open" id="洞察">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="洞察-body" id="洞察-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">数据洞察</span>
+      </button>
+      <div class="section-body" id="洞察-body">
+        <div class="section-body-inner">
+
+      <h3 class="ts-sub">Insight 1：看起来在思考 ≠ 被认为认真思考</h3>
+      <ul class="ts-list">
+        <li>重演 MC2：7/8 人认为 BA 比 S 更像思考。</li>
+        <li>真实对话 PT：BA–S = −0.06，p = .912。</li>
+        <li>P002：重演 MC2 从 S=2 提高到 BA=4；真实对话 PT 从 S=6 降至 BA=3。</li>
+      </ul>
+      <blockquote class="quote-block">
+        <p>P002：“他好像是在想一些东西。”</p>
+        <p>P007：“整个对话文本似乎像是被设计好的脚本感，脚本感很重……”</p>
+      </blockquote>
+      <p><strong>Insight：</strong>用户可以理解身体动作所表达的思考含义，同时仍然认为机器人的实际回应像脚本。</p>
+
+      <h3 class="ts-sub">Insight 2：思考归因提高 ≠ 被理解感提高</h3>
+      <ul class="ts-list">
+        <li>4 名参与者在 BA 下 PT 高于 S，但 FU 均未提高。</li>
+        <li>PT–FU 个体内相关 r = .33，p = .103。</li>
+        <li>FU 的 BA–S 差异为 −0.25，p = .378。</li>
+      </ul>
+      <blockquote class="quote-block">
+        <p>P003：“他让我感觉他就是在重复我说的话。”</p>
+        <p>P003：“我问了他问题，他没有回答我。”</p>
+      </blockquote>
+      <p><strong>Insight：</strong>用户对最终回应是否针对自己、是否回答问题的评价，可能不同于其对机器人思考过程的评价。</p>
+
+      <h3 class="ts-sub">Insight 3：动作提供状态信息 ≠ 等待自然度改善</h3>
+      <ul class="ts-list">
+        <li>P002：NAT1 从 S=4 到 BA=6。</li>
+        <li>P005：NAT1 从 S=4 到 BA=4。</li>
+        <li>P006：NAT1 从 S=4 到 BA=1。</li>
+      </ul>
+      <blockquote class="quote-block">
+        <p>P002：“有一些地方他什么都不动，我就不知道他想要做什么。”</p>
+        <p>P005：“我看到有时候他会歪头 我觉得是一个比较有意思的反馈。”</p>
+        <p>P006：“但是我觉得还是有点太慢，他回的。”</p>
+      </blockquote>
+      <p><strong>Insight：</strong>用户注意到动作、理解动作含义和认为等待自然，是不同的判断。</p>
+      <p class="ts-note">注：P006 的上述访谈回忆对应 BM，不能直接当作 BA 的访谈证据。</p>
+
+      <h3 class="ts-sub">Insight 4：被理解感可能受到回述内容质量的影响</h3>
+      <ul class="ts-list">
+        <li>P002 对能概括其个人偏好的回述给出正面评价，也批评过简单复述。</li>
+        <li>P007 对回应的脚本感提出负面评价。</li>
+        <li>P008 指出 F14 被识别为 R14 的语音识别错误。</li>
+      </ul>
+      <blockquote class="quote-block">
+        <p>P002：“他确实是说中了我的一部分的特质。”</p>
+        <p>P008：“它实际上并不知道我在说什么东西。”</p>
+      </blockquote>
+      <p><strong>Insight：</strong>被理解感的评价涉及回应内容的针对性、准确性和语义理解。由于没有完成独立的回述质量盲评，目前不能证明内容质量是造成 FU 差异的原因。</p>
+
+        </div>
+      </div>
+    </section>
+<section class="section-block is-open" id="边界">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="边界-body" id="边界-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">证明边界</span>
+      </button>
+      <div class="section-body" id="边界-body">
+        <div class="section-body-inner">
+
+      <h3 class="ts-sub">可以得到的结论 / 不能得到的结论</h3>
+      <div class="ts-table-wrap">
+        <table class="ts-table">
+          <caption>本次实验的证明范围</caption>
+          <thead>
+            <tr><th scope="col">可以得到的结论</th><th scope="col">不能得到的结论</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>部分用户能够把身体动作理解为思考线索</td><td>身体动作必然提高 PT</td></tr>
+            <tr><td>重演中 BA 比静默更像思考</td><td>真实对话中 BA 必然让用户认为机器人认真思考</td></tr>
+            <tr><td>BA 没有表现出可靠的 FU 优势</td><td>身体动作对 FU 完全无效</td></tr>
+            <tr><td>PT 与 FU 的评分变化不总是一致</td><td>PT 与 FU 没有任何关系</td></tr>
+            <tr><td>用户会关注回述是否准确、具体</td><td>已证明回述质量决定 FU</td></tr>
+            <tr><td>实际延迟严重偏离预设目标</td><td>已经有效检验精准时间对齐的因果效应</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="ts-sub">最重要的实验边界</h3>
+      <ul class="ts-list">
+        <li><strong>样本：</strong>仅 8 人，统计功效有限。</li>
+        <li><strong>时序：</strong>31 条现场记录全部超出目标容差，原定时序合格的验证性分析没有有效样本。</li>
+        <li><strong>内容：</strong>LLM 生成的回述存在差异，尚无独立盲评。</li>
+        <li><strong>操作：</strong>BA 和 BM 不仅改变动作结束时间，也改变姿态持续时间及后续静默长度。</li>
+        <li><strong>因果：</strong>尚未建立身体展示对 PT 的可靠作用，也未完成有效的 PT 中介效应验证。</li>
+      </ul>
+
+        </div>
+      </div>
+    </section>
+<section class="section-block is-open" id="贡献">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="贡献-body" id="贡献-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">论证与贡献</span>
+      </button>
+      <div class="section-body" id="贡献-body">
+        <div class="section-body-inner">
+
+      <h3 class="ts-sub">最终论文论证主线</h3>
+      <ol class="ts-spine">
+        <li><strong>研究起点</strong><span>LLM 生成延迟 → 机器人回应前需要反馈</span></li>
+        <li><strong>唯一 RQ</strong><span>身体思考展示 → 思考归因 PT → 被理解感 FU？</span></li>
+        <li><strong>实验</strong><span>Reachy Mini · 8 人 · 4 条件 · 评分 + 日志 + 原话</span></li>
+        <li><strong>Finding 1</strong><span>身体动作未表现出稳定的等待自然度优势</span></li>
+        <li><strong>Finding 2</strong><span>重演中动作更像思考，真实对话 PT 未稳定提高</span></li>
+        <li><strong>Finding 3</strong><span>FU 未稳定提高；PT → FU 的机制未获证实</span></li>
+        <li><strong>最终结论</strong><span>身体动作可以传递思考线索，但尚未证明能通过思考归因提高被理解感</span></li>
+      </ol>
+
+      <h3 class="ts-sub">这篇论文真正值得强调的贡献</h3>
+      <ul class="ts-list">
+        <li><strong>概念区分：</strong>证明研究中必须区分动作的思考可读性、真实对话后的思考归因和被理解感，不能用一个指标代替另一个。</li>
+        <li><strong>实证发现：</strong>在这次 Pilot 中，动作的思考可读性没有稳定转化为 PT 或 FU 的提高。</li>
+        <li><strong>方法启示：</strong>后续研究必须控制响应时序，并独立评价回述内容质量，才能更可靠地检验核心机制。</li>
+      </ul>
+
+      <h3 class="ts-sub">整篇论文最核心的一句话</h3>
+      <blockquote class="quote-block is-core">让机器人看起来在思考，不等于让用户相信它认真思考过；让用户相信它在思考，也不等于让用户感到被理解。</blockquote>
+      <p class="ts-note">这句话是对本次实验结果的概括，而不是已经完成的因果证明。</p>
+
+        </div>
+      </div>
+    </section>
+<section class="section-block is-open" id="附录图表">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="附录图表-body" id="附录图表-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">关键附录 · 表格与图解</span>
+      </button>
+      <div class="section-body" id="附录图表-body">
+        <div class="section-body-inner">
+
+      <p>关键数据、信息表格与图解先作为重要附录完整放在这里。后文会再把图片与脉络文字合并编排。先列出 NAT1、PT、FU、MC1、MC2 与四条件的释义；每张表下附简要解读与结论。图为论文原图，按原比例完整显示，不裁切；可单击放大，左右方向键切换图 1 与图 2。</p>
+
+      <div class="ts-key" id="指标释义">
+        <span class="eyebrow">指标与条件释义</span>
+        <div class="ts-key-grid">
+          <div>
+            <p class="ts-key-h">评分指标</p>
+            <dl>
+              <div>
+                <dt>NAT1</dt>
+                <dd>等待自然度。每轮回述后的单题 7 点评分，问交接/等待间隔是否自然；不测量主观等待秒数。</dd>
+              </div>
+              <div>
+                <dt>PT</dt>
+                <dd>思考归因（Perceived Thinking）。由「像认真想过」（PT1）与「像按预设脚本回应」（PT2）综合，计算为 (PT1 + 8 − PT2)/2。</dd>
+              </div>
+              <div>
+                <dt>FU</dt>
+                <dd>被理解感（Felt Understanding）。三道自拟题均值：回述是否抓住真实特质、是否听懂陈述、是否针对本人。</dd>
+              </div>
+              <div>
+                <dt>MC1</dt>
+                <dd>会后重演的操作检验，评衔接连贯性（transition coherence）。32 条重演评分与真实对话评分分开；本页表 2 只报告了 MC2，未报告 MC1 数值。</dd>
+              </div>
+              <div>
+                <dt>MC2</dt>
+                <dd>会后重演的操作检验，评看起来是否在思考（appearance of thinking）。不能直接等同于对话中的 PT。</dd>
+              </div>
+            </dl>
+          </div>
+          <div>
+            <p class="ts-key-h">实验条件</p>
+            <dl>
+              <div>
+                <dt>S</dt>
+                <dd>Silence，静默无反馈基线：倾听姿态，无指定思考动作或口头填充。</dd>
+              </div>
+              <div>
+                <dt>V</dt>
+                <dd>Verbal Filler，语言反馈基线：倾听姿态 + 口头填充（如“嗯……”）。</dd>
+              </div>
+              <div>
+                <dt>BA</dt>
+                <dd>Body-Aligned，身体思考展示：歪头并保持至回述就绪，再回正开口。核心处理条件。</dd>
+              </div>
+              <div>
+                <dt>BM</dt>
+                <dd>Body-Misaligned，相同思考动作提前结束，随后静默等待至开口；辅助观察动作时序。</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="ts-sub" id="表1">表 1. 四种回述前等待条件（所有条件最终均生成个性化印象回述）</h3>
+      <div class="ts-table-wrap">
+        <table class="ts-table">
+          <caption>表 1. 四种回述前等待条件</caption>
+          <thead>
+            <tr>
+              <th scope="col">条件</th>
+              <th scope="col">机器人行为 / 可观察表现</th>
+              <th scope="col">比较目的</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">S（Silence）</th>
+              <td>倾听姿态；无指定思考动作或口头填充</td>
+              <td>无反馈基线</td>
+            </tr>
+            <tr>
+              <th scope="row">V（Verbal Filler）</th>
+              <td>倾听姿态 + 口头填充，如“嗯……”；实际播放因版本和轮次而有差异</td>
+              <td>语言反馈基线</td>
+            </tr>
+            <tr>
+              <th scope="row">BA（Body-Aligned）</th>
+              <td>歪头并转向偏离正面，保持至回述音频就绪，然后回正开口</td>
+              <td>身体思考展示</td>
+            </tr>
+            <tr>
+              <th scope="row">BM（Body-Misaligned）</th>
+              <td>相同思考动作提前结束，随后静默等待至开口</td>
+              <td>辅助观察动作时序</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="ts-read" aria-label="表 1 数据分析解读">
+        <p><span class="lbl">解读</span>这是实验设计表，不是 JASP 输出。四条件构成被试内因素：S / V 是两类基线（无反馈、语言填充），BA 是关键处理（身体思考展示且动作保持到开口），BM 是时序错位对照（同一动作提前结束）。所有条件最后都会生成个性化印象回述，因此比较的是“开口前等待如何被展示”，不是有没有回述。</p>
+        <p><span class="lbl">结论</span>表 1 标定了自变量的操作定义。后续表 2–4 的差异，都应读成“回述前等待形式”的条件差，而不是内容有无的差。BA–S 是核心对照，BA–BM 辅助看时序，BA–V 是探索性对照。</p>
+      </aside>
+
+      <h3 class="ts-sub" id="表2">表 2. 原稿四条件描述统计</h3>
+      <p class="ts-note" style="margin-top:0;">NAT1、PT、FU 为 8 人评分的均值（样本标准差）；延迟为可核对现场记录的音频提交中位数（秒）；MC2 为单独的重演评分。</p>
+      <div class="ts-table-wrap">
+        <table class="ts-table nums">
+          <caption>表 2. 原稿四条件描述统计</caption>
+          <thead>
+            <tr>
+              <th scope="col">Metric</th>
+              <th scope="col">S</th>
+              <th scope="col">V</th>
+              <th scope="col">BA</th>
+              <th scope="col">BM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">NAT1</th><td>5.00 (1.20)</td><td>4.88 (1.46)</td><td>5.13 (2.03)</td><td>4.88 (1.81)</td></tr>
+            <tr><th scope="row">PT</th><td>3.75 (1.44)</td><td>3.63 (1.41)</td><td>3.69 (1.60)</td><td>3.88 (1.51)</td></tr>
+            <tr><th scope="row">FU</th><td>4.46 (1.50)</td><td>4.21 (1.33)</td><td>4.21 (1.14)</td><td>4.42 (1.66)</td></tr>
+            <tr><th scope="row">Latency (s)</th><td>15.71</td><td>15.20</td><td>18.17</td><td>14.84</td></tr>
+            <tr><th scope="row">Replay MC2</th><td>2.88</td><td>2.88</td><td>4.63</td><td>4.50</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="ts-read" aria-label="表 2 数据分析解读">
+        <p><span class="lbl">解读</span>对应 JASP 的 Descriptives：先看均值与标准差，再谈检验。NAT1、PT、FU 均为 8 人、7 点量表的均值（括号内为样本标准差）。三组对话后评分的条件均值非常接近：NAT1 在 4.88–5.13，PT 在 3.63–3.88，FU 在 4.21–4.46；BA 的 NAT1 仅略高，PT 与 FU 并不高于 S，且标准差都较大（例如 BA 的 NAT1 SD = 2.03），说明个体差异不小。延迟中位数上，BA 等待更长（18.17 秒），其余约 15 秒。真正拉开的是会后重演 MC2：S/V 均为 2.88，BA/BM 为 4.63/4.50。</p>
+        <p><span class="lbl">结论</span>描述统计已经提示两条不同的线索：在独立重演里，身体动作更像“在思考”；但在真实对话评分里，NAT1 / PT / FU 尚未看出 BA 的稳定优势。描述差异不能当成显著性结果，需看表 3、表 4。注意 MC2 来自会后重演，不能直接等同于对话中的 PT。</p>
+      </aside>
+
+      <h3 class="ts-sub" id="表3">表 3. 原稿八人被试内配对差</h3>
+      <p class="ts-note" style="margin-top:0;">Difference = BA minus comparison；+/ = /− 计数为 8 人中更高/相等/更低的人数。单独的 95% 配对 t 置信区间、Cohen’s <em>d<sub>z</sub></em>、未校正双侧 p 值。</p>
+      <div class="ts-table-wrap">
+        <table class="ts-table nums">
+          <caption>表 3. 原稿八人被试内配对差</caption>
+          <thead>
+            <tr>
+              <th scope="col">Outcome</th>
+              <th scope="col">Contrast</th>
+              <th scope="col">+/=/−</th>
+              <th scope="col">Mean diff.</th>
+              <th scope="col">95% CI</th>
+              <th scope="col"><em>d<sub>z</sub></em></th>
+              <th scope="col">p</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">NAT1</th><td>BA–S</td><td>3/3/2</td><td>+0.13</td><td>[−1.25, 1.50]</td><td>0.08</td><td>.836</td></tr>
+            <tr><th scope="row">NAT1</th><td>BA–V</td><td>4/2/2</td><td>+0.25</td><td>[−0.82, 1.32]</td><td>0.20</td><td>.598</td></tr>
+            <tr><th scope="row">NAT1</th><td>BA–BM</td><td>3/4/1</td><td>+0.25</td><td>[−0.34, 0.84]</td><td>0.35</td><td>.351</td></tr>
+            <tr><th scope="row">PT</th><td>BA–S</td><td>4/2/2</td><td>−0.06</td><td>[−1.35, 1.23]</td><td>-0.04</td><td>.912</td></tr>
+            <tr><th scope="row">PT</th><td>BA–V</td><td>3/2/3</td><td>+0.06</td><td>[−0.95, 1.07]</td><td>0.05</td><td>.888</td></tr>
+            <tr><th scope="row">PT</th><td>BA–BM</td><td>3/2/3</td><td>−0.19</td><td>[−1.53, 1.15]</td><td>-0.12</td><td>.750</td></tr>
+            <tr><th scope="row">FU</th><td>BA–S</td><td>2/2/4</td><td>−0.25</td><td>[−0.88, 0.38]</td><td>-0.33</td><td>.378</td></tr>
+            <tr><th scope="row">FU</th><td>BA–V</td><td>3/2/3</td><td>0.00</td><td>[−0.36, 0.36]</td><td>0.00</td><td>1.000</td></tr>
+            <tr><th scope="row">FU</th><td>BA–BM</td><td>3/0/5</td><td>−0.21</td><td>[−1.10, 0.68]</td><td>-0.20</td><td>.598</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="ts-read" aria-label="表 3 数据分析解读">
+        <p><span class="lbl">解读</span>对应 JASP 的 Paired Samples T-Test。差值定义为 BA 减对照条件；同时报告 8 人中更高/相等/更低的人数、均差、95% 配对置信区间、被试内效应量 Cohen’s <em>d<sub>z</sub></em>，以及未校正双侧 p。所有 9 项对照的 95% CI 都穿过 0；p 值均远大于 .05（最小约 .351）。效应量多为可忽略到小：NAT1 的 BA–BM 为 <em>d<sub>z</sub></em> = 0.35（小），FU 的 BA–S 为 <em>d<sub>z</sub></em> = −0.33，方向还对 BA 不利。符号计数也支持这一点：FU 上 BA 相对 S 是 2 人更高、4 人更低。</p>
+        <p><span class="lbl">结论</span>在这次 8 人预演里，没有出现 BA 相对 S、V 或 BM 在 NAT1、PT 或 FU 上的可靠配对优势。区间很宽，统计功效有限；未校正 p 且为探索性分析，既不能确认有效应，也不能把“不显著”读成已经证明没有效应。</p>
+      </aside>
+
+      <figure class="board paper-fig" id="图1">
+        <button type="button" data-full="../media/thinking-or-scripted/fig-01.png" data-lb-group="thinking-scripted-figs" aria-label="放大图 1">
+          <img src="../media/thinking-or-scripted/fig-01.png" width="3312" height="1937" alt="图 1：八名参与者在 BA 条件下相对于 S、V、BM 的 NAT1、PT 与 FU 评分差，正值表示 BA 更高。">
+        </button>
+        <figcaption>图 1. 保留的原图 1。八名参与者在 BA 条件下相对于 S、V、BM 的等待自然度（NAT1）、思考归因（PT）与被理解感（FU）评分差。正值表示 BA 更高。图中文字为原图英文标注。</figcaption>
+      </figure>
+
+      <figure class="board paper-fig" id="图2">
+        <button type="button" data-full="../media/thinking-or-scripted/fig-02.png" data-lb-group="thinking-scripted-figs" aria-label="放大图 2">
+          <img src="../media/thinking-or-scripted/fig-02.png" width="2250" height="1559" alt="图 2：32 组评分的个体内中心化 PT–FU 散点图，标注 r_rm = 0.333，p = 0.103；8 participants, 32 trials。">
+        </button>
+        <figcaption>图 2. 保留的原图 2。32 组评分的个体内中心化 PT–FU 散点图；拟合线合并全部条件，并非中介效应估计。图中标注：r<sub>rm</sub> = 0.333，p = 0.103；8 participants, 32 trials。</figcaption>
+      </figure>
+
+      <h3 class="ts-sub" id="表4">表 4. 八人四条件总体核查（探索性）</h3>
+      <p class="ts-note" style="margin-top:0;">Greenhouse–Geisser 校正的重复测量方差分析。</p>
+      <div class="ts-table-wrap">
+        <table class="ts-table nums">
+          <caption>表 4. 八人四条件总体核查（探索性）</caption>
+          <thead>
+            <tr>
+              <th scope="col">Outcome</th>
+              <th scope="col">Adjusted F</th>
+              <th scope="col">p</th>
+              <th scope="col">η<sub>p</sub>²</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">NAT1</th><td>F(2.20, 15.37) = 0.12</td><td>.900</td><td>.017</td></tr>
+            <tr><th scope="row">PT</th><td>F(1.86, 12.99) = 0.12</td><td>.876</td><td>.017</td></tr>
+            <tr><th scope="row">FU</th><td>F(1.86, 13.04) = 0.43</td><td>.645</td><td>.058</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="ts-read" aria-label="表 4 数据分析解读">
+        <p><span class="lbl">解读</span>对应 JASP 的 Repeated Measures ANOVA，并对球性偏差做了 Greenhouse–Geisser 校正（所以自由度不是完整的 3 和 21，而是下调后的值）。三个结果的条件主效应均不显著：NAT1 F(2.20, 15.37) = 0.12，p = .900，η<sub>p</sub>² = .017；PT F(1.86, 12.99) = 0.12，p = .876，η<sub>p</sub>² = .017；FU F(1.86, 13.04) = 0.43，p = .645，η<sub>p</sub>² = .058。前两项效应量很小；FU 的偏 eta 方略高，但 p 值仍高，且样本很小，这个估计不稳定。</p>
+        <p><span class="lbl">结论</span>探索性重复测量方差分析与表 3 一致：四个等待条件之间，尚未观察到 NAT1、PT 或 FU 的总体条件效应。表 4 是四条件的总核对，不能替代表 3 里预先关心的配对对照，也不能支持中介机制已经成立。</p>
+      </aside>
+
+        </div>
+      </div>
+    </section>
+<section class="section-block is-open" id="论文附件">
+      <button type="button" class="section-toggle" aria-expanded="true" aria-controls="论文附件-body" id="论文附件-toggle">
+        <span class="chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 2.2L8.5 6L4.2 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="section-title">论文附件</span>
+      </button>
+      <div class="section-body" id="论文附件-body">
+        <div class="section-body-inner">
+
+      <p>中英为同一篇预演论文的对照文本。可在新标签打开或下载，此处不内嵌 PDF 预览。</p>
+      <div class="ts-papers">
+        <article class="ts-paper-card">
+          <span class="eyebrow">中文全文 · 9 页</span>
+          <h3>《认真思考，还是照着脚本回应？机器人开口前的身体动作、时序与被理解感》</h3>
+          <div class="links-row">
+            <a href="../media/thinking-or-scripted/paper-zh.pdf" target="_blank" rel="noopener">打开 PDF ↗</a>
+            <a href="../media/thinking-or-scripted/paper-zh.pdf" download="认真思考，还是照着脚本回应.pdf">下载</a>
+          </div>
+        </article>
+        <article class="ts-paper-card">
+          <span class="eyebrow">English paper · 10 pages</span>
+          <h3>Thinking or Scripted? The Role of Body Display and Temporal Alignment in Shaping Felt Understanding During Generation Latency</h3>
+          <div class="links-row">
+            <a href="../media/thinking-or-scripted/paper-en.pdf" target="_blank" rel="noopener">Open PDF ↗</a>
+            <a href="../media/thinking-or-scripted/paper-en.pdf" download="Thinking-or-Scripted.pdf">Download</a>
+          </div>
+        </article>
+      </div>
+
+        </div>
+      </div>
+    </section>
+
+
+      <p class="next">
+        <a href="laborlink.html">下一件 · LaborLink</a>
+        <a href="../index.html#showcase">回到主推</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="../js/case-index.js"></script>
+  <script>
+  (function () {
+    var btn = document.getElementById("caseTocToggle");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var open = document.body.classList.toggle("case-toc-open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.querySelectorAll(".cs-index a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        document.body.classList.remove("case-toc-open");
+        btn.setAttribute("aria-expanded", "false");
+      });
+    });
+  })();
+  </script>
+  <script>
+  (function () {
+    const tocLinks = Array.from(document.querySelectorAll('.cs-index a'));
+    const sections = Array.from(document.querySelectorAll('.section-block[id]'));
+    const STORAGE_KEY = 'thinking-scripted-section-open-v1';
+    function setSectionOpen(sec, open, persist) {
+      sec.classList.toggle('is-open', open);
+      const b = sec.querySelector('.section-toggle');
+      if (b) b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (persist) {
+        try {
+          const map = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}');
+          map[sec.id] = open;
+          sessionStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+        } catch (_) {}
+      }
+    }
+    function expandForHash(hash) {
+      if (!hash || hash.charAt(0) !== '#') return;
+      const id = decodeURIComponent(hash.slice(1));
+      let el = document.getElementById(id);
+      if (!el) return;
+      let sec = el.classList.contains('section-block') ? el : el.closest('.section-block');
+      if (sec) setSectionOpen(sec, true, true);
+    }
+    try {
+      const map = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}');
+      sections.forEach(function (sec) {
+        if (Object.prototype.hasOwnProperty.call(map, sec.id)) setSectionOpen(sec, !!map[sec.id], false);
+      });
+    } catch (_) {}
+    sections.forEach(function (sec) {
+      const b = sec.querySelector('.section-toggle');
+      if (!b) return;
+      b.addEventListener('click', function () {
+        setSectionOpen(sec, !sec.classList.contains('is-open'), true);
+      });
+    });
+    expandForHash(location.hash);
+    window.addEventListener('hashchange', function () { expandForHash(location.hash); });
+    tocLinks.forEach(function (a) {
+      a.addEventListener('click', function () { expandForHash(a.getAttribute('href')); });
+    });
+  })();
+  </script>
+
+
+  <script>
+  (function () {
+    var TIPS = {
+      NAT1: "等待自然度。每轮回述后的单题 7 点评分，问从用户说完到机器人开口的过渡是否自然；不测量主观等待秒数，也不是核心机制变量。",
+      NAT: "等待自然度，与 NAT1 为同一指标。单题评价从用户说完到机器人开口的过渡是否自然；不是核心机制变量，也不测量主观等待秒数。",
+      PT: "思考归因（Perceived Thinking）。由「像认真想过」（PT1）与「像按预设脚本回应」（PT2）综合，计算为 (PT1 + 8 − PT2)/2。",
+      PT1: "思考归因的构成题：像认真想过。与 PT2 一起合成 PT。",
+      PT2: "思考归因的构成题：像按预设脚本回应。与 PT1 一起合成 PT。",
+      FU: "被理解感（Felt Understanding）。三道自拟题均值：回述是否抓住真实特质、是否听懂陈述、是否针对本人。",
+      MC1: "会后重演的操作检验，评衔接连贯性（transition coherence）。与真实对话评分分开；本页表 2 未报告 MC1 数值。",
+      MC2: "会后重演的操作检验，评看起来是否在思考（appearance of thinking）。不能直接等同于对话中的 PT。",
+      S: "Silence，静默无反馈基线：倾听姿态，无指定思考动作或口头填充。",
+      V: "Verbal Filler，语言反馈基线：倾听姿态 + 口头填充（如“嗯……”）。",
+      BA: "Body-Aligned，身体思考展示：歪头并保持至回述就绪，再回正开口。核心处理条件。",
+      BM: "Body-Misaligned，相同思考动作提前结束，随后静默等待至开口；辅助观察动作时序。",
+      LLM: "大语言模型（Large Language Model）。",
+      HCI: "人机交互（Human-Computer Interaction）。",
+      HRI: "人与机器人交互（Human-Robot Interaction）。",
+      RQ: "研究问题（Research Question）。",
+      CI: "置信区间（Confidence Interval）；本页为配对差值的 95% CI。",
+      d_z: "被试内配对效应量 Cohen’s d_z：均差除以差值标准差。",
+      "ηp²": "偏 eta 方（partial eta squared），重复测量方差分析中条件效应的效应量。",
+      r_rm: "重复测量相关（repeated-measures correlation）：先对每人四条件评分中心化，再估计共同关联；不是中介效应估计。",
+      ANOVA: "方差分析（Analysis of Variance）。"
+    };
+
+    var SKIP_SEL = "script, style, noscript, svg, abbr, textarea, input, button, .section-toggle, #ts-abbr-tip";
+    var TOKEN_RE = /NAT1|NAT|PT1|PT2|MC1|MC2|ANOVA|LLM|HCI|HRI|RQ|CI|PT|FU|BA|BM|r_rm|S|V/g;
+
+    function skipped(el) {
+      return !el || (el.closest && el.closest(SKIP_SEL));
+    }
+
+    function isSafeSV(text, index, token) {
+      var before = text.slice(Math.max(0, index - 16), index);
+      var after = text.slice(index + token.length, index + token.length + 16);
+      if (/[A-Za-z0-9]$/.test(before) || /^[A-Za-z0-9]/.test(after)) return false;
+      if (text.trim() === token) return true;
+      if (/[–\-\/／（(、，]\s*$/.test(before) || /^\s*[–\-\/／）)=，、]/.test(after)) return true;
+      if (/（?\s*(Silence|Verbal)/.test(after)) return true;
+      if (/[与比相对从在到及和或是的：:]\s*$/.test(before)) return true;
+      if (/^\s*[=（(：:高下跌至到更]/.test(after)) return true;
+      if (/\b(BA|BM|S|V)\s*\/\s*$/.test(before) || /^\s*\/\s*(BA|BM|S|V)\b/.test(after)) return true;
+      return false;
+    }
+
+    function makeAbbr(key, contentNode) {
+      var abbr = document.createElement("abbr");
+      abbr.className = "ts-abbr";
+      abbr.setAttribute("data-tip", TIPS[key] || "");
+      abbr.setAttribute("title", TIPS[key] || "");
+      abbr.setAttribute("data-ts-key", key);
+      if (contentNode) abbr.appendChild(contentNode);
+      else abbr.textContent = key;
+      return abbr;
+    }
+
+    function wrapTypographic(root) {
+      var subs = Array.prototype.slice.call(root.querySelectorAll("sub"));
+      subs.forEach(function (sub) {
+        if (skipped(sub) || sub.closest("abbr.ts-abbr")) return;
+        var name = sub.textContent.trim();
+        var parent = sub.parentNode;
+        if (!parent) return;
+
+        if (name === "z") {
+          var em = parent.nodeName === "EM" ? parent : null;
+          if (em && em.textContent.replace(/\s/g, "") === "dz" && !em.closest("abbr.ts-abbr")) {
+            var wrapEm = makeAbbr("d_z");
+            em.parentNode.insertBefore(wrapEm, em);
+            wrapEm.appendChild(em);
+            return;
+          }
+          var prevZ = sub.previousSibling;
+          if (prevZ && prevZ.nodeType === 3 && prevZ.nodeValue.endsWith("d")) {
+            prevZ.nodeValue = prevZ.nodeValue.slice(0, -1);
+            var abbr = makeAbbr("d_z");
+            abbr.appendChild(document.createTextNode("d"));
+            abbr.appendChild(sub);
+            parent.insertBefore(abbr, prevZ.nextSibling);
+            if (!prevZ.nodeValue) parent.removeChild(prevZ);
+          }
+          return;
+        }
+
+        if (name === "rm") {
+          var prevR = sub.previousSibling;
+          if (prevR && prevR.nodeType === 3 && prevR.nodeValue.endsWith("r")) {
+            prevR.nodeValue = prevR.nodeValue.slice(0, -1);
+            var abbrR = makeAbbr("r_rm");
+            abbrR.appendChild(document.createTextNode("r"));
+            abbrR.appendChild(sub);
+            parent.insertBefore(abbrR, prevR.nextSibling);
+            if (!prevR.nodeValue) parent.removeChild(prevR);
+          }
+          return;
+        }
+
+        if (name === "p") {
+          var prevEta = sub.previousSibling;
+          var nextSq = sub.nextSibling;
+          if (!prevEta || prevEta.nodeType !== 3 || !prevEta.nodeValue.endsWith("η")) return;
+          if (!nextSq || nextSq.nodeType !== 3 || !nextSq.nodeValue.startsWith("²")) return;
+          prevEta.nodeValue = prevEta.nodeValue.slice(0, -1);
+          nextSq.nodeValue = nextSq.nodeValue.slice(1);
+          var abbrE = makeAbbr("ηp²");
+          abbrE.appendChild(document.createTextNode("η"));
+          abbrE.appendChild(sub);
+          abbrE.appendChild(document.createTextNode("²"));
+          parent.insertBefore(abbrE, nextSq);
+          if (!nextSq.nodeValue) parent.removeChild(nextSq);
+          if (!prevEta.nodeValue) parent.removeChild(prevEta);
+        }
+      });
+    }
+
+    function wrapTextNode(node) {
+      if (!node || node.nodeType !== 3) return;
+      if (skipped(node.parentElement)) return;
+      var text = node.nodeValue;
+      if (!text || !TOKEN_RE.test(text)) {
+        TOKEN_RE.lastIndex = 0;
+        return;
+      }
+      TOKEN_RE.lastIndex = 0;
+      var frag = document.createDocumentFragment();
+      var last = 0;
+      var m;
+      var changed = false;
+      while ((m = TOKEN_RE.exec(text))) {
+        var token = m[0];
+        var idx = m.index;
+        if (/[A-Za-z0-9]/.test(text.charAt(idx - 1) || "") || /[A-Za-z0-9]/.test(text.charAt(idx + token.length) || "")) continue;
+        if ((token === "S" || token === "V") && !isSafeSV(text, idx, token)) continue;
+        if (!TIPS[token]) continue;
+        if (idx > last) frag.appendChild(document.createTextNode(text.slice(last, idx)));
+        frag.appendChild(makeAbbr(token));
+        last = idx + token.length;
+        changed = true;
+      }
+      if (!changed) return;
+      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      node.parentNode.replaceChild(frag, node);
+    }
+
+    function walk(root) {
+      wrapTypographic(root);
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (n) {
+          if (!n.nodeValue || !n.parentElement) return NodeFilter.FILTER_REJECT;
+          if (skipped(n.parentElement) || n.parentElement.closest("abbr.ts-abbr")) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      var nodes = [];
+      var n;
+      while ((n = walker.nextNode())) nodes.push(n);
+      nodes.forEach(wrapTextNode);
+    }
+
+    var roots = document.querySelectorAll(".wrap, .cs-index");
+    roots.forEach(walk);
+
+    document.querySelectorAll(".ts-key abbr.ts-abbr").forEach(function (el) {
+      el.tabIndex = 0;
+    });
+
+    var tip = document.createElement("div");
+    tip.id = "ts-abbr-tip";
+    tip.setAttribute("role", "tooltip");
+    tip.hidden = true;
+    document.body.appendChild(tip);
+
+    var current = null;
+    var pinned = false;
+    var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    function place(el) {
+      var r = el.getBoundingClientRect();
+      var pad = 8;
+      var topSafe = 88;
+      tip.style.left = "0px";
+      tip.style.top = "0px";
+      var tw = tip.offsetWidth;
+      var th = tip.offsetHeight;
+      var left = r.left + r.width / 2 - tw / 2;
+      left = Math.max(pad, Math.min(left, window.innerWidth - tw - pad));
+      var top = r.top - th - 8;
+      if (top < topSafe) top = r.bottom + 8;
+      if (top + th > window.innerHeight - pad) {
+        top = Math.max(pad, window.innerHeight - th - pad);
+      }
+      tip.style.left = Math.round(left) + "px";
+      tip.style.top = Math.round(top) + "px";
+    }
+
+    function show(el) {
+      if (!el) return;
+      var text = el.getAttribute("data-tip");
+      if (!text) return;
+      if (current && current !== el) {
+        var storedPrev = current.getAttribute("data-title");
+        if (storedPrev) {
+          current.title = storedPrev;
+          current.removeAttribute("data-title");
+        }
+        current.classList.remove("is-tip");
+      }
+      current = el;
+      tip.textContent = text;
+      tip.hidden = false;
+      el.classList.add("is-tip");
+      if (el.title) {
+        el.setAttribute("data-title", el.title);
+        el.removeAttribute("title");
+      }
+      place(el);
+    }
+
+    function hide() {
+      if (current) {
+        var stored = current.getAttribute("data-title");
+        if (stored) {
+          current.title = stored;
+          current.removeAttribute("data-title");
+        }
+        current.classList.remove("is-tip");
+      }
+      current = null;
+      pinned = false;
+      tip.hidden = true;
+    }
+
+    document.addEventListener("mouseover", function (e) {
+      var el = e.target.closest && e.target.closest("abbr.ts-abbr");
+      if (!el) return;
+      show(el);
+    });
+    document.addEventListener("mouseout", function (e) {
+      var el = e.target.closest && e.target.closest("abbr.ts-abbr");
+      if (!el) return;
+      if (pinned) return;
+      var rel = e.relatedTarget;
+      if (rel && el.contains(rel)) return;
+      if (current === el) hide();
+    });
+    document.addEventListener("focusin", function (e) {
+      var el = e.target.closest && e.target.closest("abbr.ts-abbr");
+      if (el) show(el);
+    });
+    document.addEventListener("focusout", function (e) {
+      var el = e.target.closest && e.target.closest("abbr.ts-abbr");
+      if (!el) return;
+      if (pinned) return;
+      var rel = e.relatedTarget;
+      if (rel && (el === rel || el.contains(rel))) return;
+      if (current === el) hide();
+    });
+    document.addEventListener("click", function (e) {
+      var el = e.target.closest && e.target.closest("abbr.ts-abbr");
+      if (!el) {
+        if (pinned) hide();
+        return;
+      }
+      if (finePointer.matches) return;
+      if (el.closest("a")) return;
+      e.stopPropagation();
+      if (current === el && pinned) hide();
+      else {
+        show(el);
+        pinned = true;
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") hide();
+    });
+    window.addEventListener("scroll", function () { if (current) place(current); }, true);
+    window.addEventListener("resize", function () { if (current) place(current); });
+  })();
+  </script>
+
+  <footer class="ending ending--aiux" id="contact">
+    <div class="wrap ending-aiux">
+      <div class="ending-aiux-row" role="contentinfo">
+        <a class="ending-brand" href="../index.html" aria-label="Leonardo home">
+          <img src="../media/brand/leonardo-icon-white.svg" alt="" width="168" height="42" decoding="async" />
+        </a>
+        <p class="ending-copy">© 2026 Leonardo Li · All Rights Reserved</p>
+        <nav class="ending-socials" aria-label="Contact links">
+          <a href="https://github.com/Leonardolee351-LMX" target="_blank" rel="noopener noreferrer">
+            <svg class="ending-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.477 2 2 6.586 2 12.253c0 4.53 2.865 8.367 6.839 9.72.5.094.683-.222.683-.492 0-.243-.01-1.046-.014-1.898-2.782.618-3.37-1.342-3.37-1.342-.454-1.18-1.11-1.494-1.11-1.494-.908-.637.069-.624.069-.624 1.004.072 1.532 1.057 1.532 1.057.892 1.567 2.341 1.115 2.91.853.091-.663.35-1.115.636-1.371-2.22-.259-4.555-1.143-4.555-5.087 0-1.124.39-2.043 1.029-2.763-.103-.26-.446-1.302.098-2.714 0 0 .84-.276 2.75 1.054A9.3 9.3 0 0 1 12 6.918a9.3 9.3 0 0 1 2.504.346c1.909-1.33 2.748-1.054 2.748-1.054.546 1.412.203 2.454.1 2.714.64.72 1.028 1.639 1.028 2.763 0 3.953-2.338 4.825-4.566 5.079.36.318.68.945.68 1.905 0 1.375-.012 2.483-.012 2.82 0 .273.18.592.688.491C19.138 20.617 22 16.78 22 12.253 22 6.586 17.523 2 12 2Z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/%E9%93%AD%E6%99%9E-%E9%BB%8E-925845381/" target="_blank" rel="noopener noreferrer">
+            <svg class="ending-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.52V23H.24V8.25zM8.34 8.25h4.33v2.01h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.93V23h-4.52v-6.71c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.54V23H8.34V8.25z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://www.xiaohongshu.com/user/profile/5f16628e000000000100061f" target="_blank" rel="noopener noreferrer">
+            <span class="ending-ico ending-ico--rednote" aria-hidden="true">红</span>
+            <span>Rednote</span>
+          </a>
+          <a href="mailto:leonardolee351@gmail.com">
+            <svg class="ending-ico ending-ico--gmail" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#EA4335" d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 17.5v-11Z" opacity=".15"/>
+              <path fill="none" stroke="#EA4335" stroke-width="1.6" d="M3.2 6.2 12 12.4l8.8-6.2"/>
+              <path fill="none" stroke="#4285F4" stroke-width="1.6" d="M3.2 6.2V17.2"/>
+              <path fill="none" stroke="#34A853" stroke-width="1.6" d="M20.8 6.2V17.2"/>
+              <path fill="none" stroke="#FBBC05" stroke-width="1.6" d="M3.2 17.2h17.6"/>
+              <rect x="3.2" y="6.2" width="17.6" height="11" rx="1.2" fill="none" stroke="#4285F4" stroke-width="1.4"/>
+            </svg>
+            <span>Gmail</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <div id="site-nav-root" data-site-nav-theme="case" aria-live="polite"></div>
+  <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../experiments/site-nav/assets/index.css?v=home33">
+  <script type="module" src="../experiments/site-nav/assets/site-nav.js?v=home42"></script>
+
+  <div class="ts-rq-dock">
+    <div class="ts-rq-panel" id="ts-rq-panel" role="tooltip">
+      <h2>随时查阅</h2>
+      <p class="rq">在 LLM 驱动的实体机器人开口回述之前，身体姿态的“思考展示”（相比于毫无动作或口头填充），是否能通过增强用户“它正在认真思考”的归因，进而提升用户的“被理解感”？</p>
+      <dl>
+        <dt>实验目标</dt>
+        <dd>检验待验证机制：身体思考展示 → 思考归因（PT）→ 被理解感（FU）。本次预演尚未证实。</dd>
+        <dt>自变量</dt>
+        <dd>开口回述前的展示条件（S、V、BA、BM）；BA 与 BM 另涉及身体姿态结束时机的差异。对应 RQ 中的“思考展示”。</dd>
+        <dt>机制变量</dt>
+        <dd>思考归因（PT：认为机器人认真思考，还是照着脚本回应）。由 PT1 与 PT2 综合：(PT1 + 8 − PT2)/2。</dd>
+        <dt>主因变量</dt>
+        <dd>被理解感（FU）。三道自拟题均值：是否抓住真实特质、听懂陈述、针对本人。对应 RQ 中的“被理解感”。</dd>
+        <dt>辅助指标</dt>
+        <dd>等待自然度（NAT / NAT1）：过渡是否自然，不是核心机制变量。</dd>
+      </dl>
+    </div>
+    <button type="button" class="ts-rq-btn" aria-describedby="ts-rq-panel" aria-label="查看研究问题、自变量因变量与实验目标">
+      <img src="../media/brand/leonardo-mark.png" width="64" height="64" alt="">
+    </button>
+  </div>
+
+</body>
+</html>
