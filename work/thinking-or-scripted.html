@@ -777,7 +777,8 @@
       body.case-cream.thinking-scripted .ts-key-grid { grid-template-columns: 1fr; }
     }
 
-    body.case-cream.thinking-scripted .ts-table-wrap:has(+ .ts-read) {
+    body.case-cream.thinking-scripted .ts-table-wrap:has(+ .ts-read),
+    body.case-cream.thinking-scripted figure.board.paper-fig:has(+ .ts-read) {
       margin-bottom: 0;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
@@ -1173,7 +1174,7 @@
         <li><strong>时序目标：</strong>用户结束发言后约 3.5 秒开口；预定容差及排除标准用于控制响应时间。</li>
         <li><strong>条件控制：</strong>每人经历四条件；原计划平衡顺序，但实际执行存在人工切换与顺序偏差。</li>
         <li><strong>内容控制：</strong>使用相同的任务框架；LLM 回述内容未做到完全一致或独立质量控制。</li>
-        <li><strong>主要分析：</strong>BA 与 S、BM 的配对差异；均差、95% CI、Cohen’s <em>d<sub>z</sub></em>、p 值。</li>
+        <li><strong>主要分析：</strong>BA 与 S、BM 的配对差异；<abbr class="ts-abbr" data-ts-key="mean_diff">均差</abbr>、<abbr class="ts-abbr" data-ts-key="CI">95% CI</abbr>、Cohen’s <em>d<sub>z</sub></em>、<abbr class="ts-abbr" data-ts-key="p">p 值</abbr>。</li>
         <li><strong>补充分析：</strong>重复测量 ANOVA、PT–FU 个体内相关、逐人差异、访谈主题核查。</li>
       </ul>
 
@@ -1526,7 +1527,7 @@
       </aside>
 
       <h3 class="ts-sub" id="表3">表 3. 原稿八人被试内配对差</h3>
-      <p class="ts-note" style="margin-top:0;">Difference = BA minus comparison；+/ = /− 计数为 8 人中更高/相等/更低的人数。单独的 95% 配对 t 置信区间、Cohen’s <em>d<sub>z</sub></em>、未校正双侧 p 值。</p>
+      <p class="ts-note" style="margin-top:0;">Difference = BA minus comparison；<abbr class="ts-abbr" data-ts-key="signs">+/ = /−</abbr> 计数为 8 人中更高/相等/更低的人数。单独的 <abbr class="ts-abbr" data-ts-key="CI">95% 配对 t 置信区间</abbr>、Cohen’s <em>d<sub>z</sub></em>、<abbr class="ts-abbr" data-ts-key="p">未校正双侧 p 值</abbr>。</p>
       <div class="ts-table-wrap">
         <table class="ts-table nums">
           <caption>表 3. 原稿八人被试内配对差</caption>
@@ -1534,11 +1535,11 @@
             <tr>
               <th scope="col">Outcome</th>
               <th scope="col">Contrast</th>
-              <th scope="col">+/=/−</th>
-              <th scope="col">Mean diff.</th>
-              <th scope="col">95% CI</th>
-              <th scope="col"><em>d<sub>z</sub></em></th>
-              <th scope="col">p</th>
+              <th scope="col"><abbr class="ts-abbr" data-ts-key="signs">+/=/−</abbr></th>
+              <th scope="col"><abbr class="ts-abbr" data-ts-key="mean_diff">Mean diff.</abbr></th>
+              <th scope="col"><abbr class="ts-abbr" data-ts-key="CI">95% CI</abbr></th>
+              <th scope="col"><abbr class="ts-abbr" data-ts-key="d_z"><em>d<sub>z</sub></em></abbr></th>
+              <th scope="col"><abbr class="ts-abbr" data-ts-key="p">p</abbr></th>
             </tr>
           </thead>
           <tbody>
@@ -1556,7 +1557,7 @@
       </div>
 
       <aside class="ts-read" aria-label="表 3 数据分析解读">
-        <p><span class="lbl">解读</span>对应 JASP 的 Paired Samples T-Test。差值定义为 BA 减对照条件；同时报告 8 人中更高/相等/更低的人数、均差、95% 配对置信区间、被试内效应量 Cohen’s <em>d<sub>z</sub></em>，以及未校正双侧 p。所有 9 项对照的 95% CI 都穿过 0；p 值均远大于 .05（最小约 .351）。效应量多为可忽略到小：NAT1 的 BA–BM 为 <em>d<sub>z</sub></em> = 0.35（小），FU 的 BA–S 为 <em>d<sub>z</sub></em> = −0.33，方向还对 BA 不利。符号计数也支持这一点：FU 上 BA 相对 S 是 2 人更高、4 人更低。</p>
+        <p><span class="lbl">解读</span>对应 JASP 的 Paired Samples T-Test。差值定义为 BA 减对照条件；同时报告 8 人中更高/相等/更低的人数、<abbr class="ts-abbr" data-ts-key="mean_diff">均差</abbr>、<abbr class="ts-abbr" data-ts-key="CI">95% 配对置信区间</abbr>、被试内效应量 Cohen’s <em>d<sub>z</sub></em>，以及<abbr class="ts-abbr" data-ts-key="p">未校正双侧 p</abbr>。所有 9 项对照的 <abbr class="ts-abbr" data-ts-key="ci_cross0">95% CI 都穿过 0</abbr>；<abbr class="ts-abbr" data-ts-key="p_gt05">p 值均远大于 .05</abbr>（最小约 .351）。效应量多为可忽略到小：NAT1 的 BA–BM 为 <em>d<sub>z</sub></em> = <abbr class="ts-abbr" data-ts-key="dz_035">0.35（小）</abbr>，FU 的 BA–S 为 <em>d<sub>z</sub></em> = <abbr class="ts-abbr" data-ts-key="dz_neg033">−0.33</abbr>，方向还对 BA 不利。符号计数也支持这一点：FU 上 BA 相对 S 是 2 人更高、4 人更低。</p>
         <p><span class="lbl">结论</span>在这次 8 人预演里，没有出现 BA 相对 S、V 或 BM 在 NAT1、PT 或 FU 上的可靠配对优势。区间很宽，统计功效有限；未校正 p 且为探索性分析，既不能确认有效应，也不能把“不显著”读成已经证明没有效应。</p>
       </aside>
 
@@ -1566,6 +1567,10 @@
         </button>
         <figcaption>图 1. 保留的原图 1。八名参与者在 BA 条件下相对于 S、V、BM 的等待自然度（NAT1）、思考归因（PT）与被理解感（FU）评分差。正值表示 BA 更高。图中文字为原图英文标注。</figcaption>
       </figure>
+      <aside class="ts-read" aria-label="图 1 数据分析解读">
+        <p><span class="lbl">解读</span>每个点是一名参与者在某一对照上的评分差（BA 减对照）。零线以上表示该人在 BA 下更高，以下表示对照更高。九个格子里，点大多在零线上下散开，没有哪一格是清一色的正差；有的人明显高于零线，有的人则明显更低。</p>
+        <p><span class="lbl">结论</span>从图 1 可以直接看到：八名参与者的评分差围绕零线散布，没有出现跨人、跨结果都稳定偏向 BA 的优势；有的参与者甚至方向相反。这与表 3 的配对结果一致，也说明均值接近零，并不等于每个人的差都差不多。</p>
+      </aside>
 
       <figure class="board paper-fig" id="图2">
         <button type="button" data-full="../media/thinking-or-scripted/fig-02.png" data-lb-group="thinking-scripted-figs" aria-label="放大图 2">
@@ -1582,21 +1587,20 @@
           <thead>
             <tr>
               <th scope="col">Outcome</th>
-              <th scope="col">Adjusted F</th>
-              <th scope="col">p</th>
-              <th scope="col">η<sub>p</sub>²</th>
+              <th scope="col"><abbr class="ts-abbr" data-ts-key="adj_F">Adjusted F</abbr></th>
+              <th scope="col"><abbr class="ts-abbr" data-ts-key="p_anova">p</abbr></th>
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row">NAT1</th><td>F(2.20, 15.37) = 0.12</td><td>.900</td><td>.017</td></tr>
-            <tr><th scope="row">PT</th><td>F(1.86, 12.99) = 0.12</td><td>.876</td><td>.017</td></tr>
-            <tr><th scope="row">FU</th><td>F(1.86, 13.04) = 0.43</td><td>.645</td><td>.058</td></tr>
+            <tr><th scope="row">NAT1</th><td>F(2.20, 15.37) = 0.12</td><td>.900</td></tr>
+            <tr><th scope="row">PT</th><td>F(1.86, 12.99) = 0.12</td><td>.876</td></tr>
+            <tr><th scope="row">FU</th><td>F(1.86, 13.04) = 0.43</td><td>.645</td></tr>
           </tbody>
         </table>
       </div>
 
       <aside class="ts-read" aria-label="表 4 数据分析解读">
-        <p><span class="lbl">解读</span>对应 JASP 的 Repeated Measures ANOVA，并对球性偏差做了 Greenhouse–Geisser 校正（所以自由度不是完整的 3 和 21，而是下调后的值）。三个结果的条件主效应均不显著：NAT1 F(2.20, 15.37) = 0.12，p = .900，η<sub>p</sub>² = .017；PT F(1.86, 12.99) = 0.12，p = .876，η<sub>p</sub>² = .017；FU F(1.86, 13.04) = 0.43，p = .645，η<sub>p</sub>² = .058。前两项效应量很小；FU 的偏 eta 方略高，但 p 值仍高，且样本很小，这个估计不稳定。</p>
+        <p><span class="lbl">解读</span>对应 JASP 的 Repeated Measures ANOVA，并对球性偏差做了 Greenhouse–Geisser 校正（所以自由度不是完整的 3 和 21，而是下调后的值）。三个结果的条件主效应均不显著：NAT1 F(2.20, 15.37) = 0.12，p = .900；PT F(1.86, 12.99) = 0.12，p = .876；FU F(1.86, 13.04) = 0.43，p = .645。三项 p 值都远大于 .05，尚不能认为四个等待条件在总体均值上有可靠差异。样本只有 8 人，这个检验的统计功效有限。</p>
         <p><span class="lbl">结论</span>探索性重复测量方差分析与表 3 一致：四个等待条件之间，尚未观察到 NAT1、PT 或 FU 的总体条件效应。表 4 是四条件的总核对，不能替代表 3 里预先关心的配对对照，也不能支持中介机制已经成立。</p>
       </aside>
 
@@ -1726,11 +1730,20 @@
       HCI: "人机交互（Human-Computer Interaction）。",
       HRI: "人与机器人交互（Human-Robot Interaction）。",
       RQ: "研究问题（Research Question）。",
-      CI: "置信区间（Confidence Interval）；本页为配对差值的 95% CI。",
-      d_z: "被试内配对效应量 Cohen’s d_z：均差除以差值标准差。",
+      CI: "差值的 95% 配对置信区间。若区间穿过 0，说明这组差在统计上不稳定，尚不能判断有可靠差异。",
+      d_z: "被试内效应量 Cohen’s d_z，描述差值有多大，而不是“是否显著”。大约 |0.2| 为小、|0.5| 为中、|0.8| 为大。",
       "ηp²": "偏 eta 方（partial eta squared），重复测量方差分析中条件效应的效应量。",
       r_rm: "重复测量相关（repeated-measures correlation）：先对每人四条件评分中心化，再估计共同关联；不是中介效应估计。",
-      ANOVA: "方差分析（Analysis of Variance）。"
+      ANOVA: "方差分析（Analysis of Variance）。",
+      mean_diff: "BA 减对照条件的平均差值。正值表示 BA 更高，负值表示对照更高。",
+      signs: "8 人中，BA 更高 / 相等 / 更低的人数。用来看方向是否一致，不是显著性检验。",
+      p: "未校正双侧 p 值。常用 .05 为阈值；大于它表示尚未看到可靠差异。表 3 的配对比较未经多重比较校正。",
+      p_anova: "条件主效应的 p 值。常用 .05 为阈值；大于它表示尚未观察到四个等待条件在总体均值上的可靠差异。",
+      adj_F: "Greenhouse–Geisser 校正后的 F 统计量，用来检验四个等待条件在总体均值上是否不同。本表为探索性核查。",
+      ci_cross0: "区间同时包含正负两侧，说明这组平均差在统计上不稳定，尚不能据此判断有可靠差异。",
+      p_gt05: "常用 .05 为显著性阈值。大于它表示尚未看到可靠差异。本表未校正 p 均远大于 .05，最小约 .351。",
+      dz_035: "按常用基准，|d_z| 约 0.2 为小、0.5 为中、0.8 为大。0.35 仍属较小效应；这个对照的 95% CI 也穿过 0，不能单凭效应量判断显著。",
+      dz_neg033: "负值表示 BA 低于对照。|d_z| = 0.33 约是较小的效应，方向对 BA 不利；同样要连同穿过 0 的置信区间一起看。"
     };
 
     var SKIP_SEL = "script, style, noscript, svg, abbr, textarea, input, button, .section-toggle, #ts-abbr-tip";
@@ -1869,6 +1882,14 @@
 
     var roots = document.querySelectorAll(".wrap, .cs-index");
     roots.forEach(walk);
+
+    document.querySelectorAll("abbr.ts-abbr").forEach(function (el) {
+      var key = el.getAttribute("data-ts-key");
+      if (key && TIPS[key]) {
+        if (!el.getAttribute("data-tip")) el.setAttribute("data-tip", TIPS[key]);
+        if (!el.getAttribute("title")) el.setAttribute("title", TIPS[key]);
+      }
+    });
 
     document.querySelectorAll(".ts-key abbr.ts-abbr").forEach(function (el) {
       el.tabIndex = 0;
