@@ -1108,6 +1108,13 @@
         </div>
       </div>
       <p>NAT（等待自然度）是辅助指标，不是核心机制变量。</p>
+      <h3 class="ts-sub">预定对照</h3>
+      <p>后续配对比较的差值都是 BA 减对照条件，正值表示 BA 更高。</p>
+      <ul class="ts-list">
+        <li><strong>BA–S：</strong>核心对照。身体思考展示相对静默无反馈基线（毫无动作）。</li>
+        <li><strong>BA–V：</strong>探索性对照。身体思考展示相对口头填充基线（如“嗯……”）。</li>
+        <li><strong>BA–BM：</strong>辅助时序对照。两者都做思考动作，但 BA 保持到开口，BM 提前结束再静默等待；比较的是结束时机，不是有没有动作。</li>
+      </ul>
 
         </div>
       </div>
@@ -1726,6 +1733,12 @@
       V: "Verbal Filler，语言反馈基线：倾听姿态 + 口头填充（如“嗯……”）。",
       BA: "Body-Aligned，身体思考展示：歪头并保持至回述就绪，再回正开口。核心处理条件。",
       BM: "Body-Misaligned，相同思考动作提前结束，随后静默等待至开口；辅助观察动作时序。",
+      "BA–S": "核心对照：BA 减 S。比较身体思考展示（歪头并保持至开口）与静默无反馈基线（毫无动作）。正值表示 BA 更高。",
+      "BA-S": "核心对照：BA 减 S。比较身体思考展示（歪头并保持至开口）与静默无反馈基线（毫无动作）。正值表示 BA 更高。",
+      "BA–V": "探索性对照：BA 减 V。比较身体思考展示与口头填充基线（如“嗯……”）。正值表示 BA 更高。",
+      "BA-V": "探索性对照：BA 减 V。比较身体思考展示与口头填充基线（如“嗯……”）。正值表示 BA 更高。",
+      "BA–BM": "辅助时序对照：BA 减 BM。两者都做思考动作，差别是 BA 保持到开口，BM 提前结束再静默等待。看的是结束时机，不是有没有动作。正值表示 BA 更高。",
+      "BA-BM": "辅助时序对照：BA 减 BM。两者都做思考动作，差别是 BA 保持到开口，BM 提前结束再静默等待。看的是结束时机，不是有没有动作。正值表示 BA 更高。",
       LLM: "大语言模型（Large Language Model）。",
       HCI: "人机交互（Human-Computer Interaction）。",
       HRI: "人与机器人交互（Human-Robot Interaction）。",
@@ -1747,7 +1760,7 @@
     };
 
     var SKIP_SEL = "script, style, noscript, svg, abbr, textarea, input, button, .section-toggle, #ts-abbr-tip";
-    var TOKEN_RE = /NAT1|NAT|PT1|PT2|MC1|MC2|ANOVA|LLM|HCI|HRI|RQ|CI|PT|FU|BA|BM|r_rm|S|V/g;
+    var TOKEN_RE = /BA[–-](?:BM|S|V)|NAT1|NAT|PT1|PT2|MC1|MC2|ANOVA|LLM|HCI|HRI|RQ|CI|PT|FU|BA|BM|r_rm|S|V/g;
 
     function skipped(el) {
       return !el || (el.closest && el.closest(SKIP_SEL));
@@ -2059,6 +2072,8 @@
         <dd>检验待验证机制：身体思考展示 → 思考归因（PT）→ 被理解感（FU）。本次预演尚未证实。</dd>
         <dt>自变量</dt>
         <dd>开口回述前的展示条件（S、V、BA、BM）；BA 与 BM 另涉及身体姿态结束时机的差异。对应 RQ 中的“思考展示”。</dd>
+        <dt>预定对照</dt>
+        <dd>差值均为 BA 减对照，正值表示 BA 更高。BA–S：核心对照，身体思考展示相对静默无反馈（毫无动作）。BA–V：探索性对照，身体思考展示相对口头填充。BA–BM：辅助时序对照，两者都有思考动作，差别是 BA 保持到开口，BM 提前结束再静默等待。</dd>
         <dt>机制变量</dt>
         <dd>思考归因（PT：认为机器人认真思考，还是照着脚本回应）。由 PT1 与 PT2 综合：(PT1 + 8 − PT2)/2。</dd>
         <dt>主因变量</dt>
